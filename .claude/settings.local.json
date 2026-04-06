@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(cmd /c \"cd C:\\\\Users\\\\hasan\\\\kalon-store\\\\server && npm install\")",
+      "Bash(cmd /c \"cd C:\\\\Users\\\\hasan\\\\kalon-store\\\\server && npm install 2>&1\")",
+      "Bash(powershell -Command \"Set-Location 'C:\\\\Users\\\\hasan\\\\kalon-store\\\\server'; npm install\")",
+      "Bash(powershell -Command \"Get-Command node, npm -ErrorAction SilentlyContinue | Select-Object Name, Source\")",
+      "Bash(powershell -Command \"Set-Location 'C:\\\\Users\\\\hasan\\\\kalon-store\\\\server'; & 'C:\\\\Program Files\\\\nodejs\\\\npm.cmd' install 2>&1\")",
+      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Users\\\\hasan\\\\kalon-store\\\\server\\\\node_modules' | Measure-Object | Select-Object Count\")"
+    ]
+  }
+}

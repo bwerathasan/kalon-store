@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KALON — لوحة الطلبات</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: #f4f4f5;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo { font-size: 20px; font-weight: 700; letter-spacing: 2px; color: #C9A84C; }
+    .header-title { font-size: 18px; font-weight: 600; }
+    .header-meta { font-size: 13px; color: #aaa; }
+
+    /* ── Toolbar ── */
+    .toolbar {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .toolbar-count {
+      font-size: 14px;
+      color: #666;
+    }
+    .toolbar-count strong { color: #1a1a1a; }
+    .btn-refresh {
+      margin-right: auto;
+      padding: 8px 18px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-refresh:hover { background: #333; }
+    .btn-refresh:disabled { background: #999; cursor: default; }
+
+    /* ── Main ── */
+    .main { padding: 28px 32px; max-width: 1100px; margin: 0 auto; }
+
+    /* ── States ── */
+    .state-box {
+      text-align: center;
+      padding: 64px 32px;
+      color: #888;
+      font-size: 16px;
+    }
+    .state-box .state-icon { font-size: 40px; margin-bottom: 16px; }
+    .state-error { color: #c0392b; }
+
+    /* ── Order card ── */
+    .orders-list { display: flex; flex-direction: column; gap: 16px; }
+
+    .order-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 32px;
+    }
+    .order-card:hover { border-color: #C9A84C; }
+
+    .order-header {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #f0f0f0;
+      margin-bottom: 4px;
+    }
+    .order-name { font-size: 17px; font-weight: 700; }
+    .order-time {
+      font-size: 12px;
+      color: #999;
+      background: #f4f4f5;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .field { display: flex; flex-direction: column; gap: 3px; }
+    .field-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .field-value { font-size: 15px; color: #1a1a1a; }
+    .field-value.empty { color: #ccc; font-style: italic; font-size: 13px; }
+
+    .field--full { grid-column: 1 / -1; }
+
+    /* phone link */
+    .field-value a { color: #1a1a1a; text-decoration: none; }
+    .field-value a:hover { color: #C9A84C; }
+
+    /* ── Print button ── */
+    .order-footer {
+      grid-column: 1 / -1;
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 12px;
+      border-top: 1px solid #f0f0f0;
+      margin-top: 4px;
+    }
+    .btn-print {
+      padding: 7px 20px;
+      background: #fff;
+      color: #1a1a1a;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: 'Cairo', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-print:hover { border-color: #1a1a1a; background: #f4f4f5; }
+
+    @media (max-width: 640px) {
+      .main { padding: 16px; }
+      .toolbar { padding: 12px 16px; }
+      .header { padding: 14px 16px; }
+      .order-card { grid-template-columns: 1fr; }
+      .order-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <span class="header-logo">KALON</span>
+    <span class="header-title">لوحة الطلبات</span>
+    <span class="header-meta" id="last-updated">—</span>
+  </header>
+
+  <div class="toolbar">
+    <span class="toolbar-count" id="order-count">جاري التحميل...</span>
+    <button class="btn-refresh" id="btn-refresh" onclick="loadOrders()">↻ تحديث</button>
+  </div>
+
+  <main class="main">
+    <div id="content">
+      <div class="state-box">
+        <div class="state-icon">⏳</div>
+        جاري تحميل الطلبات...
+      </div>
+    </div>
+  </main>
+
+  <script>
+    const API = '/api/orders';
+
+    function formatDate(iso) {
+      if (!iso) return '—';
+      const d = new Date(iso);
+      return d.toLocaleDateString('ar-EG', {
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit'
+      });
+    }
+
+    function val(v) {
+      if (!v || v.toString().trim() === '') {
+        return '<span class="field-value empty">—</span>';
+      }
+      return '<span class="field-value">' + escHtml(v) + '</span>';
+    }
+
+    function escHtml(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    var _orders = [];
+
+    function renderOrders(orders) {
+      _orders = orders;
+      const content = document.getElementById('content');
+      const countEl = document.getElementById('order-count');
+
+      if (!orders.length) {
+        countEl.innerHTML = '<strong>0</strong> طلب';
+        content.innerHTML = `
+          <div class="state-box">
+            <div class="state-icon">📭</div>
+            لا توجد طلبات بعد
+          </div>`;
+        return;
+      }
+
+      countEl.innerHTML = '<strong>' + orders.length + '</strong> طلب';
+
+      const cards = orders.map(function(o, i) {
+        const phone = o.phone
+          ? '<span class="field-value"><a href="tel:' + escHtml(o.phone) + '">' + escHtml(o.phone) + '</a></span>'
+          : '<span class="field-value empty">—</span>';
+
+        return `
+          <div class="order-card">
+            <div class="order-header">
+              <span class="order-name">${escHtml(o.full_name || '—')}</span>
+              <span class="order-time">${formatDate(o.created_at)}</span>
+            </div>
+
+            <div class="field">
+              <span class="field-label">رقم الهاتف</span>
+              ${phone}
+            </div>
+
+            <div class="field">
+              <span class="field-label">البريد الإلكتروني</span>
+              ${val(o.email)}
+            </div>
+
+            <div class="field">
+              <span class="field-label">المدينة</span>
+              ${val(o.city)}
+            </div>
+
+            <div class="field">
+              <span class="field-label">العنوان</span>
+              ${val(o.address)}
+            </div>
+
+            <div class="field field--full">
+              <span class="field-label">الملاحظات</span>
+              ${val(o.notes)}
+            </div>
+
+            <div class="order-footer">
+              <button class="btn-print" onclick="printOrder(${i})">🖨 طباعة</button>
+            </div>
+          </div>`;
+      }).join('');
+
+      content.innerHTML = '<div class="orders-list">' + cards + '</div>';
+    }
+
+    function printOrder(i) {
+      var o = _orders[i];
+      var date = formatDate(o.created_at);
+      var win = window.open('', '_blank', 'width=400,height=600');
+      win.document.write(`<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <title>طلب — ${escHtml(o.full_name || '')}</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Cairo', Arial, sans-serif;
+      font-size: 13px;
+      color: #000;
+      background: #fff;
+      padding: 16px;
+      direction: rtl;
+    }
+    .logo {
+      text-align: center;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+    }
+    .tagline {
+      text-align: center;
+      font-size: 11px;
+      color: #555;
+      margin-bottom: 12px;
+    }
+    .divider { border: none; border-top: 1px dashed #000; margin: 10px 0; }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    .row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 5px;
+      font-size: 13px;
+    }
+    .row .label { color: #555; }
+    .row .value { font-weight: 600; text-align: left; max-width: 60%; }
+    .items-table { width: 100%; border-collapse: collapse; margin: 6px 0; }
+    .items-table td { padding: 4px 0; font-size: 13px; }
+    .items-table td:last-child { text-align: left; font-weight: 600; }
+    .gift-row td { color: #555; font-style: italic; }
+    .total-row td { border-top: 1px dashed #000; padding-top: 8px; font-weight: 700; font-size: 14px; }
+    .footer {
+      text-align: center;
+      font-size: 11px;
+      color: #555;
+      margin-top: 14px;
+    }
+    @media print {
+      body { padding: 8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="logo">KALON</div>
+  <div class="tagline">فن العطر الفاخر</div>
+
+  <hr class="divider"/>
+
+  <div class="section-title">بيانات العميل</div>
+  <div class="row"><span class="label">الاسم</span><span class="value">${escHtml(o.full_name || '—')}</span></div>
+  <div class="row"><span class="label">الهاتف</span><span class="value">${escHtml(o.phone || '—')}</span></div>
+  <div class="row"><span class="label">البريد</span><span class="value">${escHtml(o.email || '—')}</span></div>
+  <div class="row"><span class="label">المدينة</span><span class="value">${escHtml(o.city || '—')}</span></div>
+  <div class="row"><span class="label">العنوان</span><span class="value">${escHtml(o.address || '—')}</span></div>
+  ${o.notes ? '<div class="row"><span class="label">ملاحظات</span><span class="value">' + escHtml(o.notes) + '</span></div>' : ''}
+  <div class="row"><span class="label">وقت الطلب</span><span class="value">${escHtml(date)}</span></div>
+
+  <hr class="divider"/>
+
+  <div class="section-title">تفاصيل الطلب</div>
+  <table class="items-table">
+    <tr><td>SILLAG NOIR — No.01</td><td>199₪</td></tr>
+    <tr><td>OMBRE CLAIR — No.02</td><td>249₪</td></tr>
+    <tr class="gift-row"><td>Rouge Musk — هدية مجانية 🎁</td><td>—</td></tr>
+    <tr><td>الشحن</td><td>مجاني</td></tr>
+    <tr class="total-row"><td>السعر النهائي</td><td>399₪</td></tr>
+  </table>
+
+  <div class="row" style="margin-top:8px;">
+    <span class="label">طريقة الدفع</span>
+    <span class="value">الدفع عند الاستلام</span>
+  </div>
+
+  <hr class="divider"/>
+  <div class="footer">شكراً لطلبكِ من KALON ✦</div>
+
+  <script>window.onload = function(){ window.print(); }<\/script>
+</body>
+</html>`);
+      win.document.close();
+    }
+
+    function loadOrders() {
+      const btn = document.getElementById('btn-refresh');
+      const content = document.getElementById('content');
+      btn.disabled = true;
+      btn.textContent = '...جاري التحديث';
+
+      fetch(API)
+        .then(function(res) { return res.json(); })
+        .then(function(body) {
+          if (!body.success) throw new Error(body.error || 'فشل التحميل');
+          renderOrders(body.orders || []);
+          document.getElementById('last-updated').textContent =
+            'آخر تحديث: ' + new Date().toLocaleTimeString('ar-EG');
+        })
+        .catch(function(err) {
+          console.error('[ADMIN] Failed to load orders:', err);
+          document.getElementById('content').innerHTML = `
+            <div class="state-box state-error">
+              <div class="state-icon">⚠️</div>
+              فشل تحميل الطلبات — تأكد أن السيرفر يعمل على localhost:5000<br/>
+              <small style="margin-top:8px;display:block;direction:ltr;">${escHtml(err.message)}</small>
+            </div>`;
+          document.getElementById('order-count').textContent = 'خطأ في التحميل';
+        })
+        .finally(function() {
+          btn.disabled = false;
+          btn.textContent = '↻ تحديث';
+        });
+    }
+
+    loadOrders();
+  </script>
+
+</body>
+</html>
