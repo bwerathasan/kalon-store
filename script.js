@@ -81,21 +81,6 @@ var PRODUCTS = {
     ],
     fosTotal: '₪399'
   },
-  'discovery': {
-    label:    'Discovery Vial',
-    price:    '₪79',
-    showWas:  false,
-    savings:  null,
-    lines: [
-      { label: 'Discovery Vial',  val: '₪79' },
-      { label: 'Contents',        val: 'Crystal Veil + Encens Noir · 5ml each' },
-      { label: 'Shipping',        val: 'Calculated at checkout' }
-    ],
-    fosLines: [
-      { label: 'Discovery Vial (both scents · 5ml each)', val: '₪79' }
-    ],
-    fosTotal: '₪79'
-  }
 };
 
 function selectProduct(type) {

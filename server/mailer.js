@@ -32,13 +32,6 @@ const PRODUCTS = {
     ],
     total: '₪399',
   },
-  'discovery': {
-    label: 'Discovery Vial — Both scents · 5ml each',
-    lines: [
-      { name: 'Discovery Vial (Crystal Veil + Encens Noir · 5ml each)', price: '₪79' },
-    ],
-    total: '₪79',
-  },
 };
 
 function getProduct(order) {
