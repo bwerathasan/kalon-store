@@ -42,10 +42,20 @@ router.post('/', async (req, res) => {
   };
   console.log('[ORDER] Insert payload:', JSON.stringify(payload, null, 2));
 
-  const { data, error } = await supabase
+  let { data, error } = await supabase
     .from('orders')
     .insert([payload])
     .select();
+
+  // If product column doesn't exist yet in DB, retry without it
+  if (error && error.code === '42703' && error.message.includes('product')) {
+    console.warn('[ORDER] product column missing — retrying without it');
+    const { product: _dropped, ...payloadWithoutProduct } = payload;
+    ({ data, error } = await supabase
+      .from('orders')
+      .insert([payloadWithoutProduct])
+      .select());
+  }
 
   if (error) {
     console.error('[ORDER] Supabase insert FAILED');
