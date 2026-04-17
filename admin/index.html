@@ -119,6 +119,9 @@
     .field-value a { color: #1a1a1a; text-decoration: none; }
     .field-value a:hover { color: #C9A84C; }
 
+    /* product badge */
+    .product-badge { font-weight: 600; color: #C9A84C; }
+
     /* ── Print button ── */
     .order-footer {
       grid-column: 1 / -1;
@@ -182,6 +185,19 @@
         year: 'numeric', month: 'short', day: 'numeric',
         hour: '2-digit', minute: '2-digit'
       });
+    }
+
+    var PRODUCT_MAP = {
+      'duo':          { label: 'The Duo (Crystal Veil + Encens Noir)', price: '₪649' },
+      'crystal-veil': { label: 'Crystal Veil — No.01',                 price: '₪379' },
+      'encens-noir':  { label: 'Encens Noir — No.02',                  price: '₪399' },
+      'discovery':    { label: 'Discovery Vial (5ml each)',             price: '₪79'  }
+    };
+
+    function formatProduct(p) {
+      if (!p) return '<span style="color:#ccc;font-style:italic;font-size:13px;">—</span>';
+      var m = PRODUCT_MAP[p];
+      return m ? m.label : escHtml(p);
     }
 
     function val(v) {
@@ -248,6 +264,11 @@
             <div class="field">
               <span class="field-label">العنوان</span>
               ${val(o.address)}
+            </div>
+
+            <div class="field">
+              <span class="field-label">المنتج</span>
+              <span class="field-value product-badge" data-product="${escHtml(o.product || '')}">${formatProduct(o.product)}</span>
             </div>
 
             <div class="field field--full">
@@ -331,37 +352,45 @@
 </head>
 <body>
   <div class="logo">KALON</div>
-  <div class="tagline">فن العطر الفاخر</div>
+  <div class="tagline">Performance is the only luxury that matters.</div>
 
   <hr class="divider"/>
 
-  <div class="section-title">بيانات العميل</div>
-  <div class="row"><span class="label">الاسم</span><span class="value">${escHtml(o.full_name || '—')}</span></div>
-  <div class="row"><span class="label">الهاتف</span><span class="value">${escHtml(o.phone || '—')}</span></div>
-  <div class="row"><span class="label">البريد</span><span class="value">${escHtml(o.email || '—')}</span></div>
-  <div class="row"><span class="label">المدينة</span><span class="value">${escHtml(o.city || '—')}</span></div>
-  <div class="row"><span class="label">العنوان</span><span class="value">${escHtml(o.address || '—')}</span></div>
-  ${o.notes ? '<div class="row"><span class="label">ملاحظات</span><span class="value">' + escHtml(o.notes) + '</span></div>' : ''}
-  <div class="row"><span class="label">وقت الطلب</span><span class="value">${escHtml(date)}</span></div>
+  <div class="section-title">Customer Details</div>
+  <div class="row"><span class="label">Name</span><span class="value">${escHtml(o.full_name || '—')}</span></div>
+  <div class="row"><span class="label">Phone</span><span class="value">${escHtml(o.phone || '—')}</span></div>
+  <div class="row"><span class="label">Email</span><span class="value">${escHtml(o.email || '—')}</span></div>
+  <div class="row"><span class="label">City</span><span class="value">${escHtml(o.city || '—')}</span></div>
+  <div class="row"><span class="label">Address</span><span class="value">${escHtml(o.address || '—')}</span></div>
+  ${o.notes ? '<div class="row"><span class="label">Notes</span><span class="value">' + escHtml(o.notes) + '</span></div>' : ''}
+  <div class="row"><span class="label">Order Time</span><span class="value">${escHtml(date)}</span></div>
 
   <hr class="divider"/>
 
-  <div class="section-title">تفاصيل الطلب</div>
+  <div class="section-title">Order Details</div>
   <table class="items-table">
-    <tr><td>SILLAG NOIR — No.01</td><td>199₪</td></tr>
-    <tr><td>OMBRE CLAIR — No.02</td><td>249₪</td></tr>
-    <tr class="gift-row"><td>Rouge Musk — هدية مجانية 🎁</td><td>—</td></tr>
-    <tr><td>الشحن</td><td>مجاني</td></tr>
-    <tr class="total-row"><td>السعر النهائي</td><td>399₪</td></tr>
+    ${(function(){
+      var p = PRODUCT_MAP[o.product];
+      if (!p) return '<tr><td>' + escHtml(o.product || 'Unknown') + '</td><td>—</td></tr>';
+      if (o.product === 'duo') {
+        return '<tr><td>Crystal Veil — No.01</td><td>₪379</td></tr>' +
+               '<tr><td>Encens Noir — No.02</td><td>₪399</td></tr>' +
+               '<tr class="gift-row"><td>The Duo Bundle</td><td>Save ₪129</td></tr>' +
+               '<tr><td>Shipping</td><td>Free</td></tr>' +
+               '<tr class="total-row"><td>Total</td><td>₪649</td></tr>';
+      }
+      return '<tr><td>' + escHtml(p.label) + '</td><td>' + escHtml(p.price) + '</td></tr>' +
+             '<tr class="total-row"><td>Total</td><td>' + escHtml(p.price) + '</td></tr>';
+    })()}
   </table>
 
   <div class="row" style="margin-top:8px;">
-    <span class="label">طريقة الدفع</span>
-    <span class="value">الدفع عند الاستلام</span>
+    <span class="label">Payment</span>
+    <span class="value">Cash on Delivery</span>
   </div>
 
   <hr class="divider"/>
-  <div class="footer">شكراً لطلبكِ من KALON ✦</div>
+  <div class="footer">Thank you for your KALON order ✦</div>
 
   <script>window.onload = function(){ window.print(); }<\/script>
 </body>

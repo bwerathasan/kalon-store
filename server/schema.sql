@@ -15,6 +15,7 @@ create table if not exists orders (
   city       text not null,
   address    text not null,
   notes      text,
+  product    text,
   created_at timestamptz default now()
 );
 

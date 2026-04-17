@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
   console.log('[ORDER] Request received at', new Date().toISOString());
   console.log('[ORDER] Body:', JSON.stringify(req.body, null, 2));
 
-  const { full_name, phone, email, city, address, notes } = req.body;
+  const { full_name, phone, email, city, address, notes, product } = req.body;
 
   // Validate required fields
   const missing = [];
@@ -38,6 +38,7 @@ router.post('/', async (req, res) => {
     city:      city.trim(),
     address:   address.trim(),
     notes:     notes    ? notes.trim()   : null,
+    product:   product  ? product.trim() : null,
   };
   console.log('[ORDER] Insert payload:', JSON.stringify(payload, null, 2));
 
