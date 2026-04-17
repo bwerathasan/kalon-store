@@ -2,36 +2,7 @@
    KALON — script.js
 ════════════════════════════════════════ */
 
-/* ── Countdown Timer ──
-   Persists deadline in localStorage so it
-   doesn't reset on every page reload.
-──────────────────────────────────────── */
-(function initCountdown() {
-  const KEY = 'kalon_offer_deadline';
-  const DURATION_MS = 23 * 3600000 + 59 * 60000 + 59 * 1000;
-
-  let deadline = Number(localStorage.getItem(KEY));
-  if (!deadline || Date.now() > deadline) {
-    deadline = Date.now() + DURATION_MS;
-    localStorage.setItem(KEY, deadline);
-  }
-
-  const elH = document.getElementById('cd-h');
-  const elM = document.getElementById('cd-m');
-  const elS = document.getElementById('cd-s');
-
-  function pad(n) { return String(n).padStart(2, '0'); }
-
-  function tick() {
-    const diff = Math.max(0, deadline - Date.now());
-    elH.textContent = pad(Math.floor(diff / 3600000));
-    elM.textContent = pad(Math.floor((diff % 3600000) / 60000));
-    elS.textContent = pad(Math.floor((diff % 60000) / 1000));
-    if (diff > 0) setTimeout(tick, 1000);
-  }
-
-  tick();
-})();
+/* Countdown removed — longevity display is static (10–12 hours) */
 
 /* ── Email form handlers ── */
 function handleEmailSubmit(e) {
@@ -39,7 +10,7 @@ function handleEmailSubmit(e) {
   var form = e.currentTarget;
   var input = form.querySelector('input');
   var btn   = form.querySelector('button');
-  btn.textContent = '✓ تم التسجيل! سيصلكِ الكود قريباً';
+  btn.textContent = '✓ Joined. You will hear from us first.';
   btn.style.background = '#2C2C2C';
   input.value    = '';
   input.disabled = true;
@@ -51,11 +22,128 @@ function handlePopupSubmit(e) {
   var form  = e.currentTarget;
   var btn   = form.querySelector('button');
   var input = form.querySelector('input');
-  btn.textContent = '✓ تم! سيصلكِ الكود على بريدكِ';
+  btn.textContent = '✓ Done. Check your inbox.';
   btn.style.background = '#2C2C2C';
   input.disabled = true;
   btn.disabled   = true;
   setTimeout(closePopup, 2400);
+}
+
+/* ── Product selection — updates order summary & form receipt ── */
+var currentProduct = 'duo';
+
+var PRODUCTS = {
+  'duo': {
+    label:    'The Duo',
+    price:    '₪649',
+    showWas:  true,
+    savings:  '₪129 saved — the only promotional structure',
+    lines: [
+      { label: 'Crystal Veil — No.01', val: '₪379' },
+      { label: 'Encens Noir — No.02',  val: '₪399' },
+      { label: 'The Duo Bundle',       val: 'Save ₪129', cls: 'os-line--gift', valCls: 'os-gift' },
+      { label: 'Shipping',             val: 'Free with The Duo', valCls: 'os-free' }
+    ],
+    fosLines: [
+      { label: 'Crystal Veil — No.01', val: '₪379' },
+      { label: 'Encens Noir — No.02',  val: '₪399' },
+      { label: 'The Duo Bundle',       val: 'Save ₪129', cls: 'fos-gift' }
+    ],
+    fosTotal: '₪649'
+  },
+  'crystal-veil': {
+    label:    'Crystal Veil — No.01',
+    price:    '₪379',
+    showWas:  false,
+    savings:  null,
+    lines: [
+      { label: 'Crystal Veil — No.01', val: '₪379' },
+      { label: 'Longevity',            val: '10–12 hours' },
+      { label: 'Shipping',             val: 'Calculated at checkout' }
+    ],
+    fosLines: [
+      { label: 'Crystal Veil — No.01', val: '₪379' }
+    ],
+    fosTotal: '₪379'
+  },
+  'encens-noir': {
+    label:    'Encens Noir — No.02',
+    price:    '₪399',
+    showWas:  false,
+    savings:  null,
+    lines: [
+      { label: 'Encens Noir — No.02', val: '₪399' },
+      { label: 'Longevity',           val: '10–12 hours' },
+      { label: 'Shipping',            val: 'Calculated at checkout' }
+    ],
+    fosLines: [
+      { label: 'Encens Noir — No.02', val: '₪399' }
+    ],
+    fosTotal: '₪399'
+  },
+  'discovery': {
+    label:    'Discovery Vial',
+    price:    '₪79',
+    showWas:  false,
+    savings:  null,
+    lines: [
+      { label: 'Discovery Vial',  val: '₪79' },
+      { label: 'Contents',        val: 'Crystal Veil + Encens Noir · 5ml each' },
+      { label: 'Shipping',        val: 'Calculated at checkout' }
+    ],
+    fosLines: [
+      { label: 'Discovery Vial (both scents · 5ml each)', val: '₪79' }
+    ],
+    fosTotal: '₪79'
+  }
+};
+
+function selectProduct(type) {
+  currentProduct = type;
+  var p = PRODUCTS[type];
+  if (!p) return;
+
+  // Update hidden form field
+  var hiddenInput = document.getElementById('f-product');
+  if (hiddenInput) hiddenInput.value = type;
+
+  // Rebuild os-lines
+  var linesEl = document.getElementById('os-lines-container');
+  if (linesEl) {
+    linesEl.innerHTML = p.lines.map(function (l) {
+      return '<div class="os-line' + (l.cls ? ' ' + l.cls : '') + '">' +
+        '<span class="os-label">' + l.label + '</span>' +
+        '<span class="os-val' + (l.valCls ? ' ' + l.valCls : '') + '">' + l.val + '</span>' +
+        '</div>';
+    }).join('');
+  }
+
+  // Update pricing row
+  var wasBlock = document.getElementById('os-was-block');
+  if (wasBlock) wasBlock.style.display = p.showWas ? '' : 'none';
+
+  var nowLabel = document.getElementById('os-now-label-el');
+  if (nowLabel) nowLabel.textContent = p.label;
+
+  var nowPrice = document.getElementById('os-now-price-el');
+  if (nowPrice) nowPrice.textContent = p.price;
+
+  // Savings pill
+  var savingsEl = document.getElementById('os-savings-block');
+  if (savingsEl) {
+    savingsEl.style.display = p.savings ? '' : 'none';
+    if (p.savings) savingsEl.textContent = p.savings;
+  }
+
+  // Rebuild form mini-receipt
+  var fosEl = document.getElementById('fos-container');
+  if (fosEl) {
+    var html = p.fosLines.map(function (l) {
+      return '<div class="fos-line' + (l.cls ? ' ' + l.cls : '') + '"><span>' + l.label + '</span><span>' + l.val + '</span></div>';
+    }).join('');
+    html += '<div class="fos-total"><span>Total</span><span>' + p.fosTotal + '</span></div>';
+    fosEl.innerHTML = html;
+  }
 }
 
 /* ── Smooth scroll helper ── */
@@ -119,10 +207,10 @@ function handleOrderSubmit(e) {
   errorEl.style.display = 'none';
 
   if (!name || !phone || !city || !address) {
-    btn.textContent = 'يرجى تعبئة جميع الحقول المطلوبة';
+    btn.textContent = 'Please fill in all required fields.';
     btn.style.background = '#8A4A00';
     setTimeout(function () {
-      btn.textContent = 'إرسال الطلب \u00a0←';
+      btn.textContent = 'Place Order \u00a0\u2192';
       btn.style.background = '';
     }, 2500);
     return;
@@ -130,7 +218,7 @@ function handleOrderSubmit(e) {
 
   // Disable button while sending
   btn.disabled = true;
-  btn.textContent = 'جاري الإرسال...';
+  btn.textContent = 'Sending...';
 
   var payload = {
     full_name: name,
@@ -138,7 +226,8 @@ function handleOrderSubmit(e) {
     email:     email,
     city:      city,
     address:   address,
-    notes:     notes
+    notes:     notes,
+    product:   currentProduct
   };
   console.log('[ORDER] Sending payload:', payload);
 
@@ -174,9 +263,9 @@ function handleOrderSubmit(e) {
   .catch(function (err) {
     console.error('[ORDER] Submission failed:', err.message);
     if (err.body) console.error('[ORDER] Server error detail:', err.body);
-    errorEl.textContent   = 'حدث خطأ أثناء إرسال الطلب، حاولي مرة أخرى';
+    errorEl.textContent   = 'Something went wrong. Please try again.';
     errorEl.style.display = 'block';
     btn.disabled          = false;
-    btn.textContent       = 'إرسال الطلب \u00a0←';
+    btn.textContent       = 'Place Order \u00a0\u2192';
   });
 }

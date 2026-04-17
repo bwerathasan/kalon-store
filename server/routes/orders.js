@@ -52,7 +52,10 @@ router.post('/', async (req, res) => {
     console.error('[ORDER] Error message:', error.message);
     console.error('[ORDER] Error details:', error.details);
     console.error('[ORDER] Error hint:   ', error.hint);
-    console.error('[ORDER] Full error:   ', JSON.stringify(error, null, 2));
+    console.error('[ORDER] Error status: ', error.status);
+    console.error('[ORDER] Full error object:');
+    console.dir(error, { depth: null });
+    console.error('[ORDER] Full error JSON:', JSON.stringify(error, null, 2));
     return res.status(500).json({
       success: false,
       error: 'Failed to save order.',
