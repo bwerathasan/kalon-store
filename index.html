@@ -384,10 +384,19 @@
       <div class="os-savings" id="os-savings-block">₪129 saved — the only promotional structure</div>
 
       <a href="#order-form"
+         id="os-confirm-cta"
          class="btn btn-dark os-cta"
          onclick="document.getElementById('order-form').scrollIntoView({behavior:'smooth'}); return false;">
         Confirm Order &nbsp;→
       </a>
+      <div id="os-duo-oos" class="oos-block" style="display:none; margin-top:20px; text-align:center;">
+        <p class="oos-label">Out of stock — The Duo</p>
+        <form class="notify-form" onsubmit="handleNotify(event,'duo')">
+          <input type="email" class="notify-input" placeholder="Email — notify me when back" required />
+          <button type="submit" class="notify-btn">Notify me</button>
+        </form>
+        <p class="notify-feedback" style="display:none;"></p>
+      </div>
 
     </div>
   </section>
@@ -529,6 +538,6 @@
   </div>
 
 
-  <script src="script.js?v=2"></script>
+  <script src="script.js?v=3"></script>
 </body>
 </html>

@@ -31,6 +31,7 @@ function handlePopupSubmit(e) {
 
 /* ── Product selection — updates order summary & form receipt ── */
 var currentProduct = 'duo';
+var _duoOOS = false;
 
 var PRODUCTS = {
   'duo': {
@@ -120,6 +121,15 @@ function selectProduct(type) {
     if (p.savings) savingsEl.textContent = p.savings;
   }
 
+  // Restore order-summary CTA when switching away from Duo
+  if (type !== 'duo') {
+    _toggle('os-confirm-cta', true, true);
+    _toggle('os-duo-oos', false, false);
+  } else {
+    _toggle('os-confirm-cta', !_duoOOS, true);
+    _toggle('os-duo-oos', _duoOOS, false);
+  }
+
   // Rebuild form mini-receipt
   var fosEl = document.getElementById('fos-container');
   if (fosEl) {
@@ -166,11 +176,12 @@ function _applyProductState(product, inStock) {
     _toggle('en-ind-cta', inStock, true);
     _toggle('en-ind-oos', !inStock, false);
   } else if (product === 'duo') {
-    _toggle('duo-cta',    inStock, true);
-    _toggle('duo-oos',    !inStock, false);
-    // Keep floating CTA visible only when duo is in stock
-    var floatLink = document.querySelector('#floating-cta a');
-    if (floatLink) floatLink.style.display = inStock ? '' : 'none';
+    _toggle('duo-cta',        inStock, true);
+    _toggle('duo-oos',        !inStock, false);
+    _toggle('os-confirm-cta', inStock, true);
+    _toggle('os-duo-oos',     !inStock, false);
+    _duoOOS = !inStock;
+    if (floatingCta) floatingCta.style.display = inStock ? '' : 'none';
   }
 }
 
@@ -231,7 +242,7 @@ window.addEventListener('scroll', function () {
   var summaryTop     = summaryEl ? summaryEl.getBoundingClientRect().top + scrollY : Infinity;
   var aboveOrderFlow = scrollY > 560 && scrollY < summaryTop - 80;
 
-  if (aboveOrderFlow) {
+  if (aboveOrderFlow && !_duoOOS) {
     floatingCta.classList.add('visible');
     floatingCta.setAttribute('aria-hidden', 'false');
   } else {
@@ -266,6 +277,12 @@ function handleOrderSubmit(e) {
   var notes   = document.getElementById('f-notes').value.trim();
 
   errorEl.style.display = 'none';
+
+  if (currentProduct === 'duo' && _duoOOS) {
+    errorEl.textContent   = 'The Duo is currently out of stock.';
+    errorEl.style.display = 'block';
+    return;
+  }
 
   if (!name || !phone || !city || !address) {
     btn.textContent = 'Please fill in all required fields.';
