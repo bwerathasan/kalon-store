@@ -51,6 +51,57 @@ router.post('/', orderRateLimit, async (req, res) => {
     return res.status(400).json({ success: false, error: 'Invalid product.' });
   }
 
+  // ── Stock check + atomic decrement ──
+  const skusNeeded = product === 'duo'
+    ? ['crystal-veil', 'encens-noir']
+    : (product ? [product] : []);
+
+  if (skusNeeded.length > 0) {
+    const { data: stockRows, error: stockErr } = await supabase
+      .from('inventory')
+      .select('product, stock')
+      .in('product', skusNeeded);
+
+    if (!stockErr && stockRows) {
+      const stockMap = {};
+      stockRows.forEach(r => { stockMap[r.product] = r.stock; });
+
+      const oos = skusNeeded.filter(p => (stockMap[p] || 0) < 1);
+      if (oos.length > 0) {
+        console.warn('[ORDER] Out of stock:', oos);
+        return res.status(409).json({
+          success: false,
+          outOfStock: true,
+          error: 'This product is currently out of stock.',
+        });
+      }
+
+      // Decrement each SKU using optimistic lock (eq on current stock value)
+      for (const sku of skusNeeded) {
+        const currentStock = stockMap[sku];
+        const { data: decremented } = await supabase
+          .from('inventory')
+          .update({ stock: currentStock - 1, updated_at: new Date().toISOString() })
+          .eq('product', sku)
+          .eq('stock', currentStock)
+          .select('product');
+
+        if (!decremented || decremented.length === 0) {
+          console.warn('[ORDER] Stock race condition — treating as OOS:', sku);
+          return res.status(409).json({
+            success: false,
+            outOfStock: true,
+            error: 'This product is currently out of stock.',
+          });
+        }
+      }
+
+      console.log('[ORDER] Stock decremented for:', skusNeeded.join(', '));
+    } else if (stockErr) {
+      console.warn('[ORDER] Stock check failed, proceeding without it:', stockErr.message);
+    }
+  }
+
   console.log('[ORDER] Validation passed — inserting into Supabase...');
   console.log('[ORDER] SUPABASE_URL present:', !!process.env.SUPABASE_URL);
   console.log('[ORDER] SUPABASE_KEY present:', !!process.env.SUPABASE_KEY);

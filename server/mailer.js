@@ -180,4 +180,59 @@ async function sendOrderEmails(order) {
   });
 }
 
-module.exports = { sendOrderEmails };
+const BACK_IN_STOCK_LABELS = {
+  'crystal-veil': { name: 'Crystal Veil — No.01', price: '₪379', url: 'https://kalonperfume.com' },
+  'encens-noir':  { name: 'Encens Noir — No.02',  price: '₪399', url: 'https://kalonperfume.com' },
+  'duo':          { name: 'The Duo',               price: '₪649', url: 'https://kalonperfume.com' },
+};
+
+async function sendBackInStockEmail(email, product) {
+  const p = BACK_IN_STOCK_LABELS[product];
+  if (!p) return;
+
+  await transporter.sendMail({
+    from: `"KALON" <${process.env.EMAIL_USER}>`,
+    to: email,
+    subject: `Back in stock — ${p.name} — KALON`,
+    html: `
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/></head>
+<body style="margin:0;padding:0;background:#f2f2f0;font-family:Georgia,serif;">
+  <div style="max-width:520px;margin:40px auto;background:#ffffff;border:1px solid #e0e0dc;">
+
+    <div style="background:#080808;padding:28px 32px;text-align:center;">
+      <p style="margin:0;color:#C9A84C;font-size:22px;font-weight:400;letter-spacing:8px;font-family:Georgia,serif;">KALON</p>
+    </div>
+
+    <div style="padding:36px 40px;">
+      <p style="margin:0 0 20px;font-size:15px;color:#1a1a1a;line-height:1.6;font-family:Arial,sans-serif;">
+        <strong>${esc(p.name)}</strong> is back in stock.
+      </p>
+      <p style="margin:0 0 28px;font-size:14px;color:#555;line-height:1.6;font-family:Arial,sans-serif;">
+        You signed up to be notified. Stock is limited — order now to secure yours.
+      </p>
+
+      <a href="${p.url}"
+         style="display:inline-block;padding:14px 32px;background:#080808;color:#ffffff;text-decoration:none;font-family:Arial,sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;">
+        ORDER NOW — ${esc(p.price)}
+      </a>
+
+      <p style="margin:32px 0 0;font-size:13px;color:#999;font-style:italic;font-family:Georgia,serif;border-top:1px solid #f0f0ee;padding-top:20px;">
+        Performance is the only luxury that matters.
+      </p>
+    </div>
+
+    <div style="background:#f8f8f6;padding:16px 32px;text-align:center;border-top:1px solid #e8e8e4;">
+      <p style="margin:0;font-size:11px;color:#bbb;letter-spacing:1px;font-family:Arial,sans-serif;">
+        © ${new Date().getFullYear()} KALON — You received this because you requested a restock notification.
+      </p>
+    </div>
+
+  </div>
+</body>
+</html>`,
+  });
+}
+
+module.exports = { sendOrderEmails, sendBackInStockEmail };

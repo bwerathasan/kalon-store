@@ -12,7 +12,9 @@ const express      = require('express');
 const cors         = require('cors');
 const bodyParser   = require('body-parser');
 const session      = require('express-session');
-const ordersRouter = require('./routes/orders');
+const ordersRouter    = require('./routes/orders');
+const inventoryRouter = require('./routes/inventory');
+const waitlistRouter  = require('./routes/waitlist');
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
@@ -104,7 +106,9 @@ app.get('/api/orders', async (req, res) => {
 });
 
 // ── Routes ──
-app.use('/api/orders', ordersRouter);
+app.use('/api/orders',    ordersRouter);
+app.use('/api/inventory', inventoryRouter);
+app.use('/api/waitlist',  waitlistRouter);
 
 // ── Health check ──
 app.get('/health', (req, res) => {

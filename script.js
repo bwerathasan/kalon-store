@@ -138,6 +138,80 @@ function scrollToSection(e, id) {
   if (el) el.scrollIntoView({ behavior: 'smooth' });
 }
 
+/* ── Inventory — fetch availability and update UI ── */
+function loadInventory() {
+  fetch('/api/inventory')
+    .then(function (r) { return r.json(); })
+    .then(function (body) {
+      if (!body.success) return;
+      var av = body.availability;
+      _applyProductState('crystal-veil', av['crystal-veil']);
+      _applyProductState('encens-noir',  av['encens-noir']);
+      _applyProductState('duo',          av['duo']);
+    })
+    .catch(function () { /* fail silently — site stays fully functional */ });
+}
+
+function _applyProductState(product, inStock) {
+  if (product === 'crystal-veil') {
+    _toggle('cv-cta',     inStock, true);
+    _toggle('cv-oos',     !inStock, false);
+    _toggle('cv-ind-cta', inStock, true);
+    _toggle('cv-ind-oos', !inStock, false);
+  } else if (product === 'encens-noir') {
+    _toggle('en-cta',     inStock, true);
+    _toggle('en-oos',     !inStock, false);
+    _toggle('en-ind-cta', inStock, true);
+    _toggle('en-ind-oos', !inStock, false);
+  } else if (product === 'duo') {
+    _toggle('duo-cta',    inStock, true);
+    _toggle('duo-oos',    !inStock, false);
+    // Keep floating CTA visible only when duo is in stock
+    var floatLink = document.querySelector('#floating-cta a');
+    if (floatLink) floatLink.style.display = inStock ? '' : 'none';
+  }
+}
+
+function _toggle(id, show, useInline) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  el.style.display = show ? (useInline ? '' : 'block') : 'none';
+}
+
+/* ── Notify-me form handler ── */
+function handleNotify(e, product) {
+  e.preventDefault();
+  var form     = e.currentTarget;
+  var input    = form.querySelector('.notify-input');
+  var btn      = form.querySelector('.notify-btn');
+  var feedback = form.closest('.oos-block').querySelector('.notify-feedback');
+  var email    = input.value.trim();
+
+  if (!email) return;
+  btn.disabled    = true;
+  btn.textContent = '...';
+
+  fetch('/api/waitlist', {
+    method:  'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body:    JSON.stringify({ email: email, product: product }),
+  })
+  .then(function (r) { return r.json(); })
+  .then(function (body) {
+    form.style.display      = 'none';
+    feedback.style.display  = 'block';
+    feedback.textContent    = body.already
+      ? 'Already on the list. We will notify you.'
+      : 'Done. We will email you when it is back.';
+  })
+  .catch(function () {
+    btn.disabled    = false;
+    btn.textContent = 'Notify me';
+  });
+}
+
+loadInventory();
+
 /* ── Smooth scroll to offer (legacy, kept for safety) ── */
 function scrollToOffer(e) {
   scrollToSection(e, 'order-summary');
@@ -248,9 +322,14 @@ function handleOrderSubmit(e) {
   .catch(function (err) {
     console.error('[ORDER] Submission failed:', err.message);
     if (err.body) console.error('[ORDER] Server error detail:', err.body);
-    errorEl.textContent   = 'Something went wrong. Please try again.';
+    var msg = (err.body && err.body.outOfStock)
+      ? 'This product is currently out of stock.'
+      : 'Something went wrong. Please try again.';
+    errorEl.textContent   = msg;
     errorEl.style.display = 'block';
     btn.disabled          = false;
     btn.textContent       = 'Place Order \u00a0\u2192';
+    // Re-check inventory to update UI if stock ran out mid-session
+    if (err.body && err.body.outOfStock) loadInventory();
   });
 }

@@ -131,9 +131,19 @@
 
       <p class="urgency-note">Performance is the only luxury that matters.</p>
 
-      <a href="#order-summary" class="btn btn-gold btn-xl" onclick="selectProduct('duo'); scrollToSection(event,'order-summary')">
-        Order The Duo
-      </a>
+      <div id="duo-cta-wrap">
+        <a href="#order-summary" id="duo-cta" class="btn btn-gold btn-xl" onclick="selectProduct('duo'); scrollToSection(event,'order-summary')">
+          Order The Duo
+        </a>
+        <div class="oos-block" id="duo-oos" style="display:none;">
+          <p class="oos-label">Out of stock</p>
+          <form class="notify-form" onsubmit="handleNotify(event,'duo')">
+            <input type="email" class="notify-input" placeholder="Email — notify me when back" required />
+            <button type="submit" class="notify-btn">Notify me</button>
+          </form>
+          <p class="notify-feedback" style="display:none;"></p>
+        </div>
+      </div>
 
     </div>
   </section>
@@ -165,7 +175,15 @@
             For those who are always remembered, without trying.
           </p>
           <div class="prod-price">₪379</div>
-          <a href="#order-summary" class="btn btn-outline" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">Order Now</a>
+          <a href="#order-summary" id="cv-cta" class="btn btn-outline" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">Order Now</a>
+          <div class="oos-block" id="cv-oos" style="display:none;">
+            <p class="oos-label">Out of stock</p>
+            <form class="notify-form" onsubmit="handleNotify(event,'crystal-veil')">
+              <input type="email" class="notify-input" placeholder="Email — notify me when back" required />
+              <button type="submit" class="notify-btn">Notify me</button>
+            </form>
+            <p class="notify-feedback" style="display:none;"></p>
+          </div>
         </div>
       </div>
 
@@ -184,7 +202,15 @@
             Heavy, expensive, intentional. Not for the timid.
           </p>
           <div class="prod-price">₪399</div>
-          <a href="#order-summary" class="btn btn-outline" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">Order Now</a>
+          <a href="#order-summary" id="en-cta" class="btn btn-outline" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">Order Now</a>
+          <div class="oos-block" id="en-oos" style="display:none;">
+            <p class="oos-label">Out of stock</p>
+            <form class="notify-form" onsubmit="handleNotify(event,'encens-noir')">
+              <input type="email" class="notify-input" placeholder="Email — notify me when back" required />
+              <button type="submit" class="notify-btn">Notify me</button>
+            </form>
+            <p class="notify-feedback" style="display:none;"></p>
+          </div>
         </div>
       </div>
 
@@ -394,14 +420,20 @@
           <h3>Crystal Veil</h3>
           <p>₪379 · Clean · Airy</p>
         </div>
-        <a href="#order-summary" class="btn btn-dark btn-sm" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">Order</a>
+        <div class="ind-cta-wrap">
+          <a href="#order-summary" id="cv-ind-cta" class="btn btn-dark btn-sm" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">Order</a>
+          <span class="oos-label-sm" id="cv-ind-oos" style="display:none;">Out of stock</span>
+        </div>
       </div>
       <div class="ind-item">
         <div class="ind-info">
           <h3>Encens Noir</h3>
           <p>₪399 · Dark · Magnetic</p>
         </div>
-        <a href="#order-summary" class="btn btn-dark btn-sm" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">Order</a>
+        <div class="ind-cta-wrap">
+          <a href="#order-summary" id="en-ind-cta" class="btn btn-dark btn-sm" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">Order</a>
+          <span class="oos-label-sm" id="en-ind-oos" style="display:none;">Out of stock</span>
+        </div>
       </div>
     </div>
   </section>

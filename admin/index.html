@@ -57,6 +57,55 @@
     .btn-refresh:hover { background: #333; }
     .btn-refresh:disabled { background: #999; cursor: default; }
 
+    /* ── Stock panel ── */
+    .stock-panel {
+      background: #fff;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 14px 32px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .stock-panel-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-right: 8px;
+    }
+    .stock-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .stock-name  { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+    .stock-count { font-size: 13px; color: #666; min-width: 60px; }
+    .stock-count.oos { color: #c0392b; font-weight: 700; }
+    .stock-count.low { color: #e67e22; font-weight: 700; }
+    .waitlist-count { font-size: 11px; color: #999; }
+    .restock-form { display: flex; gap: 6px; }
+    .restock-input {
+      width: 70px;
+      padding: 6px 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    .btn-restock {
+      padding: 6px 14px;
+      background: #C9A84C;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn-restock:hover { background: #b8943f; }
+    .btn-restock:disabled { background: #ccc; cursor: default; }
+
     /* ── Main ── */
     .main { padding: 28px 32px; max-width: 1100px; margin: 0 auto; }
 
@@ -167,6 +216,35 @@
   <div class="toolbar">
     <span class="toolbar-count" id="order-count">جاري التحميل...</span>
     <button class="btn-refresh" id="btn-refresh" onclick="loadOrders()">↻ تحديث</button>
+  </div>
+
+  <div class="stock-panel" id="stock-panel">
+    <span class="stock-panel-label">Stock</span>
+
+    <div class="stock-item">
+      <span class="stock-name">Crystal Veil</span>
+      <span class="stock-count" id="stock-cv">—</span>
+      <span class="waitlist-count" id="wl-cv"></span>
+      <form class="restock-form" onsubmit="restock(event,'crystal-veil')">
+        <input class="restock-input" type="number" min="1" max="9999" placeholder="Units" required />
+        <button class="btn-restock" type="submit">+ Add</button>
+      </form>
+    </div>
+
+    <div class="stock-item">
+      <span class="stock-name">Encens Noir</span>
+      <span class="stock-count" id="stock-en">—</span>
+      <span class="waitlist-count" id="wl-en"></span>
+      <form class="restock-form" onsubmit="restock(event,'encens-noir')">
+        <input class="restock-input" type="number" min="1" max="9999" placeholder="Units" required />
+        <button class="btn-restock" type="submit">+ Add</button>
+      </form>
+    </div>
+
+    <div class="stock-item">
+      <span class="stock-name" style="color:#999;">Duo waitlist</span>
+      <span class="waitlist-count" id="wl-duo"></span>
+    </div>
   </div>
 
   <main class="main">
@@ -431,6 +509,69 @@
     }
 
     loadOrders();
+    loadStock();
+
+    function loadStock() {
+      fetch('/api/inventory/stock')
+        .then(function(r) { return r.json(); })
+        .then(function(body) {
+          if (!body.success) return;
+          var s  = body.stock;
+          var wl = body.waitlist;
+
+          function setStock(elId, count) {
+            var el = document.getElementById(elId);
+            if (!el) return;
+            el.textContent = count + ' units';
+            el.className   = 'stock-count' + (count === 0 ? ' oos' : count <= 3 ? ' low' : '');
+          }
+          function setWL(elId, count) {
+            var el = document.getElementById(elId);
+            if (el) el.textContent = count > 0 ? count + ' waiting' : '';
+          }
+
+          setStock('stock-cv', s['crystal-veil'] || 0);
+          setStock('stock-en', s['encens-noir']  || 0);
+          setWL('wl-cv',  wl['crystal-veil'] || 0);
+          setWL('wl-en',  wl['encens-noir']  || 0);
+          setWL('wl-duo', wl['duo']           || 0);
+        })
+        .catch(function(err) { console.error('[STOCK] load failed:', err.message); });
+    }
+
+    function restock(e, product) {
+      e.preventDefault();
+      var form     = e.currentTarget;
+      var input    = form.querySelector('.restock-input');
+      var btn      = form.querySelector('.btn-restock');
+      var quantity = parseInt(input.value, 10);
+
+      if (!quantity || quantity < 1) return;
+      btn.disabled    = true;
+      btn.textContent = '...';
+
+      fetch('/api/inventory/restock', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body:    JSON.stringify({ product: product, quantity: quantity }),
+      })
+      .then(function(r) { return r.json(); })
+      .then(function(body) {
+        btn.disabled    = false;
+        btn.textContent = '+ Add';
+        if (body.success) {
+          input.value = '';
+          loadStock();
+        } else {
+          alert('Restock failed: ' + body.error);
+        }
+      })
+      .catch(function() {
+        btn.disabled    = false;
+        btn.textContent = '+ Add';
+        alert('Restock request failed.');
+      });
+    }
   </script>
 
 </body>
