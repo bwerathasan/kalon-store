@@ -3,8 +3,27 @@ const router   = express.Router();
 const supabase = require('../supabase');
 const { sendOrderEmails } = require('../mailer');
 
+// ── Valid product keys ──
+const VALID_PRODUCTS = new Set(['duo', 'crystal-veil', 'encens-noir']);
+
+// ── In-memory rate limiter: 5 submissions per IP per 15 minutes ──
+const _ratemap = new Map();
+function orderRateLimit(req, res, next) {
+  const ip  = req.ip || req.connection.remoteAddress || 'unknown';
+  const now = Date.now();
+  const rec = _ratemap.get(ip) || { count: 0, resetAt: now + 15 * 60 * 1000 };
+  if (now > rec.resetAt) { rec.count = 0; rec.resetAt = now + 15 * 60 * 1000; }
+  if (rec.count >= 5) {
+    console.warn('[RATE LIMIT] blocked:', ip);
+    return res.status(429).json({ success: false, error: 'Too many requests. Please try again later.' });
+  }
+  rec.count++;
+  _ratemap.set(ip, rec);
+  next();
+}
+
 // POST /api/orders
-router.post('/', async (req, res) => {
+router.post('/', orderRateLimit, async (req, res) => {
   console.log('\n──────────────────────────────────');
   console.log('[ORDER] Request received at', new Date().toISOString());
   console.log('[ORDER] Body:', JSON.stringify(req.body, null, 2));
@@ -24,6 +43,12 @@ router.post('/', async (req, res) => {
       success: false,
       error: `Missing required fields: ${missing.join(', ')}`,
     });
+  }
+
+  // Validate product value
+  if (product && !VALID_PRODUCTS.has(product)) {
+    console.warn('[ORDER] Invalid product value:', product);
+    return res.status(400).json({ success: false, error: 'Invalid product.' });
   }
 
   console.log('[ORDER] Validation passed — inserting into Supabase...');

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KALON — Admin</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 380px;
+    }
+
+    .card-header {
+      background: #1a1a1a;
+      padding: 24px;
+      text-align: center;
+    }
+    .card-header .logo {
+      color: #C9A84C;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 4px;
+    }
+    .card-header .sub {
+      color: #888;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    .card-body { padding: 28px 32px; }
+
+    .error-msg {
+      display: none;
+      background: rgba(180,60,60,0.1);
+      border: 1px solid rgba(180,60,60,0.3);
+      color: #c0392b;
+      border-radius: 6px;
+      padding: 10px 14px;
+      font-size: 13px;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+
+    input[type="password"] {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.15s;
+      margin-bottom: 18px;
+    }
+    input[type="password"]:focus { border-color: #1a1a1a; }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #1a1a1a;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background 0.2s;
+    }
+    button:hover { background: #333; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card-header">
+      <div class="logo">KALON</div>
+      <div class="sub">Admin Access</div>
+    </div>
+    <div class="card-body">
+      <div class="error-msg" id="error-msg">Incorrect password. Try again.</div>
+      <form method="POST" action="/admin/login">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Enter admin password" autofocus required />
+        <button type="submit">Enter</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    if (new URLSearchParams(window.location.search).get('error')) {
+      document.getElementById('error-msg').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>

@@ -4,26 +4,83 @@ require('dotenv').config();
 console.log('[STARTUP] SUPABASE_URL:', process.env.SUPABASE_URL || '*** MISSING ***');
 console.log('[STARTUP] SUPABASE_KEY:', process.env.SUPABASE_KEY ? '*** set (hidden) ***' : '*** MISSING ***');
 console.log('[STARTUP] PORT:', process.env.PORT || '5000 (default)');
+console.log('[STARTUP] ADMIN_PASSWORD:', process.env.ADMIN_PASSWORD ? '*** set ***' : '*** MISSING ***');
+console.log('[STARTUP] SESSION_SECRET:', process.env.SESSION_SECRET ? '*** set ***' : '*** MISSING ***');
 
-const path       = require('path');
-const express    = require('express');
-const cors       = require('cors');
-const bodyParser = require('body-parser');
+const path         = require('path');
+const express      = require('express');
+const cors         = require('cors');
+const bodyParser   = require('body-parser');
+const session      = require('express-session');
 const ordersRouter = require('./routes/orders');
 
 const app  = express();
 const PORT = process.env.PORT || 5000;
 
-// ── Middleware ──
+// ── Trust proxy (nginx terminates SSL on Hostinger) ──
+app.set('trust proxy', 1);
+
+// ── Core middleware ──
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// ── Serve storefront static assets (css, js, images) ──
-app.use(express.static(path.join(__dirname, '..')));
+// ── Session ──
+app.use(session({
+  secret:            process.env.SESSION_SECRET || 'kalon-fallback-secret',
+  resave:            false,
+  saveUninitialized: false,
+  cookie: {
+    httpOnly: true,
+    sameSite: 'strict',
+    maxAge:   8 * 60 * 60 * 1000, // 8 hours
+  },
+}));
 
-// ── Serve admin page at /admin ──
+// ── Admin auth helper ──
+function requireAdminAuth(req, res, next) {
+  if (req.session && req.session.adminAuthenticated) return next();
+  res.redirect('/admin/login');
+}
+
+// ── Admin login page (public — no auth required) ──
+app.get('/admin/login', (req, res) => {
+  if (req.session && req.session.adminAuthenticated) return res.redirect('/admin/');
+  res.sendFile(path.join(__dirname, '..', 'admin', 'login.html'));
+});
+
+// ── Admin login handler ──
+app.post('/admin/login', (req, res) => {
+  const { password } = req.body;
+  const expected     = process.env.ADMIN_PASSWORD;
+
+  if (!expected) {
+    console.error('[ADMIN AUTH] ADMIN_PASSWORD env var is not set');
+    return res.status(500).send('Server configuration error.');
+  }
+
+  if (password === expected) {
+    req.session.adminAuthenticated = true;
+    return res.redirect('/admin/');
+  }
+
+  res.redirect('/admin/login?error=1');
+});
+
+// ── Admin logout ──
+app.get('/admin/logout', (req, res) => {
+  req.session.destroy(() => res.redirect('/admin/login'));
+});
+
+// ── Admin pages — protected ──
+app.use('/admin', requireAdminAuth);
 app.use('/admin', express.static(path.join(__dirname, '..', 'admin')));
+
+// ── Public storefront static assets ──
+// NOTE: this comes AFTER admin auth middleware so /admin is never served directly here
+app.use(express.static(path.join(__dirname, '..'), {
+  index: false, // prevent static from auto-serving admin/index.html for /admin
+}));
 
 // ── Root → storefront index.html ──
 app.get('/', (_, res) => {
