@@ -114,6 +114,89 @@ router.post('/restock', async (req, res) => {
   return res.json({ success: true, product, newStock });
 });
 
+// ── POST /api/inventory/set — admin only ──
+router.post('/set', async (req, res) => {
+  if (!req.session || !req.session.adminAuthenticated) {
+    return res.status(401).json({ success: false, error: 'Unauthorized.' });
+  }
+
+  const { product, stock } = req.body;
+
+  if (!PHYSICAL_SKUS.includes(product)) {
+    return res.status(400).json({ success: false, error: 'Invalid product.' });
+  }
+
+  const value = parseInt(stock, 10);
+  if (isNaN(value) || value < 0 || value > 10000) {
+    return res.status(400).json({ success: false, error: 'Stock must be 0–10000.' });
+  }
+
+  const { data: before, error: fetchErr } = await supabase
+    .from('inventory').select('stock').eq('product', product).single();
+  if (fetchErr) return res.status(500).json({ success: false, error: fetchErr.message });
+
+  const prevStock = before ? before.stock : 0;
+
+  const { error: updateErr } = await supabase
+    .from('inventory')
+    .update({ stock: value, updated_at: new Date().toISOString() })
+    .eq('product', product);
+  if (updateErr) return res.status(500).json({ success: false, error: updateErr.message });
+
+  console.log(`[SET] ${product}: ${prevStock} → ${value}`);
+
+  if (prevStock === 0 && value > 0) {
+    _notifyWaitlist(product).catch(err =>
+      console.error(`[WAITLIST] notify error for ${product}:`, err.message)
+    );
+    const other = product === 'crystal-veil' ? 'encens-noir' : 'crystal-veil';
+    const { data: otherRow } = await supabase
+      .from('inventory').select('stock').eq('product', other).single();
+    if (otherRow && otherRow.stock > 0) {
+      _notifyWaitlist('duo').catch(err =>
+        console.error('[WAITLIST] duo notify error:', err.message)
+      );
+    }
+  }
+
+  return res.json({ success: true, product, newStock: value });
+});
+
+// ── POST /api/inventory/reduce — admin only ──
+router.post('/reduce', async (req, res) => {
+  if (!req.session || !req.session.adminAuthenticated) {
+    return res.status(401).json({ success: false, error: 'Unauthorized.' });
+  }
+
+  const { product, amount } = req.body;
+
+  if (!PHYSICAL_SKUS.includes(product)) {
+    return res.status(400).json({ success: false, error: 'Invalid product.' });
+  }
+
+  const qty = parseInt(amount, 10);
+  if (isNaN(qty) || qty < 1 || qty > 10000) {
+    return res.status(400).json({ success: false, error: 'Amount must be 1–10000.' });
+  }
+
+  const { data: before, error: fetchErr } = await supabase
+    .from('inventory').select('stock').eq('product', product).single();
+  if (fetchErr) return res.status(500).json({ success: false, error: fetchErr.message });
+
+  const prevStock = before ? before.stock : 0;
+  const newStock  = Math.max(prevStock - qty, 0);
+
+  const { error: updateErr } = await supabase
+    .from('inventory')
+    .update({ stock: newStock, updated_at: new Date().toISOString() })
+    .eq('product', product);
+  if (updateErr) return res.status(500).json({ success: false, error: updateErr.message });
+
+  console.log(`[REDUCE] ${product}: ${prevStock} → ${newStock}`);
+
+  return res.json({ success: true, product, newStock });
+});
+
 async function _notifyWaitlist(product) {
   const { data: entries, error } = await supabase
     .from('waitlist')

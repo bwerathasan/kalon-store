@@ -85,17 +85,16 @@
     .stock-count.oos { color: #c0392b; font-weight: 700; }
     .stock-count.low { color: #e67e22; font-weight: 700; }
     .waitlist-count { font-size: 11px; color: #999; }
-    .restock-form { display: flex; gap: 6px; }
-    .restock-input {
+    .stock-controls { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .stock-input {
       width: 70px;
       padding: 6px 10px;
       border: 1px solid #ddd;
       border-radius: 4px;
       font-size: 13px;
     }
-    .btn-restock {
-      padding: 6px 14px;
-      background: #C9A84C;
+    .btn-stock {
+      padding: 6px 12px;
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -103,8 +102,15 @@
       font-weight: 600;
       cursor: pointer;
     }
-    .btn-restock:hover { background: #b8943f; }
-    .btn-restock:disabled { background: #ccc; cursor: default; }
+    .btn-stock.add    { background: #C9A84C; }
+    .btn-stock.add:hover { background: #b8943f; }
+    .btn-stock.reduce { background: #e67e22; }
+    .btn-stock.reduce:hover { background: #ca6f1e; }
+    .btn-stock.set    { background: #2980b9; }
+    .btn-stock.set:hover { background: #2471a3; }
+    .btn-stock.zero   { background: #c0392b; }
+    .btn-stock.zero:hover { background: #a93226; }
+    .btn-stock:disabled { background: #ccc; cursor: default; }
 
     /* ── Main ── */
     .main { padding: 28px 32px; max-width: 1100px; margin: 0 auto; }
@@ -225,20 +231,26 @@
       <span class="stock-name">Crystal Veil</span>
       <span class="stock-count" id="stock-cv">—</span>
       <span class="waitlist-count" id="wl-cv"></span>
-      <form class="restock-form" onsubmit="restock(event,'crystal-veil')">
-        <input class="restock-input" type="number" min="1" max="9999" placeholder="Units" required />
-        <button class="btn-restock" type="submit">+ Add</button>
-      </form>
+      <div class="stock-controls">
+        <input class="stock-input" id="input-cv" type="number" min="1" max="9999" placeholder="Units" />
+        <button class="btn-stock add"    onclick="stockAction('crystal-veil','add')">+ Add</button>
+        <button class="btn-stock reduce" onclick="stockAction('crystal-veil','reduce')">− Reduce</button>
+        <button class="btn-stock set"    onclick="stockAction('crystal-veil','set')">Set</button>
+        <button class="btn-stock zero"   onclick="stockSetZero('crystal-veil')">Set 0</button>
+      </div>
     </div>
 
     <div class="stock-item">
       <span class="stock-name">Encens Noir</span>
       <span class="stock-count" id="stock-en">—</span>
       <span class="waitlist-count" id="wl-en"></span>
-      <form class="restock-form" onsubmit="restock(event,'encens-noir')">
-        <input class="restock-input" type="number" min="1" max="9999" placeholder="Units" required />
-        <button class="btn-restock" type="submit">+ Add</button>
-      </form>
+      <div class="stock-controls">
+        <input class="stock-input" id="input-en" type="number" min="1" max="9999" placeholder="Units" />
+        <button class="btn-stock add"    onclick="stockAction('encens-noir','add')">+ Add</button>
+        <button class="btn-stock reduce" onclick="stockAction('encens-noir','reduce')">− Reduce</button>
+        <button class="btn-stock set"    onclick="stockAction('encens-noir','set')">Set</button>
+        <button class="btn-stock zero"   onclick="stockSetZero('encens-noir')">Set 0</button>
+      </div>
     </div>
 
     <div class="stock-item">
@@ -539,37 +551,58 @@
         .catch(function(err) { console.error('[STOCK] load failed:', err.message); });
     }
 
-    function restock(e, product) {
-      e.preventDefault();
-      var form     = e.currentTarget;
-      var input    = form.querySelector('.restock-input');
-      var btn      = form.querySelector('.btn-restock');
-      var quantity = parseInt(input.value, 10);
+    var INPUT_IDS = { 'crystal-veil': 'input-cv', 'encens-noir': 'input-en' };
+    var BTN_LABELS = { add: '+ Add', reduce: '− Reduce', set: 'Set' };
 
-      if (!quantity || quantity < 1) return;
-      btn.disabled    = true;
-      btn.textContent = '...';
+    function stockAction(product, action) {
+      var inputEl = document.getElementById(INPUT_IDS[product]);
+      var value   = parseInt(inputEl.value, 10);
+      if (isNaN(value) || value < (action === 'set' ? 0 : 1)) {
+        alert(action === 'set' ? 'Enter a number (0 or more).' : 'Enter a positive number.');
+        return;
+      }
 
-      fetch('/api/inventory/restock', {
+      var endpoint, body;
+      if (action === 'add') {
+        endpoint = '/api/inventory/restock';
+        body     = { product: product, quantity: value };
+      } else if (action === 'reduce') {
+        endpoint = '/api/inventory/reduce';
+        body     = { product: product, amount: value };
+      } else {
+        endpoint = '/api/inventory/set';
+        body     = { product: product, stock: value };
+      }
+
+      _sendStockRequest(endpoint, body, product, BTN_LABELS[action]);
+      inputEl.value = '';
+    }
+
+    function stockSetZero(product) {
+      if (!confirm('Set ' + product + ' stock to 0?')) return;
+      _sendStockRequest('/api/inventory/set', { product: product, stock: 0 }, product, 'Set 0');
+    }
+
+    function _sendStockRequest(endpoint, body, product, label) {
+      var btns = document.querySelectorAll('#stock-panel .btn-stock');
+      btns.forEach(function(b) { b.disabled = true; });
+
+      fetch(endpoint, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify({ product: product, quantity: quantity }),
+        body:    JSON.stringify(body),
       })
       .then(function(r) { return r.json(); })
-      .then(function(body) {
-        btn.disabled    = false;
-        btn.textContent = '+ Add';
-        if (body.success) {
-          input.value = '';
+      .then(function(res) {
+        if (res.success) {
           loadStock();
         } else {
-          alert('Restock failed: ' + body.error);
+          alert('Failed: ' + res.error);
         }
       })
-      .catch(function() {
-        btn.disabled    = false;
-        btn.textContent = '+ Add';
-        alert('Restock request failed.');
+      .catch(function() { alert('Request failed.'); })
+      .finally(function() {
+        btns.forEach(function(b) { b.disabled = false; });
       });
     }
   </script>
