@@ -143,13 +143,15 @@ function loadInventory() {
   fetch('/api/inventory')
     .then(function (r) { return r.json(); })
     .then(function (body) {
-      if (!body.success) return;
+      if (!body || !body.availability) return;
       var av = body.availability;
-      _applyProductState('crystal-veil', av['crystal-veil']);
-      _applyProductState('encens-noir',  av['encens-noir']);
-      _applyProductState('duo',          av['duo']);
+      _applyProductState('crystal-veil', !!av['crystal-veil']);
+      _applyProductState('encens-noir',  !!av['encens-noir']);
+      _applyProductState('duo',          !!av['duo']);
     })
-    .catch(function () { /* fail silently — site stays fully functional */ });
+    .catch(function (err) {
+      console.error('[INVENTORY] fetch failed:', err && err.message);
+    });
 }
 
 function _applyProductState(product, inStock) {
