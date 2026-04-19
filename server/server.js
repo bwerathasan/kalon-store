@@ -92,6 +92,9 @@ app.get('/', (_, res) => {
 // ── GET /api/orders — must be registered BEFORE the router ──
 const supabase = require('./supabase');
 app.get('/api/orders', async (req, res) => {
+  if (!req.session || !req.session.adminAuthenticated) {
+    return res.status(401).json({ success: false, error: 'Unauthorized.' });
+  }
   console.log('[GET /api/orders] hit');
   const { data, error } = await supabase
     .from('orders')
