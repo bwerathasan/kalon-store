@@ -33,7 +33,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
-  direction: ltr;
+  direction: inherit;
   overflow-x: visible;
 }
 
@@ -1060,7 +1060,7 @@ h1, h2, h3, h4 {
   outline: none;
   text-align: left;
   transition: border-color 0.2s, box-shadow 0.2s;
-  direction: ltr;
+  direction: inherit;
 }
 
 .form-input:focus {
