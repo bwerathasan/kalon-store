@@ -1,0 +1,112 @@
+/* ════════════════════════════════════════
+   KALON — RTL polish  (ar / he pages only)
+   All layout overrides scoped to [dir="rtl"]
+════════════════════════════════════════ */
+
+/* ── Nav: language switcher links ─────────────────────── */
+.lang-links {
+  display: flex;
+  gap: 14px;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.lang-links a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  transition: color 0.2s;
+}
+.lang-links a:hover { color: rgba(255,255,255,0.82); }
+
+/* ── Hero ─────────────────────────────────────────────── */
+
+/* Right-align the entire hero text block */
+[dir="rtl"] .hero-text {
+  text-align: right;
+}
+
+/*
+  Arabic/Hebrew glyphs are visually denser than Latin.
+  Reducing the clamp minimum prevents the headline from
+  rendering as a heavy block on small screens.
+*/
+[dir="rtl"] .hero-ar {
+  font-size: clamp(30px, 5.2vw, 68px);
+  line-height: 1.24;
+  letter-spacing: 0;
+}
+
+/* Italic subtitle: tight tracking looks odd with non-Latin */
+[dir="rtl"] .hero-en {
+  letter-spacing: 0.01em;
+}
+
+/* Sub-copy: slightly more line-height for Arabic/Hebrew */
+[dir="rtl"] .hero-sub {
+  line-height: 2;
+}
+
+/* ── Form inputs ──────────────────────────────────────── */
+
+/*
+  style.css sets text-align: left on both .form-input and
+  .email-input (not direction-aware). Override for RTL.
+*/
+[dir="rtl"] .form-input,
+[dir="rtl"] .email-input {
+  text-align: right;
+}
+
+/*
+  Email subscribe pill: in LTR the input is left, button right.
+  Flip the joined corners so the seam stays correct in RTL.
+*/
+[dir="rtl"] .email-input {
+  border-radius: 0 2px 2px 0;
+}
+[dir="rtl"] .email-btn {
+  border-radius: 2px 0 0 2px;
+}
+
+/* ── Order summary pricing row ────────────────────────── */
+
+/*
+  .os-was has text-align: left and .os-now has text-align: right
+  in style.css. Both are hardcoded physical values — swap them.
+*/
+[dir="rtl"] .os-was { text-align: right; }
+[dir="rtl"] .os-now { text-align: left;  }
+
+/* ── Testimonials ─────────────────────────────────────── */
+
+/*
+  Reviewer names/locations often contain Latin text, which
+  doesn't auto-align right even under direction: rtl.
+  Force right-alignment so the reviewer block reads naturally.
+*/
+[dir="rtl"] .reviewer > div {
+  text-align: right;
+}
+
+/* ── Individual products section ──────────────────────── */
+
+/* ind-info sits left of the button in flex row — right-align its text */
+[dir="rtl"] .ind-info {
+  text-align: right;
+}
+
+/* ── Mobile overrides ─────────────────────────────────── */
+@media (max-width: 640px) {
+  /*
+    At small widths Arabic/Hebrew headlines need a tighter
+    clamp so they don't overflow or force awkward line breaks.
+  */
+  [dir="rtl"] .hero-ar {
+    font-size: clamp(26px, 7vw, 36px);
+    line-height: 1.3;
+  }
+
+  /* When email form stacks vertically, restore uniform corners */
+  [dir="rtl"] .email-input { border-radius: 2px; }
+  [dir="rtl"] .email-btn   { border-radius: 2px; }
+}
