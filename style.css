@@ -33,7 +33,7 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 1.6;
-  direction: ltr;
+  direction: inherit;
   overflow-x: hidden;
 }
 
@@ -1347,3 +1347,26 @@ footer {
   letter-spacing: 0.5px;
 }
 .ind-cta-wrap { display: flex; align-items: center; gap: 10px; }
+
+/* ── Language Switcher ── */
+.lang-switcher {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-left: 12px;
+}
+.lang-btn {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.18);
+  color: rgba(255,255,255,0.5);
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 4px 8px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: border-color 0.2s, color 0.2s;
+}
+.lang-btn:hover  { color: #fff; border-color: rgba(255,255,255,0.5); }
+.lang-btn.active { color: #C9A84C; border-color: #C9A84C; }
