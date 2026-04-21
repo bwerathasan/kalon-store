@@ -15,45 +15,50 @@
   <link rel="stylesheet" href="../style.css?v=4" />
   <link rel="stylesheet" href="../rtl.css" />
   <style>
-    /* ── Arabic hero typography — scoped to this page only ── */
+    /* ── Arabic hero — conversion-focused typography ── */
 
-    /* Noto Serif Arabic: connected, refined strokes — reads as luxury */
+    /* Headline: weight 400 — dominant, stops scroll */
     .hero-ar {
       font-family: 'Noto Serif Arabic', 'Cormorant Garamond', serif;
-      font-weight: 300;
-      font-size: clamp(28px, 4.8vw, 64px);
-      line-height: 1.38;
+      font-weight: 400;
+      font-size: clamp(26px, 4.6vw, 62px);
+      line-height: 1.32;
       letter-spacing: 0;
       color: var(--black);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
-    /* Subline: IBM Plex Sans Arabic — geometric, clean, no italic distortion */
+    /* Subline: readable, confident — not washed-out gray */
     .hero-en {
       font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
       font-style: normal;
-      font-weight: 300;
-      font-size: clamp(14px, 1.6vw, 18px);
-      letter-spacing: 0.02em;
-      color: var(--muted);
-      margin-bottom: 18px;
+      font-weight: 400;
+      font-size: clamp(13px, 1.45vw, 16px);
+      letter-spacing: 0;
+      color: #4a4a4a;
+      margin-bottom: 12px;
     }
     .hero-en em { font-style: normal; }
 
-    /* Body copy: same clean sans, slightly softer tone */
+    /* Core line: pain (muted) then resolution (black, punchy) */
     .hero-sub {
       font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
-      font-size: clamp(13px, 1.3vw, 15px);
+      font-size: clamp(13px, 1.25vw, 15px);
       font-weight: 300;
-      color: #797979;
-      line-height: 2.1;
+      color: #6e6e6e;
+      line-height: 1.85;
       letter-spacing: 0;
-      margin-bottom: 38px;
+      margin-bottom: 32px;
+    }
+    .hero-sub .resolution {
+      display: block;
+      color: var(--black);
+      font-weight: 500;
+      margin-top: 3px;
     }
 
     @media (max-width: 640px) {
-      .hero-ar  { font-size: clamp(24px, 6.5vw, 36px); line-height: 1.42; }
-      .hero-sub { line-height: 1.95; }
+      .hero-ar { font-size: clamp(22px, 6.2vw, 34px); line-height: 1.38; }
     }
   </style>
 </head>
@@ -85,9 +90,10 @@
     <div class="hero-text">
       <p class="eyebrow">EXTRAIT DE PARFUM · HOUSE OF KALON</p>
       <h1 class="hero-ar">الأداء هو الرفاهية الحقيقية.</h1>
-      <p class="hero-en"><em>مُصمَّم ليبقى. مُلفت من أول لحظة.</em></p>
+      <p class="hero-en"><em>ثبات يدوم لساعات. حضور يُلاحَظ من أول دقيقة.</em></p>
       <p class="hero-sub">
-        العطر الذي تعرفه… لكن هذه المرة، لا يختفي.
+        دفعت الكثير لعطر يختفي سريعًا…<br />
+        <span class="resolution">الآن، عطر يبقى.</span>
       </p>
       <a href="#order-summary" class="btn btn-dark" onclick="scrollToSection(event,'order-summary')">
         اطلب الآن &nbsp;←
