@@ -17,48 +17,42 @@
   <style>
     /* ── Arabic hero — conversion-focused typography ── */
 
-    /* Headline: weight 400 — dominant, stops scroll */
+    /* Headline: dominant serif, slightly larger than before */
     .hero-ar {
       font-family: 'Noto Serif Arabic', 'Cormorant Garamond', serif;
       font-weight: 400;
-      font-size: clamp(26px, 4.6vw, 62px);
-      line-height: 1.32;
+      font-size: clamp(29px, 5.1vw, 68px);
+      line-height: 1.3;
       letter-spacing: 0;
       color: var(--black);
       margin-bottom: 10px;
     }
 
-    /* Subline: readable, confident — not washed-out gray */
+    /* Subline: calm, readable, not advertising */
     .hero-en {
       font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
       font-style: normal;
       font-weight: 400;
-      font-size: clamp(13px, 1.45vw, 16px);
+      font-size: clamp(13px, 1.4vw, 16px);
       letter-spacing: 0;
-      color: #4a4a4a;
-      margin-bottom: 12px;
+      color: #595959;
+      margin-bottom: 14px;
     }
     .hero-en em { font-style: normal; }
 
-    /* Core line: pain (muted) then resolution (black, punchy) */
+    /* Final block: quiet confidence, single visual unit */
     .hero-sub {
       font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
       font-size: clamp(13px, 1.25vw, 15px);
-      font-weight: 300;
-      color: #6e6e6e;
-      line-height: 1.85;
+      font-weight: 400;
+      color: #606060;
+      line-height: 1.95;
       letter-spacing: 0;
-      margin-bottom: 32px;
-    }
-    .hero-sub .resolution {
-      display: block;
-      color: var(--black);
-      font-weight: 500;
-      margin-top: 3px;
+      margin-bottom: 36px;
     }
 
     @media (max-width: 640px) {
-      .hero-ar { font-size: clamp(22px, 6.2vw, 34px); line-height: 1.38; }
+      .hero-ar { font-size: clamp(24px, 6.5vw, 36px); line-height: 1.36; }
     }
   </style>
 </head>
@@ -90,10 +84,11 @@
     <div class="hero-text">
       <p class="eyebrow">EXTRAIT DE PARFUM · HOUSE OF KALON</p>
       <h1 class="hero-ar">الأداء هو الرفاهية الحقيقية.</h1>
-      <p class="hero-en"><em>ثبات يدوم لساعات. حضور يُلاحَظ من أول دقيقة.</em></p>
+      <p class="hero-en"><em>ثبات يدوم لساعات. حضور يُلاحظ فورًا.</em></p>
       <p class="hero-sub">
-        دفعت الكثير لعطر يختفي سريعًا…<br />
-        <span class="resolution">الآن، عطر يبقى.</span>
+        عطر يعمل بصمت.<br />
+        حضور يُلاحظ…<br />
+        وثبات يدوم.
       </p>
       <a href="#order-summary" class="btn btn-dark" onclick="scrollToSection(event,'order-summary')">
         اطلب الآن &nbsp;←
