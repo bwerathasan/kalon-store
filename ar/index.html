@@ -10,9 +10,52 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@300;400&family=IBM+Plex+Sans+Arabic:wght@300;400&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="../style.css?v=4" />
   <link rel="stylesheet" href="../rtl.css" />
+  <style>
+    /* ── Arabic hero typography — scoped to this page only ── */
+
+    /* Noto Serif Arabic: connected, refined strokes — reads as luxury */
+    .hero-ar {
+      font-family: 'Noto Serif Arabic', 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(28px, 4.8vw, 64px);
+      line-height: 1.38;
+      letter-spacing: 0;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+
+    /* Subline: IBM Plex Sans Arabic — geometric, clean, no italic distortion */
+    .hero-en {
+      font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+      font-style: normal;
+      font-weight: 300;
+      font-size: clamp(14px, 1.6vw, 18px);
+      letter-spacing: 0.02em;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .hero-en em { font-style: normal; }
+
+    /* Body copy: same clean sans, slightly softer tone */
+    .hero-sub {
+      font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+      font-size: clamp(13px, 1.3vw, 15px);
+      font-weight: 300;
+      color: #797979;
+      line-height: 2.1;
+      letter-spacing: 0;
+      margin-bottom: 38px;
+    }
+
+    @media (max-width: 640px) {
+      .hero-ar  { font-size: clamp(24px, 6.5vw, 36px); line-height: 1.42; }
+      .hero-sub { line-height: 1.95; }
+    }
+  </style>
 </head>
 <body>
 
@@ -41,11 +84,10 @@
   <section class="hero">
     <div class="hero-text">
       <p class="eyebrow">EXTRAIT DE PARFUM · HOUSE OF KALON</p>
-      <h1 class="hero-ar">الأداء هو الرفاهية الوحيدة التي تهم.</h1>
-      <p class="hero-en"><em>مألوف. صُمم ليبقى.</em></p>
+      <h1 class="hero-ar">الأداء هو الرفاهية الحقيقية.</h1>
+      <p class="hero-en"><em>مُصمَّم ليبقى. مُلفت من أول لحظة.</em></p>
       <p class="hero-sub">
-        العطر الذي تعرفه.<br />
-        والآن… يبقى.
+        العطر الذي تعرفه… لكن هذه المرة، لا يختفي.
       </p>
       <a href="#order-summary" class="btn btn-dark" onclick="scrollToSection(event,'order-summary')">
         اطلب الآن &nbsp;←
