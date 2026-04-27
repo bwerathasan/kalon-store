@@ -195,6 +195,11 @@
     .sticky-cta-mobile {
       display: none;
     }
+    @media (max-width: 640px) {
+      .pre-form-push { padding: 40px 20px 32px; }
+      .trust-block   { padding: 36px 18px; }
+      .trust-grid    { gap: 20px 32px; }
+    }
     @media (max-width: 860px) {
       .sticky-cta-mobile {
         display: block;
@@ -261,7 +266,7 @@
     </div>
 
     <div class="hero-visual">
-      <img src="images/1776389497734.png" alt="KALON Crystal Veil No.01 — Extrait de Parfum" class="hero-img" loading="eager" />
+      <img src="images/hero-collection.png" alt="KALON Crystal Veil No.01 &amp; Encens Noir No.02 — The Collection" class="hero-img" loading="eager" />
     </div>
   </section>
 
@@ -285,7 +290,8 @@
         <div class="scent-body">
           <p class="scent-number">NO.01</p>
           <h3 class="scent-name">Crystal Veil</h3>
-          <p class="scent-mood">Luminous. Ethereal. Radiant.</p>
+          <p class="scent-mood">Luminous. Clean. Radiant.</p>
+          <p class="scent-family">Scent family &nbsp;·&nbsp; Warm saffron-amber floral</p>
           <p class="scent-perf">10–12 hours &nbsp;·&nbsp; Saffron · Amberwood · Cedar</p>
           <p class="scent-quote">"Light that leaves a shadow."</p>
           <p class="scent-price">₪379</p>
@@ -312,7 +318,8 @@
         <div class="scent-body">
           <p class="scent-number">NO.02</p>
           <h3 class="scent-name">Encens Noir</h3>
-          <p class="scent-mood">Dark. Ceremonial. Magnetic.</p>
+          <p class="scent-mood">Dark. Magnetic. Present.</p>
+          <p class="scent-family">Scent family &nbsp;·&nbsp; Dark oud-incense oriental</p>
           <p class="scent-perf">10–12+ hours &nbsp;·&nbsp; Incense · Oud · Birch</p>
           <p class="scent-quote">"Not just worn. Inhabited."</p>
           <p class="scent-price">₪399</p>
@@ -668,7 +675,7 @@
           <textarea id="f-notes" name="notes" class="form-input form-textarea" placeholder="Any additional details..."></textarea>
         </div>
 
-        <input type="hidden" id="f-product" name="product" value="duo" />
+        <input type="hidden" id="f-product" name="product" value="" />
 
         <div class="form-order-summary" id="fos-container">
           <div class="fos-line"><span>Crystal Veil — No.01</span><span>₪379</span></div>

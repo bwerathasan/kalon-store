@@ -276,10 +276,10 @@ h1, h2, h3, h4 {
 }
 
 .hero-visual .hero-img {
-  max-height: 560px;
+  max-height: 580px;
   width: 100%;
-  object-fit: cover;
-  object-position: center;
+  object-fit: contain;
+  object-position: center bottom;
 }
 
 /* ════════════════════════════════════════
@@ -757,6 +757,7 @@ h1, h2, h3, h4 {
   background: var(--cream);
   padding: 88px 24px;
   border-top: 1px solid var(--beige);
+  scroll-margin-top: 68px;
 }
 
 .order-summary-inner {
@@ -984,6 +985,7 @@ h1, h2, h3, h4 {
   background: var(--cream-dark);
   padding: 88px 24px;
   border-top: 1px solid var(--beige);
+  scroll-margin-top: 68px;
 }
 
 .order-form-inner {
@@ -1234,17 +1236,19 @@ footer {
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
-    padding: 72px 24px 40px;
+    padding: 56px 24px 40px;
     min-height: auto;
-    gap: 32px;
+    gap: 28px;
   }
 
   /* visual goes first on mobile */
   .hero-visual { order: -1; }
 
   .hero-visual .hero-img {
-    max-height: 340px;
+    max-height: 400px;
     border-radius: 4px;
+    object-fit: contain;
+    object-position: center bottom;
   }
 
   .product-visual { height: 260px; }
@@ -1355,6 +1359,7 @@ footer {
   max-width: 1140px;
   margin: 0 auto;
   padding: 52px 24px 88px;
+  scroll-margin-top: 68px;
 }
 
 .scent-grid {
@@ -1443,6 +1448,16 @@ footer {
   line-height: 1;
 }
 
+.scent-family {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
 .scent-cta {
   display: block;
   width: 100%;
@@ -1507,8 +1522,12 @@ footer {
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .scent-grid      { grid-template-columns: 1fr; gap: 20px; }
-  .scent-img-wrap  { height: 260px; }
-  .scent-section   { padding: 60px 18px; }
-  .duo-upsell      { padding: 60px 18px; }
+  .scent-img-wrap  { height: 240px; }
+  .scent-section   { padding: 48px 18px 60px; }
+  .duo-upsell      { padding: 52px 18px; }
+  .scent-body      { padding: 22px 22px 26px; }
+  .scent-price     { font-size: 24px; margin-bottom: 16px; }
+  .order-summary   { padding: 60px 18px; }
+  .order-form-section { padding: 52px 18px; }
 }
 
