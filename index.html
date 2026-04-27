@@ -214,6 +214,15 @@
         backdrop-filter: blur(14px);
         -webkit-backdrop-filter: blur(14px);
         border-top: 1px solid var(--beige);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(6px);
+        transition: opacity 0.25s ease, transform 0.25s ease;
+      }
+      .sticky-cta-mobile.sticky-visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
       }
       .sticky-cta-mobile a {
         display: block;
@@ -729,6 +738,23 @@
 
   <script src="script.js?v=5"></script>
   <script>
+    /* Sticky CTA: show only after hero CTA scrolls out of view */
+    (function() {
+      var heroBtn = document.querySelector('.hero-text .btn-gold');
+      var stickyEl = document.getElementById('sticky-mobile-cta');
+      if (!heroBtn || !stickyEl) return;
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            stickyEl.classList.remove('sticky-visible');
+          } else {
+            stickyEl.classList.add('sticky-visible');
+          }
+        });
+      }, { threshold: 0 });
+      obs.observe(heroBtn);
+    })();
+
     /* UI-only: updates sticky CTA after product selection */
     function updateStickyCTA(price) {
       var btn = document.getElementById('sticky-cta-btn');
@@ -738,6 +764,8 @@
         e.preventDefault();
         document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
       };
+      /* Always keep sticky visible once an order is in progress */
+      document.getElementById('sticky-mobile-cta').classList.add('sticky-visible');
     }
   </script>
 </body>
