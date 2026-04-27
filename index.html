@@ -24,7 +24,7 @@
        ANNOUNCEMENT BAR
   ══════════════════════════════════ -->
   <div class="announce-bar">
-    ✦ &nbsp; Free shipping on The Duo &nbsp; ✦ &nbsp; Crystal Veil · Encens Noir &nbsp; ✦
+    Free Delivery &nbsp;•&nbsp; Pay on Delivery
   </div>
 
   <!-- ══════════════════════════════════
@@ -46,13 +46,9 @@
     <div class="hero-text">
       <p class="eyebrow">EXTRAIT DE PARFUM · HOUSE OF KALON</p>
       <h1 class="hero-ar">Performance is the only<br />luxury that matters.</h1>
-      <p class="hero-en"><em>Familiar. Built to stay.</em></p>
-      <p class="hero-sub">
-        The scent your nose already knows.<br />
-        Now it finally stays.
-      </p>
-      <a href="#order-summary" class="btn btn-dark" onclick="scrollToSection(event,'order-summary')">
-        Order Now &nbsp;→
+      <p class="hero-en"><em>Two fragrances. One standard.</em></p>
+      <a href="#scent" class="btn btn-dark" onclick="scrollToSection(event,'scent')">
+        Shop the Collection &nbsp;→
       </a>
     </div>
 
@@ -62,129 +58,29 @@
   </section>
 
   <!-- ══════════════════════════════════
-       MAIN OFFER  ← most important
+       CHOOSE YOUR SCENT
   ══════════════════════════════════ -->
-  <section class="offer" id="offer">
-    <div class="container offer-inner">
-
-      <span class="offer-badge">The Duo</span>
-
-      <h2 class="offer-headline">
-        Crystal Veil + Encens Noir
-      </h2>
-      <p class="offer-tagline">Two moods. One uncompromising standard.</p>
-
-      <!-- Three items -->
-      <div class="offer-items">
-
-        <!-- Item 1 -->
-        <div class="offer-item">
-          <div class="offer-item-visual">
-            <img src="images/1776389497734.png" alt="KALON Crystal Veil No.01" class="offer-img" />
-          </div>
-          <p class="offer-item-name">CRYSTAL VEIL</p>
-          <p class="offer-item-price">₪379</p>
-        </div>
-
-        <span class="offer-plus">+</span>
-
-        <!-- Item 2 -->
-        <div class="offer-item">
-          <div class="offer-item-visual">
-            <img src="images/1776389553933.png" alt="KALON Encens Noir No.02" class="offer-img" />
-          </div>
-          <p class="offer-item-name">ENCENS NOIR</p>
-          <p class="offer-item-price">₪399</p>
-        </div>
-
-        <span class="offer-plus">=</span>
-
-        <!-- Item 3 — THE DUO -->
-        <div class="offer-item offer-item--gift">
-          <span class="gift-tag">Save ₪129</span>
-          <div class="offer-item-visual">
-            <img src="images/1776386572734.png" alt="KALON The Duo — Crystal Veil and Encens Noir" class="offer-img" />
-          </div>
-          <p class="offer-item-name">THE DUO</p>
-          <p class="offer-item-price" style="color:var(--gold-light);">The only bundle</p>
-        </div>
-
-      </div><!-- /offer-items -->
-
-      <!-- Price block -->
-      <div class="price-block">
-        <div class="price-col">
-          <span class="price-label">Individual</span>
-          <span class="price-old">₪778</span>
-        </div>
-        <span class="price-arrow">→</span>
-        <div class="price-col">
-          <span class="price-label">The Duo</span>
-          <span class="price-new">₪649</span>
-        </div>
-      </div>
-
-      <div class="savings-pill">
-        ₪129 saved — structured, not seasonal
-      </div>
-
-      <!-- Repurposed as longevity proof -->
-      <div class="countdown-wrap">
-        <p class="countdown-label">Engineered longevity</p>
-        <div class="countdown">
-          <div class="cd-unit"><span class="cd-num">10</span><span class="cd-lbl">Hours</span></div>
-          <div class="cd-unit"><span class="cd-num">—</span><span class="cd-lbl">&nbsp;</span></div>
-          <div class="cd-unit"><span class="cd-num">12</span><span class="cd-lbl">Hours</span></div>
-        </div>
-      </div>
-
-      <p class="urgency-note">Performance is the only luxury that matters.</p>
-
-      <div id="duo-cta-wrap">
-        <a href="#order-summary" id="duo-cta" class="btn btn-gold btn-xl" onclick="selectProduct('duo'); scrollToSection(event,'order-summary')">
-          Order The Duo
-        </a>
-        <div class="oos-block" id="duo-oos" style="display:none;">
-          <p class="oos-label">Out of stock</p>
-          <form class="notify-form" onsubmit="handleNotify(event,'duo')">
-            <input type="email" class="notify-input" placeholder="Email — notify me when back" required />
-            <button type="submit" class="notify-btn">Notify me</button>
-          </form>
-          <p class="notify-feedback" style="display:none;"></p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       PRODUCTS
-  ══════════════════════════════════ -->
-  <section class="products" id="products">
+  <section class="scent-section" id="scent">
     <div class="section-head">
       <p class="eyebrow">The Collection</p>
-      <h2 class="section-title">The Collection</h2>
+      <h2 class="section-title">Choose Your Scent</h2>
       <div class="divider"></div>
     </div>
 
-    <div class="product-grid">
+    <div class="scent-grid">
 
-      <!-- No.01 CRYSTAL VEIL -->
-      <div class="product-card">
-        <div class="product-visual">
-          <img src="images/1776389497734.png" alt="KALON Crystal Veil No.01 — Extrait de Parfum" class="product-img" />
+      <!-- No.01 Crystal Veil -->
+      <div class="scent-card">
+        <div class="scent-img-wrap">
+          <img src="images/1776389497734.png" alt="KALON Crystal Veil No.01 — Extrait de Parfum" class="scent-img" />
         </div>
-        <div class="product-body">
-          <p class="prod-number">KALON — No.01</p>
-          <h3 class="prod-name">Crystal Veil</h3>
-          <p class="prod-vibe">Clean · Airy · Crystalline</p>
-          <p class="prod-desc">
-            Airy sweetness and crystalline clarity — saffron, transparent amber, soft woods.<br />
-            Weightless but persistent. Gentle projection that lasts all day.<br />
-            For those who are always remembered, without trying.
-          </p>
-          <div class="prod-price">₪379</div>
-          <a href="#order-summary" id="cv-cta" class="btn btn-outline" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">Order Now</a>
+        <div class="scent-body">
+          <p class="scent-number">NO.01</p>
+          <h3 class="scent-name">Crystal Veil</h3>
+          <p class="scent-mood">Luminous. Clean. Radiant.</p>
+          <p class="scent-perf">10–12 hours</p>
+          <p class="scent-price">₪379</p>
+          <a href="#order-summary" id="cv-cta" class="btn btn-dark scent-cta" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">Shop No.01</a>
           <div class="oos-block" id="cv-oos" style="display:none;">
             <p class="oos-label">Out of stock</p>
             <form class="notify-form" onsubmit="handleNotify(event,'crystal-veil')">
@@ -196,22 +92,18 @@
         </div>
       </div>
 
-      <!-- No.02 ENCENS NOIR -->
-      <div class="product-card">
-        <div class="product-visual">
-          <img src="images/1776389553933.png" alt="KALON Encens Noir No.02 — Extrait de Parfum" class="product-img" />
+      <!-- No.02 Encens Noir -->
+      <div class="scent-card">
+        <div class="scent-img-wrap">
+          <img src="images/1776389553933.png" alt="KALON Encens Noir No.02 — Extrait de Parfum" class="scent-img" />
         </div>
-        <div class="product-body">
-          <p class="prod-number">KALON — No.02</p>
-          <h3 class="prod-name">Encens Noir</h3>
-          <p class="prod-vibe">Dark · Resinous · Commanding</p>
-          <p class="prod-desc">
-            Dark incense, dense oud, warm spice — it enters the room before you do.<br />
-            Smoky woods and leather depth that builds through the night.<br />
-            Heavy, expensive, intentional. Not for the timid.
-          </p>
-          <div class="prod-price">₪399</div>
-          <a href="#order-summary" id="en-cta" class="btn btn-outline" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">Order Now</a>
+        <div class="scent-body">
+          <p class="scent-number">NO.02</p>
+          <h3 class="scent-name">Encens Noir</h3>
+          <p class="scent-mood">Dark. Magnetic. Present.</p>
+          <p class="scent-perf">10–12+ hours</p>
+          <p class="scent-price">₪399</p>
+          <a href="#order-summary" id="en-cta" class="btn btn-dark scent-cta" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">Shop No.02</a>
           <div class="oos-block" id="en-oos" style="display:none;">
             <p class="oos-label">Out of stock</p>
             <form class="notify-form" onsubmit="handleNotify(event,'encens-noir')">
@@ -223,7 +115,32 @@
         </div>
       </div>
 
-    </div><!-- /product-grid -->
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       DUO UPSELL
+  ══════════════════════════════════ -->
+  <section class="duo-upsell" id="duo-section">
+    <div class="duo-upsell-inner">
+      <p class="eyebrow" style="margin-bottom:14px;">The Duo</p>
+      <h2 class="duo-upsell-title">Own Both. Day &amp; Night.</h2>
+      <p class="duo-upsell-sub">Two signatures. One complete presence.</p>
+      <p class="duo-upsell-price">₪649</p>
+      <div id="duo-cta-wrap">
+        <a href="#order-summary" id="duo-cta" class="btn btn-gold btn-xl" onclick="selectProduct('duo'); scrollToSection(event,'order-summary')">
+          Get The Duo
+        </a>
+        <div class="oos-block" id="duo-oos" style="display:none;">
+          <p class="oos-label">Out of stock</p>
+          <form class="notify-form" onsubmit="handleNotify(event,'duo')">
+            <input type="email" class="notify-input" placeholder="Email — notify me when back" required />
+            <button type="submit" class="notify-btn">Notify me</button>
+          </form>
+          <p class="notify-feedback" style="display:none;"></p>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- ══════════════════════════════════

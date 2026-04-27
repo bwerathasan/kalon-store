@@ -1348,3 +1348,167 @@ footer {
 }
 .ind-cta-wrap { display: flex; align-items: center; gap: 10px; }
 
+/* ════════════════════════════════════════
+   CHOOSE YOUR SCENT
+════════════════════════════════════════ */
+.scent-section {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 88px 24px;
+}
+
+.scent-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.scent-card {
+  background: var(--white);
+  border: 1px solid var(--beige);
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  transition: box-shadow 0.22s, transform 0.22s;
+}
+.scent-card:hover { box-shadow: 0 20px 56px rgba(0,0,0,0.11); transform: translateY(-4px); }
+
+.scent-img-wrap {
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  background: #C8BAA8;
+  flex-shrink: 0;
+}
+.scent-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+
+.scent-body {
+  padding: 28px 28px 32px;
+  display: flex;
+  flex-direction: column;
+}
+
+.scent-number {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.scent-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(26px, 2.8vw, 36px);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.scent-mood {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.scent-perf {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--gold-dark);
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+}
+
+.scent-price {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 20px;
+  line-height: 1;
+}
+
+.scent-cta {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 13px;
+  padding: 15px;
+}
+
+/* ════════════════════════════════════════
+   DUO UPSELL
+════════════════════════════════════════ */
+.duo-upsell {
+  background: var(--black);
+  padding: 80px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.duo-upsell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.duo-upsell-inner {
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.duo-upsell-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.duo-upsell-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.42);
+  margin-bottom: 28px;
+}
+
+.duo-upsell-price {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(44px, 7vw, 64px);
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 36px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .scent-grid      { grid-template-columns: 1fr; gap: 20px; }
+  .scent-img-wrap  { height: 260px; }
+  .scent-section   { padding: 60px 18px; }
+  .duo-upsell      { padding: 60px 18px; }
+}
+
