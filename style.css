@@ -1240,24 +1240,26 @@ footer {
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
-    padding: 32px 22px 28px;
+    padding: 20px 20px 32px;
     min-height: auto;
-    gap: 22px;
+    gap: 18px;
   }
 
   /* visual goes first on mobile */
   .hero-visual {
     order: -1;
-    min-height: 300px;
-    max-height: 340px;
-    border-radius: 4px;
+    min-height: unset;
+    max-height: unset;
+    border-radius: 6px;
+    overflow: hidden;
   }
 
   .hero-visual .hero-img {
-    border-radius: 4px;
-    object-fit: cover;
-    object-position: center 30%;
+    width: 100%;
+    height: auto;
+    object-fit: fill;
     max-height: none;
+    border-radius: 6px;
   }
 
   .product-visual { height: 260px; }
@@ -1266,6 +1268,10 @@ footer {
 @media (max-width: 640px) {
   #main-nav { padding: 13px 18px; }
   .logo { font-size: 20px; letter-spacing: 4px; }
+
+  .hero-text .eyebrow { margin-bottom: 12px; }
+  .hero-ar  { margin-bottom: 10px; }
+  .hero-en  { margin-bottom: 16px; }
 
   .offer  { padding: 60px 18px; }
   .offer-items { gap: 10px; }
@@ -1391,16 +1397,12 @@ footer {
 
 .scent-img-wrap {
   width: 100%;
-  height: 320px;
   overflow: hidden;
-  background: #C8BAA8;
   flex-shrink: 0;
 }
 .scent-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 40%;
+  height: auto;
   display: block;
 }
 
@@ -1531,7 +1533,6 @@ footer {
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .scent-grid      { grid-template-columns: 1fr; gap: 20px; }
-  .scent-img-wrap  { height: 240px; }
   .scent-section   { padding: 48px 18px 60px; }
   .duo-upsell      { padding: 52px 18px; }
   .scent-body      { padding: 22px 22px 26px; }
