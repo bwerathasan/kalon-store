@@ -4,34 +4,237 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KALON | Extrait de Parfum</title>
-  <meta name="description" content="KALON — Extrait de Parfum. Engineered for 10–12 hours. Crystal Veil & Encens Noir. Performance is the only luxury that matters." />
+  <meta name="description" content="KALON — Extrait de Parfum. Crystal Veil & Encens Noir. 10–12 hour performance. Free delivery. Pay on delivery." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="style.css?v=4" />
   <style>
+    /* ── Lang links ── */
     .lang-links { display:flex; gap:14px; font-size:12px; letter-spacing:0.04em; }
     .lang-links a { color:rgba(255,255,255,0.45); text-decoration:none; font-family:'Inter',sans-serif; transition:color 0.2s; }
-    .lang-links a:hover { color:rgba(255,255,255,0.8); }
+    .lang-links a:hover { color:rgba(255,255,255,0.82); }
+
+    /* ── Hero additions ── */
+    .hero-trust-line {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .hero-microcopy {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 10px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Scent card quote ── */
+    .scent-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      line-height: 1.5;
+    }
+
+    /* ── Duo save pill ── */
+    .duo-save {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-dark);
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.28);
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-left: 10px;
+      vertical-align: middle;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Trust block ── */
+    .trust-block {
+      background: var(--cream-dark);
+      padding: 48px 24px;
+      border-top: 1px solid var(--beige);
+      border-bottom: 1px solid var(--beige);
+    }
+    .trust-grid {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 28px 48px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      min-width: 90px;
+    }
+    .trust-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .trust-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+    }
+    .trust-sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    /* ── Order summary default state ── */
+    .os-default-state {
+      text-align: center;
+      padding: 20px 0 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .os-default-state p {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .os-default-arrow {
+      font-size: 18px;
+      color: var(--gold);
+    }
+
+    /* ── Hero micro trust block (below CTA) ── */
+    .hero-micro-trust {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 14px;
+    }
+    .hero-micro-trust span {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+    .hero-micro-trust span::before {
+      content: '✓ ';
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ── Scarcity note (below product grid) ── */
+    .scarcity-note {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--beige);
+    }
+
+    /* ── Pre-form psychological push ── */
+    .pre-form-push {
+      padding: 52px 24px 40px;
+      text-align: center;
+      background: var(--cream);
+      border-top: 1px solid var(--beige);
+    }
+    .pre-form-push p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--charcoal);
+      letter-spacing: 0.02em;
+      line-height: 1.55;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Order summary trust line ── */
+    .os-trust-line {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    /* ── Sticky mobile CTA ── */
+    .sticky-cta-mobile {
+      display: none;
+    }
+    @media (max-width: 860px) {
+      .sticky-cta-mobile {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 300;
+        padding: 10px 16px;
+        padding-bottom: max(10px, env(safe-area-inset-bottom));
+        background: rgba(250,247,242,0.96);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-top: 1px solid var(--beige);
+      }
+      .sticky-cta-mobile a {
+        display: block;
+        width: 100%;
+        font-size: 12px;
+        padding: 15px;
+        text-align: center;
+      }
+      body { padding-bottom: 76px; }
+    }
   </style>
 </head>
 <body>
 
   <!-- ══════════════════════════════════
-       ANNOUNCEMENT BAR
+       TOP TRUST BAR
   ══════════════════════════════════ -->
   <div class="announce-bar">
-    Free Delivery &nbsp;•&nbsp; Pay on Delivery
+    FREE DELIVERY &nbsp;•&nbsp; PAY ON DELIVERY
   </div>
 
   <!-- ══════════════════════════════════
        NAV
   ══════════════════════════════════ -->
   <nav id="main-nav">
-    <a href="#" class="logo">KALON</a>
+    <a href="/" class="logo">KALON</a>
     <div class="lang-links">
       <a href="/ar">العربية</a>
       <a href="/he">עברית</a>
@@ -46,14 +249,19 @@
     <div class="hero-text">
       <p class="eyebrow">EXTRAIT DE PARFUM · HOUSE OF KALON</p>
       <h1 class="hero-ar">Performance is the only<br />luxury that matters.</h1>
-      <p class="hero-en"><em>Two fragrances. One standard.</em></p>
-      <a href="#scent" class="btn btn-dark" onclick="scrollToSection(event,'scent')">
+      <p class="hero-en" style="margin-bottom:14px;"><em>Extrait de parfum. Built to stay.</em></p>
+      <a href="#scent" class="btn btn-gold" onclick="scrollToSection(event,'scent')" style="font-size:13px; padding:16px 40px;">
         Choose Your Scent &nbsp;→
       </a>
+      <div class="hero-micro-trust">
+        <span>10–12 hour performance</span>
+        <span>Free delivery across Israel</span>
+        <span>Pay on delivery — no risk</span>
+      </div>
     </div>
 
     <div class="hero-visual">
-      <img src="images/1776389497734.png" alt="KALON Crystal Veil — Extrait de Parfum" class="hero-img" />
+      <img src="images/1776389497734.png" alt="KALON Crystal Veil No.01 — Extrait de Parfum" class="hero-img" loading="eager" />
     </div>
   </section>
 
@@ -69,18 +277,22 @@
 
     <div class="scent-grid">
 
-      <!-- No.01 Crystal Veil -->
+      <!-- NO.01 Crystal Veil -->
       <div class="scent-card">
         <div class="scent-img-wrap">
-          <img src="images/1776389497734.png" alt="KALON Crystal Veil No.01 — Extrait de Parfum" class="scent-img" />
+          <img src="images/1776389497734.png" alt="KALON Crystal Veil No.01 — Extrait de Parfum" class="scent-img" loading="lazy" />
         </div>
         <div class="scent-body">
           <p class="scent-number">NO.01</p>
           <h3 class="scent-name">Crystal Veil</h3>
-          <p class="scent-mood">Luminous. Clean. Radiant.</p>
-          <p class="scent-perf">10–12 hours</p>
+          <p class="scent-mood">Luminous. Ethereal. Radiant.</p>
+          <p class="scent-perf">10–12 hours &nbsp;·&nbsp; Saffron · Amberwood · Cedar</p>
+          <p class="scent-quote">"Light that leaves a shadow."</p>
           <p class="scent-price">₪379</p>
-          <a href="#order-summary" id="cv-cta" class="btn btn-dark scent-cta" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">Shop No.01</a>
+          <a href="#order-summary" id="cv-cta" class="btn btn-dark scent-cta"
+             onclick="selectProduct('crystal-veil'); updateStickyCTA('379'); document.getElementById('os-default-msg').style.display='none'; scrollToSection(event,'order-summary')">
+            SHOP NO.01
+          </a>
           <div class="oos-block" id="cv-oos" style="display:none;">
             <p class="oos-label">Out of stock</p>
             <form class="notify-form" onsubmit="handleNotify(event,'crystal-veil')">
@@ -92,18 +304,22 @@
         </div>
       </div>
 
-      <!-- No.02 Encens Noir -->
+      <!-- NO.02 Encens Noir -->
       <div class="scent-card">
         <div class="scent-img-wrap">
-          <img src="images/1776389553933.png" alt="KALON Encens Noir No.02 — Extrait de Parfum" class="scent-img" />
+          <img src="images/1776389553933.png" alt="KALON Encens Noir No.02 — Extrait de Parfum" class="scent-img" loading="lazy" />
         </div>
         <div class="scent-body">
           <p class="scent-number">NO.02</p>
           <h3 class="scent-name">Encens Noir</h3>
-          <p class="scent-mood">Dark. Magnetic. Present.</p>
-          <p class="scent-perf">10–12+ hours</p>
+          <p class="scent-mood">Dark. Ceremonial. Magnetic.</p>
+          <p class="scent-perf">10–12+ hours &nbsp;·&nbsp; Incense · Oud · Birch</p>
+          <p class="scent-quote">"Not just worn. Inhabited."</p>
           <p class="scent-price">₪399</p>
-          <a href="#order-summary" id="en-cta" class="btn btn-dark scent-cta" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">Shop No.02</a>
+          <a href="#order-summary" id="en-cta" class="btn btn-dark scent-cta"
+             onclick="selectProduct('encens-noir'); updateStickyCTA('399'); document.getElementById('os-default-msg').style.display='none'; scrollToSection(event,'order-summary')">
+            SHOP NO.02
+          </a>
           <div class="oos-block" id="en-oos" style="display:none;">
             <p class="oos-label">Out of stock</p>
             <form class="notify-form" onsubmit="handleNotify(event,'encens-noir')">
@@ -116,6 +332,8 @@
       </div>
 
     </div>
+
+    <p class="scarcity-note">First batch now open &nbsp;·&nbsp; Limited quantities available</p>
   </section>
 
   <!-- ══════════════════════════════════
@@ -125,10 +343,14 @@
     <div class="duo-upsell-inner">
       <p class="eyebrow" style="margin-bottom:14px;">The Duo</p>
       <h2 class="duo-upsell-title">Own Both. Day &amp; Night.</h2>
-      <p class="duo-upsell-sub">Two signatures. One complete presence.</p>
-      <p class="duo-upsell-price">₪649</p>
+      <p class="duo-upsell-sub">One for light. One for dark. Both forever.</p>
+      <p class="duo-upsell-price">
+        ₪649
+        <span class="duo-save">Save ₪129</span>
+      </p>
       <div id="duo-cta-wrap">
-        <a href="#order-summary" id="duo-cta" class="btn btn-gold" onclick="selectProduct('duo'); scrollToSection(event,'order-summary')">
+        <a href="#order-summary" id="duo-cta" class="btn btn-gold"
+           onclick="selectProduct('duo'); updateStickyCTA('649'); document.getElementById('os-default-msg').style.display='none'; scrollToSection(event,'order-summary')">
           Get The Duo
         </a>
         <div class="oos-block" id="duo-oos" style="display:none;">
@@ -140,6 +362,124 @@
           <p class="notify-feedback" style="display:none;"></p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SOCIAL PROOF — solo products first
+  ══════════════════════════════════ -->
+  <section class="testimonials">
+    <div class="section-head">
+      <p class="eyebrow">Wear Tests</p>
+      <h2 class="section-title">What They Said</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="reviews-grid">
+
+      <article class="review-card">
+        <p class="stars">★★★★★</p>
+        <p class="review-text">
+          "Crystal Veil is top-tier unisex. Smells like burnt sugar and air — delicious, clean, genuinely luxurious. My 3 sisters and 4 of my friends have all ordered after smelling it on me. That says everything."
+        </p>
+        <div class="reviewer">
+          <div class="avatar">ל</div>
+          <div>
+            <p class="reviewer-name">Lina Azouri</p>
+            <p class="reviewer-loc">Verified — Crystal Veil</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="stars">★★★★★</p>
+        <p class="review-text">
+          "Encens Noir smells like a Dubai billionaire. Strong, rich, maximum wow effect. The kind of scent where people stop and ask. Powerful without being aggressive — pure class."
+        </p>
+        <div class="reviewer">
+          <div class="avatar">ח</div>
+          <div>
+            <p class="reviewer-name">Tarek Ali</p>
+            <p class="reviewer-loc">Verified — Encens Noir</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="stars">★★★★★</p>
+        <p class="review-text">
+          "Ordered The Duo for me and my husband. Performance is a 10+. We're both completely hooked. It fills the entire room — people ask about it before we even say hello. Nothing we've tried before stays like this."
+        </p>
+        <div class="reviewer">
+          <div class="avatar">ר</div>
+          <div>
+            <p class="reviewer-name">Yarden &amp; Kobi M.</p>
+            <p class="reviewer-loc">Verified — The Duo</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       TRUST BLOCK
+  ══════════════════════════════════ -->
+  <section class="trust-block">
+    <div class="trust-grid">
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="trust-label">Free Delivery</p>
+        <p class="trust-sub">Every order</p>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="13" rx="2" stroke="#C9A84C" stroke-width="1.6"/>
+            <path d="M3 10h18" stroke="#C9A84C" stroke-width="1.6"/>
+          </svg>
+        </div>
+        <p class="trust-label">Pay on Delivery</p>
+        <p class="trust-sub">No online payment</p>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="#C9A84C" stroke-width="1.6"/>
+            <path d="M12 7v5l3 3" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="trust-label">10–12 Hours</p>
+        <p class="trust-sub">Engineered longevity</p>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 3l2.5 6H21l-5.3 3.8 2 6.2L12 15l-5.7 4 2-6.2L3 9h6.5z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round" fill="rgba(201,168,76,0.1)"/>
+          </svg>
+        </div>
+        <p class="trust-label">Extrait de Parfum</p>
+        <p class="trust-sub">30% concentration</p>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 12l2 2 4-4" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 3l8 4.5v5c0 4-3.5 7.5-8 8.5C7.5 19.5 4 16 4 12V7.5z" stroke="#C9A84C" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="trust-label">Every Bottle Tested</p>
+        <p class="trust-sub">No exceptions</p>
+      </div>
+
     </div>
   </section>
 
@@ -185,67 +525,11 @@
             <path d="M16 5 L18.8 12.4 L26.8 13 L21 17.9 L22.8 25.9 L16 21.8 L9.2 25.9 L11 17.9 L5.2 13 L13.2 12.4 Z"
                   stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"
                   fill="rgba(201,168,76,0.14)"/>
-          </svg>
+        </svg>
         </div>
         <h3 class="why-title">A Standard. Not a Product.</h3>
         <p class="why-desc">Every bottle passes the same test before it leaves. No exceptions. No compromises.</p>
       </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       TESTIMONIALS
-  ══════════════════════════════════ -->
-  <section class="testimonials">
-    <div class="section-head">
-      <p class="eyebrow">Wear Tests</p>
-      <h2 class="section-title">What They Said</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="reviews-grid">
-
-      <article class="review-card">
-        <p class="stars">★★★★★</p>
-        <p class="review-text">
-          "Ordered The Duo for me and my husband. Performance is a 10+. We're both completely hooked. It fills the entire room — people ask about it before we even say hello. Nothing we've tried before stays like this."
-        </p>
-        <div class="reviewer">
-          <div class="avatar">ר</div>
-          <div>
-            <p class="reviewer-name">Yarden &amp; Kobi M.</p>
-            <p class="reviewer-loc">Verified — The Duo</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="stars">★★★★★</p>
-        <p class="review-text">
-          "Crystal Veil is top-tier unisex. Smells like burnt sugar and air — delicious, clean, genuinely luxurious. My 3 sisters and 4 of my friends have all ordered after smelling it on me. That says everything."
-        </p>
-        <div class="reviewer">
-          <div class="avatar">ל</div>
-          <div>
-            <p class="reviewer-name">Lina Azouri</p>
-            <p class="reviewer-loc">Verified — Crystal Veil</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="stars">★★★★★</p>
-        <p class="review-text">
-          "Encens Noir smells like a Dubai billionaire. Strong, rich, maximum wow effect. The kind of scent where people stop and ask. Powerful without being aggressive — pure class."
-        </p>
-        <div class="reviewer">
-          <div class="avatar">ח</div>
-          <div>
-            <p class="reviewer-name">Tarek Ali</p>
-            <p class="reviewer-loc">Verified — Encens Noir</p>
-          </div>
-        </div>
-      </article>
 
     </div>
   </section>
@@ -259,7 +543,6 @@
     <p class="wa-sub">Our team responds fast.</p>
     <a href="https://wa.me/XXXXXXXX?text=Hello,%20I%20have%20a%20question%20about%20KALON"
        class="btn btn-whatsapp" target="_blank" rel="noopener">
-      <!-- WhatsApp icon -->
       <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
@@ -268,12 +551,26 @@
   </section>
 
   <!-- ══════════════════════════════════
+       PRE-FORM PUSH
+  ══════════════════════════════════ -->
+  <div class="pre-form-push">
+    <p>You're one step away from owning a scent that actually stays.</p>
+  </div>
+
+  <!-- ══════════════════════════════════
        ORDER SUMMARY
   ══════════════════════════════════ -->
   <section class="order-summary" id="order-summary">
     <div class="order-summary-inner">
 
-      <p class="eyebrow" id="os-eyebrow" style="margin-bottom:14px; text-align:center;">Order Summary</p>
+      <p class="eyebrow" id="os-eyebrow" style="margin-bottom:10px; text-align:center;">Order Summary</p>
+      <p class="os-trust-line">Pay on delivery &nbsp;•&nbsp; Free delivery &nbsp;•&nbsp; No risk</p>
+
+      <!-- Default state — hidden once product is selected -->
+      <div id="os-default-msg" class="os-default-state">
+        <p>Choose a scent above to begin.</p>
+        <span class="os-default-arrow">↑</span>
+      </div>
 
       <div class="os-lines" id="os-lines-container">
         <div class="os-line">
@@ -328,60 +625,14 @@
   </section>
 
   <!-- ══════════════════════════════════
-       EMAIL CAPTURE
-  ══════════════════════════════════ -->
-  <section class="email-section" id="email-section">
-    <p class="eyebrow" style="margin-bottom:12px;">House of Kalon</p>
-    <h2 class="section-title" style="font-size:clamp(24px,4vw,36px);">Join the House of Kalon</h2>
-    <p style="color:var(--muted); margin-bottom:32px;">New releases. Wear-test results. Performance updates. First.</p>
-    <form class="email-form" onsubmit="handleEmailSubmit(event)" id="email-form-main">
-      <input type="email" class="email-input" placeholder="Your email address" required />
-      <button type="submit" class="email-btn">Join Now</button>
-    </form>
-    <p class="email-note">No spam. Unsubscribe any time.</p>
-  </section>
-
-  <!-- ══════════════════════════════════
-       INDIVIDUAL PURCHASE
-  ══════════════════════════════════ -->
-  <section class="individual" id="individual">
-    <div class="section-head" style="margin-bottom:12px;">
-      <h2 class="section-title" style="font-size:20px; color:var(--muted); font-weight:600;">Or Order Individually</h2>
-      <p style="color:var(--muted); font-size:13px; margin-top:6px;">Single bottle · No discounts</p>
-    </div>
-    <div class="ind-grid">
-      <div class="ind-item">
-        <div class="ind-info">
-          <h3>Crystal Veil</h3>
-          <p>₪379 · Clean · Airy</p>
-        </div>
-        <div class="ind-cta-wrap">
-          <a href="#order-summary" id="cv-ind-cta" class="btn btn-dark btn-sm" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">Order</a>
-          <span class="oos-label-sm" id="cv-ind-oos" style="display:none;">Out of stock</span>
-        </div>
-      </div>
-      <div class="ind-item">
-        <div class="ind-info">
-          <h3>Encens Noir</h3>
-          <p>₪399 · Dark · Magnetic</p>
-        </div>
-        <div class="ind-cta-wrap">
-          <a href="#order-summary" id="en-ind-cta" class="btn btn-dark btn-sm" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">Order</a>
-          <span class="oos-label-sm" id="en-ind-oos" style="display:none;">Out of stock</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
        ORDER FORM
   ══════════════════════════════════ -->
   <section class="order-form-section" id="order-form">
     <div class="order-form-inner">
 
       <p class="eyebrow" style="text-align:center; margin-bottom:14px;">KALON Order</p>
-      <h2 class="order-form-title">Order Details</h2>
-      <p class="order-form-sub">Enter your details. We will contact you within 24 hours to confirm and arrange delivery.</p>
+      <h2 class="order-form-title">Complete Your Order</h2>
+      <p class="order-form-sub">Pay on delivery. Free delivery. We confirm within 24 hours.</p>
 
       <form class="order-form" id="order-form-el" onsubmit="handleOrderSubmit(event)" novalidate>
 
@@ -413,8 +664,8 @@
         </div>
 
         <div class="form-group form-group--full">
-          <label class="form-label" for="f-notes"><span>Order Notes</span> <span class="form-optional">(optional)</span></label>
-          <textarea id="f-notes" name="notes" class="form-input form-textarea" placeholder="Any additional details or special requests..."></textarea>
+          <label class="form-label" for="f-notes"><span>Notes</span> <span class="form-optional">(optional)</span></label>
+          <textarea id="f-notes" name="notes" class="form-input form-textarea" placeholder="Any additional details..."></textarea>
         </div>
 
         <input type="hidden" id="f-product" name="product" value="duo" />
@@ -454,8 +705,33 @@
     <p class="footer-copy">© 2025 KALON. All rights reserved.</p>
   </footer>
 
+  <!-- Hidden stubs for inventory script (referenced by script.js) -->
+  <span id="cv-ind-cta" style="display:none;"></span>
+  <span id="cv-ind-oos" style="display:none;"></span>
+  <span id="en-ind-cta" style="display:none;"></span>
+  <span id="en-ind-oos" style="display:none;"></span>
 
+  <!-- ══════════════════════════════════
+       STICKY MOBILE CTA
+  ══════════════════════════════════ -->
+  <div class="sticky-cta-mobile" id="sticky-mobile-cta">
+    <a href="#scent" id="sticky-cta-btn" class="btn btn-gold" onclick="scrollToSection(event,'scent')">
+      CHOOSE YOUR SCENT &nbsp;→
+    </a>
+  </div>
 
   <script src="script.js?v=5"></script>
+  <script>
+    /* UI-only: updates sticky CTA after product selection */
+    function updateStickyCTA(price) {
+      var btn = document.getElementById('sticky-cta-btn');
+      btn.textContent = 'COMPLETE ORDER — \u20AA' + price;
+      btn.href = '#order-form';
+      btn.onclick = function(e) {
+        e.preventDefault();
+        document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
+      };
+    }
+  </script>
 </body>
 </html>
