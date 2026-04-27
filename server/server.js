@@ -93,10 +93,6 @@ app.get('/ar', (_, res) => {
   res.sendFile(path.join(__dirname, '..', 'ar', 'index.html'));
 });
 
-app.get('/he', (_, res) => {
-  res.sendFile(path.join(__dirname, '..', 'he', 'index.html'));
-});
-
 // ── GET /api/orders — must be registered BEFORE the router ──
 const supabase = require('./supabase');
 app.get('/api/orders', async (req, res) => {

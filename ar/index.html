@@ -3,78 +3,239 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KALON | Extrait de Parfum</title>
-  <meta name="description" content="KALON — Extrait de Parfum. مهندس ليدوم 10–12 ساعة. Crystal Veil & Encens Noir. الأداء هو الرفاهية الوحيدة التي تهم." />
+  <title>KALON | إكسترا دو بارفان</title>
+  <meta name="description" content="KALON — إكسترا دو بارفان. Crystal Veil و Encens Noir. أداء ١٠–١٢ ساعة. توصيل مجاني. الدفع عند الاستلام." />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@300;400&family=IBM+Plex+Sans+Arabic:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@300;400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="../style.css?v=4" />
   <link rel="stylesheet" href="../rtl.css" />
   <style>
-    /* ── Arabic hero — conversion-focused typography ── */
+    /* ── Arabic typography overrides ── */
+    body {
+      font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+    }
 
-    /* Headline: strong, premium, dominant */
     .hero-ar {
-      font-family: 'Noto Serif Arabic', 'Cormorant Garamond', serif;
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: clamp(36px, 5.8vw, 72px);
       font-weight: 700;
-      font-size: clamp(44px, 6.2vw, 80px);
-      line-height: 1.3;
+      line-height: 1.22;
       letter-spacing: 0;
       color: var(--black);
       margin-bottom: 14px;
     }
-
-    /* Subline: calm, readable, not advertising */
     .hero-en {
-      font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-style: normal;
-      font-weight: 400;
-      font-size: clamp(13px, 1.4vw, 16px);
+      font-size: clamp(15px, 1.8vw, 20px);
+      font-weight: 300;
+      color: var(--muted);
       letter-spacing: 0;
-      color: #595959;
-      margin-bottom: 14px;
-    }
-    .hero-en em { font-style: normal; }
-
-    /* Final block: quiet confidence, single visual unit */
-    .hero-sub {
-      font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
-      font-size: clamp(13px, 1.25vw, 15px);
-      font-weight: 400;
-      color: #606060;
-      line-height: 1.95;
-      letter-spacing: 0;
-      margin-bottom: 36px;
+      margin-bottom: 28px;
     }
 
+    /* ── Scent quote — no italic in Arabic ── */
+    .scent-quote {
+      font-family: 'Noto Serif Arabic', serif;
+      font-style: normal;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      letter-spacing: 0;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    /* ── Pre-form push — no italic ── */
+    .pre-form-push p {
+      font-family: 'Noto Serif Arabic', serif;
+      font-style: normal;
+      letter-spacing: 0;
+    }
+
+    /* ── RTL: flip duo-save margin ── */
+    .duo-save {
+      margin-left: 0;
+      margin-right: 10px;
+    }
+
+    /* ── Hero micro trust ── */
+    .hero-micro-trust {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 14px;
+    }
+    .hero-micro-trust span {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+    .hero-micro-trust span::before {
+      content: '✓ ';
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ── Scarcity note ── */
+    .scarcity-note {
+      text-align: center;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: var(--muted);
+      margin-top: 32px;
+      padding-top: 20px;
+      border-top: 1px solid var(--beige);
+    }
+
+    /* ── Trust block ── */
+    .trust-block {
+      background: var(--cream-dark);
+      padding: 48px 24px;
+      border-top: 1px solid var(--beige);
+      border-bottom: 1px solid var(--beige);
+    }
+    .trust-grid {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 28px 48px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      min-width: 90px;
+    }
+    .trust-icon {
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .trust-label {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0;
+      color: var(--charcoal);
+    }
+    .trust-sub {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0;
+    }
+
+    /* ── Duo save pill ── */
+    .duo-save {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-dark);
+      background: rgba(201,168,76,0.1);
+      border: 1px solid rgba(201,168,76,0.28);
+      padding: 3px 10px;
+      border-radius: 20px;
+      vertical-align: middle;
+      letter-spacing: 0;
+    }
+
+    /* ── Order summary default state ── */
+    .os-default-state {
+      text-align: center;
+      padding: 20px 0 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .os-default-state p {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .os-default-arrow {
+      font-size: 18px;
+      color: var(--gold);
+    }
+
+    /* ── Order summary trust line ── */
+    .os-trust-line {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: var(--gold-dark);
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    /* ── Pre-form push ── */
+    .pre-form-push {
+      padding: 52px 24px 40px;
+      text-align: center;
+      background: var(--cream);
+      border-top: 1px solid var(--beige);
+    }
+    .pre-form-push p {
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.7;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* ── Form labels ── */
+    .form-label, .form-input, .form-note, .form-optional {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+    }
+    .form-input { text-align: right; direction: rtl; }
+
+    /* ── Scent family ── */
+    .scent-family {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    /* ── Mobile ── */
     @media (max-width: 640px) {
-      .hero-ar { font-size: clamp(40px, 9vw, 48px); line-height: 1.32; }
+      .pre-form-push { padding: 40px 20px 32px; }
+      .trust-block   { padding: 36px 18px; }
+      .trust-grid    { gap: 20px 32px; }
+      .hero-ar       { font-size: clamp(32px, 9vw, 48px); line-height: 1.26; }
     }
   </style>
 </head>
 <body>
 
   <!-- ══════════════════════════════════
-       ANNOUNCEMENT BAR
+       TOP TRUST BAR
   ══════════════════════════════════ -->
   <div class="announce-bar">
-    ✦ &nbsp; شحن مجاني مع The Duo &nbsp; ✦ &nbsp; Crystal Veil · Encens Noir &nbsp; ✦
+    توصيل مجاني &nbsp;•&nbsp; الدفع عند الاستلام
   </div>
 
   <!-- ══════════════════════════════════
        NAV
   ══════════════════════════════════ -->
   <nav id="main-nav">
-    <a href="#" class="logo">KALON</a>
-    <div class="lang-links">
-      <a href="/">English</a>
-      <a href="/he">עברית</a>
-    </div>
-    <button class="nav-cta" onclick="scrollToSection(null,'order-summary')">اطلب الآن</button>
+    <a href="/" class="logo">KALON</a>
+    <button class="nav-cta" onclick="scrollToSection(null,'scent')">اطلب الآن</button>
   </nav>
 
   <!-- ══════════════════════════════════
@@ -82,178 +243,240 @@
   ══════════════════════════════════ -->
   <section class="hero">
     <div class="hero-text">
-      <p class="eyebrow">EXTRAIT DE PARFUM · HOUSE OF KALON</p>
-      <h1 class="hero-ar">الأداء هو الرفاهية الحقيقية</h1>
-      <p class="hero-en"><em>ثبات يدوم لساعات. حضور يُلاحظ فورًا.</em></p>
-      <p class="hero-sub">
-        عطر يعمل بصمت.<br />
-        حضور يُلاحظ…<br />
-        وثبات يدوم.
-      </p>
-      <a href="#order-summary" class="btn btn-dark" onclick="scrollToSection(event,'order-summary')">
-        اطلب الآن &nbsp;←
+      <p class="eyebrow">إكسترا دو بارفان · هاوس أوف كالون</p>
+      <h1 class="hero-ar">ثبات وفوحان عطرك...<br />هما الفخامة الحقيقية.</h1>
+      <p class="hero-en" style="margin-bottom:14px;">إكسترا دو بارفان. مصنوع ليبقى.</p>
+      <a href="#scent" class="btn btn-gold" onclick="scrollToSection(event,'scent')" style="font-size:13px; padding:16px 40px;">
+        اختر عطرك &nbsp;←
       </a>
+      <div class="hero-micro-trust">
+        <span>أداء ١٠–١٢ ساعة</span>
+        <span>توصيل مجاني في كل إسرائيل</span>
+        <span>الدفع عند الاستلام — بلا مخاطرة</span>
+      </div>
     </div>
 
     <div class="hero-visual">
-      <img src="../images/1776386572734.png" alt="KALON — The Duo: Crystal Veil and Encens Noir, Extrait de Parfum" class="hero-img" />
+      <img src="../images/hero-collection-v2.png" alt="KALON Crystal Veil No.01 و Encens Noir No.02 — الكولكشن" class="hero-img" loading="eager" />
     </div>
   </section>
 
   <!-- ══════════════════════════════════
-       MAIN OFFER
+       CHOOSE YOUR SCENT
   ══════════════════════════════════ -->
-  <section class="offer" id="offer">
-    <div class="container offer-inner">
+  <section class="scent-section" id="scent">
+    <div class="section-head">
+      <p class="eyebrow">الكولكشن</p>
+      <h2 class="section-title">اختر عطرك</h2>
+      <div class="divider"></div>
+    </div>
 
-      <span class="offer-badge">The Duo</span>
+    <div class="scent-grid">
 
-      <h2 class="offer-headline">
-        Crystal Veil + Encens Noir
-      </h2>
-      <p class="offer-tagline">مزاجان. معيار واحد لا تنازل فيه.</p>
-
-      <div class="offer-items">
-
-        <div class="offer-item">
-          <div class="offer-item-visual">
-            <img src="../images/1776389497734.png" alt="KALON Crystal Veil No.01" class="offer-img" />
+      <!-- NO.01 Crystal Veil -->
+      <div class="scent-card">
+        <div class="scent-img-wrap">
+          <img src="../images/1776389497734.png" alt="KALON Crystal Veil No.01 — إكسترا دو بارفان" class="scent-img" loading="lazy" />
+        </div>
+        <div class="scent-body">
+          <p class="scent-number">NO.01</p>
+          <h3 class="scent-name">Crystal Veil</h3>
+          <p class="scent-mood">مضيء. ناصع. مشع.</p>
+          <p class="scent-family">العائلة العطرية &nbsp;·&nbsp; زهري دافئ بالزعفران والعنبر</p>
+          <p class="scent-perf">١٠–١٢ ساعة &nbsp;·&nbsp; زعفران · خشب العنبر · أرز</p>
+          <p class="scent-quote">"ضوء يترك ظلاً."</p>
+          <p class="scent-price">₪379</p>
+          <a href="#order-summary" id="cv-cta" class="btn btn-dark scent-cta"
+             onclick="selectProduct('crystal-veil'); updateStickyCTA('379'); document.getElementById('os-default-msg').style.display='none'; scrollToSection(event,'order-summary')">
+            تسوّق NO.01
+          </a>
+          <div class="oos-block" id="cv-oos" style="display:none;">
+            <p class="oos-label">نفد المخزون</p>
+            <form class="notify-form" onsubmit="handleNotify(event,'crystal-veil')">
+              <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند التوفر" required />
+              <button type="submit" class="notify-btn">أبلغني</button>
+            </form>
+            <p class="notify-feedback" style="display:none;"></p>
           </div>
-          <p class="offer-item-name">CRYSTAL VEIL</p>
-          <p class="offer-item-price">₪379</p>
         </div>
+      </div>
 
-        <span class="offer-plus">+</span>
-
-        <div class="offer-item">
-          <div class="offer-item-visual">
-            <img src="../images/1776389553933.png" alt="KALON Encens Noir No.02" class="offer-img" />
+      <!-- NO.02 Encens Noir -->
+      <div class="scent-card">
+        <div class="scent-img-wrap">
+          <img src="../images/1776389553933.png" alt="KALON Encens Noir No.02 — إكسترا دو بارفان" class="scent-img" loading="lazy" />
+        </div>
+        <div class="scent-body">
+          <p class="scent-number">NO.02</p>
+          <h3 class="scent-name">Encens Noir</h3>
+          <p class="scent-mood">عميق. جاذب. حاضر.</p>
+          <p class="scent-family">العائلة العطرية &nbsp;·&nbsp; شرقي داكن بالعود والبخور</p>
+          <p class="scent-perf">١٠–١٢+ ساعة &nbsp;·&nbsp; بخور · عود · خشب البتولا</p>
+          <p class="scent-quote">"لا يُرتدى فحسب — يُسكن."</p>
+          <p class="scent-price">₪399</p>
+          <a href="#order-summary" id="en-cta" class="btn btn-dark scent-cta"
+             onclick="selectProduct('encens-noir'); updateStickyCTA('399'); document.getElementById('os-default-msg').style.display='none'; scrollToSection(event,'order-summary')">
+            تسوّق NO.02
+          </a>
+          <div class="oos-block" id="en-oos" style="display:none;">
+            <p class="oos-label">نفد المخزون</p>
+            <form class="notify-form" onsubmit="handleNotify(event,'encens-noir')">
+              <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند التوفر" required />
+              <button type="submit" class="notify-btn">أبلغني</button>
+            </form>
+            <p class="notify-feedback" style="display:none;"></p>
           </div>
-          <p class="offer-item-name">ENCENS NOIR</p>
-          <p class="offer-item-price">₪399</p>
-        </div>
-
-        <span class="offer-plus">=</span>
-
-        <div class="offer-item offer-item--gift">
-          <span class="gift-tag">وفّر ₪129</span>
-          <div class="offer-item-visual">
-            <img src="../images/1776386572734.png" alt="KALON The Duo — Crystal Veil and Encens Noir" class="offer-img" />
-          </div>
-          <p class="offer-item-name">THE DUO</p>
-          <p class="offer-item-price" style="color:var(--gold-light);">الحزمة الوحيدة</p>
-        </div>
-
-      </div>
-
-      <div class="price-block">
-        <div class="price-col">
-          <span class="price-label">منفرد</span>
-          <span class="price-old">₪778</span>
-        </div>
-        <span class="price-arrow">←</span>
-        <div class="price-col">
-          <span class="price-label">The Duo</span>
-          <span class="price-new">₪649</span>
         </div>
       </div>
 
-      <div class="savings-pill">
-        ₪129 موفّرة — هيكل ثابت، لا خصومات موسمية
-      </div>
+    </div>
 
-      <div class="countdown-wrap">
-        <p class="countdown-label">ديمومة مهندسة</p>
-        <div class="countdown">
-          <div class="cd-unit"><span class="cd-num">10</span><span class="cd-lbl">ساعات</span></div>
-          <div class="cd-unit"><span class="cd-num">—</span><span class="cd-lbl">&nbsp;</span></div>
-          <div class="cd-unit"><span class="cd-num">12</span><span class="cd-lbl">ساعات</span></div>
-        </div>
-      </div>
+    <p class="scarcity-note">الدفعة الأولى متاحة الآن &nbsp;·&nbsp; كميات محدودة</p>
+  </section>
 
-      <p class="urgency-note">الأداء هو الرفاهية الوحيدة التي تهم.</p>
-
+  <!-- ══════════════════════════════════
+       DUO UPSELL
+  ══════════════════════════════════ -->
+  <section class="duo-upsell" id="duo-section">
+    <div class="duo-upsell-inner">
+      <img src="../images/hero-collection-v2.png" alt="KALON الثنائي — Crystal Veil و Encens Noir" style="width:100%; max-width:340px; height:auto; display:block; margin:0 auto 32px; border-radius:6px;" loading="lazy" />
+      <p class="eyebrow" style="margin-bottom:14px;">الثنائي</p>
+      <h2 class="duo-upsell-title">امتلكهما معاً. نهاراً وليلاً.</h2>
+      <p class="duo-upsell-sub">واحد للضوء. واحد للعتمة. كلاهما للأبد.</p>
+      <p class="duo-upsell-price">
+        ₪649
+        <span class="duo-save">وفّر ₪129</span>
+      </p>
       <div id="duo-cta-wrap">
-        <a href="#order-summary" id="duo-cta" class="btn btn-gold btn-xl" onclick="selectProduct('duo'); scrollToSection(event,'order-summary')">
-          اطلب The Duo
+        <a href="#order-summary" id="duo-cta" class="btn btn-gold"
+           onclick="selectProduct('duo'); updateStickyCTA('649'); document.getElementById('os-default-msg').style.display='none'; scrollToSection(event,'order-summary')">
+          احصل على الثنائي
         </a>
         <div class="oos-block" id="duo-oos" style="display:none;">
-          <p class="oos-label">نفدت الكمية</p>
+          <p class="oos-label">نفد المخزون</p>
           <form class="notify-form" onsubmit="handleNotify(event,'duo')">
-            <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند توفره" required />
-            <button type="submit" class="notify-btn">أخبرني</button>
+            <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند التوفر" required />
+            <button type="submit" class="notify-btn">أبلغني</button>
           </form>
           <p class="notify-feedback" style="display:none;"></p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       SOCIAL PROOF
+  ══════════════════════════════════ -->
+  <section class="testimonials">
+    <div class="section-head">
+      <p class="eyebrow">اختبارات الارتداء</p>
+      <h2 class="section-title">ماذا قالوا</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="reviews-grid">
+
+      <article class="review-card">
+        <p class="stars">★★★★★</p>
+        <p class="review-text">
+          "Crystal Veil لا مثيل له — فاخر، راقٍ، يدوم طوال اليوم. ثلاث صديقات وأربعة من معارفي طلبوه بعد ما شمّوه عليّ. هذا يقول كل شيء."
+        </p>
+        <div class="reviewer">
+          <div class="avatar">ل</div>
+          <div>
+            <p class="reviewer-name">ليلى العزوري</p>
+            <p class="reviewer-loc">موثّق — Crystal Veil</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="stars">★★★★★</p>
+        <p class="review-text">
+          "Encens Noir كأنك تلبس ثروة. قوي، عميق، والكل يسأل عنه. فخامة بلا مبالغة — مستوى مختلف تماماً."
+        </p>
+        <div class="reviewer">
+          <div class="avatar">ط</div>
+          <div>
+            <p class="reviewer-name">طارق علي</p>
+            <p class="reviewer-loc">موثّق — Encens Noir</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="stars">★★★★★</p>
+        <p class="review-text">
+          "طلبت الثنائي لي ولزوجي. الأداء على مستوى لم نتوقعه. يملأ الغرفة قبل ما نتكلم. ما جربنا شيء يبقى هيك."
+        </p>
+        <div class="reviewer">
+          <div class="avatar">ي</div>
+          <div>
+            <p class="reviewer-name">يردن وكوبي م.</p>
+            <p class="reviewer-loc">موثّق — The Duo</p>
+          </div>
+        </div>
+      </article>
 
     </div>
   </section>
 
   <!-- ══════════════════════════════════
-       PRODUCTS
+       TRUST BLOCK
   ══════════════════════════════════ -->
-  <section class="products" id="products">
-    <div class="section-head">
-      <p class="eyebrow">المجموعة</p>
-      <h2 class="section-title">المجموعة</h2>
-      <div class="divider"></div>
-    </div>
+  <section class="trust-block">
+    <div class="trust-grid">
 
-    <div class="product-grid">
-
-      <!-- No.01 CRYSTAL VEIL -->
-      <div class="product-card">
-        <div class="product-visual">
-          <img src="../images/1776389497734.png" alt="KALON Crystal Veil No.01 — Extrait de Parfum" class="product-img" />
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5 12h14M12 5l7 7-7 7" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
-        <div class="product-body">
-          <p class="prod-number">KALON — No.01</p>
-          <h3 class="prod-name">Crystal Veil</h3>
-          <p class="prod-vibe">نقي · خفيف · متألق</p>
-          <p class="prod-desc">
-            حلاوة خفيفة ووضوح متألق — زعفران، عنبر شفاف، أخشاب ناعمة.<br />
-            خفيف على الجسد، ثابت في الحضور. انتشار هادئ يدوم طوال اليوم.<br />
-            لمن يُتذكر دائمًا، دون أن يسعى إلى ذلك.
-          </p>
-          <div class="prod-price">₪379</div>
-          <a href="#order-summary" id="cv-cta" class="btn btn-outline" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">اطلب الآن</a>
-          <div class="oos-block" id="cv-oos" style="display:none;">
-            <p class="oos-label">نفدت الكمية</p>
-            <form class="notify-form" onsubmit="handleNotify(event,'crystal-veil')">
-              <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند توفره" required />
-              <button type="submit" class="notify-btn">أخبرني</button>
-            </form>
-            <p class="notify-feedback" style="display:none;"></p>
-          </div>
-        </div>
+        <p class="trust-label">توصيل مجاني</p>
+        <p class="trust-sub">لكل طلب</p>
       </div>
 
-      <!-- No.02 ENCENS NOIR -->
-      <div class="product-card">
-        <div class="product-visual">
-          <img src="../images/1776389553933.png" alt="KALON Encens Noir No.02 — Extrait de Parfum" class="product-img" />
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="3" y="6" width="18" height="13" rx="2" stroke="#C9A84C" stroke-width="1.6"/>
+            <path d="M3 10h18" stroke="#C9A84C" stroke-width="1.6"/>
+          </svg>
         </div>
-        <div class="product-body">
-          <p class="prod-number">KALON — No.02</p>
-          <h3 class="prod-name">Encens Noir</h3>
-          <p class="prod-vibe">داكن · راتنجي · آمر</p>
-          <p class="prod-desc">
-            بخور داكن، عود كثيف، بهارات دافئة — يسبقك إلى الغرفة.<br />
-            أخشاب دخانية وعمق الجلد يتصاعدان مع الليل.<br />
-            ثقيل، فاخر، مقصود. ليس لضعاف القلوب.
-          </p>
-          <div class="prod-price">₪399</div>
-          <a href="#order-summary" id="en-cta" class="btn btn-outline" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">اطلب الآن</a>
-          <div class="oos-block" id="en-oos" style="display:none;">
-            <p class="oos-label">نفدت الكمية</p>
-            <form class="notify-form" onsubmit="handleNotify(event,'encens-noir')">
-              <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند توفره" required />
-              <button type="submit" class="notify-btn">أخبرني</button>
-            </form>
-            <p class="notify-feedback" style="display:none;"></p>
-          </div>
+        <p class="trust-label">الدفع عند الاستلام</p>
+        <p class="trust-sub">بدون دفع إلكتروني</p>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" stroke="#C9A84C" stroke-width="1.6"/>
+            <path d="M12 7v5l3 3" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </div>
+        <p class="trust-label">١٠–١٢ ساعة</p>
+        <p class="trust-sub">أداء مهندَس</p>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 3l2.5 6H21l-5.3 3.8 2 6.2L12 15l-5.7 4 2-6.2L3 9h6.5z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round" fill="rgba(201,168,76,0.1)"/>
+          </svg>
+        </div>
+        <p class="trust-label">إكسترا دو بارفان</p>
+        <p class="trust-sub">تركيز ٣٠٪</p>
+      </div>
+
+      <div class="trust-item">
+        <div class="trust-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 12l2 2 4-4" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M12 3l8 4.5v5c0 4-3.5 7.5-8 8.5C7.5 19.5 4 16 4 12V7.5z" stroke="#C9A84C" stroke-width="1.6" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <p class="trust-label">كل زجاجة مُختبرة</p>
+        <p class="trust-sub">بلا استثناءات</p>
       </div>
 
     </div>
@@ -264,8 +487,8 @@
   ══════════════════════════════════ -->
   <section class="why">
     <div class="section-head">
-      <p class="eyebrow">لماذا KALON</p>
-      <h2 class="section-title">لماذا KALON</h2>
+      <p class="eyebrow">لماذا كالون</p>
+      <h2 class="section-title">لماذا كالون</h2>
       <div class="divider"></div>
     </div>
     <div class="why-grid">
@@ -273,95 +496,34 @@
       <div class="why-item">
         <div class="why-icon">
           <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" aria-hidden="true">
-            <path d="M16 4 C16 4 7 11 7 19 C7 23.9 11.1 28 16 28 C20.9 28 25 23.9 25 19 C25 11 16 4 16 4Z"
-                  stroke="#C9A84C" stroke-width="1.6" fill="none"/>
-            <path d="M16 13 C16 13 11 17 11 20.5 C11 22.9 13.2 25 16 25 C18.8 25 21 22.9 21 20.5 C21 17 16 13 16 13Z"
-                  fill="#C9A84C" opacity="0.55"/>
+            <path d="M16 4 C16 4 7 11 7 19 C7 23.9 11.1 28 16 28 C20.9 28 25 23.9 25 19 C25 11 16 4 16 4Z" stroke="#C9A84C" stroke-width="1.6" fill="none"/>
+            <path d="M16 13 C16 13 11 17 11 20.5 C11 22.9 13.2 25 16 25 C18.8 25 21 22.9 21 20.5 C21 17 16 13 16 13Z" fill="#C9A84C" opacity="0.55"/>
           </svg>
         </div>
-        <h3 class="why-title">أداء مهندس</h3>
-        <p class="why-desc">10–12 ساعة. مختبر. موثق. متكرر. ليس ادعاءً — بل معيار.</p>
+        <h3 class="why-title">أداء مهندَس</h3>
+        <p class="why-desc">١٠–١٢ ساعة. مُختبر. موثَّق. قابل للتكرار. ليس ادعاءً — بل معيار.</p>
       </div>
 
       <div class="why-item">
         <div class="why-icon">
           <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" aria-hidden="true">
             <circle cx="16" cy="16" r="10" stroke="#C9A84C" stroke-width="1.6"/>
-            <path d="M11 16 L14.5 19.5 L21 13" stroke="#C9A84C" stroke-width="1.6"
-                  stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M11 16 L14.5 19.5 L21 13" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </div>
-        <h3 class="why-title">تركيبات أصيلة</h3>
-        <p class="why-desc">ليست نسخة. ليست مستوحاة. ارتقاء — بُني من موروث عطري أسطوري إلى هوية مستقلة.</p>
+        <h3 class="why-title">مبني من عظمة حقيقية</h3>
+        <p class="why-desc">مبني من أكثر عائلات العطور محبةً في العالم. مهندَس ليتجاوزها.</p>
       </div>
 
       <div class="why-item">
         <div class="why-icon">
           <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" aria-hidden="true">
-            <path d="M16 5 L18.8 12.4 L26.8 13 L21 17.9 L22.8 25.9 L16 21.8 L9.2 25.9 L11 17.9 L5.2 13 L13.2 12.4 Z"
-                  stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round"
-                  fill="rgba(201,168,76,0.14)"/>
+            <path d="M16 5 L18.8 12.4 L26.8 13 L21 17.9 L22.8 25.9 L16 21.8 L9.2 25.9 L11 17.9 L5.2 13 L13.2 12.4 Z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round" fill="rgba(201,168,76,0.14)"/>
           </svg>
         </div>
-        <h3 class="why-title">معيار. لا منتج.</h3>
-        <p class="why-desc">كل قارورة تجتاز الاختبار ذاته قبل المغادرة. بلا استثناء. بلا تنازل.</p>
+        <h3 class="why-title">معيار. لا مجرد منتج.</h3>
+        <p class="why-desc">كل زجاجة تجتاز نفس الاختبار قبل مغادرتها. لا استثناءات. لا تنازلات.</p>
       </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       TESTIMONIALS
-  ══════════════════════════════════ -->
-  <section class="testimonials">
-    <div class="section-head">
-      <p class="eyebrow">تجارب الارتداء</p>
-      <h2 class="section-title">ماذا قالوا</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="reviews-grid">
-
-      <article class="review-card">
-        <p class="stars">★★★★★</p>
-        <p class="review-text">
-          "طلبنا The Duo أنا وزوجي. الأداء يستحق عشرة من عشرة وأكثر. كلانا انبهرنا تمامًا. يملأ الغرفة بالكامل — الناس يسألون عنه قبل أن نتبادل التحية. لم نجرب شيئًا يبقى هكذا من قبل."
-        </p>
-        <div class="reviewer">
-          <div class="avatar">ر</div>
-          <div>
-            <p class="reviewer-name">Yarden &amp; Kobi M.</p>
-            <p class="reviewer-loc">مشترٍ موثّق — The Duo</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="stars">★★★★★</p>
-        <p class="review-text">
-          "Crystal Veil عطر يونيسكس من الدرجة الأولى. رائحة السكر المحترق والهواء النقي — لذيذ، نظيف، فاخر حقًا. طلبت منه ثلاث أخوات وأربع صديقات بعد أن شممنه عليّ. هذا يقول كل شيء."
-        </p>
-        <div class="reviewer">
-          <div class="avatar">ل</div>
-          <div>
-            <p class="reviewer-name">Lina Azouri</p>
-            <p class="reviewer-loc">مشترية موثّقة — Crystal Veil</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="stars">★★★★★</p>
-        <p class="review-text">
-          "Encens Noir يشبه رائحة مليارديرات دبي. قوي، ثري، أثر واو مضاعف. النوع الذي يجعل الناس يتوقفون ويسألون. قوي دون أن يكون ثقيلًا — رقيّ خالص."
-        </p>
-        <div class="reviewer">
-          <div class="avatar">ت</div>
-          <div>
-            <p class="reviewer-name">Tarek Ali</p>
-            <p class="reviewer-loc">مشترٍ موثّق — Encens Noir</p>
-          </div>
-        </div>
-      </article>
 
     </div>
   </section>
@@ -370,10 +532,10 @@
        WHATSAPP
   ══════════════════════════════════ -->
   <section class="wa-section">
-    <p class="eyebrow" style="color:rgba(255,255,255,0.5); margin-bottom:16px;">تواصل معنا</p>
-    <h2 class="wa-title">هل لديك سؤال؟</h2>
+    <p class="eyebrow" style="color:rgba(255,255,255,0.5); margin-bottom:16px;">تواصل</p>
+    <h2 class="wa-title">أسئلة؟</h2>
     <p class="wa-sub">فريقنا يرد بسرعة.</p>
-    <a href="https://wa.me/XXXXXXXX?text=مرحبًا،%20لدي%20سؤال%20حول%20KALON"
+    <a href="https://wa.me/XXXXXXXX?text=مرحباً،%20لدي%20سؤال%20عن%20KALON"
        class="btn btn-whatsapp" target="_blank" rel="noopener">
       <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
@@ -383,12 +545,25 @@
   </section>
 
   <!-- ══════════════════════════════════
+       PRE-FORM PUSH
+  ══════════════════════════════════ -->
+  <div class="pre-form-push">
+    <p>أنت على بُعد خطوة واحدة من امتلاك عطر يبقى فعلاً.</p>
+  </div>
+
+  <!-- ══════════════════════════════════
        ORDER SUMMARY
   ══════════════════════════════════ -->
   <section class="order-summary" id="order-summary">
     <div class="order-summary-inner">
 
-      <p class="eyebrow" id="os-eyebrow" style="margin-bottom:14px; text-align:center;">ملخص الطلب</p>
+      <p class="eyebrow" id="os-eyebrow" style="margin-bottom:10px; text-align:center;">ملخص الطلب</p>
+      <p class="os-trust-line">الدفع عند الاستلام &nbsp;•&nbsp; توصيل مجاني &nbsp;•&nbsp; بلا مخاطرة</p>
+
+      <div id="os-default-msg" class="os-default-state">
+        <p>اختر عطرك أعلاه للبدء.</p>
+        <span class="os-default-arrow">↑</span>
+      </div>
 
       <div class="os-lines" id="os-lines-container">
         <div class="os-line">
@@ -400,12 +575,12 @@
           <span class="os-val">₪399</span>
         </div>
         <div class="os-line os-line--gift">
-          <span class="os-label">حزمة The Duo</span>
+          <span class="os-label">الثنائي</span>
           <span class="os-val os-gift">وفّر ₪129</span>
         </div>
         <div class="os-line">
           <span class="os-label">الشحن</span>
-          <span class="os-val os-free">مجاني مع The Duo</span>
+          <span class="os-val os-free">مجاني مع الثنائي</span>
         </div>
       </div>
 
@@ -413,16 +588,16 @@
 
       <div class="os-pricing">
         <div class="os-was" id="os-was-block">
-          <span class="os-was-label">منفرد</span>
+          <span class="os-was-label">بالمفرد</span>
           <span class="os-was-price">₪778</span>
         </div>
         <div class="os-now">
-          <span class="os-now-label" id="os-now-label-el">The Duo</span>
+          <span class="os-now-label" id="os-now-label-el">الثنائي</span>
           <span class="os-now-price" id="os-now-price-el">₪649</span>
         </div>
       </div>
 
-      <div class="os-savings" id="os-savings-block">₪129 موفّرة — الهيكل الترويجي الوحيد</div>
+      <div class="os-savings" id="os-savings-block">وفّرت ₪129</div>
 
       <a href="#order-form"
          id="os-confirm-cta"
@@ -431,60 +606,14 @@
         <span>تأكيد الطلب &nbsp;←</span>
       </a>
       <div id="os-duo-oos" class="oos-block" style="display:none; margin-top:20px; text-align:center;">
-        <p class="oos-label">نفدت الكمية — The Duo</p>
+        <p class="oos-label">نفد المخزون — الثنائي</p>
         <form class="notify-form" onsubmit="handleNotify(event,'duo')">
-          <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند توفره" required />
-          <button type="submit" class="notify-btn">أخبرني</button>
+          <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند التوفر" required />
+          <button type="submit" class="notify-btn">أبلغني</button>
         </form>
         <p class="notify-feedback" style="display:none;"></p>
       </div>
 
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       EMAIL CAPTURE
-  ══════════════════════════════════ -->
-  <section class="email-section" id="email-section">
-    <p class="eyebrow" style="margin-bottom:12px;">House of Kalon</p>
-    <h2 class="section-title" style="font-size:clamp(24px,4vw,36px);">انضم إلى House of Kalon</h2>
-    <p style="color:var(--muted); margin-bottom:32px;">إصدارات جديدة. نتائج تجارب الارتداء. تحديثات الأداء. كن أول من يعلم.</p>
-    <form class="email-form" onsubmit="handleEmailSubmit(event)" id="email-form-main">
-      <input type="email" class="email-input" placeholder="بريدك الإلكتروني" required />
-      <button type="submit" class="email-btn">انضم الآن</button>
-    </form>
-    <p class="email-note">بلا إزعاج. إلغاء الاشتراك في أي وقت.</p>
-  </section>
-
-  <!-- ══════════════════════════════════
-       INDIVIDUAL PURCHASE
-  ══════════════════════════════════ -->
-  <section class="individual" id="individual">
-    <div class="section-head" style="margin-bottom:12px;">
-      <h2 class="section-title" style="font-size:20px; color:var(--muted); font-weight:600;">أو اطلب بشكل منفرد</h2>
-      <p style="color:var(--muted); font-size:13px; margin-top:6px;">قارورة واحدة · بدون خصومات</p>
-    </div>
-    <div class="ind-grid">
-      <div class="ind-item">
-        <div class="ind-info">
-          <h3>Crystal Veil</h3>
-          <p>₪379 · نقي · خفيف</p>
-        </div>
-        <div class="ind-cta-wrap">
-          <a href="#order-summary" id="cv-ind-cta" class="btn btn-dark btn-sm" onclick="selectProduct('crystal-veil'); scrollToSection(event,'order-summary')">اطلب</a>
-          <span class="oos-label-sm" id="cv-ind-oos" style="display:none;">نفدت الكمية</span>
-        </div>
-      </div>
-      <div class="ind-item">
-        <div class="ind-info">
-          <h3>Encens Noir</h3>
-          <p>₪399 · داكن · جذاب</p>
-        </div>
-        <div class="ind-cta-wrap">
-          <a href="#order-summary" id="en-ind-cta" class="btn btn-dark btn-sm" onclick="selectProduct('encens-noir'); scrollToSection(event,'order-summary')">اطلب</a>
-          <span class="oos-label-sm" id="en-ind-oos" style="display:none;">نفدت الكمية</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -494,9 +623,9 @@
   <section class="order-form-section" id="order-form">
     <div class="order-form-inner">
 
-      <p class="eyebrow" style="text-align:center; margin-bottom:14px;">طلب KALON</p>
-      <h2 class="order-form-title">تفاصيل الطلب</h2>
-      <p class="order-form-sub">أدخل بياناتك. سنتواصل معك خلال 24 ساعة للتأكيد وترتيب التسليم.</p>
+      <p class="eyebrow" style="text-align:center; margin-bottom:14px;">طلب كالون</p>
+      <h2 class="order-form-title">أكمل طلبك</h2>
+      <p class="order-form-sub">الدفع عند الاستلام. توصيل مجاني. نتواصل معك خلال ٢٤ ساعة.</p>
 
       <form class="order-form" id="order-form-el" onsubmit="handleOrderSubmit(event)" novalidate>
 
@@ -528,33 +657,33 @@
         </div>
 
         <div class="form-group form-group--full">
-          <label class="form-label" for="f-notes"><span>ملاحظات الطلب</span> <span class="form-optional">(اختياري)</span></label>
-          <textarea id="f-notes" name="notes" class="form-input form-textarea" placeholder="أي تفاصيل إضافية أو طلبات خاصة..."></textarea>
+          <label class="form-label" for="f-notes"><span>ملاحظات</span> <span class="form-optional">(اختياري)</span></label>
+          <textarea id="f-notes" name="notes" class="form-input form-textarea" placeholder="أي تفاصيل إضافية..."></textarea>
         </div>
 
-        <input type="hidden" id="f-product" name="product" value="duo" />
+        <input type="hidden" id="f-product" name="product" value="" />
 
         <div class="form-order-summary" id="fos-container">
           <div class="fos-line"><span>Crystal Veil — No.01</span><span>₪379</span></div>
           <div class="fos-line"><span>Encens Noir — No.02</span><span>₪399</span></div>
-          <div class="fos-line fos-gift"><span>حزمة The Duo</span><span>وفّر ₪129</span></div>
+          <div class="fos-line fos-gift"><span>الثنائي</span><span>وفّر ₪129</span></div>
           <div class="fos-total"><span>الإجمالي</span><span>₪649</span></div>
         </div>
 
         <button type="submit" class="btn btn-dark order-submit-btn">
-          تقديم الطلب &nbsp;←
+          أرسل الطلب &nbsp;←
         </button>
 
-        <div id="order-error" style="display:none; margin-top:14px; padding:12px 16px; background:rgba(180,60,60,0.15); border:1px solid rgba(180,60,60,0.4); border-radius:8px; color:#e07070; text-align:center; font-family:'Inter',sans-serif; font-size:15px;"></div>
+        <div id="order-error" style="display:none; margin-top:14px; padding:12px 16px; background:rgba(180,60,60,0.15); border:1px solid rgba(180,60,60,0.4); border-radius:8px; color:#e07070; text-align:center; font-family:'IBM Plex Sans Arabic',sans-serif; font-size:15px;"></div>
 
-        <p class="form-note">سنتواصل معك خلال 24 ساعة لتأكيد طلبك وترتيب التسليم.</p>
+        <p class="form-note">سنتواصل معك خلال ٢٤ ساعة لتأكيد طلبك وترتيب التوصيل.</p>
 
       </form>
 
       <div class="order-success" id="order-success" style="display:none;">
         <div class="order-success-icon">✓</div>
-        <h3>تم تقديم الطلب.</h3>
-        <p>سنتواصل معك خلال 24 ساعة للتأكيد وترتيب التسليم.</p>
+        <h3>تم استلام طلبك.</h3>
+        <p>سنتواصل معك خلال ٢٤ ساعة لتأكيد الطلب وترتيب التوصيل.</p>
       </div>
 
     </div>
@@ -566,18 +695,18 @@
   <footer>
     <p class="footer-logo">KALON</p>
     <p class="footer-sub">الأداء هو الرفاهية الوحيدة التي تهم.</p>
-    <p class="footer-copy">© 2025 KALON. جميع الحقوق محفوظة.</p>
+    <p class="footer-copy">© ٢٠٢٥ كالون. جميع الحقوق محفوظة.</p>
   </footer>
 
-  <!-- ══════════════════════════════════
-       FLOATING CTA
-  ══════════════════════════════════ -->
-  <div class="floating-cta" id="floating-cta" aria-hidden="true">
-    <a href="#order-summary" class="btn btn-gold" onclick="scrollToSection(event,'order-summary')" style="font-size:15px; padding:14px 28px;">
-      اطلب The Duo — ₪649
-    </a>
-  </div>
+  <!-- Hidden stubs for inventory script -->
+  <span id="cv-ind-cta" style="display:none;"></span>
+  <span id="cv-ind-oos" style="display:none;"></span>
+  <span id="en-ind-cta" style="display:none;"></span>
+  <span id="en-ind-oos" style="display:none;"></span>
 
   <script src="../script.js?v=5"></script>
+  <script>
+    function updateStickyCTA() {}
+  </script>
 </body>
 </html>
