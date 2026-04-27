@@ -232,8 +232,8 @@ h1, h2, h3, h4 {
   gap: 40px;
   max-width: 1140px;
   margin: 0 auto;
-  padding: 80px 40px 60px;
-  min-height: 92svh;
+  padding: 64px 40px 48px;
+  min-height: 72svh;
 }
 
 .hero-text { display: flex; flex-direction: column; }
@@ -1354,7 +1354,7 @@ footer {
 .scent-section {
   max-width: 1140px;
   margin: 0 auto;
-  padding: 88px 24px;
+  padding: 52px 24px 88px;
 }
 
 .scent-grid {
@@ -1456,7 +1456,7 @@ footer {
 ════════════════════════════════════════ */
 .duo-upsell {
   background: var(--black);
-  padding: 80px 24px;
+  padding: 64px 24px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1465,7 +1465,7 @@ footer {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(201,168,76,0.04) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -1497,11 +1497,11 @@ footer {
 
 .duo-upsell-price {
   font-family: 'Inter', sans-serif;
-  font-size: clamp(44px, 7vw, 64px);
-  font-weight: 900;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 700;
   color: var(--gold);
   line-height: 1;
-  margin-bottom: 36px;
+  margin-bottom: 28px;
 }
 
 /* ── Responsive ── */
