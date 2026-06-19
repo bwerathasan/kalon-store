@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(try { \\(Invoke-WebRequest -Uri \"http://localhost:5000/health\" -UseBasicParsing\\).Content } catch { \"SERVER DOWN\" })",
+      "PowerShell(try { \\(Invoke-WebRequest -Uri \"http://localhost:5000/health\" -UseBasicParsing\\).Content } catch { \"SERVER DOWN - restarting...\"; Start-Process -NoNewWindow -FilePath \"node\" -ArgumentList \"c:\\\\Users\\\\hasan\\\\kalon-store\\\\server\\\\server.js\" })"
+    ]
+  }
+}

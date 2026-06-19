@@ -1,7 +1,7 @@
 {
-  "name": "kalon-server",
+  "name": "sillage-server",
   "version": "1.0.0",
-  "description": "KALON order backend — Express + Supabase",
+  "description": "SILLAGE order backend — Express + Supabase",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

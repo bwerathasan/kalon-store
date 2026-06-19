@@ -119,7 +119,7 @@ app.use('/api/waitlist',  waitlistRouter);
 
 // ── Health check ──
 app.get('/health', (req, res) => {
-  res.json({ status: 'ok', service: 'kalon-server' });
+  res.json({ status: 'ok', service: 'sillage-server' });
 });
 
 // ── 404 handler ──
@@ -135,5 +135,5 @@ app.use((err, req, res, next) => {
 
 // ── Start ──
 app.listen(PORT, () => {
-  console.log(`KALON server running on http://localhost:${PORT}`);
+  console.log(`SILLAGE server running on http://localhost:${PORT}`);
 });

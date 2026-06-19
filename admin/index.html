@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KALON — لوحة الطلبات</title>
+  <title>SILLAGE — لوحة الطلبات</title>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -211,7 +211,7 @@
 <body>
 
   <header class="header">
-    <span class="header-logo">KALON</span>
+    <span class="header-logo">SILLAGE</span>
     <span class="header-title">لوحة الطلبات</span>
     <div style="display:flex;align-items:center;gap:16px;">
       <span class="header-meta" id="last-updated">—</span>
@@ -228,35 +228,44 @@
     <span class="stock-panel-label">Stock</span>
 
     <div class="stock-item">
-      <span class="stock-name">Crystal Veil</span>
-      <span class="stock-count" id="stock-cv">—</span>
-      <span class="waitlist-count" id="wl-cv"></span>
+      <span class="stock-name">Citrus</span>
+      <span class="stock-count" id="stock-citrus">—</span>
+      <span class="waitlist-count" id="wl-citrus"></span>
       <div class="stock-controls">
-        <input class="stock-input" id="input-cv" type="number" min="1" max="9999" placeholder="Units" />
-        <button class="btn-stock add"    onclick="stockAction('crystal-veil','add')">+ Add</button>
-        <button class="btn-stock reduce" onclick="stockAction('crystal-veil','reduce')">− Reduce</button>
-        <button class="btn-stock set"    onclick="stockAction('crystal-veil','set')">Set</button>
-        <button class="btn-stock zero"   onclick="stockSetZero('crystal-veil')">Set 0</button>
+        <input class="stock-input" id="input-citrus" type="number" min="1" max="9999" placeholder="Units" />
+        <button class="btn-stock add"    onclick="stockAction('citrus','add')">+ Add</button>
+        <button class="btn-stock reduce" onclick="stockAction('citrus','reduce')">− Reduce</button>
+        <button class="btn-stock set"    onclick="stockAction('citrus','set')">Set</button>
+        <button class="btn-stock zero"   onclick="stockSetZero('citrus')">Set 0</button>
       </div>
     </div>
 
     <div class="stock-item">
-      <span class="stock-name">Encens Noir</span>
-      <span class="stock-count" id="stock-en">—</span>
-      <span class="waitlist-count" id="wl-en"></span>
+      <span class="stock-name">Rouge</span>
+      <span class="stock-count" id="stock-rouge">—</span>
+      <span class="waitlist-count" id="wl-rouge"></span>
       <div class="stock-controls">
-        <input class="stock-input" id="input-en" type="number" min="1" max="9999" placeholder="Units" />
-        <button class="btn-stock add"    onclick="stockAction('encens-noir','add')">+ Add</button>
-        <button class="btn-stock reduce" onclick="stockAction('encens-noir','reduce')">− Reduce</button>
-        <button class="btn-stock set"    onclick="stockAction('encens-noir','set')">Set</button>
-        <button class="btn-stock zero"   onclick="stockSetZero('encens-noir')">Set 0</button>
+        <input class="stock-input" id="input-rouge" type="number" min="1" max="9999" placeholder="Units" />
+        <button class="btn-stock add"    onclick="stockAction('rouge','add')">+ Add</button>
+        <button class="btn-stock reduce" onclick="stockAction('rouge','reduce')">− Reduce</button>
+        <button class="btn-stock set"    onclick="stockAction('rouge','set')">Set</button>
+        <button class="btn-stock zero"   onclick="stockSetZero('rouge')">Set 0</button>
       </div>
     </div>
 
     <div class="stock-item">
-      <span class="stock-name" style="color:#999;">Duo waitlist</span>
-      <span class="waitlist-count" id="wl-duo"></span>
+      <span class="stock-name">Sweet</span>
+      <span class="stock-count" id="stock-sweet">—</span>
+      <span class="waitlist-count" id="wl-sweet"></span>
+      <div class="stock-controls">
+        <input class="stock-input" id="input-sweet" type="number" min="1" max="9999" placeholder="Units" />
+        <button class="btn-stock add"    onclick="stockAction('sweet','add')">+ Add</button>
+        <button class="btn-stock reduce" onclick="stockAction('sweet','reduce')">− Reduce</button>
+        <button class="btn-stock set"    onclick="stockAction('sweet','set')">Set</button>
+        <button class="btn-stock zero"   onclick="stockSetZero('sweet')">Set 0</button>
+      </div>
     </div>
+
   </div>
 
   <main class="main">
@@ -280,16 +289,19 @@
       });
     }
 
-    var PRODUCT_MAP = {
-      'duo':          { label: 'The Duo (Crystal Veil + Encens Noir)', price: '₪649' },
-      'crystal-veil': { label: 'Crystal Veil — No.01',                 price: '₪379' },
-      'encens-noir':  { label: 'Encens Noir — No.02',                  price: '₪399' }
-    };
+    var SKU_LABELS = { citrus: 'Sillage Citrus', rouge: 'Sillage Rouge', sweet: 'Sillage Sweet' };
 
     function formatProduct(p) {
       if (!p) return '<span style="color:#ccc;font-style:italic;font-size:13px;">—</span>';
-      var m = PRODUCT_MAP[p];
-      return m ? m.label : escHtml(p);
+      // product is a comma-separated selection like "citrus,rouge,sweet"
+      var parts = p.split(',').map(function(s) { return s.trim(); });
+      var counts = {};
+      parts.forEach(function(s) { counts[s] = (counts[s] || 0) + 1; });
+      var label = Object.keys(counts).map(function(sku) {
+        var name = SKU_LABELS[sku] || sku;
+        return name + (counts[sku] > 1 ? ' × ' + counts[sku] : '');
+      }).join(' + ');
+      return escHtml(label) + ' &nbsp;<span style="color:#C9A84C;font-weight:700;">₪450</span>';
     }
 
     function val(v) {
@@ -381,6 +393,16 @@
       var o = _orders[i];
       var date = formatDate(o.created_at);
       var win = window.open('', '_blank', 'width=400,height=600');
+      // Build selection lines for print
+      var printSkuLabels = { citrus: 'Sillage Citrus', rouge: 'Sillage Rouge', sweet: 'Sillage Sweet' };
+      var printParts = (o.product || '').split(',').map(function(s) { return s.trim(); }).filter(function(s) { return printSkuLabels[s]; });
+      var printCounts = {};
+      printParts.forEach(function(s) { printCounts[s] = (printCounts[s] || 0) + 1; });
+      var printRows = Object.keys(printCounts).map(function(sku) {
+        var count = printCounts[sku];
+        return '<tr><td>' + escHtml(printSkuLabels[sku] + (count > 1 ? ' × ' + count : '')) + '</td><td></td></tr>';
+      }).join('') + '<tr class="total-row"><td>Total</td><td>₪450</td></tr>';
+
       win.document.write(`<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -388,63 +410,23 @@
   <title>طلب — ${escHtml(o.full_name || '')}</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Cairo', Arial, sans-serif;
-      font-size: 13px;
-      color: #000;
-      background: #fff;
-      padding: 16px;
-      direction: rtl;
-    }
-    .logo {
-      text-align: center;
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 4px;
-    }
-    .tagline {
-      text-align: center;
-      font-size: 11px;
-      color: #555;
-      margin-bottom: 12px;
-    }
+    body { font-family: 'Cairo', Arial, sans-serif; font-size: 13px; color: #000; background: #fff; padding: 16px; direction: rtl; }
+    .logo { text-align: center; font-size: 22px; font-weight: 700; letter-spacing: 3px; margin-bottom: 12px; }
     .divider { border: none; border-top: 1px dashed #000; margin: 10px 0; }
-    .section-title {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #555;
-      margin-bottom: 6px;
-    }
-    .row {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 5px;
-      font-size: 13px;
-    }
+    .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #555; margin-bottom: 6px; }
+    .row { display: flex; justify-content: space-between; margin-bottom: 5px; font-size: 13px; }
     .row .label { color: #555; }
     .row .value { font-weight: 600; text-align: left; max-width: 60%; }
     .items-table { width: 100%; border-collapse: collapse; margin: 6px 0; }
     .items-table td { padding: 4px 0; font-size: 13px; }
     .items-table td:last-child { text-align: left; font-weight: 600; }
-    .gift-row td { color: #555; font-style: italic; }
     .total-row td { border-top: 1px dashed #000; padding-top: 8px; font-weight: 700; font-size: 14px; }
-    .footer {
-      text-align: center;
-      font-size: 11px;
-      color: #555;
-      margin-top: 14px;
-    }
-    @media print {
-      body { padding: 8px; }
-    }
+    .footer { text-align: center; font-size: 11px; color: #555; margin-top: 14px; }
+    @media print { body { padding: 8px; } }
   </style>
 </head>
 <body>
-  <div class="logo">KALON</div>
-  <div class="tagline">Performance is the only luxury that matters.</div>
+  <div class="logo">SILLAGE</div>
 
   <hr class="divider"/>
 
@@ -460,29 +442,19 @@
   <hr class="divider"/>
 
   <div class="section-title">Order Details</div>
-  <table class="items-table">
-    ${(function(){
-      var p = PRODUCT_MAP[o.product];
-      if (!p) return '<tr><td>' + escHtml(o.product || 'Unknown') + '</td><td>—</td></tr>';
-      if (o.product === 'duo') {
-        return '<tr><td>Crystal Veil — No.01</td><td>₪379</td></tr>' +
-               '<tr><td>Encens Noir — No.02</td><td>₪399</td></tr>' +
-               '<tr class="gift-row"><td>The Duo Bundle</td><td>Save ₪129</td></tr>' +
-               '<tr><td>Shipping</td><td>Free</td></tr>' +
-               '<tr class="total-row"><td>Total</td><td>₪649</td></tr>';
-      }
-      return '<tr><td>' + escHtml(p.label) + '</td><td>' + escHtml(p.price) + '</td></tr>' +
-             '<tr class="total-row"><td>Total</td><td>' + escHtml(p.price) + '</td></tr>';
-    })()}
-  </table>
+  <table class="items-table">${printRows}</table>
 
   <div class="row" style="margin-top:8px;">
     <span class="label">Payment</span>
     <span class="value">Cash on Delivery</span>
   </div>
+  <div class="row">
+    <span class="label">Shipping</span>
+    <span class="value">Free</span>
+  </div>
 
   <hr class="divider"/>
-  <div class="footer">Thank you for your KALON order ✦</div>
+  <div class="footer">Thank you for your SILLAGE order ✦</div>
 
   <script>window.onload = function(){ window.print(); }<\/script>
 </body>
@@ -542,16 +514,17 @@
             if (el) el.textContent = count > 0 ? count + ' waiting' : '';
           }
 
-          setStock('stock-cv', s['crystal-veil'] || 0);
-          setStock('stock-en', s['encens-noir']  || 0);
-          setWL('wl-cv',  wl['crystal-veil'] || 0);
-          setWL('wl-en',  wl['encens-noir']  || 0);
-          setWL('wl-duo', wl['duo']           || 0);
+          setStock('stock-citrus', s['citrus'] || 0);
+          setStock('stock-rouge',  s['rouge']  || 0);
+          setStock('stock-sweet',  s['sweet']  || 0);
+          setWL('wl-citrus', wl['citrus'] || 0);
+          setWL('wl-rouge',  wl['rouge']  || 0);
+          setWL('wl-sweet',  wl['sweet']  || 0);
         })
         .catch(function(err) { console.error('[STOCK] load failed:', err.message); });
     }
 
-    var INPUT_IDS = { 'crystal-veil': 'input-cv', 'encens-noir': 'input-en' };
+    var INPUT_IDS = { 'citrus': 'input-citrus', 'rouge': 'input-rouge', 'sweet': 'input-sweet' };
     var BTN_LABELS = { add: '+ Add', reduce: '− Reduce', set: 'Set' };
 
     function stockAction(product, action) {

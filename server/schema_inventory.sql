@@ -1,9 +1,9 @@
 -- ════════════════════════════════════════
--- KALON — Inventory + Waitlist schema
+-- SILLAGE — Inventory + Waitlist schema
 -- Run this in Supabase → SQL Editor
 -- ════════════════════════════════════════
 
--- Inventory: one row per physical SKU (crystal-veil, encens-noir only)
+-- Inventory: one row per physical SKU (citrus, rouge, sweet)
 CREATE TABLE IF NOT EXISTS inventory (
   product    TEXT PRIMARY KEY,
   stock      INTEGER NOT NULL DEFAULT 0,
@@ -13,8 +13,9 @@ CREATE TABLE IF NOT EXISTS inventory (
 
 -- Seed rows — set real stock values after running this
 INSERT INTO inventory (product, stock) VALUES
-  ('crystal-veil', 0),
-  ('encens-noir',  0)
+  ('citrus', 0),
+  ('rouge',  0),
+  ('sweet',  0)
 ON CONFLICT DO NOTHING;
 
 -- Waitlist: one row per email+product subscription

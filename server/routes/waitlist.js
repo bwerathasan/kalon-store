@@ -2,7 +2,7 @@ const express  = require('express');
 const router   = express.Router();
 const supabase = require('../supabase');
 
-const VALID_PRODUCTS = new Set(['crystal-veil', 'encens-noir', 'duo']);
+const VALID_PRODUCTS = new Set(['citrus', 'rouge', 'sweet']);
 
 // POST /api/waitlist
 router.post('/', async (req, res) => {

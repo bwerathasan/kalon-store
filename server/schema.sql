@@ -1,5 +1,5 @@
 -- ════════════════════════════════════════
--- KALON — Orders table
+-- SILLAGE — Orders table
 -- Run this in Supabase → SQL Editor
 -- ════════════════════════════════════════
 

@@ -3,239 +3,312 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KALON | إكسترا دو بارفان</title>
-  <meta name="description" content="KALON — إكسترا دو بارفان. Crystal Veil و Encens Noir. أداء ١٠–١٢ ساعة. توصيل مجاني. الدفع عند الاستلام." />
+  <title>SILLAGE | إكسترا دو بارفان</title>
+  <meta name="description" content="SILLAGE — اختر أي 3 عطور فاخرة بـ ₪450 فقط. توصيل مجاني. الدفع عند الاستلام." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@300;400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@300;400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="../style.css?v=4" />
+  <link rel="stylesheet" href="../style.css?v=5" />
   <link rel="stylesheet" href="../rtl.css" />
+
   <style>
-    /* ── Arabic typography overrides ── */
-    body {
-      font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
-    }
+    /* ── Arabic base overrides ── */
+    body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    h1, h2, h3 { font-family: 'Noto Serif Arabic', serif; font-weight: 700; letter-spacing: 0; }
+    .eyebrow { font-family: 'IBM Plex Sans Arabic', sans-serif; letter-spacing: 0; text-transform: none; font-size: 12px; }
+    .section-title { font-family: 'Noto Serif Arabic', serif; font-weight: 700; letter-spacing: 0; }
+    .btn { font-family: 'IBM Plex Sans Arabic', sans-serif; text-transform: none; letter-spacing: 0; font-size: 15px; }
+    .divider { margin: 14px auto 0; }
 
-    .hero-ar {
+    /* ── Nav ── */
+    .nav-wa {
+      display: flex; align-items: center; justify-content: center;
+      width: 36px; height: 36px;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s; flex-shrink: 0;
+    }
+    .nav-wa:hover { color: #25D366; }
+
+    /* ── Hero ── */
+    .hero-headline {
       font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(36px, 5.8vw, 72px);
+      font-size: clamp(24px, 4vw, 48px);
       font-weight: 700;
-      line-height: 1.22;
-      letter-spacing: 0;
+      line-height: 1.28;
       color: var(--black);
-      margin-bottom: 14px;
-    }
-    .hero-en {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-style: normal;
-      font-size: clamp(15px, 1.8vw, 20px);
-      font-weight: 300;
-      color: var(--muted);
-      letter-spacing: 0;
-      margin-bottom: 28px;
-    }
-
-    /* ── Scent quote — no italic in Arabic ── */
-    .scent-quote {
-      font-family: 'Noto Serif Arabic', serif;
-      font-style: normal;
-      font-size: 15px;
-      font-weight: 300;
-      color: var(--muted);
-      letter-spacing: 0;
       margin-bottom: 12px;
-      line-height: 1.6;
     }
-
-    /* ── Pre-form push — no italic ── */
-    .pre-form-push p {
+    .hero-benefits {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: clamp(13px, 1.5vw, 16px);
+      color: var(--muted);
+      margin-bottom: 22px;
+    }
+    .hero-price-block { margin-bottom: 18px; }
+    .hero-price {
+      display: block;
       font-family: 'Noto Serif Arabic', serif;
-      font-style: normal;
-      letter-spacing: 0;
+      font-size: clamp(28px, 4.5vw, 46px);
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.1;
+      margin-bottom: 4px;
     }
-
-    /* ── RTL: flip duo-save margin ── */
-    .duo-save {
-      margin-left: 0;
-      margin-right: 10px;
+    .hero-was {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 15px;
+      color: var(--muted);
+      text-decoration: line-through;
     }
-
-    /* ── Hero micro trust ── */
-    .hero-micro-trust {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-top: 14px;
-    }
-    .hero-micro-trust span {
+    .hero-trust {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 12px;
       color: var(--muted);
-      letter-spacing: 0;
+      margin-bottom: 24px;
     }
-    .hero-micro-trust span::before {
-      content: '✓ ';
-      color: var(--gold);
-      font-weight: 600;
-    }
+    .hero-trust::before { content: '✓ '; color: var(--gold); font-weight: 600; }
 
-    /* ── Scarcity note ── */
-    .scarcity-note {
+    /* ── Selection section ── */
+    .selection-section { padding: 60px 24px; background: var(--cream); }
+    .selection-section .section-head { margin-bottom: 8px; }
+    .selection-note {
       text-align: center;
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0;
+      font-size: 13px;
       color: var(--muted);
-      margin-top: 32px;
-      padding-top: 20px;
-      border-top: 1px solid var(--beige);
+      margin-bottom: 36px;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    @media (max-width: 680px) {
+      .product-grid { grid-template-columns: 1fr; max-width: 340px; }
+    }
+    .product-card {
+      background: #fff;
+      border: 1.5px solid var(--beige);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: border-color 0.2s;
+    }
+    .product-card.has-qty { border-color: var(--gold); }
+    .product-card.oos { opacity: 0.42; pointer-events: none; }
+    .product-card-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .product-card-body { padding: 14px 12px 18px; text-align: center; width: 100%; }
+    .product-card-name {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 4px;
+    }
+    .product-card-tag {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.5;
+    }
+    .product-card-oos {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-bottom: 8px;
+      display: none;
+    }
+    .product-card.oos .product-card-oos { display: block; }
+
+    /* Qty stepper */
+    .qty-control {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--beige);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .qty-btn {
+      background: var(--cream);
+      border: none;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: 300;
+      color: var(--charcoal);
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      transition: background 0.15s;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .qty-btn:hover:not(:disabled) { background: var(--beige); }
+    .qty-btn:disabled { color: var(--beige); cursor: default; }
+    .qty-count {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--charcoal);
+      min-width: 40px;
+      text-align: center;
+      border-left: 1px solid var(--beige);
+      border-right: 1px solid var(--beige);
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* ── Trust block ── */
-    .trust-block {
+    /* Counter + CTA below grid */
+    .sel-footer {
+      max-width: 900px;
+      margin: 28px auto 0;
+      text-align: center;
+      padding-top: 22px;
+      border-top: 1px solid var(--beige);
+    }
+    .sel-counter {
+      display: block;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .sel-counter.done { font-size: 16px; font-weight: 600; color: var(--gold-dark); }
+
+    /* ── Trust strip ── */
+    .trust-strip {
       background: var(--cream-dark);
-      padding: 48px 24px;
       border-top: 1px solid var(--beige);
       border-bottom: 1px solid var(--beige);
+      padding: 16px 24px;
     }
-    .trust-grid {
+    .trust-strip-inner {
       display: flex;
       justify-content: center;
-      align-items: flex-start;
+      align-items: center;
       flex-wrap: wrap;
-      gap: 28px 48px;
+      gap: 8px 28px;
       max-width: 860px;
       margin: 0 auto;
     }
-    .trust-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 8px;
-      min-width: 90px;
-    }
-    .trust-icon {
-      width: 32px; height: 32px;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .trust-label {
+    .trust-s {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0;
+      font-size: 12px;
+      font-weight: 500;
       color: var(--charcoal);
     }
-    .trust-sub {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0;
-    }
+    .trust-s::before { content: '✓ '; color: var(--gold); font-weight: 700; }
 
-    /* ── Duo save pill ── */
-    .duo-save {
-      display: inline-block;
-      font-size: 12px;
+    /* ── Reviews ── */
+    .review-text, .reviewer-name, .reviewer-loc { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    .review-text { font-size: 14px; line-height: 1.65; }
+    .reviewer-loc { font-size: 11px; }
+
+    /* ── Form receipt ── */
+    .form-label, .form-input, .form-note, .form-optional { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    .form-input { direction: rtl; text-align: right; }
+    .order-form-title { font-family: 'Noto Serif Arabic', serif; font-size: clamp(22px, 3vw, 30px); }
+    .order-form-sub { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+
+    .form-receipt {
+      background: var(--cream-dark);
+      border: 1px solid var(--beige);
+      border-radius: 5px;
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+    }
+    .receipt-lbl {
+      font-size: 11px;
       font-weight: 600;
-      color: var(--gold-dark);
-      background: rgba(201,168,76,0.1);
-      border: 1px solid rgba(201,168,76,0.28);
-      padding: 3px 10px;
-      border-radius: 20px;
-      vertical-align: middle;
-      letter-spacing: 0;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+      margin-bottom: 4px;
     }
-
-    /* ── Order summary default state ── */
-    .os-default-state {
-      text-align: center;
-      padding: 20px 0 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-    }
-    .os-default-state p {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
+    .receipt-sel {
       font-size: 14px;
-      color: var(--muted);
-    }
-    .os-default-arrow {
-      font-size: 18px;
-      color: var(--gold);
-    }
-
-    /* ── Order summary trust line ── */
-    .os-trust-line {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0;
-      color: var(--gold-dark);
-      text-align: center;
-      margin-bottom: 22px;
-    }
-
-    /* ── Pre-form push ── */
-    .pre-form-push {
-      padding: 52px 24px 40px;
-      text-align: center;
-      background: var(--cream);
-      border-top: 1px solid var(--beige);
-    }
-    .pre-form-push p {
-      font-size: clamp(20px, 2.4vw, 26px);
-      font-weight: 400;
       color: var(--charcoal);
-      line-height: 1.7;
-      max-width: 520px;
-      margin: 0 auto;
+      margin-bottom: 12px;
+      min-height: 20px;
     }
-
-    /* ── Form labels ── */
-    .form-label, .form-input, .form-note, .form-optional {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-    }
-    .form-input { text-align: right; direction: rtl; }
-
-    /* ── Scent family ── */
-    .scent-family {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0;
+    .receipt-hr { border: none; border-top: 1px solid var(--beige); margin: 10px 0; }
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
       color: var(--muted);
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
+    .receipt-row.total { font-size: 15px; font-weight: 700; color: var(--charcoal); margin-bottom: 0; margin-top: 2px; }
+    .receipt-free { color: var(--gold-dark); }
+
+    /* ── Footer ── */
+    .footer-logo { font-family: 'IBM Plex Sans Arabic', sans-serif; font-weight: 700; letter-spacing: 0.1em; }
+    .footer-copy { font-family: 'IBM Plex Sans Arabic', sans-serif; }
+    .footer-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      text-decoration: none;
+      margin: 8px 0 14px;
+      transition: color 0.2s;
+    }
+    .footer-wa:hover { color: #25D366; }
 
     /* ── Mobile ── */
     @media (max-width: 640px) {
-      .pre-form-push { padding: 40px 20px 32px; }
-      .trust-block   { padding: 36px 18px; }
-      .trust-grid    { gap: 20px 32px; }
-      .hero-ar       { font-size: clamp(32px, 9vw, 48px); line-height: 1.26; }
+      .selection-section { padding: 44px 16px; }
+      .hero-headline { font-size: clamp(22px, 7vw, 34px); }
     }
   </style>
 </head>
 <body>
 
   <!-- ══════════════════════════════════
-       TOP TRUST BAR
+       ANNOUNCE BAR
   ══════════════════════════════════ -->
   <div class="announce-bar">
-    توصيل مجاني &nbsp;•&nbsp; الدفع عند الاستلام
+    توصيل مجاني في كل إسرائيل &nbsp;•&nbsp; الدفع عند الاستلام
   </div>
 
   <!-- ══════════════════════════════════
        NAV
   ══════════════════════════════════ -->
   <nav id="main-nav">
-    <a href="/" class="logo">KALON</a>
-    <button class="nav-cta" onclick="scrollToSection(null,'scent')">اطلب الآن</button>
+    <a href="/ar" class="logo" style="font-family:'IBM Plex Sans Arabic',sans-serif; letter-spacing:0.08em;">SILLAGE</a>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <a href="https://wa.me/972542920392" class="nav-wa" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+      </a>
+      <button class="nav-cta" onclick="handleCTA()">اطلب الآن</button>
+    </div>
   </nav>
 
   <!-- ══════════════════════════════════
@@ -243,376 +316,157 @@
   ══════════════════════════════════ -->
   <section class="hero">
     <div class="hero-text">
-      <p class="eyebrow">إكسترا دو بارفان · هاوس أوف كالون</p>
-      <h1 class="hero-ar">ثبات وفوحان عطرك...<br />هما الفخامة الحقيقية.</h1>
-      <p class="hero-en" style="margin-bottom:14px;">إكسترا دو بارفان. مصنوع ليبقى.</p>
-      <a href="#scent" class="btn btn-gold" onclick="scrollToSection(event,'scent')" style="font-size:13px; padding:16px 40px;">
-        اختر عطرك &nbsp;←
-      </a>
-      <div class="hero-micro-trust">
-        <span>أداء ١٠–١٢ ساعة</span>
-        <span>توصيل مجاني في كل إسرائيل</span>
-        <span>الدفع عند الاستلام — بلا مخاطرة</span>
+      <p class="eyebrow">إكسترا دو بارفان · 100ML</p>
+      <h1 class="hero-headline">3 من أكثر العطور الرجالية طلبًا — في مجموعة واحدة</h1>
+      <p class="hero-benefits">فوحان قوي &nbsp;•&nbsp; أداء قوي &nbsp;•&nbsp; حضور يلفت الانتباه</p>
+      <div class="hero-price-block">
+        <span class="hero-price">3 عطور بـ 450₪ فقط</span>
+        <span class="hero-was">بدل 600₪</span>
       </div>
+      <p class="hero-trust">توصيل مجاني &nbsp;•&nbsp; الدفع عند الاستلام</p>
+      <button class="btn btn-gold" onclick="handleCTA()" style="font-size:15px; padding:16px 40px;">
+        اطلب الآن &nbsp;←
+      </button>
     </div>
 
     <div class="hero-visual">
-      <img src="../images/hero-collection-v2.png" alt="KALON Crystal Veil No.01 و Encens Noir No.02 — الكولكشن" class="hero-img" loading="eager" />
+      <img src="../images/IMG-20260618-WA0023.jpg"
+           alt="SILLAGE — Citrus و Rouge و Sweet — إكسترا دو بارفان 100ML"
+           class="hero-img"
+           loading="eager"
+           style="border-radius:4px; object-fit:cover; object-position:center;" />
     </div>
   </section>
 
   <!-- ══════════════════════════════════
-       CHOOSE YOUR SCENT
+       PRODUCT SELECTION
   ══════════════════════════════════ -->
-  <section class="scent-section" id="scent">
+  <section class="selection-section" id="selection">
     <div class="section-head">
-      <p class="eyebrow">الكولكشن</p>
-      <h2 class="section-title">اختر عطرك</h2>
-      <div class="divider"></div>
+      <h2 class="section-title" style="font-size:clamp(24px,3.5vw,38px);">اختر أي 3 عطور</h2>
     </div>
+    <p class="selection-note">يمكنك اختيار نفس العطر أكثر من مرة</p>
 
-    <div class="scent-grid">
+    <div class="product-grid">
 
-      <!-- NO.01 Crystal Veil -->
-      <div class="scent-card">
-        <div class="scent-img-wrap">
-          <img src="../images/1776389497734.png" alt="KALON Crystal Veil No.01 — إكسترا دو بارفان" class="scent-img" loading="lazy" />
-        </div>
-        <div class="scent-body">
-          <p class="scent-number">NO.01</p>
-          <h3 class="scent-name">Crystal Veil</h3>
-          <p class="scent-mood">مضيء. ناصع. مشع.</p>
-          <p class="scent-family">العائلة العطرية &nbsp;·&nbsp; زهري دافئ بالزعفران والعنبر</p>
-          <p class="scent-perf">١٠–١٢ ساعة &nbsp;·&nbsp; زعفران · خشب العنبر · أرز</p>
-          <p class="scent-quote">"ضوء يترك ظلاً."</p>
-          <p class="scent-price">₪379</p>
-          <a href="#order-summary" id="cv-cta" class="btn btn-dark scent-cta"
-             onclick="selectProduct('crystal-veil'); updateStickyCTA('379'); document.getElementById('os-default-msg').style.display='none'; scrollToSection(event,'order-summary')">
-            تسوّق NO.01
-          </a>
-          <div class="oos-block" id="cv-oos" style="display:none;">
-            <p class="oos-label">نفد المخزون</p>
-            <form class="notify-form" onsubmit="handleNotify(event,'crystal-veil')">
-              <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند التوفر" required />
-              <button type="submit" class="notify-btn">أبلغني</button>
-            </form>
-            <p class="notify-feedback" style="display:none;"></p>
+      <!-- CITRUS -->
+      <div class="product-card" id="card-citrus">
+        <img src="../images/IMG-20260617-WA0011.jpg"
+             alt="SILLAGE Citrus — إكسترا دو بارفان"
+             class="product-card-img" loading="lazy" />
+        <div class="product-card-body">
+          <p class="product-card-name">Citrus</p>
+          <p class="product-card-tag">منعش &nbsp;•&nbsp; نظيف &nbsp;•&nbsp; يومي</p>
+          <p class="product-card-oos">نفد المخزون</p>
+          <div class="qty-control">
+            <button class="qty-btn" id="dec-citrus" onclick="decrement('citrus')" aria-label="تقليل">−</button>
+            <span class="qty-count" id="count-citrus">0</span>
+            <button class="qty-btn" id="inc-citrus" onclick="increment('citrus')" aria-label="إضافة">+</button>
           </div>
         </div>
       </div>
 
-      <!-- NO.02 Encens Noir -->
-      <div class="scent-card">
-        <div class="scent-img-wrap">
-          <img src="../images/1776389553933.png" alt="KALON Encens Noir No.02 — إكسترا دو بارفان" class="scent-img" loading="lazy" />
+      <!-- ROUGE -->
+      <div class="product-card" id="card-rouge">
+        <img src="../images/IMG-20260617-WA0012.jpg"
+             alt="SILLAGE Rouge — إكسترا دو بارفان"
+             class="product-card-img" loading="lazy" />
+        <div class="product-card-body">
+          <p class="product-card-name">Rouge</p>
+          <p class="product-card-tag">فاخر &nbsp;•&nbsp; ملفت &nbsp;•&nbsp; أنيق</p>
+          <p class="product-card-oos">نفد المخزون</p>
+          <div class="qty-control">
+            <button class="qty-btn" id="dec-rouge" onclick="decrement('rouge')" aria-label="تقليل">−</button>
+            <span class="qty-count" id="count-rouge">0</span>
+            <button class="qty-btn" id="inc-rouge" onclick="increment('rouge')" aria-label="إضافة">+</button>
+          </div>
         </div>
-        <div class="scent-body">
-          <p class="scent-number">NO.02</p>
-          <h3 class="scent-name">Encens Noir</h3>
-          <p class="scent-mood">عميق. جاذب. حاضر.</p>
-          <p class="scent-family">العائلة العطرية &nbsp;·&nbsp; شرقي داكن بالعود والبخور</p>
-          <p class="scent-perf">١٠–١٢+ ساعة &nbsp;·&nbsp; بخور · عود · خشب البتولا</p>
-          <p class="scent-quote">"لا يُرتدى فحسب — يُسكن."</p>
-          <p class="scent-price">₪399</p>
-          <a href="#order-summary" id="en-cta" class="btn btn-dark scent-cta"
-             onclick="selectProduct('encens-noir'); updateStickyCTA('399'); document.getElementById('os-default-msg').style.display='none'; scrollToSection(event,'order-summary')">
-            تسوّق NO.02
-          </a>
-          <div class="oos-block" id="en-oos" style="display:none;">
-            <p class="oos-label">نفد المخزون</p>
-            <form class="notify-form" onsubmit="handleNotify(event,'encens-noir')">
-              <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند التوفر" required />
-              <button type="submit" class="notify-btn">أبلغني</button>
-            </form>
-            <p class="notify-feedback" style="display:none;"></p>
+      </div>
+
+      <!-- SWEET -->
+      <div class="product-card" id="card-sweet">
+        <img src="../images/IMG-20260617-WA0010.jpg"
+             alt="SILLAGE Sweet — إكسترا دو بارفان"
+             class="product-card-img" loading="lazy" />
+        <div class="product-card-body">
+          <p class="product-card-name">Sweet</p>
+          <p class="product-card-tag">دافئ &nbsp;•&nbsp; جذاب &nbsp;•&nbsp; مميز</p>
+          <p class="product-card-oos">نفد المخزون</p>
+          <div class="qty-control">
+            <button class="qty-btn" id="dec-sweet" onclick="decrement('sweet')" aria-label="تقليل">−</button>
+            <span class="qty-count" id="count-sweet">0</span>
+            <button class="qty-btn" id="inc-sweet" onclick="increment('sweet')" aria-label="إضافة">+</button>
           </div>
         </div>
       </div>
 
     </div>
 
-    <p class="scarcity-note">الدفعة الأولى متاحة الآن &nbsp;·&nbsp; كميات محدودة</p>
+    <div class="sel-footer">
+      <span class="sel-counter" id="sel-counter">اخترت 0 من 3</span>
+      <button class="btn btn-dark" onclick="handleCTA()" style="font-size:15px; padding:16px 40px;">
+        أكمل طلبك &nbsp;←
+      </button>
+    </div>
   </section>
 
   <!-- ══════════════════════════════════
-       DUO UPSELL
+       TRUST STRIP
   ══════════════════════════════════ -->
-  <section class="duo-upsell" id="duo-section">
-    <div class="duo-upsell-inner">
-      <img src="../images/hero-collection-v2.png" alt="KALON الثنائي — Crystal Veil و Encens Noir" style="width:100%; max-width:340px; height:auto; display:block; margin:0 auto 32px; border-radius:6px;" loading="lazy" />
-      <p class="eyebrow" style="margin-bottom:14px;">الثنائي</p>
-      <h2 class="duo-upsell-title">امتلكهما معاً. نهاراً وليلاً.</h2>
-      <p class="duo-upsell-sub">واحد للضوء. واحد للعتمة. كلاهما للأبد.</p>
-      <p class="duo-upsell-price">
-        ₪649
-        <span class="duo-save">وفّر ₪129</span>
-      </p>
-      <div id="duo-cta-wrap">
-        <a href="#order-summary" id="duo-cta" class="btn btn-gold"
-           onclick="selectProduct('duo'); updateStickyCTA('649'); document.getElementById('os-default-msg').style.display='none'; scrollToSection(event,'order-summary')">
-          احصل على الثنائي
-        </a>
-        <div class="oos-block" id="duo-oos" style="display:none;">
-          <p class="oos-label">نفد المخزون</p>
-          <form class="notify-form" onsubmit="handleNotify(event,'duo')">
-            <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند التوفر" required />
-            <button type="submit" class="notify-btn">أبلغني</button>
-          </form>
-          <p class="notify-feedback" style="display:none;"></p>
-        </div>
-      </div>
+  <div class="trust-strip">
+    <div class="trust-strip-inner">
+      <span class="trust-s">توصيل مجاني</span>
+      <span class="trust-s">الدفع عند الاستلام</span>
+      <span class="trust-s">١٠–١٢ ساعة أداء</span>
+      <span class="trust-s">إكسترا دو بارفان 100ML</span>
     </div>
-  </section>
+  </div>
 
   <!-- ══════════════════════════════════
-       SOCIAL PROOF
+       REVIEWS
   ══════════════════════════════════ -->
   <section class="testimonials">
     <div class="section-head">
-      <p class="eyebrow">اختبارات الارتداء</p>
-      <h2 class="section-title">ماذا قالوا</h2>
+      <h2 class="section-title" style="font-size:clamp(24px,3.5vw,38px);">ماذا قالوا</h2>
       <div class="divider"></div>
     </div>
     <div class="reviews-grid">
 
       <article class="review-card">
         <p class="stars">★★★★★</p>
-        <p class="review-text">
-          "Crystal Veil لا مثيل له — فاخر، راقٍ، يدوم طوال اليوم. ثلاث صديقات وأربعة من معارفي طلبوه بعد ما شمّوه عليّ. هذا يقول كل شيء."
-        </p>
+        <p class="review-text">"Citrus منعش ونظيف — مناسب ليومي. من أول يوم حصلت على ملاحظات إيجابية."</p>
         <div class="reviewer">
           <div class="avatar">ل</div>
           <div>
-            <p class="reviewer-name">ليلى العزوري</p>
-            <p class="reviewer-loc">موثّق — Crystal Veil</p>
+            <p class="reviewer-name">ليلى ع.</p>
+            <p class="reviewer-loc">موثّق — Citrus</p>
           </div>
         </div>
       </article>
 
       <article class="review-card">
         <p class="stars">★★★★★</p>
-        <p class="review-text">
-          "Encens Noir كأنك تلبس ثروة. قوي، عميق، والكل يسأل عنه. فخامة بلا مبالغة — مستوى مختلف تماماً."
-        </p>
+        <p class="review-text">"Rouge قوي ويدوم طويلاً. الكل يسأل عنه. اشتريته مرة ثانية."</p>
         <div class="reviewer">
           <div class="avatar">ط</div>
           <div>
-            <p class="reviewer-name">طارق علي</p>
-            <p class="reviewer-loc">موثّق — Encens Noir</p>
+            <p class="reviewer-name">طارق م.</p>
+            <p class="reviewer-loc">موثّق — Rouge</p>
           </div>
         </div>
       </article>
 
       <article class="review-card">
         <p class="stars">★★★★★</p>
-        <p class="review-text">
-          "طلبت الثنائي لي ولزوجي. الأداء على مستوى لم نتوقعه. يملأ الغرفة قبل ما نتكلم. ما جربنا شيء يبقى هيك."
-        </p>
+        <p class="review-text">"طلبت الثلاثة. كل عطر له طابعه الخاص. القيمة مقابل السعر ممتازة."</p>
         <div class="reviewer">
           <div class="avatar">ر</div>
           <div>
-            <p class="reviewer-name">رنا وعمر م.</p>
-            <p class="reviewer-loc">موثّق — The Duo</p>
+            <p class="reviewer-name">رنا وكريم ش.</p>
+            <p class="reviewer-loc">موثّق — الطقم الكامل</p>
           </div>
         </div>
       </article>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       TRUST BLOCK
-  ══════════════════════════════════ -->
-  <section class="trust-block">
-    <div class="trust-grid">
-
-      <div class="trust-item">
-        <div class="trust-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M5 12h14M12 5l7 7-7 7" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <p class="trust-label">توصيل مجاني</p>
-        <p class="trust-sub">لكل طلب</p>
-      </div>
-
-      <div class="trust-item">
-        <div class="trust-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="3" y="6" width="18" height="13" rx="2" stroke="#C9A84C" stroke-width="1.6"/>
-            <path d="M3 10h18" stroke="#C9A84C" stroke-width="1.6"/>
-          </svg>
-        </div>
-        <p class="trust-label">الدفع عند الاستلام</p>
-        <p class="trust-sub">بدون دفع إلكتروني</p>
-      </div>
-
-      <div class="trust-item">
-        <div class="trust-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" stroke="#C9A84C" stroke-width="1.6"/>
-            <path d="M12 7v5l3 3" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <p class="trust-label">١٠–١٢ ساعة</p>
-        <p class="trust-sub">أداء مهندَس</p>
-      </div>
-
-      <div class="trust-item">
-        <div class="trust-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M12 3l2.5 6H21l-5.3 3.8 2 6.2L12 15l-5.7 4 2-6.2L3 9h6.5z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round" fill="rgba(201,168,76,0.1)"/>
-          </svg>
-        </div>
-        <p class="trust-label">إكسترا دو بارفان</p>
-        <p class="trust-sub">تركيز ٣٠٪</p>
-      </div>
-
-      <div class="trust-item">
-        <div class="trust-icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M9 12l2 2 4-4" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 3l8 4.5v5c0 4-3.5 7.5-8 8.5C7.5 19.5 4 16 4 12V7.5z" stroke="#C9A84C" stroke-width="1.6" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <p class="trust-label">كل زجاجة مُختبرة</p>
-        <p class="trust-sub">بلا استثناءات</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       WHY KALON
-  ══════════════════════════════════ -->
-  <section class="why">
-    <div class="section-head">
-      <p class="eyebrow">لماذا كالون</p>
-      <h2 class="section-title">لماذا كالون</h2>
-      <div class="divider"></div>
-    </div>
-    <div class="why-grid">
-
-      <div class="why-item">
-        <div class="why-icon">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" aria-hidden="true">
-            <path d="M16 4 C16 4 7 11 7 19 C7 23.9 11.1 28 16 28 C20.9 28 25 23.9 25 19 C25 11 16 4 16 4Z" stroke="#C9A84C" stroke-width="1.6" fill="none"/>
-            <path d="M16 13 C16 13 11 17 11 20.5 C11 22.9 13.2 25 16 25 C18.8 25 21 22.9 21 20.5 C21 17 16 13 16 13Z" fill="#C9A84C" opacity="0.55"/>
-          </svg>
-        </div>
-        <h3 class="why-title">أداء مهندَس</h3>
-        <p class="why-desc">١٠–١٢ ساعة. مُختبر. موثَّق. قابل للتكرار. ليس ادعاءً — بل معيار.</p>
-      </div>
-
-      <div class="why-item">
-        <div class="why-icon">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" aria-hidden="true">
-            <circle cx="16" cy="16" r="10" stroke="#C9A84C" stroke-width="1.6"/>
-            <path d="M11 16 L14.5 19.5 L21 13" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <h3 class="why-title">مبني من عظمة حقيقية</h3>
-        <p class="why-desc">مبني من أكثر عائلات العطور محبةً في العالم. مهندَس ليتجاوزها.</p>
-      </div>
-
-      <div class="why-item">
-        <div class="why-icon">
-          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" aria-hidden="true">
-            <path d="M16 5 L18.8 12.4 L26.8 13 L21 17.9 L22.8 25.9 L16 21.8 L9.2 25.9 L11 17.9 L5.2 13 L13.2 12.4 Z" stroke="#C9A84C" stroke-width="1.5" stroke-linejoin="round" fill="rgba(201,168,76,0.14)"/>
-          </svg>
-        </div>
-        <h3 class="why-title">معيار. لا مجرد منتج.</h3>
-        <p class="why-desc">كل زجاجة تجتاز نفس الاختبار قبل مغادرتها. لا استثناءات. لا تنازلات.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       WHATSAPP
-  ══════════════════════════════════ -->
-  <section class="wa-section">
-    <p class="eyebrow" style="color:rgba(255,255,255,0.5); margin-bottom:16px;">تواصل</p>
-    <h2 class="wa-title">أسئلة؟</h2>
-    <p class="wa-sub">فريقنا يرد بسرعة.</p>
-    <a href="https://wa.me/XXXXXXXX?text=مرحباً،%20لدي%20سؤال%20عن%20KALON"
-       class="btn btn-whatsapp" target="_blank" rel="noopener">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-      </svg>
-      <span>تواصل عبر واتساب</span>
-    </a>
-  </section>
-
-  <!-- ══════════════════════════════════
-       PRE-FORM PUSH
-  ══════════════════════════════════ -->
-  <div class="pre-form-push">
-    <p>أنت على بُعد خطوة واحدة من امتلاك عطر يبقى فعلاً.</p>
-  </div>
-
-  <!-- ══════════════════════════════════
-       ORDER SUMMARY
-  ══════════════════════════════════ -->
-  <section class="order-summary" id="order-summary">
-    <div class="order-summary-inner">
-
-      <p class="eyebrow" id="os-eyebrow" style="margin-bottom:10px; text-align:center;">ملخص الطلب</p>
-      <p class="os-trust-line">الدفع عند الاستلام &nbsp;•&nbsp; توصيل مجاني &nbsp;•&nbsp; بلا مخاطرة</p>
-
-      <div id="os-default-msg" class="os-default-state">
-        <p>اختر عطرك أعلاه للبدء.</p>
-        <span class="os-default-arrow">↑</span>
-      </div>
-
-      <div class="os-lines" id="os-lines-container">
-        <div class="os-line">
-          <span class="os-label">Crystal Veil — No.01</span>
-          <span class="os-val">₪379</span>
-        </div>
-        <div class="os-line">
-          <span class="os-label">Encens Noir — No.02</span>
-          <span class="os-val">₪399</span>
-        </div>
-        <div class="os-line os-line--gift">
-          <span class="os-label">الثنائي</span>
-          <span class="os-val os-gift">وفّر ₪129</span>
-        </div>
-        <div class="os-line">
-          <span class="os-label">الشحن</span>
-          <span class="os-val os-free">مجاني مع الثنائي</span>
-        </div>
-      </div>
-
-      <div class="os-divider"></div>
-
-      <div class="os-pricing">
-        <div class="os-was" id="os-was-block">
-          <span class="os-was-label">بالمفرد</span>
-          <span class="os-was-price">₪778</span>
-        </div>
-        <div class="os-now">
-          <span class="os-now-label" id="os-now-label-el">الثنائي</span>
-          <span class="os-now-price" id="os-now-price-el">₪649</span>
-        </div>
-      </div>
-
-      <div class="os-savings" id="os-savings-block">وفّرت ₪129</div>
-
-      <a href="#order-form"
-         id="os-confirm-cta"
-         class="btn btn-dark os-cta"
-         onclick="document.getElementById('order-form').scrollIntoView({behavior:'smooth'}); return false;">
-        <span>تأكيد الطلب &nbsp;←</span>
-      </a>
-      <div id="os-duo-oos" class="oos-block" style="display:none; margin-top:20px; text-align:center;">
-        <p class="oos-label">نفد المخزون — الثنائي</p>
-        <form class="notify-form" onsubmit="handleNotify(event,'duo')">
-          <input type="email" class="notify-input" placeholder="بريدك الإلكتروني — أخبرني عند التوفر" required />
-          <button type="submit" class="notify-btn">أبلغني</button>
-        </form>
-        <p class="notify-feedback" style="display:none;"></p>
-      </div>
 
     </div>
   </section>
@@ -623,58 +477,67 @@
   <section class="order-form-section" id="order-form">
     <div class="order-form-inner">
 
-      <p class="eyebrow" style="text-align:center; margin-bottom:14px;">طلب كالون</p>
       <h2 class="order-form-title">أكمل طلبك</h2>
       <p class="order-form-sub">الدفع عند الاستلام. توصيل مجاني. نتواصل معك خلال ٢٤ ساعة.</p>
 
       <form class="order-form" id="order-form-el" onsubmit="handleOrderSubmit(event)" novalidate>
 
+        <!-- Static receipt -->
+        <div class="form-receipt">
+          <p class="receipt-lbl">اختيارك</p>
+          <p class="receipt-sel" id="receipt-sel">—</p>
+          <hr class="receipt-hr" />
+          <div class="receipt-row total">
+            <span>المجموع</span>
+            <span>₪450</span>
+          </div>
+          <div class="receipt-row" style="margin-top:5px;">
+            <span>الشحن</span>
+            <span class="receipt-free">مجاني</span>
+          </div>
+          <div class="receipt-row">
+            <span>طريقة الدفع</span>
+            <span>الدفع عند الاستلام</span>
+          </div>
+        </div>
+
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="f-name"><span>الاسم الكامل</span> <span class="req">*</span></label>
+            <label class="form-label" for="f-name">الاسم الكامل <span class="req">*</span></label>
             <input type="text" id="f-name" name="name" class="form-input" placeholder="اسمك الكامل" required />
           </div>
           <div class="form-group">
-            <label class="form-label" for="f-phone"><span>رقم الهاتف</span> <span class="req">*</span></label>
+            <label class="form-label" for="f-phone">رقم الهاتف <span class="req">*</span></label>
             <input type="tel" id="f-phone" name="phone" class="form-input" placeholder="05XXXXXXXX" required />
           </div>
         </div>
 
-        <div class="form-group form-group--full">
-          <label class="form-label" for="f-email"><span>البريد الإلكتروني</span> <span class="form-optional">(اختياري)</span></label>
-          <input type="email" id="f-email" name="email" class="form-input" placeholder="example@email.com" autocomplete="email" />
-        </div>
-
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label" for="f-city"><span>المدينة</span> <span class="req">*</span></label>
+            <label class="form-label" for="f-city">المدينة <span class="req">*</span></label>
             <input type="text" id="f-city" name="city" class="form-input" placeholder="مدينتك" required />
           </div>
           <div class="form-group">
-            <label class="form-label" for="f-address"><span>العنوان</span> <span class="req">*</span></label>
+            <label class="form-label" for="f-address">العنوان <span class="req">*</span></label>
             <input type="text" id="f-address" name="address" class="form-input" placeholder="الشارع، المبنى، الشقة" required />
           </div>
         </div>
 
         <div class="form-group form-group--full">
-          <label class="form-label" for="f-notes"><span>ملاحظات</span> <span class="form-optional">(اختياري)</span></label>
+          <label class="form-label" for="f-email">البريد الإلكتروني <span class="form-optional">(اختياري)</span></label>
+          <input type="email" id="f-email" name="email" class="form-input" placeholder="example@email.com" autocomplete="email" />
+        </div>
+
+        <div class="form-group form-group--full">
+          <label class="form-label" for="f-notes">ملاحظات <span class="form-optional">(اختياري)</span></label>
           <textarea id="f-notes" name="notes" class="form-input form-textarea" placeholder="أي تفاصيل إضافية..."></textarea>
         </div>
 
-        <input type="hidden" id="f-product" name="product" value="" />
-
-        <div class="form-order-summary" id="fos-container">
-          <div class="fos-line"><span>Crystal Veil — No.01</span><span>₪379</span></div>
-          <div class="fos-line"><span>Encens Noir — No.02</span><span>₪399</span></div>
-          <div class="fos-line fos-gift"><span>الثنائي</span><span>وفّر ₪129</span></div>
-          <div class="fos-total"><span>الإجمالي</span><span>₪649</span></div>
-        </div>
-
-        <button type="submit" class="btn btn-dark order-submit-btn">
+        <button type="submit" class="btn btn-dark order-submit-btn" style="font-size:15px; padding:16px 40px; width:100%;">
           أرسل الطلب &nbsp;←
         </button>
 
-        <div id="order-error" style="display:none; margin-top:14px; padding:12px 16px; background:rgba(180,60,60,0.15); border:1px solid rgba(180,60,60,0.4); border-radius:8px; color:#e07070; text-align:center; font-family:'IBM Plex Sans Arabic',sans-serif; font-size:15px;"></div>
+        <div id="order-error" style="display:none; margin-top:14px; padding:12px 16px; background:rgba(180,60,60,0.1); border:1px solid rgba(180,60,60,0.35); border-radius:6px; color:#c05050; text-align:center; font-family:'IBM Plex Sans Arabic',sans-serif; font-size:14px;"></div>
 
         <p class="form-note">سنتواصل معك خلال ٢٤ ساعة لتأكيد طلبك وترتيب التوصيل.</p>
 
@@ -682,8 +545,8 @@
 
       <div class="order-success" id="order-success" style="display:none;">
         <div class="order-success-icon">✓</div>
-        <h3>تم استلام طلبك.</h3>
-        <p>سنتواصل معك خلال ٢٤ ساعة لتأكيد الطلب وترتيب التوصيل.</p>
+        <h3 style="font-family:'Noto Serif Arabic',serif;">تم استلام طلبك.</h3>
+        <p style="font-family:'IBM Plex Sans Arabic',sans-serif;">سنتواصل معك خلال ٢٤ ساعة لتأكيد الطلب وترتيب التوصيل.</p>
       </div>
 
     </div>
@@ -693,20 +556,184 @@
        FOOTER
   ══════════════════════════════════ -->
   <footer>
-    <p class="footer-logo">KALON</p>
-    <p class="footer-sub">الأداء هو الرفاهية الوحيدة التي تهم.</p>
-    <p class="footer-copy">© ٢٠٢٥ كالون. جميع الحقوق محفوظة.</p>
+    <p class="footer-logo">SILLAGE</p>
+    <a href="https://wa.me/972542920392" class="footer-wa" target="_blank" rel="noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      تواصل معنا
+    </a>
+    <p class="footer-copy">© ٢٠٢٥ سيلاج. جميع الحقوق محفوظة.</p>
   </footer>
 
-  <!-- Hidden stubs for inventory script -->
-  <span id="cv-ind-cta" style="display:none;"></span>
-  <span id="cv-ind-oos" style="display:none;"></span>
-  <span id="en-ind-cta" style="display:none;"></span>
-  <span id="en-ind-oos" style="display:none;"></span>
-
-  <script src="../script.js?v=5"></script>
+  <!-- ══════════════════════════════════
+       SCRIPT
+  ══════════════════════════════════ -->
   <script>
-    function updateStickyCTA() {}
+    /* ── State ── */
+    var sel   = { citrus: 0, rouge: 0, sweet: 0 };
+    var avail = { citrus: true, rouge: true, sweet: true };
+    var SKU_LABELS = { citrus: 'Citrus', rouge: 'Rouge', sweet: 'Sweet' };
+    var SKUS = ['citrus', 'rouge', 'sweet'];
+
+    function total() { return sel.citrus + sel.rouge + sel.sweet; }
+
+    /* ── Stepper ── */
+    function increment(p) {
+      if (total() >= 3 || !avail[p]) return;
+      sel[p]++;
+      updateUI();
+    }
+    function decrement(p) {
+      if (sel[p] <= 0) return;
+      sel[p]--;
+      updateUI();
+    }
+
+    /* ── Sync DOM to state ── */
+    function updateUI() {
+      var t = total();
+      SKUS.forEach(function(p) {
+        var cEl  = document.getElementById('count-' + p);
+        var incB = document.getElementById('inc-' + p);
+        var decB = document.getElementById('dec-' + p);
+        var card = document.getElementById('card-' + p);
+        if (cEl)  cEl.textContent   = sel[p];
+        if (incB) incB.disabled     = (t >= 3 || !avail[p]);
+        if (decB) decB.disabled     = (sel[p] <= 0);
+        if (card) card.classList.toggle('has-qty', sel[p] > 0);
+      });
+
+      // Counter text
+      var ctr = document.getElementById('sel-counter');
+      if (ctr) {
+        if (t === 3) {
+          ctr.textContent = '✓ اخترت 3 عطور — المجموع ₪450';
+          ctr.className   = 'sel-counter done';
+        } else {
+          ctr.textContent = 'اخترت ' + t + ' من 3';
+          ctr.className   = 'sel-counter';
+        }
+      }
+
+      // Receipt selection line
+      var recEl = document.getElementById('receipt-sel');
+      if (recEl) {
+        var parts = [];
+        SKUS.forEach(function(p) { if (sel[p] > 0) parts.push(SKU_LABELS[p] + ' × ' + sel[p]); });
+        recEl.textContent = parts.length ? parts.join('،  ') : '—';
+      }
+    }
+
+    /* ── Smart CTA ── */
+    function handleCTA() {
+      var target = total() === 3 ? 'order-form' : 'selection';
+      var el = document.getElementById(target);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ── Inventory ── */
+    function loadInventory() {
+      fetch('/api/inventory')
+        .then(function(r) { return r.json(); })
+        .then(function(body) {
+          if (!body || !body.availability) return;
+          var av = body.availability;
+          avail.citrus = !!av['citrus'];
+          avail.rouge  = !!av['rouge'];
+          avail.sweet  = !!av['sweet'];
+          SKUS.forEach(function(p) {
+            var card = document.getElementById('card-' + p);
+            if (card) card.classList.toggle('oos', !avail[p]);
+          });
+          updateUI();
+        })
+        .catch(function(e) { console.error('[INV]', e && e.message); });
+    }
+
+    /* ── Order submission ── */
+    function handleOrderSubmit(e) {
+      e.preventDefault();
+
+      var errorEl = document.getElementById('order-error');
+      errorEl.style.display = 'none';
+
+      var t = total();
+      if (t < 3) {
+        errorEl.textContent   = 'يرجى اختيار 3 عطور أولاً.';
+        errorEl.style.display = 'block';
+        document.getElementById('selection').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      var name    = document.getElementById('f-name').value.trim();
+      var phone   = document.getElementById('f-phone').value.trim();
+      var city    = document.getElementById('f-city').value.trim();
+      var address = document.getElementById('f-address').value.trim();
+      var email   = document.getElementById('f-email').value.trim();
+      var notes   = document.getElementById('f-notes').value.trim();
+
+      if (!name || !phone || !city || !address) {
+        errorEl.textContent   = 'يرجى ملء جميع الحقول المطلوبة.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      // Build "citrus,citrus,rouge" style product string
+      var parts = [];
+      SKUS.forEach(function(p) { for (var i = 0; i < sel[p]; i++) parts.push(p); });
+      var productStr = parts.join(',');
+
+      var btn = document.querySelector('.order-submit-btn');
+      btn.disabled    = true;
+      btn.textContent = 'جاري الإرسال...';
+
+      fetch('/api/orders', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          full_name: name,
+          phone:     phone,
+          email:     email,
+          city:      city,
+          address:   address,
+          notes:     notes,
+          product:   productStr,
+        }),
+      })
+      .then(function(res) {
+        return res.json().then(function(body) {
+          if (!res.ok) { var err = new Error('err'); err.body = body; throw err; }
+          return body;
+        });
+      })
+      .then(function() {
+        document.getElementById('order-form-el').style.display = 'none';
+        document.getElementById('order-success').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('order-form').offsetTop - 80, behavior: 'smooth' });
+      })
+      .catch(function(err) {
+        var msg = (err.body && err.body.outOfStock)
+          ? 'أحد العطور المختارة نفد مخزونه. يرجى تعديل اختيارك.'
+          : 'حدث خطأ. يرجى المحاولة مرة أخرى.';
+        errorEl.textContent   = msg;
+        errorEl.style.display = 'block';
+        btn.disabled    = false;
+        btn.textContent = 'أرسل الطلب ←';
+        if (err.body && err.body.outOfStock) loadInventory();
+      });
+    }
+
+    /* ── Nav shadow ── */
+    var _nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', function() {
+      if (_nav) _nav.style.boxShadow = window.scrollY > 40 ? '0 2px 18px rgba(0,0,0,0.07)' : 'none';
+    }, { passive: true });
+
+    /* ── Init ── */
+    updateUI();
+    loadInventory();
   </script>
+
 </body>
 </html>
