@@ -104,12 +104,14 @@
     .product-card.oos { opacity: 0.42; pointer-events: none; }
     .product-card-img {
       width: 100%;
-      aspect-ratio: 4/3;
-      object-fit: cover;
-      object-position: center top;
+      height: 200px;
+      object-fit: contain;
+      background: var(--cream-dark);
       display: block;
+      padding: 14px;
+      box-sizing: border-box;
     }
-    .product-card-body { padding: 10px 12px 14px; text-align: center; width: 100%; }
+    .product-card-body { padding: 8px 12px 10px; text-align: center; width: 100%; }
     .product-card-name {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 13px;
@@ -123,21 +125,21 @@
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 10px;
       color: var(--gold-dark);
-      margin-bottom: 5px;
+      margin-bottom: 3px;
       font-weight: 500;
     }
     .product-card-tag {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 11px;
       color: var(--muted);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
       line-height: 1.5;
     }
     .product-card-use {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 11px;
       color: var(--muted);
-      margin-bottom: 5px;
+      margin-bottom: 3px;
       line-height: 1.55;
     }
     .product-card-perf {
@@ -145,7 +147,7 @@
       font-size: 11px;
       color: var(--charcoal);
       font-weight: 600;
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
     .product-card-oos {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
