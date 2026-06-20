@@ -1,0 +1,9 @@
+[STARTUP] SUPABASE_URL: https://tjqxsxazhappojxbxxuc.supabase.co
+[STARTUP] SUPABASE_KEY: *** set (hidden) ***
+[STARTUP] PORT: 5000
+[STARTUP] ADMIN_PASSWORD: *** set ***
+[STARTUP] SESSION_SECRET: *** set ***
+[SUPABASE] URL: https://tjqxsxazhappojxbxxuc.supabase.co
+[SUPABASE] KEY prefix (first 40 chars): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ
+[SUPABASE] KEY role (decoded): anon
+SILLAGE server running on http://localhost:5000

@@ -11,12 +11,12 @@ CREATE TABLE IF NOT EXISTS inventory (
   CONSTRAINT stock_non_negative CHECK (stock >= 0)
 );
 
--- Seed rows — set real stock values after running this
+-- Initial stock — citrus 40, rouge 130, sweet 40
 INSERT INTO inventory (product, stock) VALUES
-  ('citrus', 0),
-  ('rouge',  0),
-  ('sweet',  0)
-ON CONFLICT DO NOTHING;
+  ('citrus',  40),
+  ('rouge',  130),
+  ('sweet',   40)
+ON CONFLICT (product) DO UPDATE SET stock = EXCLUDED.stock;
 
 -- Waitlist: one row per email+product subscription
 CREATE TABLE IF NOT EXISTS waitlist (

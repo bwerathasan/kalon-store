@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // ── Session ──
 app.use(session({
-  secret:            process.env.SESSION_SECRET || 'kalon-fallback-secret',
+  secret:            process.env.SESSION_SECRET || 'sillage-fallback-secret',
   resave:            false,
   saveUninitialized: false,
   cookie: {
