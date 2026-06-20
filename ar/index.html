@@ -264,6 +264,60 @@
     .receipt-row.total { font-size: 15px; font-weight: 700; color: var(--charcoal); margin-bottom: 0; margin-top: 2px; }
     .receipt-free { color: var(--gold-dark); }
 
+    /* ── Form-level quantity steppers ── */
+    .receipt-product-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--beige);
+    }
+    .receipt-product-row:last-of-type { border-bottom: none; }
+    .receipt-product-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--charcoal);
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+    }
+    .receipt-qty {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .rqty-btn {
+      width: 30px;
+      height: 30px;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      background: #fff;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--charcoal);
+      transition: border-color 0.15s, opacity 0.15s;
+      font-family: Arial, sans-serif;
+    }
+    .rqty-btn:hover:not(:disabled) { border-color: var(--charcoal); }
+    .rqty-btn:disabled { opacity: 0.3; cursor: default; }
+    .rqty-count {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--charcoal);
+      min-width: 18px;
+      text-align: center;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+    }
+    .receipt-qty-note {
+      font-size: 12px;
+      color: #b07a30;
+      text-align: center;
+      margin: 8px 0 2px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+    }
+
     /* ── Footer ── */
     .footer-logo { font-family: 'IBM Plex Sans Arabic', sans-serif; font-weight: 700; letter-spacing: 0.1em; }
     .footer-copy { font-family: 'IBM Plex Sans Arabic', sans-serif; }
@@ -482,14 +536,43 @@
 
       <form class="order-form" id="order-form-el" onsubmit="handleOrderSubmit(event)" novalidate>
 
-        <!-- Static receipt -->
+        <!-- Dynamic receipt with inline quantity controls -->
         <div class="form-receipt">
-          <p class="receipt-lbl">اختيارك</p>
-          <p class="receipt-sel" id="receipt-sel">—</p>
+          <p class="receipt-lbl">اختر عطورك</p>
+
+          <div class="receipt-product-row">
+            <span class="receipt-product-name">Citrus</span>
+            <div class="receipt-qty">
+              <button type="button" class="rqty-btn" id="form-dec-citrus" onclick="decrement('citrus')">−</button>
+              <span class="rqty-count" id="form-count-citrus">1</span>
+              <button type="button" class="rqty-btn" id="form-inc-citrus" onclick="increment('citrus')">+</button>
+            </div>
+          </div>
+
+          <div class="receipt-product-row">
+            <span class="receipt-product-name">Rouge</span>
+            <div class="receipt-qty">
+              <button type="button" class="rqty-btn" id="form-dec-rouge" onclick="decrement('rouge')">−</button>
+              <span class="rqty-count" id="form-count-rouge">1</span>
+              <button type="button" class="rqty-btn" id="form-inc-rouge" onclick="increment('rouge')">+</button>
+            </div>
+          </div>
+
+          <div class="receipt-product-row">
+            <span class="receipt-product-name">Sweet</span>
+            <div class="receipt-qty">
+              <button type="button" class="rqty-btn" id="form-dec-sweet" onclick="decrement('sweet')">−</button>
+              <span class="rqty-count" id="form-count-sweet">1</span>
+              <button type="button" class="rqty-btn" id="form-inc-sweet" onclick="increment('sweet')">+</button>
+            </div>
+          </div>
+
+          <p class="receipt-qty-note" id="receipt-qty-note" style="display:none;"></p>
+
           <hr class="receipt-hr" />
           <div class="receipt-row total">
             <span>المجموع</span>
-            <span>₪450</span>
+            <span id="receipt-total-display">₪450</span>
           </div>
           <div class="receipt-row" style="margin-top:5px;">
             <span>الشحن</span>
@@ -570,8 +653,8 @@
        SCRIPT
   ══════════════════════════════════ -->
   <script>
-    /* ── State ── */
-    var sel   = { citrus: 0, rouge: 0, sweet: 0 };
+    /* ── State — default: the trio ── */
+    var sel   = { citrus: 1, rouge: 1, sweet: 1 };
     var avail = { citrus: true, rouge: true, sweet: true };
     var SKU_LABELS = { citrus: 'Citrus', rouge: 'Rouge', sweet: 'Sweet' };
     var SKUS = ['citrus', 'rouge', 'sweet'];
@@ -594,17 +677,26 @@
     function updateUI() {
       var t = total();
       SKUS.forEach(function(p) {
+        // Product showcase card steppers
         var cEl  = document.getElementById('count-' + p);
         var incB = document.getElementById('inc-' + p);
         var decB = document.getElementById('dec-' + p);
         var card = document.getElementById('card-' + p);
-        if (cEl)  cEl.textContent   = sel[p];
-        if (incB) incB.disabled     = (t >= 3 || !avail[p]);
-        if (decB) decB.disabled     = (sel[p] <= 0);
+        if (cEl)  cEl.textContent = sel[p];
+        if (incB) incB.disabled   = (t >= 3 || !avail[p]);
+        if (decB) decB.disabled   = (sel[p] <= 0);
         if (card) card.classList.toggle('has-qty', sel[p] > 0);
+
+        // Form receipt steppers
+        var fcEl  = document.getElementById('form-count-' + p);
+        var fincB = document.getElementById('form-inc-' + p);
+        var fdecB = document.getElementById('form-dec-' + p);
+        if (fcEl)  fcEl.textContent = sel[p];
+        if (fincB) fincB.disabled   = (t >= 3 || !avail[p]);
+        if (fdecB) fdecB.disabled   = (sel[p] <= 0);
       });
 
-      // Counter text
+      // Counter in product showcase section
       var ctr = document.getElementById('sel-counter');
       if (ctr) {
         if (t === 3) {
@@ -616,20 +708,27 @@
         }
       }
 
-      // Receipt selection line
-      var recEl = document.getElementById('receipt-sel');
-      if (recEl) {
-        var parts = [];
-        SKUS.forEach(function(p) { if (sel[p] > 0) parts.push(SKU_LABELS[p] + ' × ' + sel[p]); });
-        recEl.textContent = parts.length ? parts.join('،  ') : '—';
+      // Form receipt: total display + guidance note
+      var totalDisp = document.getElementById('receipt-total-display');
+      var qtyNote   = document.getElementById('receipt-qty-note');
+      if (totalDisp) {
+        totalDisp.textContent = t === 3 ? '₪450' : '—';
+        totalDisp.style.color = t === 3 ? '' : 'var(--muted)';
+      }
+      if (qtyNote) {
+        if (t === 3) {
+          qtyNote.style.display = 'none';
+        } else {
+          var rem = 3 - t;
+          qtyNote.textContent   = 'أضف ' + rem + (rem === 1 ? ' عطرًا آخر للمتابعة' : ' عطور أخرى للمتابعة');
+          qtyNote.style.display = 'block';
+        }
       }
     }
 
-    /* ── Smart CTA ── */
+    /* ── CTA — always goes to order form ── */
     function handleCTA() {
-      var target = total() === 3 ? 'order-form' : 'selection';
-      var el = document.getElementById(target);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
     }
 
     /* ── Inventory ── */
@@ -659,10 +758,9 @@
       errorEl.style.display = 'none';
 
       var t = total();
-      if (t < 3) {
-        errorEl.textContent   = 'يرجى اختيار 3 عطور أولاً.';
+      if (t !== 3) {
+        errorEl.textContent   = 'يجب أن يكون مجموع العطور 3 بالضبط.';
         errorEl.style.display = 'block';
-        document.getElementById('selection').scrollIntoView({ behavior: 'smooth' });
         return;
       }
 
