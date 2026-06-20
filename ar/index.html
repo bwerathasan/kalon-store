@@ -45,70 +45,90 @@
     }
     .nav-wa:hover { color: #25D366; }
 
+    /* ── Hero: tighten image-to-text gap on mobile ── */
+    @media (max-width: 860px) {
+      .hero { gap: 12px !important; padding-bottom: 24px !important; }
+    }
+
     /* ── Hero ── */
     .hero-headline {
       font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(24px, 5vw, 50px);
-      font-weight: 700;
-      line-height: 1.2;
+      font-size: clamp(24px, 5.5vw, 50px);
+      font-weight: 800;
+      line-height: 1.18;
       color: var(--black);
-      margin-bottom: 26px;
+      max-width: 90%;
+      margin: 0 auto 14px;
       text-align: center;
     }
     .hero-sub {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: clamp(15px, 3vw, 32px);
+      font-size: clamp(13px, 2.4vw, 20px);
       font-weight: 400;
       color: var(--muted);
-      line-height: 1.45;
-      margin-top: 22px;
-      margin-bottom: 32px;
+      line-height: 1.4;
+      margin: 0 auto 22px;
       text-align: center;
     }
     .hero-price-block {
       display: flex;
-      align-items: baseline;
-      gap: 14px;
-      justify-content: center;
-      margin-bottom: 16px;
-    }
-    .hero-price {
-      font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(36px, 7vw, 64px);
-      font-weight: 700;
-      color: var(--black);
-      line-height: 1;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: 18px;
     }
     .hero-was {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: clamp(15px, 2.2vw, 22px);
+      font-size: clamp(13px, 1.8vw, 17px);
       color: var(--muted);
       text-decoration: line-through;
-      opacity: 0.55;
+      opacity: 0.6;
+    }
+    .hero-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      justify-content: center;
+    }
+    .hero-price {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: clamp(54px, 11vw, 88px);
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .hero-price-only {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: clamp(15px, 2.2vw, 20px);
+      font-weight: 500;
+      color: var(--gold);
+      line-height: 1;
     }
     .hero-trust {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 12px;
       color: var(--muted);
-      margin-bottom: 28px;
+      margin-bottom: 20px;
       text-align: center;
       letter-spacing: 0.01em;
     }
     .hero-reviews-cta {
       display: block;
-      margin: 14px auto 0;
-      background: none;
-      border: none;
+      margin: 10px auto 0;
+      background: #ffffff;
+      border: 1.5px solid var(--beige);
+      border-radius: 4px;
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 14px;
-      color: var(--muted);
+      font-weight: 500;
+      color: var(--charcoal);
       cursor: pointer;
-      padding: 6px 0;
-      transition: color 0.2s;
+      padding: 13px 0;
+      transition: border-color 0.2s, color 0.2s;
       width: 100%;
       text-align: center;
     }
-    .hero-reviews-cta:hover { color: var(--charcoal); }
+    .hero-reviews-cta:hover { border-color: var(--charcoal); color: var(--black); }
 
     /* ── Selection section ── */
     .selection-section { padding: 44px 24px; background: var(--cream); }
@@ -511,9 +531,9 @@
     /* ── Mobile ── */
     @media (max-width: 640px) {
       .selection-section { padding: 32px 16px; }
-      .hero-headline { font-size: clamp(22px, 6.5vw, 36px); line-height: 1.22; }
-      .hero-sub { font-size: clamp(14px, 4.2vw, 22px); }
-      .hero-price { font-size: clamp(32px, 9vw, 52px); }
+      .hero-headline { font-size: clamp(22px, 6.5vw, 36px); line-height: 1.2; }
+      .hero-sub { font-size: clamp(13px, 4vw, 18px); }
+      .hero-price { font-size: clamp(50px, 13vw, 72px); }
       .review-card { flex: 0 0 240px; }
     }
   </style>
@@ -547,14 +567,17 @@
   ══════════════════════════════════ -->
   <section class="hero">
     <div class="hero-text">
-      <h1 class="hero-headline">اول ما توصلك العلبة والقنينة...<br/>بتفكر صار خطا بالطلب</h1>
+      <h1 class="hero-headline">أول ما توصلك العلبة والقنينة...<br/>بتفكر صار خطأ بالطلب</h1>
       <p class="hero-sub">الثلاثي اللي صعب تقتنع بسعره لما تشوفه.</p>
       <div class="hero-price-block">
-        <span class="hero-price">₪450</span>
         <span class="hero-was">₪600</span>
+        <div class="hero-price-row">
+          <span class="hero-price">₪450</span>
+          <span class="hero-price-only">فقط</span>
+        </div>
       </div>
       <p class="hero-trust">3 عطور &nbsp;•&nbsp; 3 شخصيات مختلفة &nbsp;•&nbsp; توصيل مجاني</p>
-      <button class="btn btn-gold" onclick="handleCTA()" style="font-size:15px; padding:16px 40px; width:100%;">
+      <button class="btn btn-gold" onclick="handleCTA()" style="font-size:15px; padding:17px 40px; width:100%;">
         اطلب الثلاثي بـ₪450 &nbsp;←
       </button>
       <button class="hero-reviews-cta" onclick="scrollToReviews()">⭐ شوف شو حكو الزباين</button>
