@@ -7,3 +7,7 @@
 [SUPABASE] KEY prefix (first 40 chars): eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ
 [SUPABASE] KEY role (decoded): anon
 SILLAGE server running on http://localhost:5000
+[GET /api/orders] hit
+[GET /api/orders] returning 15 rows
+[GET /api/orders] hit
+[GET /api/orders] returning 15 rows
