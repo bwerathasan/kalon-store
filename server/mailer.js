@@ -14,6 +14,8 @@ const SKU_LABELS = {
   sweet:  'Sillage Sweet',
 };
 
+const PRICES = { 1: 200, 2: 350, 3: 450 };
+
 function esc(str) {
   return String(str || '')
     .replace(/&/g,  '&amp;')
@@ -54,7 +56,9 @@ function getProduct(order) {
     return SKU_LABELS[sku] + (count > 1 ? ' × ' + count : '');
   }).join(' + ');
 
-  return { label: label, lines: lines, total: '₪450' };
+  var price = PRICES[parts.length] || 450;
+
+  return { label: label, lines: lines, total: '₪' + price };
 }
 
 async function sendAdminNotification(order) {

@@ -6,11 +6,11 @@ const { sendOrderEmails } = require('../mailer');
 // ── Valid individual SKUs ──
 const VALID_SKUS = new Set(['citrus', 'rouge', 'sweet']);
 
-// ── Parse and validate product string ("citrus,rouge,sweet") ──
+// ── Parse and validate product string ("citrus" / "citrus,rouge" / "citrus,rouge,sweet") ──
 function parseSelections(product) {
   if (!product || typeof product !== 'string') return null;
   var parts = product.split(',').map(function(s) { return s.trim().toLowerCase(); });
-  if (parts.length !== 3) return null;
+  if (parts.length < 1 || parts.length > 3) return null;
   if (!parts.every(function(p) { return VALID_SKUS.has(p); })) return null;
   return parts;
 }
@@ -58,7 +58,7 @@ router.post('/', orderRateLimit, async (req, res) => {
   const selections = parseSelections(product);
   if (!selections) {
     console.warn('[ORDER] Invalid product selection:', product);
-    return res.status(400).json({ success: false, error: 'Invalid product selection. Must be 3 items from: citrus, rouge, sweet.' });
+    return res.status(400).json({ success: false, error: 'Invalid product selection. Must be 1–3 items from: citrus, rouge, sweet.' });
   }
 
   // Count needed per SKU (e.g. citrus×2, rouge×1)

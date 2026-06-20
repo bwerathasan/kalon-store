@@ -301,7 +301,9 @@
         var name = SKU_LABELS[sku] || sku;
         return name + (counts[sku] > 1 ? ' × ' + counts[sku] : '');
       }).join(' + ');
-      return escHtml(label) + ' &nbsp;<span style="color:#C9A84C;font-weight:700;">₪450</span>';
+      var priceMap = { 1: '₪200', 2: '₪350', 3: '₪450' };
+      var price = priceMap[parts.length] || '₪' + parts.length * 150;
+      return escHtml(label) + ' &nbsp;<span style="color:#C9A84C;font-weight:700;">' + price + '</span>';
     }
 
     function val(v) {
@@ -398,10 +400,12 @@
       var printParts = (o.product || '').split(',').map(function(s) { return s.trim(); }).filter(function(s) { return printSkuLabels[s]; });
       var printCounts = {};
       printParts.forEach(function(s) { printCounts[s] = (printCounts[s] || 0) + 1; });
+      var printPriceMap = { 1: '₪200', 2: '₪350', 3: '₪450' };
+      var printTotal = printPriceMap[printParts.length] || '₪450';
       var printRows = Object.keys(printCounts).map(function(sku) {
         var count = printCounts[sku];
         return '<tr><td>' + escHtml(printSkuLabels[sku] + (count > 1 ? ' × ' + count : '')) + '</td><td></td></tr>';
-      }).join('') + '<tr class="total-row"><td>Total</td><td>₪450</td></tr>';
+      }).join('') + '<tr class="total-row"><td>Total</td><td>' + printTotal + '</td></tr>';
 
       win.document.write(`<!DOCTYPE html>
 <html lang="ar" dir="rtl">

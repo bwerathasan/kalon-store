@@ -658,8 +658,10 @@
     var avail = { citrus: true, rouge: true, sweet: true };
     var SKU_LABELS = { citrus: 'Citrus', rouge: 'Rouge', sweet: 'Sweet' };
     var SKUS = ['citrus', 'rouge', 'sweet'];
+    var PRICES = { 1: 200, 2: 350, 3: 450 };
 
     function total() { return sel.citrus + sel.rouge + sel.sweet; }
+    function getPrice() { var t = total(); return PRICES[t] || 0; }
 
     /* ── Stepper ── */
     function increment(p) {
@@ -699,29 +701,31 @@
       // Counter in product showcase section
       var ctr = document.getElementById('sel-counter');
       if (ctr) {
-        if (t === 3) {
+        if (t === 0) {
+          ctr.textContent = 'اختر عطرًا واحدًا على الأقل';
+          ctr.className   = 'sel-counter';
+        } else if (t === 3) {
           ctr.textContent = '✓ اخترت 3 عطور — المجموع ₪450';
           ctr.className   = 'sel-counter done';
         } else {
-          ctr.textContent = 'اخترت ' + t + ' من 3';
+          ctr.textContent = 'اخترت ' + t + ' — المجموع ₪' + PRICES[t];
           ctr.className   = 'sel-counter';
         }
       }
 
-      // Form receipt: total display + guidance note
+      // Form receipt: total display + guidance note (only warn on 0)
       var totalDisp = document.getElementById('receipt-total-display');
       var qtyNote   = document.getElementById('receipt-qty-note');
       if (totalDisp) {
-        totalDisp.textContent = t === 3 ? '₪450' : '—';
-        totalDisp.style.color = t === 3 ? '' : 'var(--muted)';
+        totalDisp.textContent = t > 0 ? '₪' + PRICES[t] : '—';
+        totalDisp.style.color = t > 0 ? '' : 'var(--muted)';
       }
       if (qtyNote) {
-        if (t === 3) {
-          qtyNote.style.display = 'none';
-        } else {
-          var rem = 3 - t;
-          qtyNote.textContent   = 'أضف ' + rem + (rem === 1 ? ' عطرًا آخر للمتابعة' : ' عطور أخرى للمتابعة');
+        if (t === 0) {
+          qtyNote.textContent   = 'اختر عطرًا واحدًا على الأقل';
           qtyNote.style.display = 'block';
+        } else {
+          qtyNote.style.display = 'none';
         }
       }
     }
@@ -758,8 +762,8 @@
       errorEl.style.display = 'none';
 
       var t = total();
-      if (t !== 3) {
-        errorEl.textContent   = 'يجب أن يكون مجموع العطور 3 بالضبط.';
+      if (t < 1) {
+        errorEl.textContent   = 'يرجى اختيار عطر واحد على الأقل.';
         errorEl.style.display = 'block';
         return;
       }
