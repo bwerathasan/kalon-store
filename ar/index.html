@@ -48,41 +48,67 @@
     /* ── Hero ── */
     .hero-headline {
       font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(24px, 4vw, 48px);
+      font-size: clamp(24px, 5vw, 50px);
       font-weight: 700;
-      line-height: 1.28;
+      line-height: 1.2;
       color: var(--black);
-      margin-bottom: 12px;
+      margin-bottom: 26px;
+      text-align: center;
     }
-    .hero-benefits {
+    .hero-sub {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: clamp(13px, 1.5vw, 16px);
+      font-size: clamp(15px, 3vw, 32px);
+      font-weight: 400;
       color: var(--muted);
-      margin-bottom: 22px;
+      line-height: 1.45;
+      margin-top: 22px;
+      margin-bottom: 32px;
+      text-align: center;
     }
-    .hero-price-block { margin-bottom: 18px; }
+    .hero-price-block {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
     .hero-price {
-      display: block;
       font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(28px, 4.5vw, 46px);
+      font-size: clamp(36px, 7vw, 64px);
       font-weight: 700;
       color: var(--black);
-      line-height: 1.1;
-      margin-bottom: 4px;
+      line-height: 1;
     }
     .hero-was {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 15px;
+      font-size: clamp(15px, 2.2vw, 22px);
       color: var(--muted);
       text-decoration: line-through;
+      opacity: 0.55;
     }
     .hero-trust {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 12px;
       color: var(--muted);
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      text-align: center;
+      letter-spacing: 0.01em;
     }
-    .hero-trust::before { content: '✓ '; color: var(--gold); font-weight: 600; }
+    .hero-reviews-cta {
+      display: block;
+      margin: 14px auto 0;
+      background: none;
+      border: none;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 14px;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 6px 0;
+      transition: color 0.2s;
+      width: 100%;
+      text-align: center;
+    }
+    .hero-reviews-cta:hover { color: var(--charcoal); }
 
     /* ── Selection section ── */
     .selection-section { padding: 44px 24px; background: var(--cream); }
@@ -485,7 +511,9 @@
     /* ── Mobile ── */
     @media (max-width: 640px) {
       .selection-section { padding: 32px 16px; }
-      .hero-headline { font-size: clamp(22px, 7vw, 34px); }
+      .hero-headline { font-size: clamp(22px, 6.5vw, 36px); line-height: 1.22; }
+      .hero-sub { font-size: clamp(14px, 4.2vw, 22px); }
+      .hero-price { font-size: clamp(32px, 9vw, 52px); }
       .review-card { flex: 0 0 240px; }
     }
   </style>
@@ -519,17 +547,17 @@
   ══════════════════════════════════ -->
   <section class="hero">
     <div class="hero-text">
-      <p class="eyebrow">إكسترا دو بارفان · 100ML</p>
-      <h1 class="hero-headline">3 من أكثر العطور الرجالية طلبًا — في مجموعة واحدة</h1>
-      <p class="hero-benefits">فوحان قوي &nbsp;•&nbsp; أداء قوي &nbsp;•&nbsp; حضور يلفت الانتباه</p>
+      <h1 class="hero-headline">اول ما توصلك العلبة والقنينة...<br/>بتفكر صار خطا بالطلب</h1>
+      <p class="hero-sub">الثلاثي اللي صعب تقتنع بسعره لما تشوفه.</p>
       <div class="hero-price-block">
-        <span class="hero-price">3 عطور بـ 450₪ فقط</span>
-        <span class="hero-was">بدل 600₪</span>
+        <span class="hero-price">₪450</span>
+        <span class="hero-was">₪600</span>
       </div>
-      <p class="hero-trust">توصيل مجاني &nbsp;•&nbsp; الدفع عند الاستلام</p>
-      <button class="btn btn-gold" onclick="handleCTA()" style="font-size:15px; padding:16px 40px;">
-        اطلب الآن &nbsp;←
+      <p class="hero-trust">3 عطور &nbsp;•&nbsp; 3 شخصيات مختلفة &nbsp;•&nbsp; توصيل مجاني</p>
+      <button class="btn btn-gold" onclick="handleCTA()" style="font-size:15px; padding:16px 40px; width:100%;">
+        اطلب الثلاثي بـ₪450 &nbsp;←
       </button>
+      <button class="hero-reviews-cta" onclick="scrollToReviews()">⭐ شوف شو حكو الزباين</button>
     </div>
 
     <div class="hero-visual">
@@ -645,7 +673,7 @@
 
     <div class="reviews-track">
 
-      <article class="review-card">
+      <article class="review-card" id="review-nour">
         <p class="review-stars">★★★★★</p>
         <p class="review-text">هاذ الطلب غير نظرتي للاونلاين والعطور بصراحه.<br/><br/>اول اشي قبل لا حتى افتح العطر واشم الريحه، شكل التغليف لحاله بحكي. العلبه والقناني شكلهم فخم بشكل مش طبيعي.<br/><br/>والتوصيل كان سريع كثير، وصلني بعد 24 ساعه بس.<br/><br/>صراحه الله يوفقكم عهيك امانه بالشغل.</p>
         <div class="reviewer">
@@ -997,6 +1025,12 @@
           qtyNote.style.display = 'none';
         }
       }
+    }
+
+    /* ── Scroll to reviews (Nour's card) ── */
+    function scrollToReviews() {
+      var el = document.getElementById('review-nour');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
 
     /* ── CTA — always goes to order form ── */
