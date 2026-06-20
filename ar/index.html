@@ -71,24 +71,24 @@
     .hero-trust::before { content: '✓ '; color: var(--gold); font-weight: 600; }
 
     /* ── Selection section ── */
-    .selection-section { padding: 60px 24px; background: var(--cream); }
-    .selection-section .section-head { margin-bottom: 8px; }
+    .selection-section { padding: 44px 24px; background: var(--cream); }
+    .selection-section .section-head { margin-bottom: 6px; }
     .selection-note {
       text-align: center;
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 13px;
       color: var(--muted);
-      margin-bottom: 36px;
+      margin-bottom: 24px;
     }
     .product-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      max-width: 900px;
+      gap: 14px;
+      max-width: 860px;
       margin: 0 auto;
     }
     @media (max-width: 680px) {
-      .product-grid { grid-template-columns: 1fr; max-width: 340px; }
+      .product-grid { grid-template-columns: 1fr; max-width: 360px; }
     }
     .product-card {
       background: #fff;
@@ -104,27 +104,48 @@
     .product-card.oos { opacity: 0.42; pointer-events: none; }
     .product-card-img {
       width: 100%;
-      aspect-ratio: 3/4;
+      aspect-ratio: 4/3;
       object-fit: cover;
-      object-position: center;
+      object-position: center top;
       display: block;
     }
-    .product-card-body { padding: 14px 12px 18px; text-align: center; width: 100%; }
+    .product-card-body { padding: 10px 12px 14px; text-align: center; width: 100%; }
     .product-card-name {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 13px;
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: 0.07em;
       text-transform: uppercase;
       color: var(--charcoal);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
+    }
+    .product-card-inspired {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 10px;
+      color: var(--gold-dark);
+      margin-bottom: 5px;
+      font-weight: 500;
     }
     .product-card-tag {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       color: var(--muted);
-      margin-bottom: 14px;
+      margin-bottom: 6px;
       line-height: 1.5;
+    }
+    .product-card-use {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 5px;
+      line-height: 1.55;
+    }
+    .product-card-perf {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 11px;
+      color: var(--charcoal);
+      font-weight: 600;
+      margin-bottom: 10px;
     }
     .product-card-oos {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
@@ -220,10 +241,106 @@
     }
     .trust-s::before { content: '✓ '; color: var(--gold); font-weight: 700; }
 
-    /* ── Reviews ── */
-    .review-text, .reviewer-name, .reviewer-loc { font-family: 'IBM Plex Sans Arabic', sans-serif; }
-    .review-text { font-size: 14px; line-height: 1.65; }
-    .reviewer-loc { font-size: 11px; }
+    /* ── Reviews carousel ── */
+    .reviews-section {
+      padding: 52px 0 40px;
+      background: var(--cream);
+      border-top: 1px solid var(--beige);
+    }
+    .reviews-section .section-head {
+      padding: 0 24px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .reviews-subtitle {
+      text-align: center;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      padding: 0 24px;
+    }
+    .reviews-track {
+      display: flex;
+      gap: 14px;
+      padding: 4px 24px 12px;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: thin;
+      scrollbar-color: var(--beige) transparent;
+    }
+    .reviews-track::-webkit-scrollbar { height: 3px; }
+    .reviews-track::-webkit-scrollbar-thumb { background: var(--beige); border-radius: 2px; }
+    @media (min-width: 768px) {
+      .reviews-track {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        overflow-x: visible;
+        max-width: 960px;
+        margin: 0 auto;
+      }
+    }
+    .review-card {
+      flex: 0 0 260px;
+      scroll-snap-align: start;
+      background: #fff;
+      border: 1px solid var(--beige);
+      border-radius: 6px;
+      padding: 18px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+    .review-stars { color: var(--gold); font-size: 13px; margin-bottom: 10px; letter-spacing: 1px; }
+    .review-text {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--charcoal);
+      flex: 1;
+      margin-bottom: 14px;
+    }
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--cream-dark);
+      border: 1px solid var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--gold-dark);
+      flex-shrink: 0;
+    }
+    .reviewer-name {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 1px;
+    }
+    .reviewer-loc {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .reviews-trust-line {
+      text-align: center;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 24px;
+      padding: 0 24px;
+    }
+    .reviews-trust-line span { color: var(--gold-dark); margin: 0 4px; }
 
     /* ── Form receipt ── */
     .form-label, .form-input, .form-note, .form-optional { font-family: 'IBM Plex Sans Arabic', sans-serif; }
@@ -336,8 +453,9 @@
 
     /* ── Mobile ── */
     @media (max-width: 640px) {
-      .selection-section { padding: 44px 16px; }
+      .selection-section { padding: 32px 16px; }
       .hero-headline { font-size: clamp(22px, 7vw, 34px); }
+      .review-card { flex: 0 0 240px; }
     }
   </style>
 </head>
@@ -406,11 +524,14 @@
       <!-- CITRUS -->
       <div class="product-card" id="card-citrus">
         <img src="../images/IMG-20260617-WA0011.jpg"
-             alt="SILLAGE Citrus — إكسترا دو بارفان"
+             alt="SILLAGE Citrus"
              class="product-card-img" loading="lazy" />
         <div class="product-card-body">
           <p class="product-card-name">Citrus</p>
+          <p class="product-card-inspired">مستوحى من: Bvlgari Tygar</p>
           <p class="product-card-tag">منعش &nbsp;•&nbsp; نظيف &nbsp;•&nbsp; يومي</p>
+          <p class="product-card-use">يناسب الدوام، الجامعة، المشاوير، وكل يوم.</p>
+          <p class="product-card-perf">⏱ ثبات حتى 8 ساعات</p>
           <p class="product-card-oos">نفد المخزون</p>
           <div class="qty-control">
             <button class="qty-btn" id="dec-citrus" onclick="decrement('citrus')" aria-label="تقليل">−</button>
@@ -423,11 +544,14 @@
       <!-- ROUGE -->
       <div class="product-card" id="card-rouge">
         <img src="../images/IMG-20260617-WA0012.jpg"
-             alt="SILLAGE Rouge — إكسترا دو بارفان"
+             alt="SILLAGE Rouge"
              class="product-card-img" loading="lazy" />
         <div class="product-card-body">
           <p class="product-card-name">Rouge</p>
-          <p class="product-card-tag">فاخر &nbsp;•&nbsp; ملفت &nbsp;•&nbsp; أنيق</p>
+          <p class="product-card-inspired">مستوحى من: Baccarat Rouge 540</p>
+          <p class="product-card-tag">فاخر &nbsp;•&nbsp; ملفت &nbsp;•&nbsp; جوكر</p>
+          <p class="product-card-use">يناسب كل وقت تقريبًا، خصوصًا لما بدك ريحة تلفت وتجيب مجاملات.</p>
+          <p class="product-card-perf">⏱ ثبات حتى 10 ساعات</p>
           <p class="product-card-oos">نفد المخزون</p>
           <div class="qty-control">
             <button class="qty-btn" id="dec-rouge" onclick="decrement('rouge')" aria-label="تقليل">−</button>
@@ -440,11 +564,14 @@
       <!-- SWEET -->
       <div class="product-card" id="card-sweet">
         <img src="../images/IMG-20260617-WA0010.jpg"
-             alt="SILLAGE Sweet — إكسترا دو بارفان"
+             alt="SILLAGE Sweet"
              class="product-card-img" loading="lazy" />
         <div class="product-card-body">
           <p class="product-card-name">Sweet</p>
-          <p class="product-card-tag">دافئ &nbsp;•&nbsp; جذاب &nbsp;•&nbsp; مميز</p>
+          <p class="product-card-inspired">مستوحى من: Angels' Share by Kilian</p>
+          <p class="product-card-tag">دافئ &nbsp;•&nbsp; حلو &nbsp;•&nbsp; ليلي</p>
+          <p class="product-card-use">يناسب الطلعات، السهرات، الشتوية، والهدايا.</p>
+          <p class="product-card-perf">⏱ ثبات حتى 8 ساعات</p>
           <p class="product-card-oos">نفد المخزون</p>
           <div class="qty-control">
             <button class="qty-btn" id="dec-sweet" onclick="decrement('sweet')" aria-label="تقليل">−</button>
@@ -471,7 +598,7 @@
     <div class="trust-strip-inner">
       <span class="trust-s">توصيل مجاني</span>
       <span class="trust-s">الدفع عند الاستلام</span>
-      <span class="trust-s">١٠–١٢ ساعة أداء</span>
+      <span class="trust-s">10–12 ساعة أداء</span>
       <span class="trust-s">إكسترا دو بارفان 100ML</span>
     </div>
   </div>
@@ -479,50 +606,89 @@
   <!-- ══════════════════════════════════
        REVIEWS
   ══════════════════════════════════ -->
-  <section class="testimonials">
+  <section class="reviews-section">
     <div class="section-head">
-      <h2 class="section-title" style="font-size:clamp(24px,3.5vw,38px);">ماذا قالوا</h2>
-      <div class="divider"></div>
+      <h2 class="section-title" style="font-size:clamp(22px,3vw,34px);">ناس جرّبوا سيلاج</h2>
     </div>
-    <div class="reviews-grid">
+    <p class="reviews-subtitle">آراء من زبائن طلبوا العطور ووصلتهم</p>
+
+    <div class="reviews-track">
 
       <article class="review-card">
-        <p class="stars">★★★★★</p>
-        <p class="review-text">"Citrus منعش ونظيف — مناسب ليومي. من أول يوم حصلت على ملاحظات إيجابية."</p>
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">"طلبت الطقم كامل لخطيبي. بصراحة التغليف مرتب والريحة طالعة أغلى من سعرها. أكثر واحد عجبنا Rouge."</p>
         <div class="reviewer">
-          <div class="avatar">ل</div>
+          <div class="avatar">س</div>
           <div>
-            <p class="reviewer-name">ليلى ع.</p>
+            <p class="reviewer-name">سارة ع.</p>
+            <p class="reviewer-loc">موثّق — الطقم الكامل</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">"جبت Citrus لحالي. ريحته نظيفة ومنعشة، حلوة للدوام ومش مزعجة. بالنسبة للسعر ممتاز."</p>
+        <div class="reviewer">
+          <div class="avatar">م</div>
+          <div>
+            <p class="reviewer-name">محمد ك.</p>
             <p class="reviewer-loc">موثّق — Citrus</p>
           </div>
         </div>
       </article>
 
       <article class="review-card">
-        <p class="stars">★★★★★</p>
-        <p class="review-text">"Rouge قوي ويدوم طويلاً. الكل يسأل عنه. اشتريته مرة ثانية."</p>
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">"Rouge أكثر واحد عليه تعليقات. أول يوم حطيته سألني صاحبي شو العطر. أخذت منه 2 بعدين."</p>
         <div class="reviewer">
-          <div class="avatar">ط</div>
+          <div class="avatar">أ</div>
           <div>
-            <p class="reviewer-name">طارق م.</p>
+            <p class="reviewer-name">أحمد م.</p>
             <p class="reviewer-loc">موثّق — Rouge</p>
           </div>
         </div>
       </article>
 
       <article class="review-card">
-        <p class="stars">★★★★★</p>
-        <p class="review-text">"طلبت الثلاثة. كل عطر له طابعه الخاص. القيمة مقابل السعر ممتازة."</p>
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">"Sweet أخذته هدية لصاحبي. ريحته دافية وحلوة، مش عادية. مناسب أكثر للمسا والطلعات."</p>
+        <div class="reviewer">
+          <div class="avatar">ل</div>
+          <div>
+            <p class="reviewer-name">ليث ح.</p>
+            <p class="reviewer-loc">موثّق — Sweet</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">"طلبت 3 عطور، واحد إلي واثنين هدايا. الفكرة حلوة لأنه كل واحد إله ستايل غير."</p>
         <div class="reviewer">
           <div class="avatar">ر</div>
           <div>
-            <p class="reviewer-name">رنا وكريم ش.</p>
+            <p class="reviewer-name">رنا د.</p>
+            <p class="reviewer-loc">موثّق — الطقم الكامل</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">"كنت متردد لأنه أول مرة أطلب من الموقع، بس الدفع عند الاستلام ريّحني. الطلب وصل مرتب والروائح حلوة."</p>
+        <div class="reviewer">
+          <div class="avatar">ي</div>
+          <div>
+            <p class="reviewer-name">يوسف ن.</p>
             <p class="reviewer-loc">موثّق — الطقم الكامل</p>
           </div>
         </div>
       </article>
 
     </div>
+
+    <p class="reviews-trust-line">توصيل مجاني <span>•</span> الدفع عند الاستلام <span>•</span> تختار العطور بنفسك</p>
   </section>
 
   <!-- ══════════════════════════════════
@@ -532,7 +698,7 @@
     <div class="order-form-inner">
 
       <h2 class="order-form-title">أكمل طلبك</h2>
-      <p class="order-form-sub">الدفع عند الاستلام. توصيل مجاني. نتواصل معك خلال ٢٤ ساعة.</p>
+      <p class="order-form-sub">الدفع عند الاستلام. توصيل مجاني. نتواصل معك خلال 24 ساعة.</p>
 
       <form class="order-form" id="order-form-el" onsubmit="handleOrderSubmit(event)" novalidate>
 
@@ -622,14 +788,14 @@
 
         <div id="order-error" style="display:none; margin-top:14px; padding:12px 16px; background:rgba(180,60,60,0.1); border:1px solid rgba(180,60,60,0.35); border-radius:6px; color:#c05050; text-align:center; font-family:'IBM Plex Sans Arabic',sans-serif; font-size:14px;"></div>
 
-        <p class="form-note">سنتواصل معك خلال ٢٤ ساعة لتأكيد طلبك وترتيب التوصيل.</p>
+        <p class="form-note">سنتواصل معك خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.</p>
 
       </form>
 
       <div class="order-success" id="order-success" style="display:none;">
         <div class="order-success-icon">✓</div>
         <h3 style="font-family:'Noto Serif Arabic',serif;">تم استلام طلبك.</h3>
-        <p style="font-family:'IBM Plex Sans Arabic',sans-serif;">سنتواصل معك خلال ٢٤ ساعة لتأكيد الطلب وترتيب التوصيل.</p>
+        <p style="font-family:'IBM Plex Sans Arabic',sans-serif;">سنتواصل معك خلال 24 ساعة لتأكيد الطلب وترتيب التوصيل.</p>
       </div>
 
     </div>
@@ -646,7 +812,7 @@
       </svg>
       تواصل معنا
     </a>
-    <p class="footer-copy">© ٢٠٢٥ سيلاج. جميع الحقوق محفوظة.</p>
+    <p class="footer-copy">© 2025 سيلاج. جميع الحقوق محفوظة.</p>
   </footer>
 
   <!-- ══════════════════════════════════
