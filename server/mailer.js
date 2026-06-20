@@ -176,9 +176,9 @@ async function sendOrderEmails(order) {
 }
 
 const BACK_IN_STOCK_LABELS = {
-  citrus: { name: 'Sillage Citrus', url: 'https://sillage.store/ar' },
-  rouge:  { name: 'Sillage Rouge',  url: 'https://sillage.store/ar' },
-  sweet:  { name: 'Sillage Sweet',  url: 'https://sillage.store/ar' },
+  citrus: { name: 'Sillage Citrus', url: 'https://sillagescentt.com' },
+  rouge:  { name: 'Sillage Rouge',  url: 'https://sillagescentt.com' },
+  sweet:  { name: 'Sillage Sweet',  url: 'https://sillagescentt.com' },
 };
 
 async function sendBackInStockEmail(email, product) {

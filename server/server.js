@@ -78,20 +78,33 @@ app.get('/admin/logout', (req, res) => {
 app.use('/admin', requireAdminAuth);
 app.use('/admin', express.static(path.join(__dirname, '..', 'admin')));
 
+// ── Page routes — declared BEFORE static so they take priority over directory redirects ──
+
+// Root → Arabic Sillage page (primary storefront)
+app.get('/', (_, res) => {
+  res.sendFile(path.join(__dirname, '..', 'ar', 'index.html'));
+});
+
+// /ar → 301 canonical redirect to /
+app.get('/ar', (_, res) => {
+  res.redirect(301, '/');
+});
+
+// /ar/ (with trailing slash) → 301 to /
+app.get('/ar/', (_, res) => {
+  res.redirect(301, '/');
+});
+
+// /he → reserved for future Hebrew page
+app.get('/he', (_, res) => {
+  res.redirect(302, '/');
+});
+
 // ── Public storefront static assets ──
 // NOTE: this comes AFTER admin auth middleware so /admin is never served directly here
 app.use(express.static(path.join(__dirname, '..'), {
-  index: false, // prevent static from auto-serving admin/index.html for /admin
+  index: false, // prevent static from auto-serving index files for directories
 }));
-
-// ── Root → storefront index.html ──
-app.get('/', (_, res) => {
-  res.sendFile(path.join(__dirname, '..', 'index.html'));
-});
-
-app.get('/ar', (_, res) => {
-  res.sendFile(path.join(__dirname, '..', 'ar', 'index.html'));
-});
 
 // ── GET /api/orders — must be registered BEFORE the router ──
 const supabase = require('./supabase');
