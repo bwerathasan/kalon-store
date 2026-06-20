@@ -13,6 +13,20 @@
   <link rel="stylesheet" href="../style.css?v=5" />
   <link rel="stylesheet" href="../rtl.css" />
 
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1359606469381115');
+  fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1359606469381115&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+
   <style>
     /* ── Arabic base overrides ── */
     body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
@@ -987,6 +1001,11 @@
 
     /* ── CTA — always goes to order form ── */
     function handleCTA() {
+      if (window.fbq) fbq('track', 'InitiateCheckout', {
+        value:     getPrice(),
+        currency:  'ILS',
+        num_items: total()
+      });
       document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
     }
 
@@ -1065,6 +1084,11 @@
         });
       })
       .then(function() {
+        if (window.fbq) fbq('track', 'Purchase', {
+          value:     getPrice(),
+          currency:  'ILS',
+          num_items: total()
+        });
         document.getElementById('order-form-el').style.display = 'none';
         document.getElementById('order-success').style.display = 'block';
         window.scrollTo({ top: document.getElementById('order-form').offsetTop - 80, behavior: 'smooth' });
