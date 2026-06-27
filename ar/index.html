@@ -58,14 +58,14 @@
 
     /* ── Hero mobile: image constrained, text padding restored ── */
     @media (max-width: 860px) {
-      .hero { gap: 0 !important; padding: 0 0 24px !important; }
-      .hero-text { padding: 8px 20px 0; }
+      .hero { gap: 0 !important; padding: 0 0 16px !important; }
+      .hero-text { padding: 6px 20px 0; }
 
       .hero-visual {
         order: -1;
         position: relative;
-        height: 42vh;
-        height: 42svh;
+        height: 32vh;
+        height: 32svh;
         min-height: unset;
         max-height: unset;
         border-radius: 0;
@@ -519,13 +519,13 @@
       .review-card { flex: 0 0 78vw; scroll-snap-align: start; }
 
       /* Hero text — tight but readable */
-      .hero-headline { font-size: clamp(20px, 5.5vw, 26px); line-height: 1.18; margin-bottom: 4px; max-width: 100%; }
-      .hero-sub { font-size: 13px; line-height: 1.5; margin-bottom: 7px; }
-      .hero-price-block { margin-bottom: 7px; }
-      .hero-price { font-size: clamp(44px, 11vw, 56px); }
-      .hero-price-only { font-size: 12px; }
-      .hero-trust { font-size: 10px; gap: 4px 8px; margin-bottom: 8px; }
-      .hero-reviews-cta { font-size: 13px; padding: 9px 0; margin-top: 6px; opacity: 0.85; }
+      .hero-headline { font-size: clamp(19px, 5vw, 24px); line-height: 1.15; margin-bottom: 3px; max-width: 100%; }
+      .hero-sub { font-size: 12px; line-height: 1.4; margin-bottom: 5px; }
+      .hero-price-block { margin-bottom: 5px; }
+      .hero-price { font-size: clamp(40px, 10vw, 50px); }
+      .hero-price-only { font-size: 11px; }
+      .hero-trust { font-size: 10px; gap: 3px 6px; margin-bottom: 6px; }
+      .hero-reviews-cta { font-size: 13px; padding: 8px 0; margin-top: 4px; opacity: 0.85; }
       .hero-footer-trust { display: none; }
     }
   </style>
