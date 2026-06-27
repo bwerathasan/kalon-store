@@ -1249,8 +1249,8 @@ footer {
   .hero-visual {
     order: -1;
     position: relative;
-    height: 40vh;
-    height: 40svh;
+    height: 42vh;
+    height: 42svh;
     min-height: unset;
     max-height: unset;
     border-radius: 0;
@@ -1273,7 +1273,7 @@ footer {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 15%;
+    object-position: center 40%;
     border-radius: 0;
     max-height: none;
   }
