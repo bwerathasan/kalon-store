@@ -58,30 +58,31 @@
 
     /* ── Hero mobile: image constrained, text padding restored ── */
     @media (max-width: 860px) {
-      .hero { gap: 0 !important; padding: 0 0 16px !important; min-height: unset !important; }
+      .hero { gap: 0 !important; padding: 0 0 16px !important; min-height: unset !important; margin: 0 !important; }
       .hero-text { padding: 6px 20px 0; }
 
       .hero-visual {
-        order: -1;
-        position: relative;
-        width: 100%;
-        height: 38vh;
-        height: 38svh;
-        min-height: unset;
-        max-height: unset;
-        border-radius: 0;
-        overflow: hidden;
-        flex-shrink: 0;
+        order: -1 !important;
+        position: relative !important;
+        width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+        height: 38svh !important;
+        min-height: unset !important;
+        max-height: unset !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
+        flex-shrink: 0 !important;
       }
-      .hero-visual::before { content: none; }
-      .hero-visual::after { content: none; }
+      .hero-visual::before { content: none !important; }
+      .hero-visual::after { content: none !important; }
       .hero-visual .hero-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-        border-radius: 0;
-        display: block;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        border-radius: 0 !important;
+        display: block !important;
       }
     }
 
