@@ -71,23 +71,27 @@
         border-radius: 0;
         overflow: hidden;
         flex-shrink: 0;
+        background: #2b3627;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       .hero-visual::after {
         content: '';
         position: absolute;
         bottom: 0; left: 0; right: 0;
-        height: 60px;
+        height: 50px;
         background: linear-gradient(to bottom, transparent, #FAF7F2);
         pointer-events: none;
         z-index: 1;
       }
       .hero-visual .hero-img {
-        width: 100%;
+        width: auto;
         height: 100%;
-        object-fit: cover;
-        object-position: center 40%;
+        object-fit: contain;
         border-radius: 0;
         max-height: none;
+        max-width: 100%;
       }
     }
 
@@ -599,8 +603,7 @@
       <img src="../images/sillage-hero.png"
            alt="SILLAGE — إكسترا دو بارفان 100ML"
            class="hero-img"
-           loading="eager"
-           style="border-radius:4px; object-fit:cover; object-position:center;" />
+           loading="eager" />
     </div>
   </section>
 
