@@ -9,7 +9,15 @@
       "PowerShell(Stop-Process -Name \"node\" -ErrorAction SilentlyContinue; Start-Sleep -Seconds 1; Start-Process -NoNewWindow -FilePath \"node\" -ArgumentList \"c:\\\\Users\\\\hasan\\\\kalon-store\\\\server\\\\server.js\" -RedirectStandardOutput \"c:\\\\Users\\\\hasan\\\\kalon-store\\\\server\\\\server.log\" -RedirectStandardError \"c:\\\\Users\\\\hasan\\\\kalon-store\\\\server\\\\server.err\"; Start-Sleep -Seconds 3; \\(Invoke-WebRequest -Uri \"http://localhost:5000/health\" -UseBasicParsing\\).Content)",
       "PowerShell($r = Invoke-WebRequest -Uri \"http://localhost:5000/\" -UseBasicParsing; \"Status: $\\($r.StatusCode\\)\"; if \\($r.Content -match \"fbq\\\\\\('init','1359606469381115'\\\\\\)\"\\) { \"Pixel init: FOUND\" } else { \"Pixel init: MISSING\" }; if \\($r.Content -match \"fbq\\\\\\('track','PageView'\\\\\\)\"\\) { \"PageView: FOUND\" } else { \"PageView: MISSING\" }; if \\($r.Content -match \"InitiateCheckout\"\\) { \"InitiateCheckout: FOUND\" } else { \"InitiateCheckout: MISSING\" }; if \\($r.Content -match \"Purchase\"\\) { \"Purchase: FOUND\" } else { \"Purchase: MISSING\" })",
       "Bash(node -e \"require\\('puppeteer-core'\\); console.log\\('puppeteer-core OK'\\)\")",
-      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\hasan\\\\kalon-store\" -Depth 1 | Where-Object { $_.Name -ne \"node_modules\" } | Select-Object Name, LastWriteTime)"
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\hasan\\\\kalon-store\" -Depth 1 | Where-Object { $_.Name -ne \"node_modules\" } | Select-Object Name, LastWriteTime)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\hasan\\\\kalon-store\\\\server\" -Depth 1 | Where-Object { $_.Name -ne \"node_modules\" } | Select-Object Name)",
+      "PowerShell(git -C \"c:\\\\Users\\\\hasan\\\\kalon-store\" remote -v)",
+      "PowerShell(git -C \"c:\\\\Users\\\\hasan\\\\kalon-store\" log --oneline -5)",
+      "PowerShell(git -C \"c:\\\\Users\\\\hasan\\\\kalon-store\" status)",
+      "PowerShell(git -C \"c:\\\\Users\\\\hasan\\\\kalon-store\" show 8d75dc5 --stat)",
+      "PowerShell(git -C \"c:\\\\Users\\\\hasan\\\\kalon-store\" diff HEAD~1 HEAD -- ar/index.html)",
+      "PowerShell(Get-ChildItem \"$env:USERPROFILE\\\\.ssh\" -ErrorAction SilentlyContinue | Select-Object Name)",
+      "PowerShell(git -C \"c:\\\\Users\\\\hasan\\\\kalon-store\" log --all --oneline --format=\"%H %s\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\hasan\\kalon-store\\images"
