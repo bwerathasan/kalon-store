@@ -1240,26 +1240,42 @@ footer {
 @media (max-width: 860px) {
   .hero {
     grid-template-columns: 1fr;
-    padding: 20px 20px 32px;
+    padding: 0 0 24px;
     min-height: auto;
-    gap: 18px;
+    gap: 0;
   }
 
-  /* visual goes first on mobile */
+  /* visual goes first on mobile, constrained height */
   .hero-visual {
     order: -1;
+    position: relative;
+    height: 40vh;
+    height: 40svh;
     min-height: unset;
     max-height: unset;
-    border-radius: 6px;
+    border-radius: 0;
     overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  /* cream fade-out at bottom of image — seamless into content */
+  .hero-visual::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, #FAF7F2);
+    pointer-events: none;
+    z-index: 1;
   }
 
   .hero-visual .hero-img {
     width: 100%;
-    height: auto;
-    object-fit: fill;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+    border-radius: 0;
     max-height: none;
-    border-radius: 6px;
   }
 
   .product-visual { height: 260px; }
