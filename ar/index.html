@@ -911,7 +911,7 @@
           <div class="receipt-actions" id="receipt-actions">
             <button class="receipt-change-link" onclick="scrollToSelection()">تغيير العطر</button>
             <span class="receipt-actions-sep">|</span>
-            <button class="receipt-remove-link" onclick="removeScent()">إزالة العطر</button>
+            <button type="button" class="receipt-remove-link" onclick="removeScent()">إزالة العطر</button>
           </div>
 
           <hr class="receipt-hr" />
@@ -1072,7 +1072,7 @@
       if (_ctxStickyCta) {
         var formInView = _formSection && _formSection.getBoundingClientRect().top < window.innerHeight * 0.6;
         var showForReviews = reviewsOpened && !formInView;
-        var showForRemoval = perfumeRemoved && !selectedScent;
+        var showForRemoval = perfumeRemoved && !selectedScent && !isSelectionVisible();
         _ctxStickyCta.classList.toggle('visible', showForReviews || showForRemoval);
       }
     }
@@ -1216,6 +1216,13 @@
     var _nav = document.getElementById('main-nav');
     var _ctxStickyCta = document.getElementById('ctx-sticky-cta');
     var _formSection = document.getElementById('order-form');
+    var _selSection  = document.getElementById('selection');
+
+    function isSelectionVisible() {
+      if (!_selSection) return false;
+      var r = _selSection.getBoundingClientRect();
+      return r.top < window.innerHeight * 0.8 && r.bottom > 0;
+    }
 
     window.addEventListener('scroll', function() {
       var sy = window.scrollY;
@@ -1227,7 +1234,7 @@
       if (_ctxStickyCta) {
         var formInView = _formSection && _formSection.getBoundingClientRect().top < window.innerHeight * 0.6;
         var showForReviews = reviewsOpened && !formInView;
-        var showForRemoval = perfumeRemoved && !selectedScent;
+        var showForRemoval = perfumeRemoved && !selectedScent && !isSelectionVisible();
         _ctxStickyCta.classList.toggle('visible', showForReviews || showForRemoval);
       }
     }, { passive: true });
