@@ -511,6 +511,19 @@
     }
     .footer-wa:hover { color: #25D366; }
 
+    /* ── Badge ── */
+    .product-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-bottom: 6px;
+    }
+
     /* ── Mobile ── */
     @media (max-width: 640px) {
       .selection-section { padding: 36px 16px; }
@@ -582,9 +595,8 @@
           توصيل مجاني
         </span>
       </div>
-      <button class="btn btn-gold" onclick="handleCTA()" style="font-size:15px; padding:17px 40px; width:100%; display:flex; align-items:center; justify-content:center; gap:8px;">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-        اطلب الآن — 250₪ واصل لباب بيتك
+      <button class="btn btn-gold" onclick="scrollToSelection()" style="font-size:15px; padding:17px 40px; width:100%; display:flex; align-items:center; justify-content:center; gap:8px;">
+        اختر عطرك الآن
       </button>
       <button class="hero-reviews-cta" onclick="scrollToReviews()">⭐ شوف شو حكو الزباين</button>
       <p class="hero-footer-trust">
@@ -612,21 +624,6 @@
 
     <div class="product-grid">
 
-      <!-- CITRUS -->
-      <div class="product-card" id="card-citrus" onclick="selectScent('citrus')">
-        <img src="../images/IMG-20260617-WA0011.jpg"
-             alt="SILLAGE Citrus"
-             class="product-card-img" loading="lazy" />
-        <div class="product-card-body">
-          <p class="product-card-name">Citrus</p>
-          <p class="product-card-tag">منعش &nbsp;•&nbsp; نظيف &nbsp;•&nbsp; يومي</p>
-          <p class="product-card-use">يناسب الدوام، الجامعة، المشاوير، وكل يوم.</p>
-          <p class="product-card-perf">⏱ ثبات 10–12 ساعة</p>
-          <p class="product-card-oos">نفد المخزون</p>
-          <button class="scent-select-btn" id="btn-citrus" onclick="event.stopPropagation(); selectScent('citrus')">اختر هذا العطر</button>
-        </div>
-      </div>
-
       <!-- ROUGE -->
       <div class="product-card" id="card-rouge" onclick="selectScent('rouge')">
         <img src="../images/IMG-20260617-WA0012.jpg"
@@ -634,11 +631,12 @@
              class="product-card-img" loading="lazy" />
         <div class="product-card-body">
           <p class="product-card-name">Rouge</p>
-          <p class="product-card-tag">فاخر &nbsp;•&nbsp; ملفت &nbsp;•&nbsp; جوكر</p>
-          <p class="product-card-use">يناسب كل وقت تقريبًا، خصوصًا لما بدك ريحة تلفت وتجيب مجاملات.</p>
-          <p class="product-card-perf">⏱ ثبات 10–12 ساعة</p>
+          <span class="product-badge">⭐ الأكثر طلبًا</span>
+          <p class="product-card-tag">إذا بدك الناس توقفك وتسألك: شو اسم عطرك؟ فهذا هو.</p>
+          <p class="product-card-use">رائحة فاخرة بحضور قوي تلفت الانتباه من أول رشة، وتناسب أغلب المناسبات. إذا بدك عطراً يعطي انطباعاً قوياً ويبقى معك لساعات، فهذا هو الخيار الأول.</p>
+          <p class="product-card-perf">🔥 الأكثر طلبًا • ثبات وفوحان 10–12 ساعة</p>
           <p class="product-card-oos">نفد المخزون</p>
-          <button class="scent-select-btn" id="btn-rouge" onclick="event.stopPropagation(); selectScent('rouge')">اختر هذا العطر</button>
+          <button class="scent-select-btn" id="btn-rouge" onclick="event.stopPropagation(); selectAndOrder('rouge')">احصل على Rouge بـ₪250</button>
         </div>
       </div>
 
@@ -649,20 +647,29 @@
              class="product-card-img" loading="lazy" />
         <div class="product-card-body">
           <p class="product-card-name">Sweet</p>
-          <p class="product-card-tag">دافئ &nbsp;•&nbsp; حلو &nbsp;•&nbsp; ليلي</p>
-          <p class="product-card-use">يناسب الطلعات، السهرات، والمواعيد الخاصة.</p>
-          <p class="product-card-perf">⏱ ثبات 10–12 ساعة</p>
+          <p class="product-card-tag">إذا بتحب العطور اللي تترك أثر من أول رشة، فهذا هو.</p>
+          <p class="product-card-use">حلو، غني، وفواح بشكل واضح، مصمم للي يحب الريحة تبقى موجودة لساعات طويلة وتلفت الانتباه بدون ما تكون مزعجة.</p>
+          <p class="product-card-perf">🔥 فوحان قوي • ثبات 10–12 ساعة</p>
           <p class="product-card-oos">نفد المخزون</p>
-          <button class="scent-select-btn" id="btn-sweet" onclick="event.stopPropagation(); selectScent('sweet')">اختر هذا العطر</button>
+          <button class="scent-select-btn" id="btn-sweet" onclick="event.stopPropagation(); selectAndOrder('sweet')">احصل على Sweet بـ₪250</button>
         </div>
       </div>
 
-    </div>
+      <!-- CITRUS -->
+      <div class="product-card" id="card-citrus" onclick="selectScent('citrus')">
+        <img src="../images/IMG-20260617-WA0011.jpg"
+             alt="SILLAGE Citrus"
+             class="product-card-img" loading="lazy" />
+        <div class="product-card-body">
+          <p class="product-card-name">Citrus</p>
+          <p class="product-card-tag">إذا بتحب تحس بالنظافة والانتعاش من أول رشة، فهذا اختيارك.</p>
+          <p class="product-card-use">رائحة منعشة وراقية تناسب الدوام، الجامعة، والمشاوير اليومية، وتعطي إحساسًا بالنظافة والثقة طوال اليوم.</p>
+          <p class="product-card-perf">🔥 ثبات 10–12 ساعة</p>
+          <p class="product-card-oos">نفد المخزون</p>
+          <button class="scent-select-btn" id="btn-citrus" onclick="event.stopPropagation(); selectAndOrder('citrus')">احصل على Citrus بـ₪250</button>
+        </div>
+      </div>
 
-    <div class="sel-footer">
-      <button class="btn btn-gold" onclick="handleCTA()" style="font-size:15px; padding:17px 40px; width:100%; display:flex; align-items:center; justify-content:center; gap:8px;">
-        اطلب الآن — 250₪ واصل لباب بيتك
-      </button>
     </div>
   </section>
 
@@ -942,8 +949,8 @@
        STICKY CTA
   ══════════════════════════════════ -->
   <div class="floating-cta" id="sticky-cta">
-    <button class="btn btn-gold" onclick="handleCTA()" style="border-radius:28px; padding:15px 32px; font-size:14px; box-shadow:0 4px 28px rgba(201,168,76,0.55); white-space:nowrap;">
-      اطلب الآن — 250₪ واصل لباب بيتك
+    <button class="btn btn-gold" id="sticky-cta-btn" onclick="handleStickyCTA()" style="border-radius:28px; padding:15px 32px; font-size:14px; box-shadow:0 4px 28px rgba(201,168,76,0.55); white-space:nowrap;">
+      اختر عطرك أولًا
     </button>
   </div>
 
@@ -955,6 +962,7 @@
     var selectedScent = null;
     var PRICE = 250;
     var LABELS = { citrus: 'Citrus', rouge: 'Rouge', sweet: 'Sweet' };
+    var BTN_LABELS = { citrus: 'احصل على Citrus بـ₪250', rouge: 'احصل على Rouge بـ₪250', sweet: 'احصل على Sweet بـ₪250' };
     var SKUS = ['citrus', 'rouge', 'sweet'];
     var avail = { citrus: true, rouge: true, sweet: true };
 
@@ -974,10 +982,16 @@
         var sel  = selectedScent === p;
         if (card) card.classList.toggle('has-qty', sel);
         if (btn) {
-          btn.textContent = sel ? '✓ تم الاختيار' : 'اختر هذا العطر';
+          btn.textContent = sel ? '✓ تم الاختيار' : BTN_LABELS[p];
           btn.className   = 'scent-select-btn' + (sel ? ' selected' : '');
         }
       });
+
+      // Sticky CTA text
+      var stickyBtn = document.getElementById('sticky-cta-btn');
+      if (stickyBtn) {
+        stickyBtn.textContent = selectedScent ? 'أكمل طلب ' + LABELS[selectedScent] : 'اختر عطرك أولًا';
+      }
 
       // Form receipt
       var nameEl  = document.getElementById('receipt-scent-name');
@@ -991,6 +1005,26 @@
         if (nameEl)  nameEl.style.display  = 'none';
         if (priceEl) priceEl.style.display = 'none';
         if (noSelEl) noSelEl.style.display = 'block';
+      }
+    }
+
+    /* ── Scroll to selection ── */
+    function scrollToSelection() {
+      document.getElementById('selection').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    /* ── Select scent and go to form ── */
+    function selectAndOrder(p) {
+      selectScent(p);
+      handleCTA();
+    }
+
+    /* ── Sticky CTA action ── */
+    function handleStickyCTA() {
+      if (selectedScent) {
+        handleCTA();
+      } else {
+        scrollToSelection();
       }
     }
 
@@ -1110,11 +1144,14 @@
       // Nav shadow
       if (_nav) _nav.style.boxShadow = sy > 40 ? '0 2px 18px rgba(0,0,0,0.07)' : 'none';
 
-      // Sticky CTA: show after hero, hide when form is in view
+      // Sticky CTA: show after hero, hide while inside selection section or form is in view
       if (_stickyCta) {
         var heroH = (document.querySelector('.hero') || { offsetHeight: 400 }).offsetHeight;
+        var _sel = document.getElementById('selection');
+        var selRect = _sel ? _sel.getBoundingClientRect() : null;
+        var selInView = selRect && selRect.bottom > 0 && selRect.top < window.innerHeight;
         var formInView = _formSection && _formSection.getBoundingClientRect().top < window.innerHeight * 0.7;
-        _stickyCta.classList.toggle('visible', sy > heroH && !formInView);
+        _stickyCta.classList.toggle('visible', sy > heroH && !selInView && !formInView);
       }
     }, { passive: true });
 
