@@ -1072,8 +1072,8 @@
       if (_ctxStickyCta) {
         var formInView = _formSection && _formSection.getBoundingClientRect().top < window.innerHeight * 0.6;
         var showForReviews = reviewsOpened && !formInView;
-        var showForRemoval = perfumeRemoved && !selectedScent && !isSelectionVisible();
-        _ctxStickyCta.classList.toggle('visible', showForReviews || showForRemoval);
+        var showForRemoval = perfumeRemoved && !selectedScent;
+        _ctxStickyCta.classList.toggle('visible', !isSelectionVisible() && (showForReviews || showForRemoval));
       }
     }
 
@@ -1234,8 +1234,8 @@
       if (_ctxStickyCta) {
         var formInView = _formSection && _formSection.getBoundingClientRect().top < window.innerHeight * 0.6;
         var showForReviews = reviewsOpened && !formInView;
-        var showForRemoval = perfumeRemoved && !selectedScent && !isSelectionVisible();
-        _ctxStickyCta.classList.toggle('visible', showForReviews || showForRemoval);
+        var showForRemoval = perfumeRemoved && !selectedScent;
+        _ctxStickyCta.classList.toggle('visible', !isSelectionVisible() && (showForReviews || showForRemoval));
       }
     }, { passive: true });
 
