@@ -182,6 +182,39 @@
     }
     .hero-reviews-cta:hover { border-color: var(--charcoal); color: var(--black); }
 
+    /* ── Receipt change link ── */
+    .receipt-change-link {
+      display: none;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: underline;
+      cursor: pointer;
+      margin-top: 5px;
+      background: none;
+      border: none;
+      padding: 0;
+      text-align: right;
+    }
+    .receipt-change-link:hover { color: var(--charcoal); }
+
+    /* ── Contextual sticky CTA ── */
+    .ctx-sticky-cta {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      will-change: opacity;
+    }
+    .ctx-sticky-cta.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     /* ── Selection section ── */
     .selection-section { padding: 52px 24px; background: var(--cream); }
     .selection-section .section-head { margin-bottom: 6px; }
@@ -204,18 +237,20 @@
         display: flex;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
+        overscroll-behavior-x: contain;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
         gap: 12px;
         max-width: none;
         margin: 0 -24px;
-        padding: 0 10vw 6px;
+        padding: 0 8vw 6px;
       }
       .product-grid::-webkit-scrollbar { display: none; }
       .product-card {
-        flex: 0 0 80vw;
+        flex: 0 0 84vw;
         min-width: 0;
         scroll-snap-align: center;
+        scroll-snap-stop: always;
       }
       .product-card-img { height: 240px; }
     }
@@ -596,8 +631,8 @@
         </span>
       </div>
       <button class="btn btn-gold" onclick="scrollToSelection()" style="font-size:15px; padding:17px 40px; width:100%; display:flex; align-items:center; justify-content:center; gap:8px;">
-        اختر عطرك الآن
-      </button>
+          اختر عطرك
+</button>
       <button class="hero-reviews-cta" onclick="scrollToReviews()">⭐ شوف شو حكو الزباين</button>
       <p class="hero-footer-trust">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -864,6 +899,7 @@
             <span class="receipt-scent-price" id="receipt-scent-price"></span>
           </div>
           <span class="receipt-no-sel" id="receipt-no-sel">يرجى اختيار عطرك من القسم أعلاه</span>
+          <button class="receipt-change-link" id="receipt-change-link" onclick="scrollToSelection()">تغيير العطر</button>
 
           <hr class="receipt-hr" />
           <div class="receipt-row total">
@@ -946,11 +982,12 @@
   </footer>
 
   <!-- ══════════════════════════════════
-       STICKY CTA
+       CONTEXTUAL STICKY CTA
   ══════════════════════════════════ -->
-  <div class="floating-cta" id="sticky-cta">
-    <button class="btn btn-gold" id="sticky-cta-btn" onclick="handleStickyCTA()" style="border-radius:28px; padding:15px 32px; font-size:14px; box-shadow:0 4px 28px rgba(201,168,76,0.55); white-space:nowrap;">
-      اختر عطرك أولًا
+  <div class="ctx-sticky-cta" id="ctx-sticky-cta">
+    <button class="btn btn-gold" id="ctx-sticky-btn" onclick="handleCtxCTA()"
+      style="border-radius:28px; padding:15px 28px; font-size:14px; box-shadow:0 4px 28px rgba(201,168,76,0.55); white-space:nowrap; max-width:90vw;">
+      رجعني لاختيار عطري
     </button>
   </div>
 
@@ -960,6 +997,7 @@
   <script>
     /* ── State ── */
     var selectedScent = null;
+    var reviewsOpened = false;
     var PRICE = 250;
     var LABELS = { citrus: 'Citrus', rouge: 'Rouge', sweet: 'Sweet' };
     var BTN_LABELS = { citrus: 'احصل على Citrus بـ₪250', rouge: 'احصل على Rouge بـ₪250', sweet: 'احصل على Sweet بـ₪250' };
@@ -987,24 +1025,41 @@
         }
       });
 
-      // Sticky CTA text
-      var stickyBtn = document.getElementById('sticky-cta-btn');
-      if (stickyBtn) {
-        stickyBtn.textContent = selectedScent ? 'أكمل طلب ' + LABELS[selectedScent] : 'اختر عطرك أولًا';
+      // Form receipt
+      var nameEl     = document.getElementById('receipt-scent-name');
+      var priceEl    = document.getElementById('receipt-scent-price');
+      var noSelEl    = document.getElementById('receipt-no-sel');
+      var changeLink = document.getElementById('receipt-change-link');
+      if (selectedScent) {
+        if (nameEl)     { nameEl.textContent  = LABELS[selectedScent]; nameEl.style.display = 'block'; }
+        if (priceEl)    { priceEl.textContent = '₪' + PRICE; priceEl.style.display = 'block'; }
+        if (noSelEl)    noSelEl.style.display  = 'none';
+        if (changeLink) changeLink.style.display = 'inline';
+      } else {
+        if (nameEl)     nameEl.style.display  = 'none';
+        if (priceEl)    priceEl.style.display = 'none';
+        if (noSelEl)    noSelEl.style.display  = 'block';
+        if (changeLink) changeLink.style.display = 'none';
       }
 
-      // Form receipt
-      var nameEl  = document.getElementById('receipt-scent-name');
-      var priceEl = document.getElementById('receipt-scent-price');
-      var noSelEl = document.getElementById('receipt-no-sel');
+      // Contextual sticky CTA label
+      updateCtxStickyCTA();
+    }
+
+    /* ── Contextual sticky CTA ── */
+    function updateCtxStickyCTA() {
+      var btn = document.getElementById('ctx-sticky-btn');
+      if (!btn) return;
+      btn.textContent = selectedScent
+        ? 'رجعني لأكمل طلبي'
+        : 'رجعني لاختيار عطري';
+    }
+
+    function handleCtxCTA() {
       if (selectedScent) {
-        if (nameEl)  { nameEl.textContent  = LABELS[selectedScent]; nameEl.style.display = 'block'; }
-        if (priceEl) { priceEl.textContent = '₪' + PRICE; priceEl.style.display = 'block'; }
-        if (noSelEl) noSelEl.style.display = 'none';
+        handleCTA();
       } else {
-        if (nameEl)  nameEl.style.display  = 'none';
-        if (priceEl) priceEl.style.display = 'none';
-        if (noSelEl) noSelEl.style.display = 'block';
+        scrollToSelection();
       }
     }
 
@@ -1019,17 +1074,10 @@
       handleCTA();
     }
 
-    /* ── Sticky CTA action ── */
-    function handleStickyCTA() {
-      if (selectedScent) {
-        handleCTA();
-      } else {
-        scrollToSelection();
-      }
-    }
-
     /* ── Scroll to reviews ── */
     function scrollToReviews() {
+      reviewsOpened = true;
+      updateCtxStickyCTA();
       var section = document.querySelector('.reviews-section');
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1135,7 +1183,7 @@
 
     /* ── Nav shadow on scroll ── */
     var _nav = document.getElementById('main-nav');
-    var _stickyCta = document.getElementById('sticky-cta');
+    var _ctxStickyCta = document.getElementById('ctx-sticky-cta');
     var _formSection = document.getElementById('order-form');
 
     window.addEventListener('scroll', function() {
@@ -1144,14 +1192,10 @@
       // Nav shadow
       if (_nav) _nav.style.boxShadow = sy > 40 ? '0 2px 18px rgba(0,0,0,0.07)' : 'none';
 
-      // Sticky CTA: show after hero, hide while inside selection section or form is in view
-      if (_stickyCta) {
-        var heroH = (document.querySelector('.hero') || { offsetHeight: 400 }).offsetHeight;
-        var _sel = document.getElementById('selection');
-        var selRect = _sel ? _sel.getBoundingClientRect() : null;
-        var selInView = selRect && selRect.bottom > 0 && selRect.top < window.innerHeight;
-        var formInView = _formSection && _formSection.getBoundingClientRect().top < window.innerHeight * 0.7;
-        _stickyCta.classList.toggle('visible', sy > heroH && !selInView && !formInView);
+      // Contextual sticky CTA: only shown after reviews clicked, hidden when form is in view
+      if (_ctxStickyCta) {
+        var formInView = _formSection && _formSection.getBoundingClientRect().top < window.innerHeight * 0.6;
+        _ctxStickyCta.classList.toggle('visible', reviewsOpened && !formInView);
       }
     }, { passive: true });
 
