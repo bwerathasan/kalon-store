@@ -7,7 +7,13 @@
       "Bash(powershell -Command \"Set-Location 'C:\\\\Users\\\\hasan\\\\kalon-store\\\\server'; npm install\")",
       "Bash(powershell -Command \"Get-Command node, npm -ErrorAction SilentlyContinue | Select-Object Name, Source\")",
       "Bash(powershell -Command \"Set-Location 'C:\\\\Users\\\\hasan\\\\kalon-store\\\\server'; & 'C:\\\\Program Files\\\\nodejs\\\\npm.cmd' install 2>&1\")",
-      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Users\\\\hasan\\\\kalon-store\\\\server\\\\node_modules' | Measure-Object | Select-Object Count\")"
+      "Bash(powershell -Command \"Get-ChildItem 'C:\\\\Users\\\\hasan\\\\kalon-store\\\\server\\\\node_modules' | Measure-Object | Select-Object Count\")",
+      "Bash(npx --yes serve . -p 4040 -s)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_resize",
+      "mcp__playwright__browser_evaluate",
+      "Bash(python -m http.server 4041)"
     ]
   }
 }

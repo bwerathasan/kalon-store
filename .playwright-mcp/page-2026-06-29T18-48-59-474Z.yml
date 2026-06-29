@@ -1,0 +1,260 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]: توصيل مجاني • الدفع عند الاستلام
+  - navigation [ref=e3]:
+    - link "SILLAGE" [ref=e4] [cursor=pointer]:
+      - /url: /
+    - generic [ref=e5]:
+      - link "تواصل عبر واتساب" [ref=e6] [cursor=pointer]:
+        - /url: https://wa.me/972542920392
+        - img [ref=e7]
+      - button "اختر عطرك" [ref=e9] [cursor=pointer]
+  - generic [ref=e10]:
+    - generic [ref=e11]:
+      - heading "تجربة فخمة بسعر ذكي لأنك تستحق الأفضل" [level=1] [ref=e12]:
+        - text: تجربة فخمة بسعر ذكي
+        - text: لأنك تستحق الأفضل
+      - paragraph [ref=e13]: فوحان قوي يملأ المكان. ثبات يمتد طوال اليوم. مظهر فاخر يتحدث قبلك.
+      - generic [ref=e15]:
+        - generic [ref=e16]: ₪250
+        - generic [ref=e17]: فقط، شامل التوصيل
+      - generic [ref=e18]:
+        - generic [ref=e19]:
+          - img [ref=e20]
+          - text: 10–12 ساعة ثبات
+        - generic [ref=e23]: •
+        - generic [ref=e24]:
+          - img [ref=e25]
+          - text: إكسترا دو بارفان 100ML
+        - generic [ref=e28]: •
+        - generic [ref=e29]:
+          - img [ref=e30]
+          - text: توصيل مجاني
+      - button "اختر عطرك" [ref=e35] [cursor=pointer]
+      - button "⭐ شوف شو حكو الزباين" [ref=e36] [cursor=pointer]
+      - paragraph [ref=e37]:
+        - img [ref=e38]
+        - text: تجارب حقيقية من زبائننا
+    - img "SILLAGE — إكسترا دو بارفان 100ML" [ref=e41]
+  - generic [ref=e42]:
+    - heading "اختر عطرك" [level=2] [ref=e44]
+    - paragraph [ref=e45]: سعر ثابت ₪250 شامل التوصيل — الدفع عند الاستلام
+    - generic [ref=e46]:
+      - generic [ref=e47] [cursor=pointer]:
+        - img "SILLAGE Rouge" [ref=e48]
+        - generic [ref=e49]:
+          - paragraph [ref=e50]: Rouge
+          - generic [ref=e51]: ⭐ الأكثر طلبًا
+          - paragraph [ref=e52]: "إذا بدك الناس توقفك وتسألك: شو اسم عطرك؟ فهذا هو."
+          - paragraph [ref=e53]: رائحة فاخرة بحضور قوي تلفت الانتباه من أول رشة، وتناسب أغلب المناسبات. إذا بدك عطراً يعطي انطباعاً قوياً ويبقى معك لساعات، فهذا هو الخيار الأول.
+          - paragraph [ref=e54]: 🔥 الأكثر طلبًا • ثبات وفوحان 10–12 ساعة
+          - button "احصل على Rouge بـ₪250" [ref=e55]
+      - generic [ref=e56] [cursor=pointer]:
+        - img "SILLAGE Sweet" [ref=e57]
+        - generic [ref=e58]:
+          - paragraph [ref=e59]: Sweet
+          - paragraph [ref=e60]: إذا بتحب العطور اللي تترك أثر من أول رشة، فهذا هو.
+          - paragraph [ref=e61]: حلو، غني، وفواح بشكل واضح، مصمم للي يحب الريحة تبقى موجودة لساعات طويلة وتلفت الانتباه بدون ما تكون مزعجة.
+          - paragraph [ref=e62]: 🔥 فوحان قوي • ثبات 10–12 ساعة
+          - button "احصل على Sweet بـ₪250" [ref=e63]
+      - generic [ref=e64] [cursor=pointer]:
+        - img "SILLAGE Citrus" [ref=e65]
+        - generic [ref=e66]:
+          - paragraph [ref=e67]: Citrus
+          - paragraph [ref=e68]: إذا بتحب تحس بالنظافة والانتعاش من أول رشة، فهذا اختيارك.
+          - paragraph [ref=e69]: رائحة منعشة وراقية تناسب الدوام، الجامعة، والمشاوير اليومية، وتعطي إحساسًا بالنظافة والثقة طوال اليوم.
+          - paragraph [ref=e70]: 🔥 ثبات 10–12 ساعة
+          - button "احصل على Citrus بـ₪250" [ref=e71]
+  - generic [ref=e73]:
+    - generic [ref=e74]: ✓ توصيل مجاني
+    - generic [ref=e75]: ✓ الدفع عند الاستلام
+    - generic [ref=e76]: ✓ 10–12 ساعة ثبات
+    - generic [ref=e77]: ✓ إكسترا دو بارفان 100ML
+  - generic [ref=e78]:
+    - generic [ref=e79]:
+      - paragraph [ref=e80]: +200 عبوة تم تجهيزها ضمن أول دفعة
+      - heading "شو حكى الزباين بعد التجربة" [level=2] [ref=e81]
+    - generic [ref=e82]:
+      - article [ref=e83]:
+        - paragraph [ref=e84]: ★★★★★
+        - paragraph [ref=e85]:
+          - text: هاذ الطلب غير نظرتي للاونلاين والعطور بصراحة.
+          - text: أول شي قبل لا حتى أفتح العطر وأشم الريحة، شكل التغليف لحاله بحكي. العلبة والقنينة شكلهم فخم بشكل مش طبيعي.
+          - text: والتوصيل كان سريع كثير، وصلني بعد 24 ساعة بس.
+          - text: صراحة الله يوفقكم على هيك أمانة بالشغل.
+        - generic [ref=e86]:
+          - generic [ref=e87]: ن
+          - generic [ref=e88]:
+            - paragraph [ref=e89]: نور
+            - paragraph [ref=e90]: شفاعمرو
+      - article [ref=e91]:
+        - paragraph [ref=e92]: ★★★★★
+        - paragraph [ref=e93]:
+          - text: بصراحة صار معي موقف غريب مع Rouge. رشيت منه وطلعت، وبعد فترة بطلت أشمه بالمرة. فكرت إنه اختفى وخلص.
+          - text: "بعد حوالي 6 ساعات التقيت أصحابي، وأول شي حكوه: \"كم رشة راشش؟\""
+          - text: واحد بعد الثاني كانوا يحكوا عن العطر وأنا مستغرب، لأني من ساعات مش قادر أشمه على حالي أصلاً.
+          - text: وقتها فهمت قديش العطر قوي.
+        - generic [ref=e94]:
+          - generic [ref=e95]: أ
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: احمد
+            - paragraph [ref=e98]: ام الفحم
+      - article [ref=e99]:
+        - paragraph [ref=e100]: ★★★★★
+        - paragraph [ref=e101]:
+          - text: أول ما وصلتني العلبة والقنينة فكرت صار غلط بالطلب. بصراحة قلت مستحيل هالقنينة بـ250₪. شكلها وكأنها طلب أغلى بمرتين أو ثلاث.
+          - text: حتى قبل ما أجرب العطر كنت مبسوط من الشكل والتغليف.
+        - generic [ref=e102]:
+          - generic [ref=e103]: م
+          - generic [ref=e104]:
+            - paragraph [ref=e105]: محمود
+            - paragraph [ref=e106]: باقة الغربية
+      - article [ref=e107]:
+        - paragraph [ref=e108]: ★★★★★
+        - paragraph [ref=e109]:
+          - text: "طلبته هدية لخطيبي. أول رد فعل كان: \"أكيد هذا أغلى من هيك\"."
+          - text: شكل العلبة والقنينة بعطي إحساس فخم من أول نظرة.
+        - generic [ref=e110]:
+          - generic [ref=e111]: ل
+          - generic [ref=e112]:
+            - paragraph [ref=e113]: لين
+            - paragraph [ref=e114]: شفاعمرو
+      - article [ref=e115]:
+        - paragraph [ref=e116]: ★★★★★
+        - paragraph [ref=e117]:
+          - text: Citrus صار العطر اليومي عندي. بتحطه الصبح وبتطلع، مناسب للشغل والقعدة والطلعات.
+          - text: من النوع اللي ما بتمل منه.
+        - generic [ref=e118]:
+          - generic [ref=e119]: ر
+          - generic [ref=e120]:
+            - paragraph [ref=e121]: رامي
+            - paragraph [ref=e122]: كفر كنا
+      - article [ref=e123]:
+        - paragraph [ref=e124]: ★★★★★
+        - paragraph [ref=e125]:
+          - text: رشيت Rouge على بلوزة قبل ما أطلع، ورجعت ثاني يوم على الغرفة ولسه الريحة واضحة بالمكان اللي كانت فيه البلوزة.
+          - text: بصراحة أول مرة يصير معي شي زي هيك، خصوصاً إنه بعد كم ساعة بطلت أشمه على حالي أصلاً.
+        - generic [ref=e126]:
+          - generic [ref=e127]: ك
+          - generic [ref=e128]:
+            - paragraph [ref=e129]: كريم
+            - paragraph [ref=e130]: مجد الكروم
+      - article [ref=e131]:
+        - paragraph [ref=e132]: ★★★★★
+        - paragraph [ref=e133]:
+          - text: بصراحة العطر حرفياً من أفضل الشراوات اللي أخذتها.
+          - text: كل ما قرب يخلص بصير أفكر بالطلب الجاي.
+          - text: مقارنة بالسعر وجودة العلبة والقنينة والعطر نفسه، القيمة مقابل السعر خرافية.
+        - generic [ref=e134]:
+          - generic [ref=e135]: ع
+          - generic [ref=e136]:
+            - paragraph [ref=e137]: علاء
+            - paragraph [ref=e138]: الطيبة
+      - article [ref=e139]:
+        - paragraph [ref=e140]: ★★★★★
+        - paragraph [ref=e141]:
+          - text: Sweet طلع أحلى بكثير مما كنت متوقع.
+          - text: ريحته مميزة والناس بتنتبهله بسرعة، وصار من أكثر العطور اللي بارجعله.
+        - generic [ref=e142]:
+          - generic [ref=e143]: ت
+          - generic [ref=e144]:
+            - paragraph [ref=e145]: تامر
+            - paragraph [ref=e146]: عرابة
+      - article [ref=e147]:
+        - paragraph [ref=e148]: ★★★★★
+        - paragraph [ref=e149]:
+          - text: Rouge أكثر واحد عجبني.
+          - text: أول مرة لبسته أكثر من شخص سألني شو العطر.
+          - text: ريحته فخمة وبتبين من أول رشة.
+        - generic [ref=e150]:
+          - generic [ref=e151]: أ
+          - generic [ref=e152]:
+            - paragraph [ref=e153]: امير
+            - paragraph [ref=e154]: سخنين
+      - article [ref=e155]:
+        - paragraph [ref=e156]: ★★★★★
+        - paragraph [ref=e157]:
+          - text: أخذت واحد إلي وواحد هدية لصاحبي.
+          - text: بصراحة الثنين انبسطنا عليهم أكثر مما توقعنا، وحتى شكل العلبة لحاله بعطي قيمة للهدية.
+        - generic [ref=e158]:
+          - generic [ref=e159]: ي
+          - generic [ref=e160]:
+            - paragraph [ref=e161]: يوسف
+            - paragraph [ref=e162]: الناصرة
+      - article [ref=e163]:
+        - paragraph [ref=e164]: ★★★★★
+        - paragraph [ref=e165]:
+          - text: أخذت أكثر من واحد لأشخاص مختلفة في البيت.
+          - text: كنت مفكر ما نستعملهم كثير، بس بالنهاية صرنا نتنقل بينهم حسب المشوار والمناسبة.
+          - text: كل واحد إله جو مختلف.
+        - generic [ref=e166]:
+          - generic [ref=e167]: م
+          - generic [ref=e168]:
+            - paragraph [ref=e169]: محمد
+            - paragraph [ref=e170]: ام الفحم
+      - article [ref=e171]:
+        - paragraph [ref=e172]: ★★★★★
+        - paragraph [ref=e173]:
+          - text: كنت محتار بين Rouge وCitrus.
+          - text: بالنهاية أخذت الثنين بطلبين منفصلين.
+          - text: Rouge للطلعات والمناسبات أكثر، وCitrus للاستخدام اليومي.
+          - text: بصراحة الثنين طلعوا اختيار ممتاز.
+        - generic [ref=e174]:
+          - generic [ref=e175]: س
+          - generic [ref=e176]:
+            - paragraph [ref=e177]: سامر
+            - paragraph [ref=e178]: حيفا
+    - paragraph [ref=e179]: توصيل مجاني • الدفع عند الاستلام • 250₪ فقط شامل كل شي
+  - generic [ref=e181]:
+    - heading "أكمل طلبك" [level=2] [ref=e182]
+    - paragraph [ref=e183]: الدفع عند الاستلام. توصيل مجاني. نتواصل معك خلال 24 ساعة.
+    - generic [ref=e184]:
+      - generic [ref=e185]:
+        - paragraph [ref=e186]: العطر المختار
+        - generic [ref=e187]: لم تختر أي عطر بعد.
+        - separator [ref=e188]
+        - generic [ref=e189]:
+          - generic [ref=e190]: المجموع
+          - generic [ref=e191]: ₪250
+        - generic [ref=e192]:
+          - generic [ref=e193]: الشحن
+          - generic [ref=e194]: مجاني
+        - generic [ref=e195]:
+          - generic [ref=e196]: طريقة الدفع
+          - generic [ref=e197]: الدفع عند الاستلام
+      - generic [ref=e198]:
+        - generic [ref=e199]:
+          - generic [ref=e200]: الاسم الكامل *
+          - textbox "الاسم الكامل *" [ref=e201]:
+            - /placeholder: اسمك الكامل
+        - generic [ref=e202]:
+          - generic [ref=e203]: رقم الهاتف *
+          - textbox "رقم الهاتف *" [ref=e204]:
+            - /placeholder: 05XXXXXXXX
+      - generic [ref=e205]:
+        - generic [ref=e206]:
+          - generic [ref=e207]: المدينة *
+          - textbox "المدينة *" [ref=e208]:
+            - /placeholder: مدينتك
+        - generic [ref=e209]:
+          - generic [ref=e210]: العنوان *
+          - textbox "العنوان *" [ref=e211]:
+            - /placeholder: الشارع، المبنى، الشقة
+      - generic [ref=e212]:
+        - generic [ref=e213]: البريد الإلكتروني (اختياري)
+        - textbox "البريد الإلكتروني (اختياري)" [ref=e214]:
+          - /placeholder: example@email.com
+      - generic [ref=e215]:
+        - generic [ref=e216]: ملاحظات (اختياري)
+        - textbox "ملاحظات (اختياري)" [ref=e217]:
+          - /placeholder: أي تفاصيل إضافية...
+      - button "أرسل الطلب ←" [disabled] [ref=e218] [cursor=pointer]
+      - paragraph [ref=e219]: سنتواصل معك خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.
+  - contentinfo [ref=e220]:
+    - paragraph [ref=e221]: SILLAGE
+    - link "تواصل معنا" [ref=e222] [cursor=pointer]:
+      - /url: https://wa.me/972542920392
+      - img [ref=e223]
+      - text: تواصل معنا
+    - paragraph [ref=e225]: © 2025 سيلاج. جميع الحقوق محفوظة.
+  - generic:
+    - button "رجعني لاختيار عطري"
