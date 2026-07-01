@@ -308,6 +308,81 @@
     }
 
     /* ════════════════════════
+       BOX CONTENTS
+    ════════════════════════ */
+    .box-section {
+      background: var(--white);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .box-list {
+      list-style: none;
+      max-width: 360px;
+      margin: 0 auto;
+      text-align: right;
+    }
+    .box-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--charcoal);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--beige);
+    }
+    .box-list li:last-child { border-bottom: none; }
+    .box-check {
+      color: var(--gold);
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* ════════════════════════
+       STORE ADVANTAGES
+    ════════════════════════ */
+    .store-grid-section {
+      background: var(--cream);
+      padding: 48px 24px;
+    }
+    .store-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .store-card {
+      background: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 4px;
+      padding: 22px 14px;
+      text-align: center;
+    }
+    .store-icon {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 10px;
+      border-radius: 50%;
+      background: var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--gold);
+    }
+    .store-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+    .store-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ════════════════════════
        REVIEWS
     ════════════════════════ */
     .reviews-section {
@@ -381,6 +456,28 @@
       padding: 60px 24px;
       text-align: center;
     }
+    .rating-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+    }
+    .rating-stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+    .rating-score {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+    }
+    .rating-count {
+      font-size: 12px;
+      color: var(--muted);
+    }
     .price-was {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 16px;
@@ -406,6 +503,17 @@
       color: var(--gold);
       line-height: 1;
       margin-bottom: 12px;
+    }
+    .discount-badge {
+      display: inline-block;
+      background: var(--black);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 18px;
     }
     .price-includes {
       font-size: 13px;
@@ -740,14 +848,6 @@
 
     <h1 class="hero-headline">حضورٌ لا يُنسى</h1>
 
-    <p class="hero-sub">
-      عطرٌ يثبت معك اليوم كله،<br/>ويترك أثراً يسأل عنه الجميع
-    </p>
-
-    <button class="btn-primary" onclick="scrollToForm()">
-      اطلب الآن &mdash; 250₪ واصل لباب بيتك
-    </button>
-
   </section>
 
   <!-- ══════════════════════════════════
@@ -768,12 +868,53 @@
          onclick="swapImg(this, '../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_01%20PM.png')" />
   </div>
 
+  <!-- ══════════════════════════════════
+       PRICE + RATING — moved to top, right under gallery
+  ══════════════════════════════════ -->
+  <section class="price-section fade-in">
+
+    <div class="rating-line">
+      <span class="rating-stars">★★★★★</span>
+      <span class="rating-score">4.9</span>
+      <span class="rating-count">(142 تقييم)</span>
+    </div>
+
+    <p class="price-was">600₪</p>
+    <span class="price-label">السعر الآن</span>
+    <p class="price-now">250₪</p>
+    <div class="discount-badge">خصم 58٪ — لفترة محدودة</div>
+    <p class="price-includes">شامل التوصيل المجاني &nbsp;•&nbsp; الدفع عند الاستلام</p>
+
+    <div class="trust-row">
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <span>دفع عند الاستلام</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🚚</div>
+        <span>توصيل مجاني</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">↩</div>
+        <span>إرجاع مضمون</span>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="scrollToForm()" style="max-width:360px;">
+      اطلب الآن &mdash; 250₪
+    </button>
+
+  </section>
+
   <div class="hr"></div>
 
   <!-- ══════════════════════════════════
        VALUE PROPS
   ══════════════════════════════════ -->
   <section class="value-section fade-in">
+    <p class="hero-sub" style="margin-bottom:32px;">
+      عطرٌ يثبت معك اليوم كله،<br/>ويترك أثراً يسأل عنه الجميع
+    </p>
     <div class="value-grid">
 
       <div>
@@ -834,6 +975,53 @@
       خشبي &nbsp;•&nbsp; عنبري &nbsp;•&nbsp; زهري — فاخر، نظيف، دافئ، ملفت
     </p>
 
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- ══════════════════════════════════
+       BOX CONTENTS
+  ══════════════════════════════════ -->
+  <section class="box-section fade-in">
+    <span class="eyebrow-en">What's Inside</span>
+    <h2 class="section-title-ar">ماذا يوجد في العلبة</h2>
+    <ul class="box-list">
+      <li><span class="box-check">✓</span> زجاجة SILLAGE ROUGE الأصلية — 100 مل</li>
+      <li><span class="box-check">✓</span> علبة إهداء فاخرة</li>
+      <li><span class="box-check">✓</span> بطاقة أصالة المنتج</li>
+    </ul>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- ══════════════════════════════════
+       STORE ADVANTAGES
+  ══════════════════════════════════ -->
+  <section class="store-grid-section fade-in">
+    <span class="eyebrow-en" style="text-align:center;display:block;">Why Sillage</span>
+    <h2 class="section-title-ar" style="text-align:center;margin-bottom:28px;">مزايا التسوق معنا</h2>
+    <div class="store-grid">
+      <div class="store-card">
+        <div class="store-icon">🔒</div>
+        <div class="store-title">دفع آمن</div>
+        <div class="store-desc">الدفع عند الاستلام</div>
+      </div>
+      <div class="store-card">
+        <div class="store-icon">🚚</div>
+        <div class="store-title">توصيل سريع</div>
+        <div class="store-desc">خلال 24–48 ساعة</div>
+      </div>
+      <div class="store-card">
+        <div class="store-icon">💬</div>
+        <div class="store-title">دعم العملاء</div>
+        <div class="store-desc">متاح طوال الأسبوع</div>
+      </div>
+      <div class="store-card">
+        <div class="store-icon">✓</div>
+        <div class="store-title">جودة مضمونة</div>
+        <div class="store-desc">منتج أصلي 100٪</div>
+      </div>
+    </div>
   </section>
 
   <div class="hr"></div>
@@ -923,39 +1111,6 @@
       </article>
 
     </div>
-
-  </section>
-
-  <div class="hr"></div>
-
-  <!-- ══════════════════════════════════
-       PRICE REVEAL
-  ══════════════════════════════════ -->
-  <section class="price-section fade-in">
-
-    <p class="price-was">600₪</p>
-    <span class="price-label">السعر الآن</span>
-    <p class="price-now">250₪</p>
-    <p class="price-includes">شامل التوصيل المجاني &nbsp;•&nbsp; الدفع عند الاستلام</p>
-
-    <div class="trust-row">
-      <div class="trust-item">
-        <div class="trust-icon">🔒</div>
-        <span>دفع عند الاستلام</span>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon">🚚</div>
-        <span>توصيل مجاني</span>
-      </div>
-      <div class="trust-item">
-        <div class="trust-icon">↩</div>
-        <span>إرجاع مضمون</span>
-      </div>
-    </div>
-
-    <button class="btn-primary" onclick="scrollToForm()" style="max-width:360px;">
-      اطلب الآن &mdash; 250₪
-    </button>
 
   </section>
 

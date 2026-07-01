@@ -14,7 +14,8 @@
       "mcp__playwright__browser_resize",
       "mcp__playwright__browser_evaluate",
       "Bash(python -m http.server 4041)",
-      "Bash(git tag *)"
+      "Bash(git tag *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
