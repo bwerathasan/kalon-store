@@ -108,10 +108,32 @@
       padding: 28px 24px 36px;
       text-align: center;
     }
+    .hero-card {
+      position: relative;
+      background: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 10px;
+      width: min(94%, 460px);
+      padding: 32px 24px;
+      margin: 0 auto 22px;
+      box-shadow: 0 10px 34px rgba(0,0,0,0.06);
+    }
+    .hero-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--black);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 7px 16px;
+      border-radius: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.18);
+      z-index: 2;
+    }
     .hero-image-wrap {
       display: inline-block;
       width: min(72%, 300px);
-      margin: 0 auto 30px;
     }
     .hero-img {
       width: 100%;
@@ -834,12 +856,15 @@
   ══════════════════════════════════ -->
   <section class="hero fade-in">
 
-    <div class="hero-image-wrap">
-      <img id="hero-img"
-           src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png"
-           alt="SILLAGE ROUGE — Extrait de Parfum 100ML"
-           class="hero-img"
-           loading="eager" />
+    <div class="hero-card">
+      <div class="hero-badge">عرض خاص</div>
+      <div class="hero-image-wrap">
+        <img id="hero-img"
+             src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png"
+             alt="SILLAGE ROUGE — Extrait de Parfum 100ML"
+             class="hero-img"
+             loading="eager" />
+      </div>
     </div>
 
     <p class="hero-meta">
