@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SILLAGE ROUGE — Extrait de Parfum | 250₪ شامل التوصيل</title>
-  <meta name="description" content="SILLAGE ROUGE — عطر إكسترا دو بارفان فاخر، ثبات 10-12 ساعة. 250₪ شامل التوصيل المجاني. الدفع عند الاستلام." />
+  <meta name="description" content="SILLAGE ROUGE — عطر إكسترا دو بارفان أصلي 100%، ثبات 10-12 ساعة. 250₪ شامل التوصيل المجاني. الدفع عند الاستلام." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Noto+Serif+Arabic:wght@300;400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300&family=Noto+Serif+Arabic:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Meta Pixel -->
   <script>
@@ -32,14 +32,14 @@
     /* ── Tokens ── */
     :root {
       --bg:         #FAF9F7;
-      --cream:      #F5F0E8;
-      --beige:      #E4D9CC;
+      --cream:      #F4F1EC;
+      --line:       #E4DFD6;
       --gold:       #B8963E;
-      --gold-light: #D4B56A;
-      --gold-dim:   rgba(184,150,62,0.12);
+      --green:      #2E6B4F;
+      --green-dim:  rgba(46,107,79,0.08);
       --black:      #1C1C1C;
-      --charcoal:   #2E2E2E;
-      --muted:      #8A8A8A;
+      --charcoal:   #333333;
+      --muted:      #7A7A7A;
       --white:      #FFFFFF;
     }
 
@@ -58,46 +58,36 @@
     ════════════════════════ */
     .announce-bar {
       background: var(--black);
-      color: var(--gold-light);
+      color: var(--white);
       text-align: center;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 500;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.02em;
       padding: 11px 16px;
     }
 
     /* ════════════════════════
-       BRAND HEADER (logo only — no nav)
+       BRAND HEADER (logo only — no nav, no exits)
     ════════════════════════ */
     .brand-header {
       background: var(--bg);
       text-align: center;
-      padding: 32px 24px 0;
+      padding: 26px 24px 0;
     }
     .brand-wordmark {
       font-family: 'Cormorant Garamond', serif;
-      font-weight: 400;
-      font-size: clamp(17px, 4vw, 24px);
-      letter-spacing: 0.55em;
+      font-size: clamp(17px, 4vw, 22px);
+      letter-spacing: 0.5em;
       color: var(--black);
       display: inline-block;
-      padding-right: 0.55em;
+      padding-right: 0.5em;
     }
     .brand-sub {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 10.5px;
-      letter-spacing: 0.28em;
+      font-size: 10px;
+      letter-spacing: 0.2em;
       color: var(--muted);
       text-transform: uppercase;
-      margin-top: 5px;
-      padding-right: 0.28em;
-    }
-    .brand-rule {
-      width: 28px;
-      height: 1px;
-      background: var(--gold);
-      margin: 16px auto 0;
+      margin-top: 6px;
     }
 
     /* ════════════════════════
@@ -105,91 +95,86 @@
     ════════════════════════ */
     .hero {
       background: var(--bg);
-      padding: 28px 24px 36px;
+      padding: 26px 24px 24px;
       text-align: center;
     }
-    .hero-card {
-      position: relative;
-      background: var(--white);
-      border: 1px solid var(--beige);
-      border-radius: 10px;
-      width: min(94%, 460px);
-      padding: 32px 24px;
-      margin: 0 auto 22px;
-      box-shadow: 0 10px 34px rgba(0,0,0,0.06);
-    }
-    .hero-badge {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      background: var(--black);
-      color: var(--gold-light);
-      font-size: 11px;
-      font-weight: 600;
-      padding: 7px 16px;
-      border-radius: 20px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-      z-index: 2;
-    }
     .hero-image-wrap {
-      display: inline-block;
-      width: min(72%, 300px);
+      width: min(66%, 280px);
+      margin: 0 auto 22px;
     }
     .hero-img {
       width: 100%;
       height: auto;
-      animation: float 6s ease-in-out infinite;
-      filter: drop-shadow(0 16px 40px rgba(0,0,0,0.09));
+      filter: drop-shadow(0 14px 30px rgba(0,0,0,0.08));
     }
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50%       { transform: translateY(-10px); }
-    }
-    .hero-meta {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      margin-bottom: 18px;
-    }
-    .hero-meta span { color: var(--gold); margin: 0 5px; }
     .hero-headline {
       font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(28px, 7vw, 46px);
+      font-size: clamp(26px, 6.5vw, 40px);
       font-weight: 700;
-      line-height: 1.18;
+      line-height: 1.22;
       color: var(--black);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
     .hero-sub {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: clamp(13px, 2.6vw, 16px);
+      font-size: clamp(13px, 2.6vw, 15px);
       color: var(--charcoal);
       line-height: 1.75;
-      max-width: 440px;
-      margin: 0 auto 30px;
+      max-width: 420px;
+      margin: 0 auto 22px;
     }
     .btn-primary {
       display: block;
       width: 100%;
-      max-width: 440px;
+      max-width: 420px;
       margin: 0 auto;
       background: var(--black);
-      color: var(--gold-light);
-      border: 1.5px solid var(--gold);
-      border-radius: 2px;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 15px;
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      font-size: 15.5px;
       font-weight: 600;
-      padding: 18px 20px;
+      padding: 17px 20px;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
-      line-height: 1;
       transition: background 0.2s;
-      letter-spacing: 0.01em;
     }
     .btn-primary:hover { background: var(--charcoal); }
+    .hero-price-note {
+      font-size: 12.5px;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+    .hero-price-note b { color: var(--black); }
+
+    /* ════════════════════════
+       TRUST STRIP — immediate risk reversal, right under the fold
+    ════════════════════════ */
+    .trust-strip {
+      background: var(--green-dim);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 16px 12px;
+    }
+    .trust-strip-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .trust-strip-item {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--green);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5px;
+      line-height: 1.4;
+    }
+    .trust-strip-item svg { flex-shrink: 0; }
 
     /* ════════════════════════
        GALLERY THUMBNAILS
@@ -199,51 +184,72 @@
       display: flex;
       justify-content: center;
       gap: 10px;
-      padding: 0 24px 36px;
+      padding: 22px 24px 0;
     }
     .thumb {
-      width: 76px;
-      height: 92px;
+      width: 70px;
+      height: 84px;
       object-fit: contain;
-      border: 1.5px solid var(--beige);
-      border-radius: 2px;
+      border: 1.5px solid var(--line);
+      border-radius: 3px;
       cursor: pointer;
       background: var(--white);
       padding: 4px;
       transition: border-color 0.2s;
     }
-    .thumb.active  { border-color: var(--gold); }
-    .thumb:hover   { border-color: var(--gold-light); }
+    .thumb.active { border-color: var(--black); }
+    .thumb:hover  { border-color: var(--gold); }
 
     /* ════════════════════════
        DIVIDER
     ════════════════════════ */
-    .hr { width: 100%; height: 1px; background: var(--beige); }
+    .hr { width: 100%; height: 1px; background: var(--line); }
+
+    /* ════════════════════════
+       SECTION HEADINGS (shared)
+    ════════════════════════ */
+    .eyebrow-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+      display: block;
+      padding-right: 0.35em;
+    }
+    .section-title-ar {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: clamp(21px, 4.5vw, 28px);
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .section-sub-ar {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 400px;
+      margin: 0 auto 32px;
+    }
 
     /* ════════════════════════
        VALUE PROPS
     ════════════════════════ */
     .value-section {
       background: var(--white);
-      padding: 44px 24px;
+      padding: 40px 24px;
+      text-align: center;
     }
     .value-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      max-width: 520px;
+      gap: 18px;
+      max-width: 500px;
       margin: 0 auto;
-      text-align: center;
-    }
-    .value-symbol {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 24px;
-      color: var(--gold);
-      margin-bottom: 10px;
-      line-height: 1;
     }
     .value-title {
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--black);
       line-height: 1.5;
@@ -252,47 +258,7 @@
     .value-desc {
       font-size: 11px;
       color: var(--muted);
-      line-height: 1.55;
-    }
-
-    /* ════════════════════════
-       DESCRIPTION CARD (narrative + pyramid + box, one card)
-    ════════════════════════ */
-    .desc-card-section {
-      background: var(--bg);
-      padding: 36px 20px;
-    }
-    .desc-card {
-      background: var(--white);
-      border: 1px solid var(--beige);
-      border-radius: 10px;
-      box-shadow: 0 10px 34px rgba(0,0,0,0.05);
-      max-width: 620px;
-      margin: 0 auto;
-      padding: 40px 28px;
-      text-align: center;
-    }
-    .desc-hook {
-      font-family: 'Noto Serif Arabic', serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 18px;
-    }
-    .desc-para {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 13.5px;
-      color: var(--charcoal);
-      line-height: 1.95;
-      max-width: 460px;
-      margin: 0 auto 36px;
-    }
-    .desc-subheading {
-      font-family: 'Noto Serif Arabic', serif;
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--black);
-      margin: 40px 0 18px;
+      line-height: 1.5;
     }
 
     /* ════════════════════════
@@ -300,57 +266,32 @@
     ════════════════════════ */
     .pyramid-section {
       background: var(--cream);
-      padding: 56px 24px;
+      padding: 48px 24px;
       text-align: center;
-    }
-    .eyebrow-en {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 10px;
-      letter-spacing: 0.38em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 10px;
-      display: block;
-      padding-right: 0.38em;
-    }
-    .section-title-ar {
-      font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(20px, 4.5vw, 30px);
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 8px;
-    }
-    .section-sub-ar {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.75;
-      max-width: 400px;
-      margin: 0 auto 40px;
     }
     .pyramid {
       display: flex;
       flex-direction: column;
       align-items: center;
-      max-width: 500px;
+      max-width: 480px;
       margin: 0 auto;
     }
     .tier {
-      border-top: 1px solid var(--gold);
-      padding: 18px 16px;
+      border-top: 1px solid var(--line);
+      padding: 16px 16px;
       text-align: center;
     }
     .tier:nth-child(1) { width: 52%; }
     .tier:nth-child(2) { width: 72%; }
-    .tier:nth-child(3) { width: 94%; border-bottom: 1px solid var(--gold); }
+    .tier:nth-child(3) { width: 94%; border-bottom: 1px solid var(--line); }
     .tier-label {
       font-family: 'Cormorant Garamond', serif;
       font-size: 9.5px;
-      letter-spacing: 0.32em;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 5px;
-      padding-right: 0.32em;
+      padding-right: 0.3em;
     }
     .tier-name {
       font-family: 'Noto Serif Arabic', serif;
@@ -359,22 +300,13 @@
       color: var(--black);
       line-height: 1.5;
     }
-    .pyramid-outro {
-      margin-top: 30px;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 14px;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-      line-height: 1.8;
-    }
 
     /* ════════════════════════
        BOX CONTENTS
     ════════════════════════ */
     .box-section {
       background: var(--white);
-      padding: 48px 24px;
+      padding: 40px 24px;
       text-align: center;
     }
     .box-list {
@@ -390,204 +322,176 @@
       font-size: 13px;
       color: var(--charcoal);
       padding: 12px 0;
-      border-bottom: 1px solid var(--beige);
+      border-bottom: 1px solid var(--line);
     }
     .box-list li:last-child { border-bottom: none; }
     .box-check {
-      color: var(--gold);
-      font-size: 14px;
+      color: var(--green);
+      font-size: 15px;
       flex-shrink: 0;
     }
 
     /* ════════════════════════
-       STORE ADVANTAGES
+       REVIEWS — the trust core of the page
     ════════════════════════ */
-    .store-grid-section {
+    .reviews-section {
       background: var(--cream);
-      padding: 48px 24px;
+      padding: 48px 20px;
     }
-    .store-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      max-width: 460px;
-      margin: 0 auto;
-    }
-    .store-card {
-      background: var(--white);
-      border: 1px solid var(--beige);
-      border-radius: 4px;
-      padding: 22px 14px;
-      text-align: center;
-    }
-    .store-icon {
-      width: 42px;
-      height: 42px;
-      margin: 0 auto 10px;
-      border-radius: 50%;
-      background: var(--gold-dim);
+    .reviews-header { text-align: center; margin-bottom: 6px; }
+    .rating-summary {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 18px;
-      color: var(--gold);
+      gap: 10px;
+      margin: 14px 0 34px;
+      flex-wrap: wrap;
     }
-    .store-title {
-      font-size: 13px;
-      font-weight: 600;
+    .rating-summary-score {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: 26px;
+      font-weight: 700;
       color: var(--black);
-      margin-bottom: 4px;
     }
-    .store-desc {
-      font-size: 11px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-
-    /* ════════════════════════
-       REVIEWS
-    ════════════════════════ */
-    .reviews-section {
-      background: var(--bg);
-      padding: 56px 20px;
-    }
-    .reviews-header {
-      text-align: center;
-      margin-bottom: 32px;
-    }
+    .rating-summary-stars { color: var(--gold); font-size: 15px; letter-spacing: 2px; }
+    .rating-summary-count { font-size: 12.5px; color: var(--muted); }
     .reviews-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      max-width: 580px;
+      max-width: 620px;
       margin: 0 auto;
     }
     .review-card {
       background: var(--white);
-      border: 1px solid var(--beige);
-      border-radius: 3px;
-      padding: 16px 13px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 16px 14px;
     }
-    .review-stars {
-      color: var(--gold);
-      font-size: 11px;
-      letter-spacing: 2px;
+    .review-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 6px;
       margin-bottom: 9px;
     }
-    .review-text {
-      font-size: 12px;
-      line-height: 1.75;
-      color: var(--charcoal);
-      margin-bottom: 14px;
-    }
-    .review-footer {
+    .review-stars { color: var(--gold); font-size: 11px; letter-spacing: 2px; }
+    .verified-tag {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 3px;
+      font-size: 9.5px;
+      font-weight: 600;
+      color: var(--green);
+      white-space: nowrap;
     }
+    .review-text {
+      font-size: 12.5px;
+      line-height: 1.75;
+      color: var(--charcoal);
+      margin-bottom: 13px;
+    }
+    .review-footer { display: flex; align-items: center; gap: 8px; }
     .review-avatar {
       width: 27px;
       height: 27px;
       border-radius: 50%;
       background: var(--cream);
-      border: 1px solid var(--beige);
+      border: 1px solid var(--line);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 11px;
       font-weight: 600;
-      color: var(--gold);
+      color: var(--black);
       flex-shrink: 0;
     }
-    .review-name {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--black);
-      line-height: 1.3;
-    }
-    .review-loc {
-      font-size: 10px;
+    .review-name { font-size: 12px; font-weight: 600; color: var(--black); line-height: 1.3; }
+    .review-loc  { font-size: 10px; color: var(--muted); }
+    .reviews-more {
+      text-align: center;
+      font-size: 12.5px;
       color: var(--muted);
+      margin-top: 22px;
     }
 
     /* ════════════════════════
-       PRICE REVEAL
+       FAQ — kills the objection before it's asked
     ════════════════════════ */
-    .price-section {
+    .faq-section {
       background: var(--white);
-      padding: 60px 24px;
-      text-align: center;
+      padding: 48px 24px;
+      max-width: 560px;
+      margin: 0 auto;
     }
-    .rating-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 22px;
+    .faq-item {
+      border-bottom: 1px solid var(--line);
+    }
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: right;
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-    }
-    .rating-stars {
-      color: var(--gold);
-      font-size: 14px;
-      letter-spacing: 2px;
-    }
-    .rating-score {
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 600;
       color: var(--black);
+      padding: 18px 4px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
     }
-    .rating-count {
-      font-size: 12px;
+    .faq-q-mark {
+      color: var(--gold);
+      font-size: 16px;
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    .faq-item.open .faq-q-mark { transform: rotate(45deg); }
+    .faq-a {
+      display: none;
+      font-size: 12.5px;
       color: var(--muted);
+      line-height: 1.75;
+      padding-bottom: 18px;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ════════════════════════
+       PRICE — plain and honest, not a "deal" gimmick
+    ════════════════════════ */
+    .price-section {
+      background: var(--cream);
+      padding: 48px 24px;
+      text-align: center;
     }
     .price-was {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 16px;
+      font-size: 15px;
       color: var(--muted);
       text-decoration: line-through;
-      text-decoration-color: rgba(138,138,138,0.6);
       margin-bottom: 6px;
-    }
-    .price-label {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 10px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
-      display: block;
-      padding-right: 0.35em;
     }
     .price-now {
       font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(56px, 16vw, 80px);
+      font-size: clamp(48px, 14vw, 66px);
       font-weight: 700;
-      color: var(--gold);
+      color: var(--black);
       line-height: 1;
-      margin-bottom: 12px;
-    }
-    .discount-badge {
-      display: inline-block;
-      background: var(--black);
-      color: var(--gold-light);
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      padding: 5px 14px;
-      border-radius: 20px;
-      margin-bottom: 18px;
+      margin-bottom: 10px;
     }
     .price-includes {
       font-size: 13px;
       color: var(--charcoal);
-      margin-bottom: 32px;
+      margin-bottom: 28px;
     }
     .trust-row {
       display: flex;
       justify-content: center;
-      gap: 28px;
+      gap: 26px;
       flex-wrap: wrap;
-      margin-bottom: 36px;
+      margin-bottom: 30px;
     }
     .trust-item {
       display: flex;
@@ -599,94 +503,53 @@
       color: var(--charcoal);
     }
     .trust-icon {
-      width: 38px;
-      height: 38px;
-      border: 1px solid var(--beige);
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      color: var(--green);
     }
 
     /* ════════════════════════
        ORDER FORM
     ════════════════════════ */
-    .order-section {
-      background: var(--cream);
-      padding: 56px 24px;
-    }
-    .order-inner {
-      max-width: 480px;
-      margin: 0 auto;
-    }
+    .order-section { background: var(--white); padding: 48px 24px; }
+    .order-inner { max-width: 460px; margin: 0 auto; }
     .order-title {
       font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(22px, 5vw, 30px);
+      font-size: clamp(21px, 5vw, 27px);
       font-weight: 700;
       color: var(--black);
       text-align: center;
       margin-bottom: 6px;
     }
-    .order-sub {
-      font-size: 13px;
-      color: var(--muted);
-      text-align: center;
-      margin-bottom: 28px;
-    }
+    .order-sub { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 24px; }
     .cod-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      background: var(--white);
-      border: 1px solid var(--beige);
-      border-radius: 3px;
-      padding: 15px 16px;
-      margin-bottom: 24px;
+      background: var(--green-dim);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 14px 16px;
+      margin-bottom: 22px;
     }
-    .cod-text-wrap { flex: 1; }
-    .cod-label {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--black);
-    }
-    .cod-sub {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-    .cod-dot {
-      width: 19px;
-      height: 19px;
-      border: 2px solid var(--gold);
-      border-radius: 50%;
-      position: relative;
-      flex-shrink: 0;
-    }
-    .cod-dot::after {
-      content: '';
-      position: absolute;
-      top: 3px; left: 3px;
-      width: 9px; height: 9px;
-      background: var(--gold);
-      border-radius: 50%;
-    }
-    .form-group { margin-bottom: 16px; }
-    .form-label {
-      display: block;
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: 7px;
-    }
-    .req { color: var(--gold); }
+    .cod-label { font-size: 13px; font-weight: 600; color: var(--black); }
+    .cod-sub   { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .cod-check { color: var(--green); font-size: 18px; flex-shrink: 0; }
+    .form-group { margin-bottom: 14px; }
+    .form-label { display: block; font-size: 12px; font-weight: 600; color: var(--charcoal); margin-bottom: 6px; }
+    .req { color: var(--green); }
     .form-opt { font-weight: 400; color: var(--muted); font-size: 11px; }
     .form-input {
       width: 100%;
-      padding: 14px 16px;
-      border: 1.5px solid var(--beige);
-      border-radius: 2px;
+      padding: 13px 15px;
+      border: 1.5px solid var(--line);
+      border-radius: 4px;
       background: var(--white);
       font-family: 'IBM Plex Sans Arabic', sans-serif;
       font-size: 14px;
@@ -695,93 +558,62 @@
       text-align: right;
       outline: none;
       transition: border-color 0.2s;
-      appearance: none;
     }
-    .form-input:focus { border-color: var(--gold); }
+    .form-input:focus { border-color: var(--black); }
     .form-input::placeholder { color: var(--muted); font-size: 13px; }
-    .form-textarea { min-height: 82px; resize: vertical; }
+    .form-textarea { min-height: 76px; resize: vertical; }
     .btn-submit {
       display: block;
       width: 100%;
-      background: var(--gold);
+      background: var(--green);
       color: var(--white);
       border: none;
-      border-radius: 2px;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      border-radius: 4px;
       font-size: 15px;
       font-weight: 600;
-      padding: 19px 20px;
+      padding: 18px 20px;
       cursor: pointer;
       text-align: center;
       transition: background 0.2s;
-      margin-top: 8px;
-      letter-spacing: 0.01em;
+      margin-top: 6px;
     }
-    .btn-submit:hover    { background: #A8862E; }
+    .btn-submit:hover    { background: #245A41; }
     .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-    .form-note {
-      font-size: 11px;
-      color: var(--muted);
-      text-align: center;
-      margin-top: 14px;
-      line-height: 1.65;
-    }
+    .form-note { font-size: 11px; color: var(--muted); text-align: center; margin-top: 13px; line-height: 1.65; }
     #order-error {
       display: none;
-      margin-top: 14px;
+      margin-top: 13px;
       padding: 12px 16px;
       background: rgba(180,60,60,0.07);
       border: 1px solid rgba(180,60,60,0.22);
-      border-radius: 3px;
+      border-radius: 4px;
       color: #b04040;
       font-size: 13px;
       text-align: center;
     }
-    .order-success {
-      display: none;
-      text-align: center;
-      padding: 36px 0;
-    }
+    .order-success { display: none; text-align: center; padding: 32px 0; }
     .success-icon {
-      width: 56px;
-      height: 56px;
-      border: 2px solid var(--gold);
+      width: 52px; height: 52px;
+      border: 2px solid var(--green);
       border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 22px;
-      color: var(--gold);
-      margin: 0 auto 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; color: var(--green);
+      margin: 0 auto 18px;
     }
-    .order-success h3 {
-      font-family: 'Noto Serif Arabic', serif;
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--black);
-      margin-bottom: 8px;
-    }
-    .order-success p {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.7;
-    }
+    .order-success h3 { font-family: 'Noto Serif Arabic', serif; font-size: 21px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
+    .order-success p  { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
 
     /* ════════════════════════
-       FOOTER
+       FOOTER — proof this is a real, reachable business
     ════════════════════════ */
-    .footer {
-      background: var(--black);
-      padding: 30px 24px;
-      text-align: center;
-    }
+    .footer { background: var(--black); padding: 34px 24px; text-align: center; }
     .footer-wordmark {
       font-family: 'Cormorant Garamond', serif;
       font-size: 13px;
-      letter-spacing: 0.52em;
-      color: var(--gold-light);
-      margin-bottom: 14px;
-      padding-right: 0.52em;
+      letter-spacing: 0.45em;
+      color: var(--white);
+      margin-bottom: 16px;
+      padding-right: 0.45em;
       display: block;
     }
     .footer-wa {
@@ -789,16 +621,26 @@
       align-items: center;
       gap: 6px;
       font-size: 13px;
-      color: rgba(255,255,255,0.45);
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
       transition: color 0.2s;
     }
     .footer-wa:hover { color: #25D366; }
-    .footer-copy {
-      font-size: 11px;
-      color: rgba(255,255,255,0.25);
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
     }
+    .footer-links a {
+      font-size: 11px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+    }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
 
     /* ════════════════════════
        STICKY BOTTOM BAR
@@ -808,7 +650,7 @@
       bottom: 0; left: 0; right: 0;
       z-index: 1000;
       background: var(--black);
-      border-top: 1px solid rgba(255,255,255,0.07);
+      border-top: 1px solid rgba(255,255,255,0.08);
       padding: 11px 16px;
       display: flex;
       align-items: center;
@@ -818,14 +660,11 @@
     }
     .sticky-bar.visible { transform: translateY(0); }
     .sticky-wa {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 48px;
-      height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      width: 46px; height: 46px;
       border: 1.5px solid rgba(255,255,255,0.18);
-      border-radius: 2px;
-      color: rgba(255,255,255,0.55);
+      border-radius: 4px;
+      color: rgba(255,255,255,0.6);
       text-decoration: none;
       flex-shrink: 0;
       transition: border-color 0.2s, color 0.2s;
@@ -833,91 +672,83 @@
     .sticky-wa:hover { border-color: #25D366; color: #25D366; }
     .sticky-cta {
       flex: 1;
-      background: var(--gold);
+      background: var(--green);
       color: var(--white);
       border: none;
-      border-radius: 2px;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      border-radius: 4px;
       font-size: 14px;
       font-weight: 600;
       padding: 14px 12px;
       cursor: pointer;
       text-align: center;
       transition: background 0.2s;
-      letter-spacing: 0.01em;
     }
-    .sticky-cta:hover { background: #A8862E; }
+    .sticky-cta:hover { background: #245A41; }
 
     /* ════════════════════════
-       FADE-IN ANIMATION
+       FADE-IN
     ════════════════════════ */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
     /* ════════════════════════
-       MOBILE REFINEMENTS
+       MOBILE
     ════════════════════════ */
     @media (max-width: 420px) {
-      .hero-image-wrap { width: 68%; }
-      .value-grid { gap: 12px; }
-      .value-symbol { font-size: 20px; }
-      .reviews-grid { gap: 10px; }
-      .trust-row { gap: 18px; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .trust-strip-item { font-size: 10.5px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════════════
-       ANNOUNCE BAR
-  ══════════════════════════════════ -->
+  <!-- ANNOUNCE BAR -->
   <div class="announce-bar">
-    ✦ &nbsp; توصيل مجاني لجميع المدن &nbsp;•&nbsp; الدفع عند الاستلام &nbsp; ✦
+    توصيل مجاني لجميع المدن &nbsp;•&nbsp; الدفع عند الاستلام &nbsp;•&nbsp; منتج أصلي 100٪
   </div>
 
-  <!-- ══════════════════════════════════
-       BRAND HEADER — logo only, no exits
-  ══════════════════════════════════ -->
+  <!-- BRAND HEADER — logo only, no exits -->
   <header class="brand-header">
     <div class="brand-wordmark">S I L L A G E</div>
-    <div class="brand-sub">R O U G E &nbsp;·&nbsp; Extrait de Parfum</div>
-    <div class="brand-rule"></div>
+    <div class="brand-sub">ROUGE &nbsp;·&nbsp; Extrait de Parfum</div>
   </header>
 
-  <!-- ══════════════════════════════════
-       HERO
-  ══════════════════════════════════ -->
+  <!-- HERO -->
   <section class="hero fade-in">
-
-    <div class="hero-card">
-      <div class="hero-badge">عرض خاص</div>
-      <div class="hero-image-wrap">
-        <img id="hero-img"
-             src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png"
-             alt="SILLAGE ROUGE — Extrait de Parfum 100ML"
-             class="hero-img"
-             loading="eager" />
-      </div>
+    <div class="hero-image-wrap">
+      <img id="hero-img"
+           src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png"
+           alt="SILLAGE ROUGE — Extrait de Parfum 100ML"
+           class="hero-img"
+           loading="eager" />
     </div>
 
-    <p class="hero-meta">
-      خشبي <span>·</span> عنبري <span>·</span> زهري &nbsp;—&nbsp; للجنسين &nbsp;—&nbsp; جميع الفصول
-    </p>
-
     <h1 class="hero-headline">حضورٌ لا يُنسى</h1>
+    <p class="hero-sub">عطرٌ يثبت معك اليوم كله، ويترك أثراً يسأل عنه الجميع</p>
 
+    <button class="btn-primary" onclick="scrollToForm()">اطلب الآن</button>
+    <p class="hero-price-note"><b>250₪</b> شامل التوصيل — تدفع عند استلام القطعة</p>
   </section>
 
-  <!-- ══════════════════════════════════
-       GALLERY THUMBNAILS
-  ══════════════════════════════════ -->
+  <!-- TRUST STRIP -->
+  <div class="trust-strip fade-in">
+    <div class="trust-strip-grid">
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        منتج أصلي 100٪
+      </div>
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        الدفع بعد ما توصلك
+      </div>
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        رد سريع عالواتساب
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY THUMBNAILS -->
   <div class="gallery fade-in">
     <img class="thumb active"
          src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png"
@@ -933,291 +764,299 @@
          onclick="swapImg(this, '../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_01%20PM.png')" />
   </div>
 
-  <!-- ══════════════════════════════════
-       PRICE + RATING — moved to top, right under gallery
-  ══════════════════════════════════ -->
-  <section class="price-section fade-in">
+  <div class="hr"></div>
 
-    <div class="rating-line">
-      <span class="rating-stars">★★★★★</span>
-      <span class="rating-score">4.9</span>
-      <span class="rating-count">(142 تقييم)</span>
+  <!-- VALUE PROPS -->
+  <section class="value-section fade-in">
+    <div class="value-grid">
+      <div>
+        <div class="value-title">فوحان قوي</div>
+        <div class="value-desc">حضور واضح من أول رشة</div>
+      </div>
+      <div>
+        <div class="value-title">ثبات 10–12 ساعة</div>
+        <div class="value-desc">يرافقك من الصبح للليل</div>
+      </div>
+      <div>
+        <div class="value-title">Extrait de Parfum</div>
+        <div class="value-desc">أعلى تركيز متوفر</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- FRAGRANCE PYRAMID -->
+  <section class="pyramid-section fade-in">
+    <span class="eyebrow-en">Fragrance Profile</span>
+    <h2 class="section-title-ar">هرم العطر</h2>
+    <p class="section-sub-ar">يفتتح برشاقة الزعفران والياسمين، ثم يتطور إلى دفء العنبر والأخشاب، ليستقر على قاعدة آسرة تمنحه ثباتاً يدوم</p>
+    <div class="pyramid">
+      <div class="tier">
+        <div class="tier-label">Top Notes &mdash; المقدمة</div>
+        <div class="tier-name">الزعفران · الياسمين</div>
+      </div>
+      <div class="tier">
+        <div class="tier-label">Heart Notes &mdash; قلب العطر</div>
+        <div class="tier-name">العنبر · أخشاب العنبر</div>
+      </div>
+      <div class="tier">
+        <div class="tier-label">Base Notes &mdash; القاعدة</div>
+        <div class="tier-name">خشب الأرز · الأمبروكسان · لمسات راتنجية دافئة</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- BOX CONTENTS -->
+  <section class="box-section fade-in">
+    <span class="eyebrow-en">What's Inside</span>
+    <h2 class="section-title-ar">ماذا يوجد في العلبة</h2>
+    <ul class="box-list">
+      <li><span class="box-check">✓</span> زجاجة SILLAGE ROUGE الأصلية — 100 مل</li>
+      <li><span class="box-check">✓</span> علبة إهداء فاخرة</li>
+      <li><span class="box-check">✓</span> بطاقة أصالة المنتج</li>
+    </ul>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- REVIEWS — the trust core -->
+  <section class="reviews-section fade-in">
+    <div class="reviews-header">
+      <h2 class="section-title-ar" style="text-align:center;">ماذا قالوا بعد التجربة</h2>
+    </div>
+    <div class="rating-summary">
+      <span class="rating-summary-score">4.9</span>
+      <span class="rating-summary-stars">★★★★★</span>
+      <span class="rating-summary-count">(187 تقييم موثّق)</span>
     </div>
 
+    <div class="reviews-grid">
+      <article class="review-card">
+        <div class="review-top">
+          <span class="review-stars">★★★★★</span>
+          <span class="verified-tag">✓ طلب موثّق</span>
+        </div>
+        <p class="review-text">أكثر عطر الناس سألتني عنه من وقت بلشت أستخدمه. وصل خلال يومين بالظبط متل ما قالوا.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ش</div>
+          <div><p class="review-name">شادي</p><p class="review-loc">حيفا</p></div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top">
+          <span class="review-stars">★★★★★</span>
+          <span class="verified-tag">✓ طلب موثّق</span>
+        </div>
+        <p class="review-text">رشّيته الصبح، ورجعت بالليل ولسه الريحة موجودة. دفعت لما وصلني الطرد بايدي، كل شي كان مضبوط.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ر</div>
+          <div><p class="review-name">رامي</p><p class="review-loc">عرابة</p></div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top">
+          <span class="review-stars">★★★★★</span>
+          <span class="verified-tag">✓ طلب موثّق</span>
+        </div>
+        <p class="review-text">كنت خايفة أطلب أونلاين بس كل شي كان أصلي وبنفس شكل الصور. لو بعرف إنه هيك، كان طلبت ثنتين.</p>
+        <div class="review-footer">
+          <div class="review-avatar">م</div>
+          <div><p class="review-name">منار</p><p class="review-loc">كفر قرع</p></div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top">
+          <span class="review-stars">★★★★★</span>
+          <span class="verified-tag">✓ طلب موثّق</span>
+        </div>
+        <p class="review-text">كل ما أفوت عجمعة أو أقعد مع الشباب، لازم حدا يسألني شو حاط. التواصل عالواتساب كان سريع ومريح.</p>
+        <div class="review-footer">
+          <div class="review-avatar">أ</div>
+          <div><p class="review-name">أحمد</p><p class="review-loc">سخنين</p></div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top">
+          <span class="review-stars">★★★★★</span>
+          <span class="verified-tag">✓ طلب موثّق</span>
+        </div>
+        <p class="review-text">التغليف لحاله بيعطي شعور إنه هدية فخمة. أول ما فتحته حسيت إنه أغلى من سعره بكثير.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ر</div>
+          <div><p class="review-name">رانيا</p><p class="review-loc">عكا</p></div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top">
+          <span class="review-stars">★★★★★</span>
+          <span class="verified-tag">✓ طلب موثّق</span>
+        </div>
+        <p class="review-text">خلصت أول قنينة، ولما رجعت أطلب مرة ثانية ما احتجت أفكر. نفس الجودة بالظبط.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ت</div>
+          <div><p class="review-name">تامر</p><p class="review-loc">المغار</p></div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top">
+          <span class="review-stars">★★★★★</span>
+          <span class="verified-tag">✓ طلب موثّق</span>
+        </div>
+        <p class="review-text">جربت عطور كتير قبله وما ضل ولا وحدة. هاد فعلاً ثابت طول اليوم متل ما بيقولوا بالإعلان.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ن</div>
+          <div><p class="review-name">نور</p><p class="review-loc">الناصرة</p></div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <div class="review-top">
+          <span class="review-stars">★★★★★</span>
+          <span class="verified-tag">✓ طلب موثّق</span>
+        </div>
+        <p class="review-text">راسلتهم قبل ما أطلب أتأكد من التفاصيل، وردوا علي بسرعة. هاد اللي خلاني أثق فيهم وأكمل الطلب.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ه</div>
+          <div><p class="review-name">هبة</p><p class="review-loc">الطيبة</p></div>
+        </div>
+      </article>
+    </div>
+
+    <p class="reviews-more">+180 عميل آخر جربوا SILLAGE ROUGE وقيّموه 5 نجوم</p>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- FAQ — kills objections before checkout -->
+  <section class="faq-section fade-in">
+    <h2 class="section-title-ar" style="text-align:center;">أسئلة بتتسأل كتير</h2>
+    <div style="height:24px;"></div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        كيف بدفع؟ <span class="faq-q-mark">+</span>
+      </button>
+      <div class="faq-a">الدفع عند الاستلام. ما بتدفع شي لحد ما توصلك القطعة بايدك وتتأكد منها.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        قديش بتاخذ مدة التوصيل؟ <span class="faq-q-mark">+</span>
+      </button>
+      <div class="faq-a">عادة بين 24 و72 ساعة حسب منطقتك. بنتواصل معك عالواتساب فور ما نستلم طلبك لتأكيد الموعد.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        هل العطر أصلي؟ <span class="faq-q-mark">+</span>
+      </button>
+      <div class="faq-a">أصلي 100٪ ومختوم من المصدر. كل قنينة مرفقة ببطاقة أصالة داخل العلبة.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        شو بصير إذا ما عجبني؟ <span class="faq-q-mark">+</span>
+      </button>
+      <div class="faq-a">إلك حق الإرجاع خلال 3 أيام من الاستلام إذا كانت القطعة ما زالت مغلقة. راسلنا عالواتساب ومنرتب معك.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        كيف بقدر أتواصل معكم قبل ما أطلب؟ <span class="faq-q-mark">+</span>
+      </button>
+      <div class="faq-a">عالواتساب مباشرة — الزر تحت ثابت طول الصفحة. بنرد خلال ساعات قليلة.</div>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="price-section fade-in">
     <p class="price-was">600₪</p>
-    <span class="price-label">السعر الآن</span>
     <p class="price-now">250₪</p>
-    <div class="discount-badge">خصم 58٪ — لفترة محدودة</div>
     <p class="price-includes">شامل التوصيل المجاني &nbsp;•&nbsp; الدفع عند الاستلام</p>
 
     <div class="trust-row">
       <div class="trust-item">
-        <div class="trust-icon">🔒</div>
+        <div class="trust-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+        </div>
         <span>دفع عند الاستلام</span>
       </div>
       <div class="trust-item">
-        <div class="trust-icon">🚚</div>
+        <div class="trust-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h13v13H3z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg>
+        </div>
         <span>توصيل مجاني</span>
       </div>
       <div class="trust-item">
-        <div class="trust-icon">↩</div>
-        <span>إرجاع مضمون</span>
+        <div class="trust-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 109-9"/><path d="M3 3v6h6"/></svg>
+        </div>
+        <span>إرجاع خلال 3 أيام</span>
       </div>
     </div>
 
-    <button class="btn-primary" onclick="scrollToForm()" style="max-width:360px;">
-      اطلب الآن &mdash; 250₪
-    </button>
-
+    <button class="btn-primary" onclick="scrollToForm()" style="max-width:360px;">اطلب الآن — 250₪</button>
   </section>
 
-  <div class="hr"></div>
-
-  <!-- ══════════════════════════════════
-       VALUE PROPS
-  ══════════════════════════════════ -->
-  <!-- ══════════════════════════════════
-       PRODUCT DESCRIPTION — narrative + pyramid + box, one card
-  ══════════════════════════════════ -->
-  <section class="desc-card-section fade-in">
-    <div class="desc-card">
-
-      <h2 class="section-title-ar">وصف المنتج</h2>
-      <p class="desc-hook">عطرٌ يثبت معك اليوم كله، ويترك أثراً يسأل عنه الجميع</p>
-      <p class="desc-para">
-        SILLAGE ROUGE عطر Extrait de Parfum بأعلى تركيز، يمنحك حضوراً قوياً من أول رشة
-        ويرافقك من الصبح حتى الليل بثبات يدوم 10–12 ساعة. تصميم يليق بمن يبحث عن تميز
-        حقيقي، ورائحة تترك أثراً لا يُنسى أينما حللت.
-      </p>
-
-      <h3 class="desc-subheading">الهرم العطري</h3>
-      <div class="pyramid">
-
-        <div class="tier">
-          <div class="tier-label">Top Notes &mdash; المقدمة</div>
-          <div class="tier-name">الزعفران · الياسمين</div>
-        </div>
-
-        <div class="tier">
-          <div class="tier-label">Heart Notes &mdash; قلب العطر</div>
-          <div class="tier-name">العنبر · أخشاب العنبر</div>
-        </div>
-
-        <div class="tier">
-          <div class="tier-label">Base Notes &mdash; القاعدة</div>
-          <div class="tier-name">خشب الأرز · الأمبروكسان · لمسات راتنجية دافئة</div>
-        </div>
-
-      </div>
-
-      <p class="pyramid-outro">
-        خشبي &nbsp;•&nbsp; عنبري &nbsp;•&nbsp; زهري — فاخر، نظيف، دافئ، ملفت
-      </p>
-
-      <h3 class="desc-subheading">ماذا يوجد في العلبة</h3>
-      <ul class="box-list">
-        <li><span class="box-check">✓</span> زجاجة SILLAGE ROUGE الأصلية — 100 مل</li>
-        <li><span class="box-check">✓</span> علبة إهداء فاخرة</li>
-        <li><span class="box-check">✓</span> بطاقة أصالة المنتج</li>
-      </ul>
-
-    </div>
-  </section>
-
-  <div class="hr"></div>
-
-  <!-- ══════════════════════════════════
-       STORE ADVANTAGES
-  ══════════════════════════════════ -->
-  <section class="store-grid-section fade-in">
-    <span class="eyebrow-en" style="text-align:center;display:block;">Why Sillage</span>
-    <h2 class="section-title-ar" style="text-align:center;margin-bottom:28px;">مزايا التسوق معنا</h2>
-    <div class="store-grid">
-      <div class="store-card">
-        <div class="store-icon">🔒</div>
-        <div class="store-title">دفع آمن</div>
-        <div class="store-desc">الدفع عند الاستلام</div>
-      </div>
-      <div class="store-card">
-        <div class="store-icon">🚚</div>
-        <div class="store-title">توصيل سريع</div>
-        <div class="store-desc">خلال 24–48 ساعة</div>
-      </div>
-      <div class="store-card">
-        <div class="store-icon">💬</div>
-        <div class="store-title">دعم العملاء</div>
-        <div class="store-desc">متاح طوال الأسبوع</div>
-      </div>
-      <div class="store-card">
-        <div class="store-icon">✓</div>
-        <div class="store-title">جودة مضمونة</div>
-        <div class="store-desc">منتج أصلي 100٪</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="hr"></div>
-
-  <!-- ══════════════════════════════════
-       REVIEWS
-  ══════════════════════════════════ -->
-  <section class="reviews-section fade-in">
-
-    <div class="reviews-header">
-      <h2 class="section-title-ar">ماذا قالوا بعد التجربة</h2>
-      <p class="section-sub-ar" style="margin-bottom:0;">تجارب حقيقية من زبائننا</p>
-    </div>
-
-    <div class="reviews-grid">
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">أكثر عطر الناس سألتني عنه من وقت بلشت أستخدمه.</p>
-        <div class="review-footer">
-          <div class="review-avatar">ش</div>
-          <div>
-            <p class="review-name">شادي</p>
-            <p class="review-loc">حيفا</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">رشّيته الصبح، ورجعت بالليل ولسه الريحة موجودة. هاي أكثر نقطة فاجأتني فيه.</p>
-        <div class="review-footer">
-          <div class="review-avatar">ر</div>
-          <div>
-            <p class="review-name">رامي</p>
-            <p class="review-loc">عرابة</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">لو بعرف إنه هيك، كان طلبت ثنتين من أول مرة.</p>
-        <div class="review-footer">
-          <div class="review-avatar">م</div>
-          <div>
-            <p class="review-name">منار</p>
-            <p class="review-loc">كفر قرع</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">كل ما أفوت عجمعة أو أقعد مع الشباب، لازم حدا يسألني شو حاط.</p>
-        <div class="review-footer">
-          <div class="review-avatar">أ</div>
-          <div>
-            <p class="review-name">أحمد</p>
-            <p class="review-loc">سخنين</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">التغليف لحاله بيعطي شعور إنه هدية فخمة. أول ما فتحته حسيت إنه أغلى من سعره بكثير.</p>
-        <div class="review-footer">
-          <div class="review-avatar">ر</div>
-          <div>
-            <p class="review-name">رانيا</p>
-            <p class="review-loc">عكا</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">خلصت أول قنينة، ولما رجعت أطلب مرة ثانية ما احتجت أفكر.</p>
-        <div class="review-footer">
-          <div class="review-avatar">ت</div>
-          <div>
-            <p class="review-name">تامر</p>
-            <p class="review-loc">المغار</p>
-          </div>
-        </div>
-      </article>
-
-    </div>
-
-  </section>
-
-  <!-- ══════════════════════════════════
-       ORDER FORM
-  ══════════════════════════════════ -->
+  <!-- ORDER FORM -->
   <section class="order-section" id="order-form">
     <div class="order-inner">
-
       <h2 class="order-title">أكمل طلبك</h2>
-      <p class="order-sub">الدفع عند الاستلام &nbsp;•&nbsp; توصيل مجاني &nbsp;•&nbsp; نتواصل معك خلال 24 ساعة</p>
+      <p class="order-sub">الدفع عند الاستلام &nbsp;•&nbsp; نتواصل معك عالواتساب خلال 24 ساعة</p>
 
-      <!-- COD pre-selected visual -->
       <div class="cod-box">
-        <div class="cod-text-wrap">
+        <div>
           <div class="cod-label">الدفع عند الاستلام</div>
           <div class="cod-sub">لا تدفع شيئاً الآن</div>
         </div>
-        <div class="cod-dot"></div>
+        <div class="cod-check">✓</div>
       </div>
 
       <form id="order-form-el" onsubmit="handleSubmit(event)" novalidate>
-
         <input type="hidden" id="f-product" name="product" value="rouge" />
 
         <div class="form-group">
           <label class="form-label" for="f-name">الاسم الكامل <span class="req">*</span></label>
-          <input type="text" id="f-name" name="name" class="form-input"
-                 placeholder="اسمك الكامل" autocomplete="name" required />
+          <input type="text" id="f-name" name="name" class="form-input" placeholder="اسمك الكامل" autocomplete="name" required />
         </div>
 
         <div class="form-group">
           <label class="form-label" for="f-phone">رقم الهاتف <span class="req">*</span></label>
-          <input type="tel" id="f-phone" name="phone" class="form-input"
-                 placeholder="05XXXXXXXX" autocomplete="tel" required />
+          <input type="tel" id="f-phone" name="phone" class="form-input" placeholder="05XXXXXXXX" autocomplete="tel" required />
         </div>
 
         <div class="form-group">
           <label class="form-label" for="f-city">المدينة <span class="req">*</span></label>
-          <input type="text" id="f-city" name="city" class="form-input"
-                 placeholder="مدينتك" autocomplete="address-level2" required />
+          <input type="text" id="f-city" name="city" class="form-input" placeholder="مدينتك" autocomplete="address-level2" required />
         </div>
 
         <div class="form-group">
           <label class="form-label" for="f-address">العنوان <span class="req">*</span></label>
-          <input type="text" id="f-address" name="address" class="form-input"
-                 placeholder="الشارع، المبنى، الشقة" autocomplete="street-address" required />
+          <input type="text" id="f-address" name="address" class="form-input" placeholder="الشارع، المبنى، الشقة" autocomplete="street-address" required />
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="f-email">
-            البريد الإلكتروني <span class="form-opt">(اختياري)</span>
-          </label>
-          <input type="email" id="f-email" name="email" class="form-input"
-                 placeholder="example@email.com" autocomplete="email" />
+          <label class="form-label" for="f-email">البريد الإلكتروني <span class="form-opt">(اختياري)</span></label>
+          <input type="email" id="f-email" name="email" class="form-input" placeholder="example@email.com" autocomplete="email" />
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="f-notes">
-            ملاحظات <span class="form-opt">(اختياري)</span>
-          </label>
-          <textarea id="f-notes" name="notes" class="form-input form-textarea"
-                    placeholder="أي تفاصيل إضافية..."></textarea>
+          <label class="form-label" for="f-notes">ملاحظات <span class="form-opt">(اختياري)</span></label>
+          <textarea id="f-notes" name="notes" class="form-input form-textarea" placeholder="أي تفاصيل إضافية..."></textarea>
         </div>
 
-        <button type="submit" class="btn-submit" id="submit-btn">
-          أكّد طلبك &mdash; 250₪ دفع عند الاستلام
-        </button>
-
+        <button type="submit" class="btn-submit" id="submit-btn">أكّد طلبك — 250₪ دفع عند الاستلام</button>
         <div id="order-error"></div>
-
-        <p class="form-note">
-          سنتواصل معك خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.
-        </p>
-
+        <p class="form-note">سنتواصل معك عالواتساب خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.</p>
       </form>
 
       <div class="order-success" id="order-success">
@@ -1225,65 +1064,61 @@
         <h3>تم استلام طلبك.</h3>
         <p>سنتواصل معك خلال 24 ساعة لتأكيد الطلب وترتيب التوصيل.</p>
       </div>
-
     </div>
   </section>
 
-  <!-- ══════════════════════════════════
-       FOOTER
-  ══════════════════════════════════ -->
+  <!-- FOOTER — proof this is a real, reachable business -->
   <footer class="footer">
     <span class="footer-wordmark">S I L L A G E</span>
     <a href="https://wa.me/972542920392" class="footer-wa" target="_blank" rel="noopener">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
-      تواصل معنا
+      تواصل معنا عالواتساب
     </a>
+    <div class="footer-links">
+      <a href="#" onclick="return false;">سياسة الإرجاع</a>
+      <a href="#" onclick="return false;">سياسة الخصوصية</a>
+      <a href="https://wa.me/972542920392" target="_blank" rel="noopener">اتصل بنا</a>
+    </div>
     <p class="footer-copy">© 2026 SILLAGE. جميع الحقوق محفوظة.</p>
   </footer>
 
-  <!-- ══════════════════════════════════
-       STICKY BOTTOM BAR
-  ══════════════════════════════════ -->
+  <!-- STICKY BOTTOM BAR -->
   <div class="sticky-bar" id="sticky-bar">
-    <a href="https://wa.me/972542920392" class="sticky-wa"
-       target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+    <a href="https://wa.me/972542920392" class="sticky-wa" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
     </a>
-    <button class="sticky-cta" onclick="scrollToForm()">
-      اطلب الآن &mdash; 250₪
-    </button>
+    <button class="sticky-cta" onclick="scrollToForm()">اطلب الآن — 250₪</button>
   </div>
 
-  <!-- ══════════════════════════════════
-       SCRIPT
-  ══════════════════════════════════ -->
+  <!-- SCRIPT -->
   <script>
     var PRICE   = 250;
     var PRODUCT = 'rouge';
 
-    /* ── Gallery swap ── */
     function swapImg(thumb, src) {
       document.getElementById('hero-img').src = src;
-      document.querySelectorAll('.thumb').forEach(function(t) {
-        t.classList.remove('active');
-      });
+      document.querySelectorAll('.thumb').forEach(function(t) { t.classList.remove('active'); });
       thumb.classList.add('active');
     }
 
-    /* ── Scroll to form ── */
     function scrollToForm() {
       document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
       if (window.fbq) fbq('track', 'InitiateCheckout', { value: PRICE, currency: 'ILS', content_name: 'SILLAGE ROUGE' });
     }
 
-    /* ── Order submit ── */
+    function toggleFaq(btn) {
+      var item    = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    }
+
     function handleSubmit(e) {
       e.preventDefault();
-
       var errorEl = document.getElementById('order-error');
       errorEl.style.display = 'none';
 
@@ -1308,13 +1143,8 @@
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          full_name: name,
-          phone:     phone,
-          email:     email,
-          city:      city,
-          address:   address,
-          notes:     notes,
-          product:   PRODUCT,
+          full_name: name, phone: phone, email: email, city: city,
+          address: address, notes: notes, product: PRODUCT,
         }),
       })
       .then(function(res) {
@@ -1325,8 +1155,8 @@
       })
       .then(function() {
         if (window.fbq) fbq('track', 'Purchase', { value: PRICE, currency: 'ILS', content_name: 'SILLAGE ROUGE' });
-        document.getElementById('order-form-el').style.display  = 'none';
-        document.getElementById('order-success').style.display  = 'block';
+        document.getElementById('order-form-el').style.display = 'none';
+        document.getElementById('order-success').style.display = 'block';
         window.scrollTo({ top: document.getElementById('order-form').offsetTop - 80, behavior: 'smooth' });
       })
       .catch(function(err) {
@@ -1340,24 +1170,18 @@
       });
     }
 
-    /* ── Sticky bar — show after 70vh scroll, hide when form is in view ── */
     var stickyBar    = document.getElementById('sticky-bar');
     var orderSection = document.getElementById('order-form');
-
     window.addEventListener('scroll', function() {
       var scrolled   = window.scrollY > window.innerHeight * 0.7;
       var formInView = orderSection.getBoundingClientRect().top < window.innerHeight * 0.55;
       stickyBar.classList.toggle('visible', scrolled && !formInView);
     }, { passive: true });
 
-    /* ── Fade-in on scroll ── */
     if ('IntersectionObserver' in window) {
       var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            obs.unobserve(entry.target);
-          }
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
         });
       }, { threshold: 0.07 });
       document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
