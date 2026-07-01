@@ -256,6 +256,46 @@
     }
 
     /* ════════════════════════
+       DESCRIPTION CARD (narrative + pyramid + box, one card)
+    ════════════════════════ */
+    .desc-card-section {
+      background: var(--bg);
+      padding: 36px 20px;
+    }
+    .desc-card {
+      background: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 10px;
+      box-shadow: 0 10px 34px rgba(0,0,0,0.05);
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 40px 28px;
+      text-align: center;
+    }
+    .desc-hook {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 18px;
+    }
+    .desc-para {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 13.5px;
+      color: var(--charcoal);
+      line-height: 1.95;
+      max-width: 460px;
+      margin: 0 auto 36px;
+    }
+    .desc-subheading {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--black);
+      margin: 40px 0 18px;
+    }
+
+    /* ════════════════════════
        FRAGRANCE PYRAMID
     ════════════════════════ */
     .pyramid-section {
@@ -936,85 +976,52 @@
   <!-- ══════════════════════════════════
        VALUE PROPS
   ══════════════════════════════════ -->
-  <section class="value-section fade-in">
-    <p class="hero-sub" style="margin-bottom:32px;">
-      عطرٌ يثبت معك اليوم كله،<br/>ويترك أثراً يسأل عنه الجميع
-    </p>
-    <div class="value-grid">
+  <!-- ══════════════════════════════════
+       PRODUCT DESCRIPTION — narrative + pyramid + box, one card
+  ══════════════════════════════════ -->
+  <section class="desc-card-section fade-in">
+    <div class="desc-card">
 
-      <div>
-        <div class="value-symbol">◈</div>
-        <div class="value-title">فوحان يصنع الانطباع الأول</div>
-        <div class="value-desc">حضور قوي من أول رشة</div>
+      <h2 class="section-title-ar">وصف المنتج</h2>
+      <p class="desc-hook">عطرٌ يثبت معك اليوم كله، ويترك أثراً يسأل عنه الجميع</p>
+      <p class="desc-para">
+        SILLAGE ROUGE عطر Extrait de Parfum بأعلى تركيز، يمنحك حضوراً قوياً من أول رشة
+        ويرافقك من الصبح حتى الليل بثبات يدوم 10–12 ساعة. تصميم يليق بمن يبحث عن تميز
+        حقيقي، ورائحة تترك أثراً لا يُنسى أينما حللت.
+      </p>
+
+      <h3 class="desc-subheading">الهرم العطري</h3>
+      <div class="pyramid">
+
+        <div class="tier">
+          <div class="tier-label">Top Notes &mdash; المقدمة</div>
+          <div class="tier-name">الزعفران · الياسمين</div>
+        </div>
+
+        <div class="tier">
+          <div class="tier-label">Heart Notes &mdash; قلب العطر</div>
+          <div class="tier-name">العنبر · أخشاب العنبر</div>
+        </div>
+
+        <div class="tier">
+          <div class="tier-label">Base Notes &mdash; القاعدة</div>
+          <div class="tier-name">خشب الأرز · الأمبروكسان · لمسات راتنجية دافئة</div>
+        </div>
+
       </div>
 
-      <div>
-        <div class="value-symbol">◎</div>
-        <div class="value-title">ثبات 10–12 ساعة</div>
-        <div class="value-desc">يرافقك من الصبح للليل</div>
-      </div>
+      <p class="pyramid-outro">
+        خشبي &nbsp;•&nbsp; عنبري &nbsp;•&nbsp; زهري — فاخر، نظيف، دافئ، ملفت
+      </p>
 
-      <div>
-        <div class="value-symbol">✦</div>
-        <div class="value-title">Extrait de Parfum</div>
-        <div class="value-desc">أعلى تركيز — حضور راقٍ</div>
-      </div>
+      <h3 class="desc-subheading">ماذا يوجد في العلبة</h3>
+      <ul class="box-list">
+        <li><span class="box-check">✓</span> زجاجة SILLAGE ROUGE الأصلية — 100 مل</li>
+        <li><span class="box-check">✓</span> علبة إهداء فاخرة</li>
+        <li><span class="box-check">✓</span> بطاقة أصالة المنتج</li>
+      </ul>
 
     </div>
-  </section>
-
-  <div class="hr"></div>
-
-  <!-- ══════════════════════════════════
-       FRAGRANCE PYRAMID
-  ══════════════════════════════════ -->
-  <section class="pyramid-section fade-in">
-
-    <span class="eyebrow-en">Fragrance Profile</span>
-    <h2 class="section-title-ar">هرم العطر</h2>
-    <p class="section-sub-ar">
-      يفتتح برشاقة الزعفران والياسمين، ثم يتطور إلى دفء العنبر والأخشاب،
-      ليستقر على قاعدة آسرة تمنحه ثباتاً يدوم
-    </p>
-
-    <div class="pyramid">
-
-      <div class="tier">
-        <div class="tier-label">Top Notes &mdash; المقدمة</div>
-        <div class="tier-name">الزعفران · الياسمين</div>
-      </div>
-
-      <div class="tier">
-        <div class="tier-label">Heart Notes &mdash; قلب العطر</div>
-        <div class="tier-name">العنبر · أخشاب العنبر</div>
-      </div>
-
-      <div class="tier">
-        <div class="tier-label">Base Notes &mdash; القاعدة</div>
-        <div class="tier-name">خشب الأرز · الأمبروكسان · لمسات راتنجية دافئة</div>
-      </div>
-
-    </div>
-
-    <p class="pyramid-outro">
-      خشبي &nbsp;•&nbsp; عنبري &nbsp;•&nbsp; زهري — فاخر، نظيف، دافئ، ملفت
-    </p>
-
-  </section>
-
-  <div class="hr"></div>
-
-  <!-- ══════════════════════════════════
-       BOX CONTENTS
-  ══════════════════════════════════ -->
-  <section class="box-section fade-in">
-    <span class="eyebrow-en">What's Inside</span>
-    <h2 class="section-title-ar">ماذا يوجد في العلبة</h2>
-    <ul class="box-list">
-      <li><span class="box-check">✓</span> زجاجة SILLAGE ROUGE الأصلية — 100 مل</li>
-      <li><span class="box-check">✓</span> علبة إهداء فاخرة</li>
-      <li><span class="box-check">✓</span> بطاقة أصالة المنتج</li>
-    </ul>
   </section>
 
   <div class="hr"></div>
