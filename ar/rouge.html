@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SILLAGE ROUGE — Extrait de Parfum | 250₪ شامل التوصيل</title>
+  <meta name="description" content="SILLAGE ROUGE — عطر إكسترا دو بارفان فاخر، ثبات 10-12 ساعة. 250₪ شامل التوصيل المجاني. الدفع عند الاستلام." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Noto+Serif+Arabic:wght@300;400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1359606469381115');
+  fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1359606469381115&ev=PageView&noscript=1"/></noscript>
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    img, svg { display: block; max-width: 100%; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    /* ── Tokens ── */
+    :root {
+      --bg:         #FAF9F7;
+      --cream:      #F5F0E8;
+      --beige:      #E4D9CC;
+      --gold:       #B8963E;
+      --gold-light: #D4B56A;
+      --gold-dim:   rgba(184,150,62,0.12);
+      --black:      #1C1C1C;
+      --charcoal:   #2E2E2E;
+      --muted:      #8A8A8A;
+      --white:      #FFFFFF;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--black);
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      direction: rtl;
+      padding-bottom: 76px;
+    }
+
+    /* ════════════════════════
+       ANNOUNCE BAR
+    ════════════════════════ */
+    .announce-bar {
+      background: var(--black);
+      color: var(--gold-light);
+      text-align: center;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 11px 16px;
+    }
+
+    /* ════════════════════════
+       BRAND HEADER (logo only — no nav)
+    ════════════════════════ */
+    .brand-header {
+      background: var(--bg);
+      text-align: center;
+      padding: 32px 24px 0;
+    }
+    .brand-wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 400;
+      font-size: clamp(17px, 4vw, 24px);
+      letter-spacing: 0.55em;
+      color: var(--black);
+      display: inline-block;
+      padding-right: 0.55em;
+    }
+    .brand-sub {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10.5px;
+      letter-spacing: 0.28em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 5px;
+      padding-right: 0.28em;
+    }
+    .brand-rule {
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      margin: 16px auto 0;
+    }
+
+    /* ════════════════════════
+       HERO
+    ════════════════════════ */
+    .hero {
+      background: var(--bg);
+      padding: 28px 24px 36px;
+      text-align: center;
+    }
+    .hero-image-wrap {
+      display: inline-block;
+      width: min(72%, 300px);
+      margin: 0 auto 30px;
+    }
+    .hero-img {
+      width: 100%;
+      height: auto;
+      animation: float 6s ease-in-out infinite;
+      filter: drop-shadow(0 16px 40px rgba(0,0,0,0.09));
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-10px); }
+    }
+    .hero-meta {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+    .hero-meta span { color: var(--gold); margin: 0 5px; }
+    .hero-headline {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: clamp(28px, 7vw, 46px);
+      font-weight: 700;
+      line-height: 1.18;
+      color: var(--black);
+      margin-bottom: 14px;
+    }
+    .hero-sub {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: clamp(13px, 2.6vw, 16px);
+      color: var(--charcoal);
+      line-height: 1.75;
+      max-width: 440px;
+      margin: 0 auto 30px;
+    }
+    .btn-primary {
+      display: block;
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      background: var(--black);
+      color: var(--gold-light);
+      border: 1.5px solid var(--gold);
+      border-radius: 2px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 18px 20px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      line-height: 1;
+      transition: background 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary:hover { background: var(--charcoal); }
+
+    /* ════════════════════════
+       GALLERY THUMBNAILS
+    ════════════════════════ */
+    .gallery {
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 24px 36px;
+    }
+    .thumb {
+      width: 76px;
+      height: 92px;
+      object-fit: contain;
+      border: 1.5px solid var(--beige);
+      border-radius: 2px;
+      cursor: pointer;
+      background: var(--white);
+      padding: 4px;
+      transition: border-color 0.2s;
+    }
+    .thumb.active  { border-color: var(--gold); }
+    .thumb:hover   { border-color: var(--gold-light); }
+
+    /* ════════════════════════
+       DIVIDER
+    ════════════════════════ */
+    .hr { width: 100%; height: 1px; background: var(--beige); }
+
+    /* ════════════════════════
+       VALUE PROPS
+    ════════════════════════ */
+    .value-section {
+      background: var(--white);
+      padding: 44px 24px;
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .value-symbol {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--gold);
+      margin-bottom: 10px;
+      line-height: 1;
+    }
+    .value-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.5;
+      margin-bottom: 4px;
+    }
+    .value-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ════════════════════════
+       FRAGRANCE PYRAMID
+    ════════════════════════ */
+    .pyramid-section {
+      background: var(--cream);
+      padding: 56px 24px;
+      text-align: center;
+    }
+    .eyebrow-en {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+      padding-right: 0.38em;
+    }
+    .section-title-ar {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: clamp(20px, 4.5vw, 30px);
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .section-sub-ar {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 400px;
+      margin: 0 auto 40px;
+    }
+    .pyramid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .tier {
+      border-top: 1px solid var(--gold);
+      padding: 18px 16px;
+      text-align: center;
+    }
+    .tier:nth-child(1) { width: 52%; }
+    .tier:nth-child(2) { width: 72%; }
+    .tier:nth-child(3) { width: 94%; border-bottom: 1px solid var(--gold); }
+    .tier-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 9.5px;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 5px;
+      padding-right: 0.32em;
+    }
+    .tier-name {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.5;
+    }
+    .pyramid-outro {
+      margin-top: 30px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+      line-height: 1.8;
+    }
+
+    /* ════════════════════════
+       REVIEWS
+    ════════════════════════ */
+    .reviews-section {
+      background: var(--bg);
+      padding: 56px 20px;
+    }
+    .reviews-header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    .review-card {
+      background: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 3px;
+      padding: 16px 13px;
+    }
+    .review-stars {
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 2px;
+      margin-bottom: 9px;
+    }
+    .review-text {
+      font-size: 12px;
+      line-height: 1.75;
+      color: var(--charcoal);
+      margin-bottom: 14px;
+    }
+    .review-footer {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .review-avatar {
+      width: 27px;
+      height: 27px;
+      border-radius: 50%;
+      background: var(--cream);
+      border: 1px solid var(--beige);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .review-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.3;
+    }
+    .review-loc {
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    /* ════════════════════════
+       PRICE REVEAL
+    ════════════════════════ */
+    .price-section {
+      background: var(--white);
+      padding: 60px 24px;
+      text-align: center;
+    }
+    .price-was {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 16px;
+      color: var(--muted);
+      text-decoration: line-through;
+      text-decoration-color: rgba(138,138,138,0.6);
+      margin-bottom: 6px;
+    }
+    .price-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+      display: block;
+      padding-right: 0.35em;
+    }
+    .price-now {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: clamp(56px, 16vw, 80px);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .price-includes {
+      font-size: 13px;
+      color: var(--charcoal);
+      margin-bottom: 32px;
+    }
+    .trust-row {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--charcoal);
+    }
+    .trust-icon {
+      width: 38px;
+      height: 38px;
+      border: 1px solid var(--beige);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    /* ════════════════════════
+       ORDER FORM
+    ════════════════════════ */
+    .order-section {
+      background: var(--cream);
+      padding: 56px 24px;
+    }
+    .order-inner {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .order-title {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: clamp(22px, 5vw, 30px);
+      font-weight: 700;
+      color: var(--black);
+      text-align: center;
+      margin-bottom: 6px;
+    }
+    .order-sub {
+      font-size: 13px;
+      color: var(--muted);
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .cod-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 3px;
+      padding: 15px 16px;
+      margin-bottom: 24px;
+    }
+    .cod-text-wrap { flex: 1; }
+    .cod-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--black);
+    }
+    .cod-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .cod-dot {
+      width: 19px;
+      height: 19px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .cod-dot::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 9px; height: 9px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 7px;
+    }
+    .req { color: var(--gold); }
+    .form-opt { font-weight: 400; color: var(--muted); font-size: 11px; }
+    .form-input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--beige);
+      border-radius: 2px;
+      background: var(--white);
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 14px;
+      color: var(--black);
+      direction: rtl;
+      text-align: right;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+    }
+    .form-input:focus { border-color: var(--gold); }
+    .form-input::placeholder { color: var(--muted); font-size: 13px; }
+    .form-textarea { min-height: 82px; resize: vertical; }
+    .btn-submit {
+      display: block;
+      width: 100%;
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      border-radius: 2px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 19px 20px;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s;
+      margin-top: 8px;
+      letter-spacing: 0.01em;
+    }
+    .btn-submit:hover    { background: #A8862E; }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-note {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 14px;
+      line-height: 1.65;
+    }
+    #order-error {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 16px;
+      background: rgba(180,60,60,0.07);
+      border: 1px solid rgba(180,60,60,0.22);
+      border-radius: 3px;
+      color: #b04040;
+      font-size: 13px;
+      text-align: center;
+    }
+    .order-success {
+      display: none;
+      text-align: center;
+      padding: 36px 0;
+    }
+    .success-icon {
+      width: 56px;
+      height: 56px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      color: var(--gold);
+      margin: 0 auto 20px;
+    }
+    .order-success h3 {
+      font-family: 'Noto Serif Arabic', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .order-success p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ════════════════════════
+       FOOTER
+    ════════════════════════ */
+    .footer {
+      background: var(--black);
+      padding: 30px 24px;
+      text-align: center;
+    }
+    .footer-wordmark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      letter-spacing: 0.52em;
+      color: var(--gold-light);
+      margin-bottom: 14px;
+      padding-right: 0.52em;
+      display: block;
+    }
+    .footer-wa {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      margin-bottom: 14px;
+      transition: color 0.2s;
+    }
+    .footer-wa:hover { color: #25D366; }
+    .footer-copy {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+    }
+
+    /* ════════════════════════
+       STICKY BOTTOM BAR
+    ════════════════════════ */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--black);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 11px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transform: translateY(100%);
+      transition: transform 0.32s ease;
+    }
+    .sticky-bar.visible { transform: translateY(0); }
+    .sticky-wa {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: 1.5px solid rgba(255,255,255,0.18);
+      border-radius: 2px;
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .sticky-wa:hover { border-color: #25D366; color: #25D366; }
+    .sticky-cta {
+      flex: 1;
+      background: var(--gold);
+      color: var(--white);
+      border: none;
+      border-radius: 2px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 12px;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.2s;
+      letter-spacing: 0.01em;
+    }
+    .sticky-cta:hover { background: #A8862E; }
+
+    /* ════════════════════════
+       FADE-IN ANIMATION
+    ════════════════════════ */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ════════════════════════
+       MOBILE REFINEMENTS
+    ════════════════════════ */
+    @media (max-width: 420px) {
+      .hero-image-wrap { width: 68%; }
+      .value-grid { gap: 12px; }
+      .value-symbol { font-size: 20px; }
+      .reviews-grid { gap: 10px; }
+      .trust-row { gap: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════
+       ANNOUNCE BAR
+  ══════════════════════════════════ -->
+  <div class="announce-bar">
+    ✦ &nbsp; توصيل مجاني لجميع المدن &nbsp;•&nbsp; الدفع عند الاستلام &nbsp; ✦
+  </div>
+
+  <!-- ══════════════════════════════════
+       BRAND HEADER — logo only, no exits
+  ══════════════════════════════════ -->
+  <header class="brand-header">
+    <div class="brand-wordmark">S I L L A G E</div>
+    <div class="brand-sub">R O U G E &nbsp;·&nbsp; Extrait de Parfum</div>
+    <div class="brand-rule"></div>
+  </header>
+
+  <!-- ══════════════════════════════════
+       HERO
+  ══════════════════════════════════ -->
+  <section class="hero fade-in">
+
+    <div class="hero-image-wrap">
+      <img id="hero-img"
+           src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png"
+           alt="SILLAGE ROUGE — Extrait de Parfum 100ML"
+           class="hero-img"
+           loading="eager" />
+    </div>
+
+    <p class="hero-meta">
+      خشبي <span>·</span> عنبري <span>·</span> زهري &nbsp;—&nbsp; للجنسين &nbsp;—&nbsp; جميع الفصول
+    </p>
+
+    <h1 class="hero-headline">حضورٌ لا يُنسى</h1>
+
+    <p class="hero-sub">
+      عطرٌ يثبت معك اليوم كله،<br/>ويترك أثراً يسأل عنه الجميع
+    </p>
+
+    <button class="btn-primary" onclick="scrollToForm()">
+      اطلب الآن &mdash; 250₪ واصل لباب بيتك
+    </button>
+
+  </section>
+
+  <!-- ══════════════════════════════════
+       GALLERY THUMBNAILS
+  ══════════════════════════════════ -->
+  <div class="gallery fade-in">
+    <img class="thumb active"
+         src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png"
+         alt="الزجاجة"
+         onclick="swapImg(this, '../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png')" />
+    <img class="thumb"
+         src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_14%20PM.png"
+         alt="الزجاجة في العلبة"
+         onclick="swapImg(this, '../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_14%20PM.png')" />
+    <img class="thumb"
+         src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_01%20PM.png"
+         alt="العلبة"
+         onclick="swapImg(this, '../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_01%20PM.png')" />
+  </div>
+
+  <div class="hr"></div>
+
+  <!-- ══════════════════════════════════
+       VALUE PROPS
+  ══════════════════════════════════ -->
+  <section class="value-section fade-in">
+    <div class="value-grid">
+
+      <div>
+        <div class="value-symbol">◈</div>
+        <div class="value-title">فوحان يصنع الانطباع الأول</div>
+        <div class="value-desc">حضور قوي من أول رشة</div>
+      </div>
+
+      <div>
+        <div class="value-symbol">◎</div>
+        <div class="value-title">ثبات 10–12 ساعة</div>
+        <div class="value-desc">يرافقك من الصبح للليل</div>
+      </div>
+
+      <div>
+        <div class="value-symbol">✦</div>
+        <div class="value-title">Extrait de Parfum</div>
+        <div class="value-desc">أعلى تركيز — حضور راقٍ</div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- ══════════════════════════════════
+       FRAGRANCE PYRAMID
+  ══════════════════════════════════ -->
+  <section class="pyramid-section fade-in">
+
+    <span class="eyebrow-en">Fragrance Profile</span>
+    <h2 class="section-title-ar">هرم العطر</h2>
+    <p class="section-sub-ar">
+      يفتتح برشاقة الزعفران والياسمين، ثم يتطور إلى دفء العنبر والأخشاب،
+      ليستقر على قاعدة آسرة تمنحه ثباتاً يدوم
+    </p>
+
+    <div class="pyramid">
+
+      <div class="tier">
+        <div class="tier-label">Top Notes &mdash; المقدمة</div>
+        <div class="tier-name">الزعفران · الياسمين</div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-label">Heart Notes &mdash; قلب العطر</div>
+        <div class="tier-name">العنبر · أخشاب العنبر</div>
+      </div>
+
+      <div class="tier">
+        <div class="tier-label">Base Notes &mdash; القاعدة</div>
+        <div class="tier-name">خشب الأرز · الأمبروكسان · لمسات راتنجية دافئة</div>
+      </div>
+
+    </div>
+
+    <p class="pyramid-outro">
+      خشبي &nbsp;•&nbsp; عنبري &nbsp;•&nbsp; زهري — فاخر، نظيف، دافئ، ملفت
+    </p>
+
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- ══════════════════════════════════
+       REVIEWS
+  ══════════════════════════════════ -->
+  <section class="reviews-section fade-in">
+
+    <div class="reviews-header">
+      <h2 class="section-title-ar">ماذا قالوا بعد التجربة</h2>
+      <p class="section-sub-ar" style="margin-bottom:0;">تجارب حقيقية من زبائننا</p>
+    </div>
+
+    <div class="reviews-grid">
+
+      <article class="review-card">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">أكثر عطر الناس سألتني عنه من وقت بلشت أستخدمه.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ش</div>
+          <div>
+            <p class="review-name">شادي</p>
+            <p class="review-loc">حيفا</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">رشّيته الصبح، ورجعت بالليل ولسه الريحة موجودة. هاي أكثر نقطة فاجأتني فيه.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ر</div>
+          <div>
+            <p class="review-name">رامي</p>
+            <p class="review-loc">عرابة</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">لو بعرف إنه هيك، كان طلبت ثنتين من أول مرة.</p>
+        <div class="review-footer">
+          <div class="review-avatar">م</div>
+          <div>
+            <p class="review-name">منار</p>
+            <p class="review-loc">كفر قرع</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">كل ما أفوت عجمعة أو أقعد مع الشباب، لازم حدا يسألني شو حاط.</p>
+        <div class="review-footer">
+          <div class="review-avatar">أ</div>
+          <div>
+            <p class="review-name">أحمد</p>
+            <p class="review-loc">سخنين</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">التغليف لحاله بيعطي شعور إنه هدية فخمة. أول ما فتحته حسيت إنه أغلى من سعره بكثير.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ر</div>
+          <div>
+            <p class="review-name">رانيا</p>
+            <p class="review-loc">عكا</p>
+          </div>
+        </div>
+      </article>
+
+      <article class="review-card">
+        <p class="review-stars">★★★★★</p>
+        <p class="review-text">خلصت أول قنينة، ولما رجعت أطلب مرة ثانية ما احتجت أفكر.</p>
+        <div class="review-footer">
+          <div class="review-avatar">ت</div>
+          <div>
+            <p class="review-name">تامر</p>
+            <p class="review-loc">المغار</p>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- ══════════════════════════════════
+       PRICE REVEAL
+  ══════════════════════════════════ -->
+  <section class="price-section fade-in">
+
+    <p class="price-was">600₪</p>
+    <span class="price-label">السعر الآن</span>
+    <p class="price-now">250₪</p>
+    <p class="price-includes">شامل التوصيل المجاني &nbsp;•&nbsp; الدفع عند الاستلام</p>
+
+    <div class="trust-row">
+      <div class="trust-item">
+        <div class="trust-icon">🔒</div>
+        <span>دفع عند الاستلام</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">🚚</div>
+        <span>توصيل مجاني</span>
+      </div>
+      <div class="trust-item">
+        <div class="trust-icon">↩</div>
+        <span>إرجاع مضمون</span>
+      </div>
+    </div>
+
+    <button class="btn-primary" onclick="scrollToForm()" style="max-width:360px;">
+      اطلب الآن &mdash; 250₪
+    </button>
+
+  </section>
+
+  <!-- ══════════════════════════════════
+       ORDER FORM
+  ══════════════════════════════════ -->
+  <section class="order-section" id="order-form">
+    <div class="order-inner">
+
+      <h2 class="order-title">أكمل طلبك</h2>
+      <p class="order-sub">الدفع عند الاستلام &nbsp;•&nbsp; توصيل مجاني &nbsp;•&nbsp; نتواصل معك خلال 24 ساعة</p>
+
+      <!-- COD pre-selected visual -->
+      <div class="cod-box">
+        <div class="cod-text-wrap">
+          <div class="cod-label">الدفع عند الاستلام</div>
+          <div class="cod-sub">لا تدفع شيئاً الآن</div>
+        </div>
+        <div class="cod-dot"></div>
+      </div>
+
+      <form id="order-form-el" onsubmit="handleSubmit(event)" novalidate>
+
+        <input type="hidden" id="f-product" name="product" value="rouge" />
+
+        <div class="form-group">
+          <label class="form-label" for="f-name">الاسم الكامل <span class="req">*</span></label>
+          <input type="text" id="f-name" name="name" class="form-input"
+                 placeholder="اسمك الكامل" autocomplete="name" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-phone">رقم الهاتف <span class="req">*</span></label>
+          <input type="tel" id="f-phone" name="phone" class="form-input"
+                 placeholder="05XXXXXXXX" autocomplete="tel" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-city">المدينة <span class="req">*</span></label>
+          <input type="text" id="f-city" name="city" class="form-input"
+                 placeholder="مدينتك" autocomplete="address-level2" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-address">العنوان <span class="req">*</span></label>
+          <input type="text" id="f-address" name="address" class="form-input"
+                 placeholder="الشارع، المبنى، الشقة" autocomplete="street-address" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-email">
+            البريد الإلكتروني <span class="form-opt">(اختياري)</span>
+          </label>
+          <input type="email" id="f-email" name="email" class="form-input"
+                 placeholder="example@email.com" autocomplete="email" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="f-notes">
+            ملاحظات <span class="form-opt">(اختياري)</span>
+          </label>
+          <textarea id="f-notes" name="notes" class="form-input form-textarea"
+                    placeholder="أي تفاصيل إضافية..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">
+          أكّد طلبك &mdash; 250₪ دفع عند الاستلام
+        </button>
+
+        <div id="order-error"></div>
+
+        <p class="form-note">
+          سنتواصل معك خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.
+        </p>
+
+      </form>
+
+      <div class="order-success" id="order-success">
+        <div class="success-icon">✓</div>
+        <h3>تم استلام طلبك.</h3>
+        <p>سنتواصل معك خلال 24 ساعة لتأكيد الطلب وترتيب التوصيل.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════
+       FOOTER
+  ══════════════════════════════════ -->
+  <footer class="footer">
+    <span class="footer-wordmark">S I L L A G E</span>
+    <a href="https://wa.me/972542920392" class="footer-wa" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      تواصل معنا
+    </a>
+    <p class="footer-copy">© 2026 SILLAGE. جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <!-- ══════════════════════════════════
+       STICKY BOTTOM BAR
+  ══════════════════════════════════ -->
+  <div class="sticky-bar" id="sticky-bar">
+    <a href="https://wa.me/972542920392" class="sticky-wa"
+       target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+    <button class="sticky-cta" onclick="scrollToForm()">
+      اطلب الآن &mdash; 250₪
+    </button>
+  </div>
+
+  <!-- ══════════════════════════════════
+       SCRIPT
+  ══════════════════════════════════ -->
+  <script>
+    var PRICE   = 250;
+    var PRODUCT = 'rouge';
+
+    /* ── Gallery swap ── */
+    function swapImg(thumb, src) {
+      document.getElementById('hero-img').src = src;
+      document.querySelectorAll('.thumb').forEach(function(t) {
+        t.classList.remove('active');
+      });
+      thumb.classList.add('active');
+    }
+
+    /* ── Scroll to form ── */
+    function scrollToForm() {
+      document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
+      if (window.fbq) fbq('track', 'InitiateCheckout', { value: PRICE, currency: 'ILS', content_name: 'SILLAGE ROUGE' });
+    }
+
+    /* ── Order submit ── */
+    function handleSubmit(e) {
+      e.preventDefault();
+
+      var errorEl = document.getElementById('order-error');
+      errorEl.style.display = 'none';
+
+      var name    = document.getElementById('f-name').value.trim();
+      var phone   = document.getElementById('f-phone').value.trim();
+      var city    = document.getElementById('f-city').value.trim();
+      var address = document.getElementById('f-address').value.trim();
+      var email   = document.getElementById('f-email').value.trim();
+      var notes   = document.getElementById('f-notes').value.trim();
+
+      if (!name || !phone || !city || !address) {
+        errorEl.textContent   = 'يرجى ملء جميع الحقول المطلوبة.';
+        errorEl.style.display = 'block';
+        return;
+      }
+
+      var btn = document.getElementById('submit-btn');
+      btn.disabled    = true;
+      btn.textContent = 'جاري الإرسال...';
+
+      fetch('/api/orders', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          full_name: name,
+          phone:     phone,
+          email:     email,
+          city:      city,
+          address:   address,
+          notes:     notes,
+          product:   PRODUCT,
+        }),
+      })
+      .then(function(res) {
+        return res.json().then(function(body) {
+          if (!res.ok) { var err = new Error('err'); err.body = body; throw err; }
+          return body;
+        });
+      })
+      .then(function() {
+        if (window.fbq) fbq('track', 'Purchase', { value: PRICE, currency: 'ILS', content_name: 'SILLAGE ROUGE' });
+        document.getElementById('order-form-el').style.display  = 'none';
+        document.getElementById('order-success').style.display  = 'block';
+        window.scrollTo({ top: document.getElementById('order-form').offsetTop - 80, behavior: 'smooth' });
+      })
+      .catch(function(err) {
+        var msg = (err.body && err.body.outOfStock)
+          ? 'هذا العطر نفد مخزونه حالياً.'
+          : 'حدث خطأ. يرجى المحاولة مرة أخرى.';
+        errorEl.textContent   = msg;
+        errorEl.style.display = 'block';
+        btn.disabled    = false;
+        btn.textContent = 'أكّد طلبك — 250₪ دفع عند الاستلام';
+      });
+    }
+
+    /* ── Sticky bar — show after 70vh scroll, hide when form is in view ── */
+    var stickyBar    = document.getElementById('sticky-bar');
+    var orderSection = document.getElementById('order-form');
+
+    window.addEventListener('scroll', function() {
+      var scrolled   = window.scrollY > window.innerHeight * 0.7;
+      var formInView = orderSection.getBoundingClientRect().top < window.innerHeight * 0.55;
+      stickyBar.classList.toggle('visible', scrolled && !formInView);
+    }, { passive: true });
+
+    /* ── Fade-in on scroll ── */
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.07 });
+      document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+    } else {
+      document.querySelectorAll('.fade-in').forEach(function(el) { el.classList.add('visible'); });
+    }
+  </script>
+
+</body>
+</html>
