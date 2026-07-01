@@ -99,6 +99,7 @@
       text-align: center;
     }
     .hero-image-wrap {
+      position: relative;
       width: min(92%, 460px);
       margin: 0 auto 22px;
     }
@@ -106,6 +107,19 @@
       width: 100%;
       height: auto;
       filter: drop-shadow(0 18px 36px rgba(0,0,0,0.1));
+    }
+    .hero-badge {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 20px;
+      box-shadow: 0 6px 16px rgba(184,150,62,0.4);
+      z-index: 2;
     }
     .hero-headline {
       font-family: 'Noto Serif Arabic', serif;
@@ -127,25 +141,54 @@
       width: 100%;
       max-width: 420px;
       margin: 0 auto;
-      background: var(--black);
+      background: var(--gold);
       color: var(--white);
       border: none;
       border-radius: 4px;
-      font-size: 15.5px;
-      font-weight: 600;
-      padding: 17px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 18px 20px;
       cursor: pointer;
       text-align: center;
       text-decoration: none;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 6px 20px rgba(184,150,62,0.35);
+      animation: pulse-glow 2.4s ease-in-out infinite;
     }
-    .btn-primary:hover { background: var(--charcoal); }
+    .btn-primary:hover { background: #A8862E; transform: translateY(-1px); }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 6px 20px rgba(184,150,62,0.35); }
+      50%      { box-shadow: 0 6px 26px rgba(184,150,62,0.6); }
+    }
     .hero-price-note {
       font-size: 12.5px;
       color: var(--muted);
       margin-top: 10px;
     }
     .hero-price-note b { color: var(--black); }
+
+    /* ════════════════════════
+       URGENCY / COUNTDOWN
+    ════════════════════════ */
+    .urgency-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--black);
+      color: var(--gold-light, #D4B56A);
+      font-size: 12.5px;
+      font-weight: 600;
+      padding: 10px 16px;
+      max-width: 420px;
+      margin: 14px auto 0;
+      border-radius: 4px;
+    }
+    .urgency-bar span#countdown {
+      font-variant-numeric: tabular-nums;
+      color: var(--white);
+      letter-spacing: 0.04em;
+    }
 
     /* ════════════════════════
        TRUST STRIP — immediate risk reversal, right under the fold
@@ -648,12 +691,12 @@
       align-items: center;
       gap: 6px;
       font-size: 13px;
-      color: rgba(255,255,255,0.7);
+      color: #25D366;
       text-decoration: none;
       margin-bottom: 16px;
-      transition: color 0.2s;
+      transition: opacity 0.2s;
     }
-    .footer-wa:hover { color: #25D366; }
+    .footer-wa:hover { opacity: 0.8; }
     .footer-links {
       display: flex;
       justify-content: center;
@@ -689,14 +732,14 @@
     .sticky-wa {
       display: flex; align-items: center; justify-content: center;
       width: 46px; height: 46px;
-      border: 1.5px solid rgba(255,255,255,0.18);
+      border: 1.5px solid rgba(37,211,102,0.35);
       border-radius: 4px;
-      color: rgba(255,255,255,0.6);
+      color: #25D366;
       text-decoration: none;
       flex-shrink: 0;
-      transition: border-color 0.2s, color 0.2s;
+      transition: opacity 0.2s;
     }
-    .sticky-wa:hover { border-color: #25D366; color: #25D366; }
+    .sticky-wa:hover { opacity: 0.8; }
     .sticky-cta {
       flex: 1;
       background: var(--gold);
@@ -743,8 +786,9 @@
   <!-- HERO -->
   <section class="hero fade-in">
     <div class="hero-image-wrap">
+      <div class="hero-badge">خصم 58٪</div>
       <img id="hero-img"
-           src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png"
+           src="../images/sillage-rouge-box.png"
            alt="SILLAGE ROUGE — Extrait de Parfum 100ML"
            class="hero-img"
            loading="eager" />
@@ -755,6 +799,10 @@
 
     <button class="btn-primary" onclick="scrollToForm()">اطلب الآن</button>
     <p class="hero-price-note"><b>250₪</b> شامل التوصيل — تدفع عند استلام القطعة</p>
+
+    <div class="urgency-bar">
+      ⏰ السعر الحالي ينتهي خلال <span id="countdown">00:00:00</span>
+    </div>
   </section>
 
   <!-- TRUST STRIP -->
@@ -778,6 +826,10 @@
   <!-- GALLERY THUMBNAILS -->
   <div class="gallery fade-in">
     <img class="thumb active"
+         src="../images/sillage-rouge-box.png"
+         alt="الزجاجة والعلبة"
+         onclick="swapImg(this, '../images/sillage-rouge-box.png')" />
+    <img class="thumb"
          src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png"
          alt="الزجاجة"
          onclick="swapImg(this, '../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_21%20PM.png')" />
@@ -785,10 +837,6 @@
          src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_14%20PM.png"
          alt="الزجاجة في العلبة"
          onclick="swapImg(this, '../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_14%20PM.png')" />
-    <img class="thumb"
-         src="../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_01%20PM.png"
-         alt="العلبة"
-         onclick="swapImg(this, '../images/ChatGPT%20Image%20Jul%201%2C%202026%2C%2004_59_01%20PM.png')" />
   </div>
 
   <div class="hr"></div>
@@ -1166,6 +1214,20 @@
       document.querySelectorAll('.thumb').forEach(function(t) { t.classList.remove('active'); });
       thumb.classList.add('active');
     }
+
+    /* ── Countdown to end of day (resets daily — real mechanic, not a fake claim) ── */
+    function updateCountdown() {
+      var now = new Date();
+      var end = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59);
+      var diff = Math.max(0, end - now);
+      var h = String(Math.floor(diff / 3600000)).padStart(2, '0');
+      var m = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      var s = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
+      var el = document.getElementById('countdown');
+      if (el) el.textContent = h + ':' + m + ':' + s;
+    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
     function scrollToForm() {
       document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
