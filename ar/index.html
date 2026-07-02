@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SILLAGE | إكسترا دو بارفان</title>
-  <meta name="description" content="SILLAGE — عطر فاخر بـ ₪250 فقط، شامل التوصيل. الدفع عند الاستلام." />
+  <title>SILLAGE — عطور أصلية | توصيل مجاني، دفع عند الاستلام</title>
+  <meta name="description" content="SILLAGE — عطور Extrait de Parfum أصلية 100٪. توصيل مجاني، الدفع عند الاستلام. اكتشف SILLAGE ROUGE وطقم هدية Citruc & Sweet." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Arabic:wght@300;400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="../style.css?v=7" />
-  <link rel="stylesheet" href="../rtl.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,300&family=Noto+Serif+Arabic:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Meta Pixel -->
   <script>
@@ -25,1240 +22,440 @@
   </script>
   <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1359606469381115&ev=PageView&noscript=1"/></noscript>
-  <!-- End Meta Pixel -->
 
   <style>
-    /* ── Arabic base overrides ── */
-    body { font-family: 'IBM Plex Sans Arabic', sans-serif; }
-    h1, h2, h3 { font-family: 'Noto Serif Arabic', serif; font-weight: 700; letter-spacing: 0; }
-    .eyebrow { font-family: 'IBM Plex Sans Arabic', sans-serif; letter-spacing: 0; text-transform: none; font-size: 12px; }
-    .section-title { font-family: 'Noto Serif Arabic', serif; font-weight: 700; letter-spacing: 0; }
-    .btn { font-family: 'IBM Plex Sans Arabic', sans-serif; text-transform: none; letter-spacing: 0; font-size: 15px; }
-    .divider { margin: 14px auto 0; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    img, svg { display: block; max-width: 100%; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
 
-    /* ── Fade-in scroll animation ── */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── Nav ── */
-    .nav-wa {
-      display: flex; align-items: center; justify-content: center;
-      width: 36px; height: 36px;
-      color: var(--muted); text-decoration: none;
-      transition: color 0.2s; flex-shrink: 0;
-    }
-    .nav-wa:hover { color: #25D366; }
-
-    /* ── Hero mobile ── */
-    @media (max-width: 860px) {
-      .hero {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 0 !important;
-        padding: 0 0 16px !important;
-        min-height: unset !important;
-      }
-      .hero-text { padding: 6px 20px 0; }
-      .hero-visual {
-        order: -1;
-        width: 100%;
-        height: 48svh;
-        min-height: unset !important;
-        max-height: unset !important;
-        border-radius: 0 !important;
-        overflow: hidden;
-        flex-shrink: 0;
-      }
-      .hero-visual::before { content: none !important; }
-      .hero-visual::after { content: none !important; }
-      .hero-visual .hero-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center 77%;
-        border-radius: 0 !important;
-        display: block;
-      }
+    :root {
+      --bg:         #FAF9F7;
+      --cream:      #F4F1EC;
+      --line:       #E4DFD6;
+      --gold:       #B8963E;
+      --gold-light: #D9BC7A;
+      --trust:      #2C5282;
+      --trust-dim:  rgba(44,82,130,0.07);
+      --black:      #1C1C1C;
+      --charcoal:   #333333;
+      --muted:      #7A7A7A;
+      --white:      #FFFFFF;
     }
 
-    /* ── Hero ── */
-    .hero-headline {
-      font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(24px, 5.5vw, 50px);
-      font-weight: 800;
-      line-height: 1.18;
+    body {
+      background: var(--bg);
       color: var(--black);
-      max-width: 90%;
-      margin: 0 auto 14px;
-      text-align: center;
-    }
-    .hero-sub {
       font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: clamp(13px, 2.4vw, 18px);
-      font-weight: 400;
-      color: var(--muted);
+      font-size: 16px;
       line-height: 1.6;
-      margin: 0 auto 22px;
-      text-align: center;
-    }
-    .hero-price-block {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 18px;
-    }
-    .hero-price-main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 4px;
-    }
-    .hero-price {
-      font-family: 'Noto Serif Arabic', serif;
-      font-size: clamp(62px, 13vw, 96px);
-      font-weight: 800;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .hero-price-only {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: clamp(13px, 1.8vw, 16px);
-      font-weight: 600;
-      color: var(--gold-dark);
-      letter-spacing: 0.01em;
-      line-height: 1;
-    }
-    .hero-trust {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 20px;
-    }
-    .hero-trust-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .hero-trust-sep { opacity: 0.45; }
-    .hero-footer-trust {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 5px;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 12px;
-      opacity: 0.75;
-    }
-    .hero-reviews-cta {
-      display: block;
-      margin: 10px auto 0;
-      background: #ffffff;
-      border: 1.5px solid var(--beige);
-      border-radius: 4px;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--charcoal);
-      cursor: pointer;
-      padding: 13px 0;
-      transition: border-color 0.2s, color 0.2s;
-      width: 100%;
-      text-align: center;
-    }
-    .hero-reviews-cta:hover { border-color: var(--charcoal); color: var(--black); }
-
-    /* ── Receipt actions ── */
-    .receipt-actions {
-      display: none;
-      margin-top: 5px;
-      align-items: center;
-      gap: 8px;
-    }
-    .receipt-actions-sep {
-      font-size: 11px;
-      color: var(--beige);
-    }
-    .receipt-change-link,
-    .receipt-remove-link {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      color: #b89090;
-      text-decoration: underline;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-    }
-    .receipt-change-link:hover { color: var(--charcoal); }
-    .receipt-remove-link:hover { color: #a06060; }
-
-    /* ── Contextual sticky CTA ── */
-    .ctx-sticky-cta {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 999;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      will-change: opacity;
-    }
-    .ctx-sticky-cta.visible {
-      opacity: 1;
-      pointer-events: auto;
+      direction: rtl;
+      padding-bottom: 66px;
     }
 
-    /* ── Selection section ── */
-    .selection-section { padding: 52px 24px; background: var(--cream); }
-    .selection-section .section-head { margin-bottom: 6px; }
-    .selection-note {
-      text-align: center;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 28px;
-    }
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
-      max-width: 860px;
-      margin: 0 auto;
-    }
-    @media (max-width: 680px) {
-      .product-grid {
-        display: flex;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        overscroll-behavior-x: contain;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        gap: 12px;
-        max-width: none;
-        margin: 0 -24px;
-        padding: 0 8vw 6px;
-      }
-      .product-grid::-webkit-scrollbar { display: none; }
-      .product-card {
-        flex: 0 0 84vw;
-        min-width: 0;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
-      }
-      .product-card-img { height: 240px; }
-    }
-    .product-card {
-      background: #fff;
-      border: 1.5px solid var(--beige);
-      border-radius: 6px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
-      cursor: pointer;
-    }
-    .product-card:hover { border-color: var(--gold-light); box-shadow: 0 8px 32px rgba(201,168,76,0.15); transform: translateY(-2px); }
-    .product-card.has-qty { border-color: var(--gold); box-shadow: 0 8px 32px rgba(201,168,76,0.22); }
-    .product-card.oos { opacity: 0.42; pointer-events: none; }
-    .product-card-img {
-      width: 100%;
-      height: 290px;
-      object-fit: contain;
-      background: #0d0d0d;
-      display: block;
-    }
-    .product-card-body { padding: 10px 12px 14px; text-align: center; width: 100%; }
-    .product-card-name {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--charcoal);
-      margin-bottom: 4px;
-    }
-    .product-card-tag {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 4px;
-      line-height: 1.5;
-    }
-    .product-card-use {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 4px;
-      line-height: 1.55;
-    }
-    .product-card-perf {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      color: var(--charcoal);
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    .product-card-oos {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
-      margin-bottom: 8px;
-      display: none;
-    }
-    .product-card.oos .product-card-oos { display: block; }
-
-    /* ── Scent select button ── */
-    .scent-select-btn {
-      display: block;
-      width: 100%;
-      padding: 10px 0;
-      background: var(--cream);
-      border: 1.5px solid var(--beige);
-      border-radius: 3px;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--charcoal);
-      cursor: pointer;
-      transition: background 0.15s, border-color 0.15s, color 0.15s;
-    }
-    .scent-select-btn:hover { border-color: var(--gold); color: var(--gold-dark); }
-    .scent-select-btn.selected {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #fff;
-      font-weight: 600;
+    /* ANNOUNCE BAR */
+    .announce-bar {
+      background: var(--black); color: var(--gold-light); text-align: center;
+      font-size: 12.5px; font-weight: 500; letter-spacing: 0.02em; padding: 11px 16px;
     }
 
-    /* CTA below grid */
-    .sel-footer {
-      max-width: 900px;
-      margin: 28px auto 0;
-      text-align: center;
-      padding-top: 22px;
-      border-top: 1px solid var(--beige);
+    /* HEADER — real nav this time, it's the storefront */
+    .site-header {
+      background: var(--bg); padding: 20px 24px; text-align: center;
+      border-bottom: 1px solid var(--line);
     }
-
-    /* ── Trust strip ── */
-    .trust-strip {
-      background: var(--cream-dark);
-      border-top: 1px solid var(--beige);
-      border-bottom: 1px solid var(--beige);
-      padding: 16px 24px;
+    .brand-wordmark {
+      font-family: 'Cormorant Garamond', serif; font-size: clamp(18px, 4.5vw, 24px);
+      letter-spacing: 0.5em; color: var(--black); display: inline-block; padding-right: 0.5em;
     }
-    .trust-strip-inner {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 8px 28px;
-      max-width: 860px;
-      margin: 0 auto;
+    .site-nav {
+      display: flex; justify-content: center; gap: 22px; margin-top: 12px; flex-wrap: wrap;
     }
-    .trust-s {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--charcoal);
-    }
-    .trust-s::before { content: '✓ '; color: var(--gold); font-weight: 700; }
-
-    /* ── Reviews carousel ── */
-    .reviews-section {
-      padding: 52px 0 40px;
-      background: var(--cream);
-      border-top: 1px solid var(--beige);
-    }
-    .reviews-section .section-head {
-      padding: 0 24px;
-      margin-bottom: 6px;
-      text-align: center;
-    }
-    .reviews-subtitle {
-      text-align: center;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 28px;
-      padding: 0 24px;
-    }
-    .reviews-track {
-      display: flex;
-      gap: 14px;
-      padding: 4px 20px 12px;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scroll-snap-type: x mandatory;
-      scroll-padding-inline-start: 20px;
-      scrollbar-width: thin;
-      scrollbar-color: var(--beige) transparent;
-    }
-    .reviews-track::-webkit-scrollbar { height: 3px; }
-    .reviews-track::-webkit-scrollbar-thumb { background: var(--beige); border-radius: 2px; }
-    @media (min-width: 768px) {
-      .reviews-track {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        overflow-x: visible;
-        max-width: 960px;
-        margin: 0 auto;
-      }
-    }
-    .review-card {
-      flex: 0 0 260px;
-      scroll-snap-align: start;
-      background: #fff;
-      border: 1px solid var(--beige);
-      border-radius: 6px;
-      padding: 18px 16px;
-      display: flex;
-      flex-direction: column;
-    }
-    .review-stars { color: var(--gold); font-size: 13px; margin-bottom: 10px; letter-spacing: 1px; }
-    .review-text {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 13px;
-      line-height: 1.7;
-      color: var(--charcoal);
-      flex: 1;
-      margin-bottom: 14px;
-    }
-    .reviewer {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .avatar {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: var(--cream-dark);
-      border: 1px solid var(--beige);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--gold-dark);
-      flex-shrink: 0;
-    }
-    .reviewer-name {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--charcoal);
-      margin-bottom: 1px;
-    }
-    .reviewer-loc {
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 11px;
-      color: var(--muted);
-    }
-    .reviews-trust-line {
-      text-align: center;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 24px;
-      padding: 0 24px;
-    }
-    .reviews-trust-line span { color: var(--gold-dark); margin: 0 4px; }
-
-    /* ── Form receipt ── */
-    .form-label, .form-input, .form-note, .form-optional { font-family: 'IBM Plex Sans Arabic', sans-serif; }
-    .form-input { direction: rtl; text-align: right; }
-    .order-form-title { font-family: 'Noto Serif Arabic', serif; font-size: clamp(22px, 3vw, 30px); }
-    .order-form-sub { font-family: 'IBM Plex Sans Arabic', sans-serif; }
-
-    .form-receipt {
-      background: var(--cream-dark);
-      border: 1px solid var(--beige);
-      border-radius: 5px;
-      padding: 16px 18px;
-      margin-bottom: 24px;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-    }
-    .receipt-lbl {
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-      margin-bottom: 8px;
-    }
-    .receipt-scent-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 4px;
-    }
-    .receipt-scent-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--charcoal);
-    }
-    .receipt-scent-price {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--gold-dark);
-    }
-    .receipt-no-sel {
-      font-size: 13px;
-      color: var(--muted);
-      font-weight: 400;
-      margin-bottom: 4px;
-      display: block;
-    }
-    .receipt-hr { border: none; border-top: 1px solid var(--beige); margin: 10px 0; }
-    .receipt-row {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 5px;
-    }
-    .receipt-row.total { font-size: 15px; font-weight: 700; color: var(--charcoal); margin-bottom: 0; margin-top: 2px; }
-    .receipt-free { color: var(--gold-dark); }
-
-    /* ── Footer ── */
-    .footer-logo { font-family: 'IBM Plex Sans Arabic', sans-serif; font-weight: 700; letter-spacing: 0.1em; }
-    .footer-copy { font-family: 'IBM Plex Sans Arabic', sans-serif; }
-    .footer-wa {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 13px;
-      color: var(--muted);
-      text-decoration: none;
-      margin: 8px 0 14px;
+    .site-nav a {
+      font-size: 12.5px; font-weight: 600; color: var(--charcoal); text-decoration: none;
       transition: color 0.2s;
     }
-    .footer-wa:hover { color: #25D366; }
+    .site-nav a:hover { color: var(--gold); }
 
-    /* ── Badge ── */
-    .product-badge {
-      display: inline-block;
-      background: var(--gold);
-      color: #fff;
-      font-family: 'IBM Plex Sans Arabic', sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      padding: 2px 8px;
-      border-radius: 10px;
-      margin-bottom: 6px;
+    /* HERO */
+    .hero { background: var(--bg); padding: 40px 24px 32px; text-align: center; }
+    .hero-headline {
+      font-family: 'Noto Serif Arabic', serif; font-size: clamp(26px, 6vw, 38px);
+      font-weight: 700; line-height: 1.28; color: var(--black); margin-bottom: 12px;
     }
+    .hero-sub { font-size: clamp(13px, 2.6vw, 15px); color: var(--charcoal); line-height: 1.75; max-width: 440px; margin: 0 auto 24px; }
+    .btn-gold {
+      display: inline-block; background: var(--gold); color: var(--white); border: none; border-radius: 4px;
+      font-size: 15px; font-weight: 700; padding: 15px 32px; cursor: pointer; text-align: center;
+      text-decoration: none; transition: background 0.2s, transform 0.15s;
+      box-shadow: 0 6px 20px rgba(184,150,62,0.3);
+    }
+    .btn-gold:hover { background: #A8862E; transform: translateY(-1px); }
 
-    /* ── Mobile ── */
-    @media (max-width: 640px) {
-      .selection-section { padding: 36px 16px; }
-      .review-card { flex: 0 0 78vw; scroll-snap-align: start; }
+    /* TRUST STRIP */
+    .trust-strip { background: var(--trust-dim); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 12px; }
+    .trust-strip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 480px; margin: 0 auto; text-align: center; }
+    .trust-strip-item { font-size: 11.5px; font-weight: 600; color: var(--trust); display: flex; flex-direction: column; align-items: center; gap: 5px; line-height: 1.4; }
 
-      /* Hero text — tight but readable */
-      .hero-headline { font-size: clamp(19px, 5vw, 24px); line-height: 1.15; margin-bottom: 3px; max-width: 100%; }
-      .hero-sub { font-size: 12px; line-height: 1.4; margin-bottom: 5px; }
-      .hero-price-block { margin-bottom: 5px; }
-      .hero-price { font-size: clamp(40px, 10vw, 50px); }
-      .hero-price-only { font-size: 11px; }
-      .hero-trust { font-size: 10px; gap: 3px 6px; margin-bottom: 6px; flex-wrap: nowrap; overflow: hidden; }
-      .hero-trust-sep:last-of-type, .hero-trust-item:last-child { display: none; }
-      .hero-reviews-cta { font-size: 13px; padding: 8px 0; margin-top: 4px; opacity: 0.85; }
-      .hero-footer-trust { display: none; }
+    .hr { width: 100%; height: 1px; background: var(--line); }
+
+    /* SECTION HEADINGS */
+    .eyebrow-en {
+      font-family: 'Cormorant Garamond', serif; font-size: 10px; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: block; padding-right: 0.35em;
+    }
+    .section-title-ar { font-family: 'Noto Serif Arabic', serif; font-size: clamp(21px, 4.5vw, 28px); font-weight: 700; color: var(--black); margin-bottom: 8px; text-align: center; }
+    .section-sub-ar { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 400px; margin: 0 auto 32px; text-align: center; }
+
+    /* PRODUCTS */
+    .products-section { background: var(--white); padding: 44px 20px; }
+    .products-grid { display: flex; flex-direction: column; gap: 20px; max-width: 460px; margin: 0 auto; }
+    .product-card {
+      background: var(--cream); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
+      position: relative;
+    }
+    .product-badge {
+      position: absolute; top: 14px; right: 14px; background: var(--black); color: var(--gold-light);
+      font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 20px; z-index: 2;
+    }
+    .product-img-wrap { background: var(--white); padding: 28px; text-align: center; }
+    .product-img-wrap img { width: min(70%, 240px); margin: 0 auto; filter: drop-shadow(0 12px 26px rgba(0,0,0,0.08)); }
+    .product-body { padding: 20px 22px 24px; text-align: center; }
+    .product-name { font-family: 'Noto Serif Arabic', serif; font-size: 21px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
+    .product-tagline { font-size: 12.5px; color: var(--charcoal); line-height: 1.7; margin-bottom: 14px; }
+    .product-price-row { display: flex; align-items: baseline; justify-content: center; gap: 10px; margin-bottom: 6px; }
+    .product-price-was { font-size: 14px; color: var(--muted); text-decoration: line-through; }
+    .product-price-now { font-family: 'Noto Serif Arabic', serif; font-size: 30px; font-weight: 700; color: var(--black); }
+    .product-urgency {
+      display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600;
+      color: var(--gold); background: rgba(184,150,62,0.1); padding: 5px 12px; border-radius: 20px; margin-bottom: 16px;
+    }
+    .product-cta {
+      display: block; width: 100%; background: var(--gold); color: var(--white); border: none; border-radius: 4px;
+      font-size: 15px; font-weight: 700; padding: 15px; cursor: pointer; text-align: center; text-decoration: none;
+      transition: background 0.2s;
+    }
+    .product-cta:hover { background: #A8862E; }
+
+    /* STORE ADVANTAGES */
+    .store-grid-section { background: var(--cream); padding: 44px 24px; }
+    .store-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 460px; margin: 0 auto; }
+    .store-card { background: var(--white); border: 1px solid var(--line); border-radius: 6px; padding: 22px 14px; text-align: center; }
+    .store-icon {
+      width: 42px; height: 42px; margin: 0 auto 10px; border-radius: 50%; background: var(--trust-dim);
+      display: flex; align-items: center; justify-content: center; color: var(--trust);
+    }
+    .store-title { font-size: 13px; font-weight: 600; color: var(--black); margin-bottom: 4px; }
+    .store-desc { font-size: 11px; color: var(--muted); line-height: 1.5; }
+
+    /* REVIEWS */
+    .reviews-section { background: var(--white); padding: 48px 20px; }
+    .rating-summary { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 14px 0 34px; flex-wrap: wrap; }
+    .rating-summary-score { font-family: 'Noto Serif Arabic', serif; font-size: 26px; font-weight: 700; color: var(--black); }
+    .rating-summary-stars { color: var(--gold); font-size: 15px; letter-spacing: 2px; }
+    .rating-summary-count { font-size: 12.5px; color: var(--muted); }
+    .reviews-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 620px; margin: 0 auto; }
+    .review-card { background: var(--cream); border: 1px solid var(--line); border-radius: 4px; padding: 16px 14px; }
+    .review-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 6px; margin-bottom: 9px; }
+    .review-stars { color: var(--gold); font-size: 11px; letter-spacing: 2px; }
+    .verified-tag { display: flex; align-items: center; gap: 3px; font-size: 9.5px; font-weight: 600; color: var(--trust); white-space: nowrap; }
+    .review-text { font-size: 12.5px; line-height: 1.75; color: var(--charcoal); margin-bottom: 13px; }
+    .review-footer { display: flex; align-items: center; gap: 8px; }
+    .review-avatar { width: 27px; height: 27px; border-radius: 50%; background: var(--white); border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; color: var(--black); flex-shrink: 0; }
+    .review-name { font-size: 12px; font-weight: 600; color: var(--black); line-height: 1.3; }
+    .review-loc  { font-size: 10px; color: var(--muted); }
+
+    /* FAQ */
+    .faq-section { background: var(--cream); padding: 48px 24px; max-width: 560px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--line); }
+    .faq-q {
+      width: 100%; background: none; border: none; text-align: right;
+      font-family: 'IBM Plex Sans Arabic', sans-serif; font-size: 13.5px; font-weight: 600; color: var(--black);
+      padding: 18px 4px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 10px;
+    }
+    .faq-q-mark { color: var(--gold); font-size: 16px; flex-shrink: 0; transition: transform 0.25s; }
+    .faq-item.open .faq-q-mark { transform: rotate(45deg); }
+    .faq-a { display: none; font-size: 12.5px; color: var(--muted); line-height: 1.75; padding-bottom: 18px; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* FOOTER — real nav links here */
+    .footer { background: var(--black); padding: 34px 24px; text-align: center; }
+    .footer-wordmark { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 0.45em; color: var(--white); margin-bottom: 16px; padding-right: 0.45em; display: block; }
+    .footer-nav { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-nav a { font-size: 12px; color: rgba(255,255,255,0.7); text-decoration: none; }
+    .footer-nav a:hover { color: var(--gold-light); }
+    .footer-wa { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none; margin-bottom: 16px; transition: color 0.2s; }
+    .footer-wa:hover { color: rgba(255,255,255,0.85); }
+    .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+    .footer-links a { font-size: 11px; color: rgba(255,255,255,0.45); text-decoration: none; }
+    .footer-links a:hover { color: rgba(255,255,255,0.75); }
+    .footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
+
+    /* STICKY BAR — jumps to products, plus WA contact */
+    .sticky-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+      background: var(--black); border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 11px 16px; display: flex; align-items: center; gap: 10px;
+    }
+    .sticky-wa {
+      display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;
+      border: 1.5px solid rgba(37,211,102,0.35); border-radius: 4px; color: #25D366;
+      text-decoration: none; flex-shrink: 0; transition: opacity 0.2s;
+    }
+    .sticky-wa:hover { opacity: 0.8; }
+    .sticky-cta {
+      flex: 1; background: var(--gold); color: var(--white); border: none; border-radius: 4px;
+      font-size: 14px; font-weight: 700; padding: 13px 12px; cursor: pointer; text-align: center;
+      text-decoration: none; display: block; transition: background 0.2s;
+    }
+    .sticky-cta:hover { background: #A8862E; }
+
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 420px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+      .trust-strip-item { font-size: 10.5px; }
+    }
+    @media (min-width: 640px) {
+      .products-grid { flex-direction: row; max-width: 720px; }
+      .product-card { flex: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ══════════════════════════════════
-       ANNOUNCE BAR
-  ══════════════════════════════════ -->
+  <!-- ANNOUNCE BAR -->
   <div class="announce-bar">
-    توصيل مجاني &nbsp;•&nbsp; الدفع عند الاستلام
+    توصيل مجاني لجميع المدن &nbsp;•&nbsp; الدفع عند الاستلام &nbsp;•&nbsp; منتج أصلي 100٪
   </div>
 
-  <!-- ══════════════════════════════════
-       NAV
-  ══════════════════════════════════ -->
-  <nav id="main-nav">
-    <a href="/" class="logo" style="font-family:'IBM Plex Sans Arabic',sans-serif; letter-spacing:0.08em;">SILLAGE</a>
-    <div style="display:flex; align-items:center; gap:10px;">
-      <a href="https://wa.me/972542920392" class="nav-wa" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-        </svg>
-      </a>
-      <button class="nav-cta" onclick="handleCTA()">اختر عطرك</button>
-    </div>
-  </nav>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="brand-wordmark">S I L L A G E</div>
+    <nav class="site-nav">
+      <a href="#products">المنتجات</a>
+      <a href="#faq">الأسئلة الشائعة</a>
+      <a href="https://wa.me/972542920392" target="_blank" rel="noopener">تواصل معنا</a>
+    </nav>
+  </header>
 
-  <!-- ══════════════════════════════════
-       HERO
-  ══════════════════════════════════ -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1 class="hero-headline">تجربة فخمة بسعر ذكي<br/>لأنك تستحق الأفضل</h1>
-      <p class="hero-sub">فوحان قوي يملأ المكان. ثبات يمتد طوال اليوم. مظهر فاخر يتحدث قبلك.</p>
-      <div class="hero-price-block">
-        <div class="hero-price-main">
-          <span class="hero-price">₪250</span>
-          <span class="hero-price-only">فقط، شامل التوصيل</span>
-        </div>
-      </div>
-      <div class="hero-trust">
-        <span class="hero-trust-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          10–12 ساعة ثبات
-        </span>
-        <span class="hero-trust-sep">•</span>
-        <span class="hero-trust-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-          إكسترا دو بارفان 100ML
-        </span>
-        <span class="hero-trust-sep">•</span>
-        <span class="hero-trust-item">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
-          توصيل مجاني
-        </span>
-      </div>
-      <button class="btn btn-gold" onclick="scrollToSelection()" style="font-size:15px; padding:17px 40px; width:100%; display:flex; align-items:center; justify-content:center; gap:8px;">
-          اختر عطرك
-</button>
-      <button class="hero-reviews-cta" onclick="scrollToReviews()">⭐ شوف شو حكو الزباين</button>
-      <p class="hero-footer-trust">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        تجارب حقيقية من زبائننا
-      </p>
-    </div>
-
-    <div class="hero-visual">
-      <img src="../images/sillage-hero.png"
-           alt="SILLAGE — إكسترا دو بارفان 100ML"
-           class="hero-img"
-           loading="eager" />
-    </div>
+  <!-- HERO -->
+  <section class="hero fade-in">
+    <h1 class="hero-headline">عطور أصلية، توصيل مجاني، دفع عند الاستلام</h1>
+    <p class="hero-sub">عطور Extrait de Parfum بأعلى تركيز — تدفع بس لما توصلك القطعة بايدك</p>
+    <a href="#products" class="btn-gold">تسوق الآن</a>
   </section>
 
-  <!-- ══════════════════════════════════
-       PRODUCT SELECTION
-  ══════════════════════════════════ -->
-  <section class="selection-section fade-in" id="selection">
-    <div class="section-head">
-      <h2 class="section-title" style="font-size:clamp(24px,3.5vw,38px);">اختر عطرك</h2>
-    </div>
-    <p class="selection-note">سعر ثابت ₪250 شامل التوصيل — الدفع عند الاستلام</p>
-
-    <div class="product-grid">
-
-      <!-- ROUGE -->
-      <div class="product-card" id="card-rouge" onclick="selectScent('rouge')">
-        <img src="../images/IMG-20260617-WA0012.jpg"
-             alt="SILLAGE Rouge"
-             class="product-card-img" loading="lazy" />
-        <div class="product-card-body">
-          <p class="product-card-name">Rouge</p>
-          <span class="product-badge">⭐ الأكثر طلبًا</span>
-          <p class="product-card-tag">إذا بدك الناس توقفك وتسألك: شو اسم عطرك؟ فهذا هو.</p>
-          <p class="product-card-use">رائحة فاخرة بحضور قوي تلفت الانتباه من أول رشة، وتناسب أغلب المناسبات. إذا بدك عطراً يعطي انطباعاً قوياً ويبقى معك لساعات، فهذا هو الخيار الأول.</p>
-          <p class="product-card-perf">🔥 الأكثر طلبًا • ثبات وفوحان 10–12 ساعة</p>
-          <p class="product-card-oos">نفد المخزون</p>
-          <button class="scent-select-btn" id="btn-rouge" onclick="event.stopPropagation(); selectAndOrder('rouge')">احصل على Rouge بـ₪250</button>
-        </div>
-      </div>
-
-      <!-- SWEET -->
-      <div class="product-card" id="card-sweet" onclick="selectScent('sweet')">
-        <img src="../images/IMG-20260617-WA0010.jpg"
-             alt="SILLAGE Sweet"
-             class="product-card-img" loading="lazy" />
-        <div class="product-card-body">
-          <p class="product-card-name">Sweet</p>
-          <p class="product-card-tag">إذا بتحب العطور اللي تترك أثر من أول رشة، فهذا هو.</p>
-          <p class="product-card-use">حلو، غني، وفواح بشكل واضح، مصمم للي يحب الريحة تبقى موجودة لساعات طويلة وتلفت الانتباه بدون ما تكون مزعجة.</p>
-          <p class="product-card-perf">🔥 فوحان قوي • ثبات 10–12 ساعة</p>
-          <p class="product-card-oos">نفد المخزون</p>
-          <button class="scent-select-btn" id="btn-sweet" onclick="event.stopPropagation(); selectAndOrder('sweet')">احصل على Sweet بـ₪250</button>
-        </div>
-      </div>
-
-      <!-- CITRUS -->
-      <div class="product-card" id="card-citrus" onclick="selectScent('citrus')">
-        <img src="../images/IMG-20260617-WA0011.jpg"
-             alt="SILLAGE Citrus"
-             class="product-card-img" loading="lazy" />
-        <div class="product-card-body">
-          <p class="product-card-name">Citrus</p>
-          <p class="product-card-tag">إذا بتحب تحس بالنظافة والانتعاش من أول رشة، فهذا اختيارك.</p>
-          <p class="product-card-use">رائحة منعشة وراقية تناسب الدوام، الجامعة، والمشاوير اليومية، وتعطي إحساسًا بالنظافة والثقة طوال اليوم.</p>
-          <p class="product-card-perf">🔥 ثبات 10–12 ساعة</p>
-          <p class="product-card-oos">نفد المخزون</p>
-          <button class="scent-select-btn" id="btn-citrus" onclick="event.stopPropagation(); selectAndOrder('citrus')">احصل على Citrus بـ₪250</button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══════════════════════════════════
-       TRUST STRIP
-  ══════════════════════════════════ -->
+  <!-- TRUST STRIP -->
   <div class="trust-strip fade-in">
-    <div class="trust-strip-inner">
-      <span class="trust-s">توصيل مجاني</span>
-      <span class="trust-s">الدفع عند الاستلام</span>
-      <span class="trust-s">10–12 ساعة ثبات</span>
-      <span class="trust-s">إكسترا دو بارفان 100ML</span>
+    <div class="trust-strip-grid">
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        منتج أصلي 100٪
+      </div>
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        الدفع بعد ما توصلك
+      </div>
+      <div class="trust-strip-item">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+        رد سريع عالواتساب
+      </div>
     </div>
   </div>
 
-  <!-- ══════════════════════════════════
-       REVIEWS
-  ══════════════════════════════════ -->
-  <section class="reviews-section fade-in">
-    <div class="section-head">
-      <p class="eyebrow" style="margin-bottom:10px;">+200 عبوة تم تجهيزها ضمن أول دفعة</p>
-      <h2 class="section-title" style="font-size:clamp(20px,3vw,30px);">شو حكى الزباين بعد التجربة</h2>
-    </div>
+  <!-- PRODUCTS -->
+  <section class="products-section fade-in" id="products">
+    <span class="eyebrow-en" style="text-align:center;display:block;">Shop</span>
+    <h2 class="section-title-ar">منتجاتنا</h2>
+    <p class="section-sub-ar">عطران أصليان، خصومات حقيقية، وكل واحد فيهم بحكايته الخاصة</p>
 
-    <div class="reviews-track">
+    <div class="products-grid">
 
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">كنت أشوفه بكل محل، وقلت أكيد الناس مكبرة الموضوع... بس بعد ما طلبته لجوزي فهمت ليش عليه كل هالضجة. عنجد بستاهل.</p>
-        <div class="reviewer">
-          <div class="avatar">ل</div>
-          <div>
-            <p class="reviewer-name">لورا</p>
-            <p class="reviewer-loc">الناصرة</p>
-          </div>
+      <div class="product-card">
+        <div class="product-badge">خصم 58٪</div>
+        <div class="product-img-wrap">
+          <img src="../images/ChatGPT%20Image%20Jul%202%2C%202026%2C%2002_45_17%20AM.png" alt="SILLAGE ROUGE" loading="lazy" />
         </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">هاي أول مرة بطلب من الموقع، وكنت شوي متخوفة... بس أول ما وصلني الطلب ارتحت. كل إشي مرتب، والعطر طلع بالزبط زي اللي شفته.</p>
-        <div class="reviewer">
-          <div class="avatar">ع</div>
-          <div>
-            <p class="reviewer-name">عرين</p>
-            <p class="reviewer-loc">شفاعمرو</p>
+        <div class="product-body">
+          <div class="product-name">SILLAGE ROUGE</div>
+          <p class="product-tagline">حضورٌ لا يُنسى — Extrait de Parfum بثبات 10 إلى 12 ساعة</p>
+          <div class="product-price-row">
+            <span class="product-price-was">600₪</span>
+            <span class="product-price-now">250₪</span>
           </div>
+          <div class="product-urgency">🔥 السعر الحالي لفترة محدودة</div>
+          <a href="/rouge" class="product-cta">تسوق الآن</a>
         </div>
-      </article>
+      </div>
 
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">بقيت متوترة إذا رح يعجبه أو لا، لأنه ذوقه بالعطور صعب. أول ما جربه قالي: "هاد من أحلى العطور اللي جبتيلي." من وقتها تقريبًا ما بطلع من البيت قبل ما يرش منه.</p>
-        <div class="reviewer">
-          <div class="avatar">م</div>
-          <div>
-            <p class="reviewer-name">ميس</p>
-            <p class="reviewer-loc">أم الفحم</p>
-          </div>
+      <div class="product-card">
+        <div class="product-badge">خصم 75٪</div>
+        <div class="product-img-wrap">
+          <img src="../images/ChatGPT%20Image%20Jul%202%2C%202026%2C%2003_02_19%20AM.png" alt="SILLAGE Citruc &amp; Sweet" loading="lazy" />
         </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">رشّيته الصبح، ورجعت بالليل ولسه الريحة موجودة. هاي أكثر نقطة فاجأتني فيه.</p>
-        <div class="reviewer">
-          <div class="avatar">ر</div>
-          <div>
-            <p class="reviewer-name">رامي</p>
-            <p class="reviewer-loc">عرابة</p>
+        <div class="product-body">
+          <div class="product-name">CITRUC &amp; SWEET</div>
+          <p class="product-tagline">طقم هدية بعطرين أصليين — واحد للنهار وواحد للسهرة</p>
+          <div class="product-price-row">
+            <span class="product-price-was">1200₪</span>
+            <span class="product-price-now">300₪</span>
           </div>
+          <div class="product-urgency">🔥 دفعة محدودة — 40 طقم فقط</div>
+          <a href="/duo" class="product-cta">تسوق الآن</a>
         </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">بقيت متوقعة إنه بهالسعر الجودة تكون عادية... طلع العكس تمامًا. لو بعرف إنه هيك، كان طلبت ثنتين من أول مرة.</p>
-        <div class="reviewer">
-          <div class="avatar">م</div>
-          <div>
-            <p class="reviewer-name">منار</p>
-            <p class="reviewer-loc">كفر قرع</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">التغليف لحاله بيعطي شعور إنه هدية فخمة. أول ما فتحته حسيت إنه أغلى من سعره بكثير.</p>
-        <div class="reviewer">
-          <div class="avatar">ر</div>
-          <div>
-            <p class="reviewer-name">رانيا</p>
-            <p class="reviewer-loc">عكا</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">أنا من النوع اللي بطلت أصدق شغلة إنه حدا يسألني شو عطرك... بس من فترة، كل ما أفوت عجمعة أو أقعد مع الشباب، لازم حدا يسألني شو حاط.</p>
-        <div class="reviewer">
-          <div class="avatar">أ</div>
-          <div>
-            <p class="reviewer-name">أحمد</p>
-            <p class="reviewer-loc">سخنين</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">أخذت Rouge، وصراحة أكثر عطر الناس سألتني عنه من وقت بلشت أستخدمه.</p>
-        <div class="reviewer">
-          <div class="avatar">ش</div>
-          <div>
-            <p class="reviewer-name">شادي</p>
-            <p class="reviewer-loc">حيفا</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">بقيت متوقع Sweet يكون حلو زيادة عن اللزوم... طلع بالعكس. من النوع اللي كل شوي بترجع ترش منه.</p>
-        <div class="reviewer">
-          <div class="avatar">ع</div>
-          <div>
-            <p class="reviewer-name">علاء</p>
-            <p class="reviewer-loc">رهط</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">طلبته لجوزي، وبعد كم يوم أخوه سألني من وين جبناه لأنه بده يطلب واحد إله كمان.</p>
-        <div class="reviewer">
-          <div class="avatar">ه</div>
-          <div>
-            <p class="reviewer-name">هبة</p>
-            <p class="reviewer-loc">الطيبة</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">خلصت أول قنينة، ولما رجعت أطلب مرة ثانية ما احتجت أفكر. بالنسبة إلي صار من العطور اللي دايمًا لازم يكون عندي.</p>
-        <div class="reviewer">
-          <div class="avatar">ت</div>
-          <div>
-            <p class="reviewer-name">تامر</p>
-            <p class="reviewer-loc">المغار</p>
-          </div>
-        </div>
-      </article>
-
-      <article class="review-card">
-        <p class="review-stars">★★★★★</p>
-        <p class="review-text">أكثر إشي فرحني إنه جوزي عنجد انبسط بالهدية. هاي أول مرة بجيبله عطر وبيخلصه بهالسرعة.</p>
-        <div class="reviewer">
-          <div class="avatar">س</div>
-          <div>
-            <p class="reviewer-name">سارة</p>
-            <p class="reviewer-loc">يافا</p>
-          </div>
-        </div>
-      </article>
-
-    </div>
-
-    <p class="reviews-trust-line">توصيل مجاني <span>•</span> الدفع عند الاستلام <span>•</span> 250₪ فقط شامل كل شي</p>
-  </section>
-
-  <!-- ══════════════════════════════════
-       ORDER FORM
-  ══════════════════════════════════ -->
-  <section class="order-form-section" id="order-form">
-    <div class="order-form-inner">
-
-      <h2 class="order-form-title">أكمل طلبك</h2>
-      <p class="order-form-sub">الدفع عند الاستلام. توصيل مجاني. نتواصل معك خلال 24 ساعة.</p>
-
-      <form class="order-form" id="order-form-el" onsubmit="handleOrderSubmit(event)" novalidate>
-
-        <!-- Receipt -->
-        <div class="form-receipt">
-          <p class="receipt-lbl">العطر المختار</p>
-          <div class="receipt-scent-row">
-            <span class="receipt-scent-name" id="receipt-scent-name"></span>
-            <span class="receipt-scent-price" id="receipt-scent-price"></span>
-          </div>
-          <span class="receipt-no-sel" id="receipt-no-sel">لم تختر أي عطر بعد.</span>
-          <div class="receipt-actions" id="receipt-actions">
-            <button class="receipt-change-link" onclick="scrollToSelection()">تغيير العطر</button>
-            <span class="receipt-actions-sep">|</span>
-            <button type="button" class="receipt-remove-link" onclick="removeScent()">إزالة العطر</button>
-          </div>
-
-          <hr class="receipt-hr" />
-          <div class="receipt-row total">
-            <span>المجموع</span>
-            <span>₪250</span>
-          </div>
-          <div class="receipt-row" style="margin-top:5px;">
-            <span>الشحن</span>
-            <span class="receipt-free">مجاني</span>
-          </div>
-          <div class="receipt-row">
-            <span>طريقة الدفع</span>
-            <span>الدفع عند الاستلام</span>
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="f-name">الاسم الكامل <span class="req">*</span></label>
-            <input type="text" id="f-name" name="name" class="form-input" placeholder="اسمك الكامل" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="f-phone">رقم الهاتف <span class="req">*</span></label>
-            <input type="tel" id="f-phone" name="phone" class="form-input" placeholder="05XXXXXXXX" required />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="f-city">المدينة <span class="req">*</span></label>
-            <input type="text" id="f-city" name="city" class="form-input" placeholder="مدينتك" required />
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="f-address">العنوان <span class="req">*</span></label>
-            <input type="text" id="f-address" name="address" class="form-input" placeholder="الشارع، المبنى، الشقة" required />
-          </div>
-        </div>
-
-        <div class="form-group form-group--full">
-          <label class="form-label" for="f-email">البريد الإلكتروني <span class="form-optional">(اختياري)</span></label>
-          <input type="email" id="f-email" name="email" class="form-input" placeholder="example@email.com" autocomplete="email" />
-        </div>
-
-        <div class="form-group form-group--full">
-          <label class="form-label" for="f-notes">ملاحظات <span class="form-optional">(اختياري)</span></label>
-          <textarea id="f-notes" name="notes" class="form-input form-textarea" placeholder="أي تفاصيل إضافية..."></textarea>
-        </div>
-
-        <button type="submit" class="btn btn-dark order-submit-btn" style="font-size:15px; padding:16px 40px; width:100%;">
-          أرسل الطلب &nbsp;←
-        </button>
-
-        <div id="order-error" style="display:none; margin-top:14px; padding:12px 16px; background:rgba(180,60,60,0.1); border:1px solid rgba(180,60,60,0.35); border-radius:6px; color:#c05050; text-align:center; font-family:'IBM Plex Sans Arabic',sans-serif; font-size:14px;"></div>
-
-        <p class="form-note">سنتواصل معك خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.</p>
-
-      </form>
-
-      <div class="order-success" id="order-success" style="display:none;">
-        <div class="order-success-icon">✓</div>
-        <h3 style="font-family:'Noto Serif Arabic',serif;">تم استلام طلبك.</h3>
-        <p style="font-family:'IBM Plex Sans Arabic',sans-serif;">سنتواصل معك خلال 24 ساعة لتأكيد الطلب وترتيب التوصيل.</p>
       </div>
 
     </div>
   </section>
 
-  <!-- ══════════════════════════════════
-       FOOTER
-  ══════════════════════════════════ -->
-  <footer>
-    <p class="footer-logo">SILLAGE</p>
+  <div class="hr"></div>
+
+  <!-- STORE ADVANTAGES -->
+  <section class="store-grid-section fade-in">
+    <span class="eyebrow-en" style="text-align:center;display:block;">Why Sillage</span>
+    <h2 class="section-title-ar" style="margin-bottom:28px;">مزايا التسوق معنا</h2>
+    <div class="store-grid">
+      <div class="store-card">
+        <div class="store-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
+        <div class="store-title">دفع آمن</div>
+        <div class="store-desc">الدفع عند الاستلام</div>
+      </div>
+      <div class="store-card">
+        <div class="store-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h13v13H3z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg></div>
+        <div class="store-title">توصيل سريع</div>
+        <div class="store-desc">خلال 24–72 ساعة</div>
+      </div>
+      <div class="store-card">
+        <div class="store-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
+        <div class="store-title">دعم العملاء</div>
+        <div class="store-desc">رد سريع عالواتساب</div>
+      </div>
+      <div class="store-card">
+        <div class="store-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+        <div class="store-title">جودة مضمونة</div>
+        <div class="store-desc">منتج أصلي 100٪</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section fade-in">
+    <h2 class="section-title-ar">ماذا قال عملاؤنا</h2>
+    <div class="rating-summary">
+      <span class="rating-summary-score">4.9</span>
+      <span class="rating-summary-stars">★★★★★</span>
+      <span class="rating-summary-count">(281 تقييم موثّق)</span>
+    </div>
+
+    <div class="reviews-grid">
+      <article class="review-card">
+        <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
+        <p class="review-text">زوجي حاطط عطر واحد من سنين وما بيبدله. جربت SILLAGE ROUGE معه، وأول رشة عجبته لدرجة إنه صار يسأل شو الاسم.</p>
+        <div class="review-footer"><div class="review-avatar">ر</div><div><p class="review-name">ريم</p><p class="review-loc">طمرة</p></div></div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
+        <p class="review-text">اشتريتها لخطيبي قبل حفلة الخطوبة بأسبوع، ضلت العلبة عالطاولة وكل يلي إجى سأل عنها. أحسن قرار اتخذته لهدية.</p>
+        <div class="review-footer"><div class="review-avatar">د</div><div><p class="review-name">دانا</p><p class="review-loc">الطيبة</p></div></div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
+        <p class="review-text">كنت خايفة أطلب أونلاين بس كل شي كان أصلي وبنفس شكل الصور. لو بعرف إنه هيك، كان طلبت ثنتين.</p>
+        <div class="review-footer"><div class="review-avatar">م</div><div><p class="review-name">منار</p><p class="review-loc">كفر قرع</p></div></div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
+        <p class="review-text">هديتها لأخوي بمناسبة التخرج، وأمي قالت هاي أحلى هدية إجتلو. حتى صرت أفكر أطلب طقم ثاني لأبوي.</p>
+        <div class="review-footer"><div class="review-avatar">ن</div><div><p class="review-name">نور</p><p class="review-loc">الطيبة</p></div></div>
+      </article>
+    </div>
+
+    <p style="text-align:center; font-size:12.5px; color:var(--muted); margin-top:22px;">+270 عميلة وعميل آخرين قيّموا SILLAGE 5 نجوم</p>
+  </section>
+
+  <div class="hr"></div>
+
+  <!-- FAQ -->
+  <section class="faq-section fade-in" id="faq">
+    <h2 class="section-title-ar">أسئلة بتتسأل كتير</h2>
+    <div style="height:24px;"></div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">كيف بدفع؟ <span class="faq-q-mark">+</span></button>
+      <div class="faq-a">الدفع عند الاستلام لكل منتجاتنا. ما بتدفع شي لحد ما توصلك القطعة بايدك وتتأكد منها.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">قديش بتاخذ مدة التوصيل؟ <span class="faq-q-mark">+</span></button>
+      <div class="faq-a">عادة بين 24 و72 ساعة حسب منطقتك. بنتواصل معك عالواتساب فور ما نستلم طلبك لتأكيد الموعد.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">شو الفرق بين ROUGE وطقم Citruc &amp; Sweet؟ <span class="faq-q-mark">+</span></button>
+      <div class="faq-a">ROUGE عطر واحد مركّز بحضور قوي وثبات طويل. طقم Citruc &amp; Sweet هدية بعطرين مختلفين — واحد منعش للنهار وواحد دافئ للسهرة.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">هل المنتجات أصلية؟ <span class="faq-q-mark">+</span></button>
+      <div class="faq-a">أصلية 100٪ ومختومة من المصدر. كل قنينة مرفقة ببطاقة أصالة داخل العلبة.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">شو بصير إذا ما عجبني المنتج؟ <span class="faq-q-mark">+</span></button>
+      <div class="faq-a">إلك حق الإرجاع خلال 3 أيام من الاستلام إذا كانت القطعة ما زالت مغلقة. راسلنا عالواتساب ومنرتب معك.</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer-wordmark">S I L L A G E</span>
+    <nav class="footer-nav">
+      <a href="/rouge">SILLAGE ROUGE</a>
+      <a href="/duo">CITRUC &amp; SWEET</a>
+      <a href="#faq">الأسئلة الشائعة</a>
+    </nav>
     <a href="https://wa.me/972542920392" class="footer-wa" target="_blank" rel="noopener">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
-      تواصل معنا
+      تواصل معنا عالواتساب
     </a>
-    <p class="footer-copy">© 2025 سيلاج. جميع الحقوق محفوظة.</p>
+    <div class="footer-links">
+      <a href="#" onclick="return false;">سياسة الإرجاع</a>
+      <a href="#" onclick="return false;">سياسة الخصوصية</a>
+      <a href="https://wa.me/972542920392" target="_blank" rel="noopener">اتصل بنا</a>
+    </div>
+    <p class="footer-copy">© 2026 SILLAGE. جميع الحقوق محفوظة.</p>
   </footer>
 
-  <!-- ══════════════════════════════════
-       CONTEXTUAL STICKY CTA
-  ══════════════════════════════════ -->
-  <div class="ctx-sticky-cta" id="ctx-sticky-cta">
-    <button class="btn btn-gold" id="ctx-sticky-btn" onclick="handleCtxCTA()"
-      style="border-radius:28px; padding:15px 28px; font-size:14px; box-shadow:0 4px 28px rgba(201,168,76,0.55); white-space:nowrap; max-width:90vw;">
-      رجعني لاختيار عطري
-    </button>
+  <!-- STICKY BAR -->
+  <div class="sticky-bar">
+    <a href="https://wa.me/972542920392" class="sticky-wa" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+    </a>
+    <a href="#products" class="sticky-cta">تسوق الآن</a>
   </div>
 
-  <!-- ══════════════════════════════════
-       SCRIPT
-  ══════════════════════════════════ -->
+  <!-- SCRIPT -->
   <script>
-    /* ── State ── */
-    var selectedScent = null;
-    var reviewsOpened = false;
-    var perfumeRemoved = false;
-    var PRICE = 250;
-    var LABELS = { citrus: 'Citrus', rouge: 'Rouge', sweet: 'Sweet' };
-    var BTN_LABELS = { citrus: 'احصل على Citrus بـ₪250', rouge: 'احصل على Rouge بـ₪250', sweet: 'احصل على Sweet بـ₪250' };
-    var SKUS = ['citrus', 'rouge', 'sweet'];
-    var avail = { citrus: true, rouge: true, sweet: true };
-
-    /* ── Scent selection ── */
-    function selectScent(p) {
-      if (!avail[p]) return;
-      selectedScent = p;
-      perfumeRemoved = false;
-      updateUI();
-      if (window.fbq) fbq('track', 'AddToCart', { value: PRICE, currency: 'ILS', content_name: LABELS[p] });
+    function toggleFaq(btn) {
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
     }
 
-    /* ── Remove selected scent ── */
-    function removeScent() {
-      selectedScent = null;
-      perfumeRemoved = true;
-      updateUI();
-    }
-
-    /* ── Sync DOM to state ── */
-    function updateUI() {
-      SKUS.forEach(function(p) {
-        var card = document.getElementById('card-' + p);
-        var btn  = document.getElementById('btn-' + p);
-        var sel  = selectedScent === p;
-        if (card) card.classList.toggle('has-qty', sel);
-        if (btn) {
-          btn.textContent = sel ? '✓ تم الاختيار' : BTN_LABELS[p];
-          btn.className   = 'scent-select-btn' + (sel ? ' selected' : '');
-        }
-      });
-
-      // Form receipt
-      var nameEl     = document.getElementById('receipt-scent-name');
-      var priceEl    = document.getElementById('receipt-scent-price');
-      var noSelEl    = document.getElementById('receipt-no-sel');
-      var actionsDiv = document.getElementById('receipt-actions');
-      var submitBtn  = document.querySelector('.order-submit-btn');
-      if (selectedScent) {
-        if (nameEl)     { nameEl.textContent  = LABELS[selectedScent]; nameEl.style.display = 'block'; }
-        if (priceEl)    { priceEl.textContent = '₪' + PRICE; priceEl.style.display = 'block'; }
-        if (noSelEl)    noSelEl.style.display  = 'none';
-        if (actionsDiv) actionsDiv.style.display = 'flex';
-        if (submitBtn)  submitBtn.disabled = false;
-      } else {
-        if (nameEl)     nameEl.style.display  = 'none';
-        if (priceEl)    priceEl.style.display = 'none';
-        if (noSelEl)    noSelEl.style.display  = 'block';
-        if (actionsDiv) actionsDiv.style.display = 'none';
-        if (submitBtn)  submitBtn.disabled = true;
-      }
-
-      // Contextual sticky CTA label + visibility
-      updateCtxStickyCTA();
-      if (_ctxStickyCta) {
-        var formInView = _formSection && _formSection.getBoundingClientRect().top < window.innerHeight * 0.6;
-        var showForReviews = reviewsOpened && !formInView;
-        var showForRemoval = perfumeRemoved && !selectedScent;
-        _ctxStickyCta.classList.toggle('visible', !isSelectionVisible() && (showForReviews || showForRemoval));
-      }
-    }
-
-    /* ── Contextual sticky CTA ── */
-    function updateCtxStickyCTA() {
-      var btn = document.getElementById('ctx-sticky-btn');
-      if (!btn) return;
-      btn.textContent = selectedScent
-        ? 'رجعني لأكمل طلبي'
-        : 'رجعني لاختيار عطري';
-    }
-
-    function handleCtxCTA() {
-      if (selectedScent) {
-        handleCTA();
-      } else {
-        scrollToSelection();
-      }
-    }
-
-    /* ── Scroll to selection ── */
-    function scrollToSelection() {
-      document.getElementById('selection').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    /* ── Select scent and go to form ── */
-    function selectAndOrder(p) {
-      selectScent(p);
-      handleCTA();
-    }
-
-    /* ── Scroll to reviews ── */
-    function scrollToReviews() {
-      reviewsOpened = true;
-      updateCtxStickyCTA();
-      var section = document.querySelector('.reviews-section');
-      if (section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        var track = document.querySelector('.reviews-track');
-        if (track) track.scrollLeft = 0;
-      }
-    }
-
-    /* ── CTA ── */
-    function handleCTA() {
-      if (window.fbq) fbq('track', 'InitiateCheckout', { value: PRICE, currency: 'ILS' });
-      document.getElementById('order-form').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    /* ── Inventory ── */
-    function loadInventory() {
-      fetch('/api/inventory')
-        .then(function(r) { return r.json(); })
-        .then(function(body) {
-          if (!body || !body.availability) return;
-          var av = body.availability;
-          avail.citrus = !!av['citrus'];
-          avail.rouge  = !!av['rouge'];
-          avail.sweet  = !!av['sweet'];
-          SKUS.forEach(function(p) {
-            var card = document.getElementById('card-' + p);
-            var btn  = document.getElementById('btn-' + p);
-            if (card) card.classList.toggle('oos', !avail[p]);
-            if (btn && !avail[p]) { btn.disabled = true; btn.textContent = 'نفد المخزون'; }
-          });
-          updateUI();
-        })
-        .catch(function(e) { console.error('[INV]', e && e.message); });
-    }
-
-    /* ── Order submission ── */
-    function handleOrderSubmit(e) {
-      e.preventDefault();
-
-      var errorEl = document.getElementById('order-error');
-      errorEl.style.display = 'none';
-
-      if (!selectedScent) {
-        errorEl.textContent   = 'يرجى اختيار عطرك أولاً من القسم أعلاه.';
-        errorEl.style.display = 'block';
-        document.getElementById('selection').scrollIntoView({ behavior: 'smooth' });
-        return;
-      }
-
-      var name    = document.getElementById('f-name').value.trim();
-      var phone   = document.getElementById('f-phone').value.trim();
-      var city    = document.getElementById('f-city').value.trim();
-      var address = document.getElementById('f-address').value.trim();
-      var email   = document.getElementById('f-email').value.trim();
-      var notes   = document.getElementById('f-notes').value.trim();
-
-      if (!name || !phone || !city || !address) {
-        errorEl.textContent   = 'يرجى ملء جميع الحقول المطلوبة.';
-        errorEl.style.display = 'block';
-        return;
-      }
-
-      var btn = document.querySelector('.order-submit-btn');
-      btn.disabled    = true;
-      btn.textContent = 'جاري الإرسال...';
-
-      fetch('/api/orders', {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          full_name: name,
-          phone:     phone,
-          email:     email,
-          city:      city,
-          address:   address,
-          notes:     notes,
-          product:   selectedScent,
-        }),
-      })
-      .then(function(res) {
-        return res.json().then(function(body) {
-          if (!res.ok) { var err = new Error('err'); err.body = body; throw err; }
-          return body;
-        });
-      })
-      .then(function() {
-        if (window.fbq) fbq('track', 'Purchase', { value: PRICE, currency: 'ILS', content_name: LABELS[selectedScent] });
-        document.getElementById('order-form-el').style.display = 'none';
-        document.getElementById('order-success').style.display = 'block';
-        window.scrollTo({ top: document.getElementById('order-form').offsetTop - 80, behavior: 'smooth' });
-      })
-      .catch(function(err) {
-        var msg = (err.body && err.body.outOfStock)
-          ? 'هذا العطر نفد مخزونه حالياً. يرجى اختيار عطر آخر.'
-          : 'حدث خطأ. يرجى المحاولة مرة أخرى.';
-        errorEl.textContent   = msg;
-        errorEl.style.display = 'block';
-        btn.disabled    = false;
-        btn.textContent = 'أرسل الطلب ←';
-        if (err.body && err.body.outOfStock) loadInventory();
-      });
-    }
-
-    /* ── Nav shadow on scroll ── */
-    var _nav = document.getElementById('main-nav');
-    var _ctxStickyCta = document.getElementById('ctx-sticky-cta');
-    var _formSection = document.getElementById('order-form');
-    var _selSection  = document.getElementById('selection');
-
-    function isSelectionVisible() {
-      if (!_selSection) return false;
-      var r = _selSection.getBoundingClientRect();
-      return r.top < window.innerHeight * 0.8 && r.bottom > 0;
-    }
-
-    window.addEventListener('scroll', function() {
-      var sy = window.scrollY;
-
-      // Nav shadow
-      if (_nav) _nav.style.boxShadow = sy > 40 ? '0 2px 18px rgba(0,0,0,0.07)' : 'none';
-
-      // Contextual sticky CTA
-      if (_ctxStickyCta) {
-        var formInView = _formSection && _formSection.getBoundingClientRect().top < window.innerHeight * 0.6;
-        var showForReviews = reviewsOpened && !formInView;
-        var showForRemoval = perfumeRemoved && !selectedScent;
-        _ctxStickyCta.classList.toggle('visible', !isSelectionVisible() && (showForReviews || showForRemoval));
-      }
-    }, { passive: true });
-
-    /* ── Fade-in on scroll ── */
     if ('IntersectionObserver' in window) {
-      var _fadeObserver = new IntersectionObserver(function(entries) {
+      var obs = new IntersectionObserver(function(entries) {
         entries.forEach(function(entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            _fadeObserver.unobserve(entry.target);
-          }
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); obs.unobserve(entry.target); }
         });
-      }, { threshold: 0.08 });
-      document.querySelectorAll('.fade-in').forEach(function(el) {
-        _fadeObserver.observe(el);
-      });
+      }, { threshold: 0.07 });
+      document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
     } else {
       document.querySelectorAll('.fade-in').forEach(function(el) { el.classList.add('visible'); });
     }
-
-    /* ── Init ── */
-    updateUI();
-    loadInventory();
   </script>
 
 </body>
