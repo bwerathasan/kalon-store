@@ -76,20 +76,45 @@
     }
     .site-nav a:hover { color: var(--gold); }
 
-    /* HERO */
-    .hero { background: var(--bg); padding: 40px 24px 32px; text-align: center; }
+    /* HERO — dark, high-contrast, with real product imagery and motion */
+    .hero {
+      position: relative; background: var(--black); padding: 44px 24px 36px;
+      text-align: center; overflow: hidden;
+    }
     .hero-headline {
+      position: relative; z-index: 1;
       font-family: 'Noto Serif Arabic', serif; font-size: clamp(26px, 6vw, 38px);
-      font-weight: 700; line-height: 1.28; color: var(--black); margin-bottom: 12px;
+      font-weight: 700; line-height: 1.28; color: var(--white); margin-bottom: 10px;
     }
-    .hero-sub { font-size: clamp(13px, 2.6vw, 15px); color: var(--charcoal); line-height: 1.75; max-width: 440px; margin: 0 auto 24px; }
+    .hero-sub {
+      position: relative; z-index: 1;
+      font-size: clamp(13px, 2.6vw, 15px); color: rgba(255,255,255,0.68); line-height: 1.75;
+      max-width: 440px; margin: 0 auto 22px;
+    }
+    .hero-image-wrap {
+      position: relative; z-index: 1; width: min(58%, 220px); margin: 0 auto 26px;
+    }
+    .hero-image-wrap img {
+      width: 100%; filter: drop-shadow(0 22px 40px rgba(0,0,0,0.5));
+      animation: hero-float 6s ease-in-out infinite;
+    }
+    @keyframes hero-float {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-10px); }
+    }
     .btn-gold {
-      display: inline-block; background: var(--gold); color: var(--white); border: none; border-radius: 4px;
-      font-size: 15px; font-weight: 700; padding: 15px 32px; cursor: pointer; text-align: center;
+      position: relative; z-index: 1;
+      display: inline-block; background: var(--gold); color: var(--white); border: none; border-radius: 999px;
+      font-size: 15px; font-weight: 700; padding: 16px 38px; cursor: pointer; text-align: center;
       text-decoration: none; transition: background 0.2s, transform 0.15s;
-      box-shadow: 0 6px 20px rgba(184,150,62,0.3);
+      box-shadow: 0 10px 28px rgba(184,150,62,0.45);
+      animation: pulse-glow 2.4s ease-in-out infinite;
     }
-    .btn-gold:hover { background: #A8862E; transform: translateY(-1px); }
+    .btn-gold:hover { background: #A8862E; transform: translateY(-2px); }
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 10px 28px rgba(184,150,62,0.45); }
+      50%      { box-shadow: 0 10px 34px rgba(184,150,62,0.7); }
+    }
 
     /* TRUST STRIP */
     .trust-strip { background: var(--trust-dim); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 16px 12px; }
@@ -243,6 +268,11 @@
   <section class="hero fade-in">
     <h1 class="hero-headline">عطور أصلية، توصيل مجاني، دفع عند الاستلام</h1>
     <p class="hero-sub">عطور Extrait de Parfum بأعلى تركيز — تدفع بس لما توصلك القطعة بايدك</p>
+
+    <div class="hero-image-wrap">
+      <img src="../images/ChatGPT%20Image%20Jul%202%2C%202026%2C%2003_02_19%20AM.png" alt="SILLAGE" loading="eager" />
+    </div>
+
     <a href="#products" class="btn-gold">تسوق الآن</a>
   </section>
 
