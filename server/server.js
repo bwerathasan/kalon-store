@@ -100,6 +100,14 @@ app.get('/he', (_, res) => {
   res.redirect(302, '/');
 });
 
+// Clean product landing page URLs (for ad/influencer campaign links)
+app.get('/rouge', (_, res) => {
+  res.sendFile(path.join(__dirname, '..', 'ar', 'rouge.html'));
+});
+app.get('/duo', (_, res) => {
+  res.sendFile(path.join(__dirname, '..', 'ar', 'duo.html'));
+});
+
 // ── Public storefront static assets ──
 // NOTE: this comes AFTER admin auth middleware so /admin is never served directly here
 app.use(express.static(path.join(__dirname, '..'), {
