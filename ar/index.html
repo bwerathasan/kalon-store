@@ -92,7 +92,12 @@
       max-width: 440px; margin: 0 auto 22px;
     }
     .hero-image-wrap {
-      position: relative; z-index: 1; width: min(66%, 250px); margin: 0 auto 26px;
+      position: relative; z-index: 1; width: min(82%, 320px); margin: 0 auto 26px;
+    }
+    .hero-image-wrap::before {
+      content: ''; position: absolute; inset: -14%; z-index: -1;
+      background: radial-gradient(circle, rgba(255,255,255,0.16) 0%, rgba(184,150,62,0.1) 45%, transparent 72%);
+      filter: blur(24px);
     }
     .hero-image-wrap img {
       width: 100%; filter: drop-shadow(0 22px 40px rgba(0,0,0,0.5));
