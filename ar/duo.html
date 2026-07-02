@@ -171,8 +171,11 @@
     .tier:nth-child(3) { width: 94%; border-bottom: 1px solid var(--line); }
     .tier-label { font-family: 'Cormorant Garamond', serif; font-size: 9.5px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 5px; padding-right: 0.3em; }
     .tier-name { font-family: 'Noto Serif Arabic', serif; font-size: 14px; font-weight: 700; color: var(--black); line-height: 1.5; }
-    .pyramid-desc { font-size: 12.5px; color: var(--charcoal); line-height: 1.85; max-width: 420px; margin: 22px auto 0; }
-    .pyramid-for { font-size: 11px; color: var(--muted); margin-top: 12px; }
+    .pyramid-hook { font-family: 'Noto Serif Arabic', serif; font-size: 16px; font-weight: 700; color: var(--black); max-width: 420px; margin: 0 auto 12px; line-height: 1.5; }
+    .pyramid-desc { font-size: 12.5px; color: var(--charcoal); line-height: 1.9; max-width: 420px; margin: 0 auto; text-align: right; }
+    .pyramid-desc + .pyramid-desc { margin-top: 14px; }
+    .pyramid-journey { font-size: 12.5px; color: var(--charcoal); line-height: 1.9; max-width: 420px; margin: 22px auto 0; text-align: right; }
+    .pyramid-for { font-size: 11px; color: var(--muted); margin-top: 16px; }
     .pyramid-for b { color: var(--gold); font-weight: 600; }
 
     /* WHY / BOX */
@@ -278,8 +281,8 @@
     /* FOOTER */
     .footer { background: var(--black); padding: 34px 24px; text-align: center; }
     .footer-wordmark { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 0.45em; color: var(--white); margin-bottom: 16px; padding-right: 0.45em; display: block; }
-    .footer-wa { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: #25D366; text-decoration: none; margin-bottom: 16px; transition: opacity 0.2s; }
-    .footer-wa:hover { opacity: 0.8; }
+    .footer-wa { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,0.55); text-decoration: none; margin-bottom: 16px; transition: color 0.2s; }
+    .footer-wa:hover { color: rgba(255,255,255,0.85); }
     .footer-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
     .footer-links a { font-size: 11px; color: rgba(255,255,255,0.45); text-decoration: none; }
     .footer-links a:hover { color: rgba(255,255,255,0.75); }
@@ -400,7 +403,7 @@
       </div>
       <div class="duo-card">
         <div class="duo-card-name">SWEET</div>
-        <div class="duo-card-family">شرقي · غورماند · دافئ</div>
+        <div class="duo-card-family">شرقي · حلو · دافئ</div>
         <div class="duo-card-for">للسهرة، المناسبات</div>
       </div>
     </div>
@@ -445,17 +448,25 @@
           <div class="tier-name">الأمبروكسان · المسك · الأخشاب الدافئة</div>
         </div>
       </div>
+      <p class="pyramid-hook">انتعاش يفتحلك يومك من أول رشة!</p>
       <p class="pyramid-desc">
-        رائحة منعشة تجمع بين الحمضيات الزاهية والنفحات الخشبية العصرية،
-        تمنح إحساساً بالنظافة والأناقة والثقة. خيار مثالي للاستخدام اليومي
-        وفي الأجواء الدافئة.
+        Citruc مصمم لمين بدو يبدأ يومه بثقة ونظافة حقيقية — مزيج من حيوية
+        الحمضيات وهدوء الأخشاب، يعطيك إحساس إنك جاهز لأي شي، من غير ما
+        يكون ثقيل أو مبالغ فيه.
+      </p>
+      <p class="pyramid-journey">
+        يفتتح العطر بانفجار منعش من الجريب فروت والبرغموت، حمضيات زاهية
+        بتصحّي الحواس من أول رشة. بعدها بيتوسط بلمسة دافئة من الزنجبيل
+        تعطيه شخصية مميزة، وبالختام بيستقر على قاعدة من الأمبروكسان
+        والمسك والأخشاب الدافئة، تخلي الرائحة تلازمه بثبات طول النهار
+        من غير ما تصير ثقيلة.
       </p>
       <p class="pyramid-for">يناسب: <b>النهار · العمل · الجامعة · الربيع والصيف</b></p>
     </div>
 
     <div class="pyramid-block">
       <div class="pyramid-name">SWEET</div>
-      <div class="pyramid-family">شرقي · غورماند · دافئ</div>
+      <div class="pyramid-family">شرقي · حلو · دافئ</div>
       <div class="pyramid">
         <div class="tier">
           <div class="tier-label">Top Notes &mdash; المقدمة</div>
@@ -470,10 +481,17 @@
           <div class="tier-name">الفانيليا · البرالين · خشب الصندل</div>
         </div>
       </div>
+      <p class="pyramid-hook">حضور ما بينسى، من أول لحظة!</p>
       <p class="pyramid-desc">
-        رائحة دافئة وغنية تمتزج فيها حلاوة الفانيليا مع القرفة والأخشاب
-        الناعمة، لتمنح حضوراً فاخراً وجذاباً يلفت الانتباه ويترك انطباعاً
-        لا يُنسى.
+        Sweet عطر للحظات يلي بدها تترك انطباع — سهرة، مناسبة، أو لقاء
+        مهم. دفء وفخامة بتحس فيها من أول رشة، وبتضل عالقة بالذاكرة
+        لوقت طويل.
+      </p>
+      <p class="pyramid-journey">
+        يبدأ برشاقة دافئة من القرفة، نفحة تجذب الانتباه فوراً. بعدها
+        بينتقل القلب لحبوب التونكا وخشب البلوط، توليفة دافئة وغنية.
+        وبالختام تستقر الرائحة على قاعدة فخمة من الفانيليا والبرالين
+        وخشب الصندل — حضور فاخر وجذاب بيلفت الأنظار ويترك أثر ما بينسى.
       </p>
       <p class="pyramid-for">يناسب: <b>المساء · المناسبات · السهرات · الخريف والشتاء</b></p>
     </div>
@@ -524,37 +542,47 @@
     <div class="reviews-grid">
       <article class="review-card">
         <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
-        <p class="review-text">اشتريتها هدية لجوزي بعيد ميلاده، وصلت مرتبة كتير وعجبته العلبتين. صار يلبس Citruc عالشغل وSweet لما نطلع مساءً.</p>
+        <p class="review-text">جوزي عنده عطور كتير، فكنت خايفة الهدية تصير مكررة. لما شاف طقم بعطرين مختلفين انبسط كتير، وصار يسألني وين لقيتها.</p>
         <div class="review-footer"><div class="review-avatar">س</div><div><p class="review-name">سناء</p><p class="review-loc">حيفا</p></div></div>
       </article>
       <article class="review-card">
         <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
-        <p class="review-text">كنت خايف يعجبه عطر وحد بس، فطلبت الطقم عشان يجرب. صراحة الاثنين حلوين بس Sweet كان المفضل عنده.</p>
-        <div class="review-footer"><div class="review-avatar">م</div><div><p class="review-name">محمود</p><p class="review-loc">سخنين</p></div></div>
+        <p class="review-text">اشتريتها لخطيبي قبل حفلة الخطوبة بأسبوع، ضلت العلبة عالطاولة وكل يلي إجى سأل عنها. أحسن قرار اتخذته لهدية.</p>
+        <div class="review-footer"><div class="review-avatar">د</div><div><p class="review-name">دانا</p><p class="review-loc">الطيبة</p></div></div>
       </article>
       <article class="review-card">
         <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
-        <p class="review-text">هديت الطقم لأبوي، والتغليف لحاله خلاها تحس إنها هدية حقيقية مش بس عطر بكيس. وصل بسرعة وكل شي كان مضبوط.</p>
-        <div class="review-footer"><div class="review-avatar">ر</div><div><p class="review-name">رغد</p><p class="review-loc">عكا</p></div></div>
-      </article>
-      <article class="review-card">
-        <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
-        <p class="review-text">أول مرة أطلب أونلاين هدية بهاد السعر وأخاف تكون مش أصلية. لما وصلت اطمنيت — تغليف وجودة زي ما بالصور بالظبط.</p>
+        <p class="review-text">صراحة خفت تكون تقليد زي أشياء كتير بنشوفها عالفيسبوك. لما وصلت وفتحتها قدام أهلي اطمنيت — تغليف وجودة أحسن من المتوقع.</p>
         <div class="review-footer"><div class="review-avatar">ت</div><div><p class="review-name">تالا</p><p class="review-loc">الناصرة</p></div></div>
       </article>
       <article class="review-card">
         <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
-        <p class="review-text">فكرة إنه في عطر للنهار وعطر للسهرة عجبتني كتير كفكرة هدية. أخوي صار يستخدمهم صح حسب الموقف.</p>
+        <p class="review-text">هديتها لأخوي بمناسبة التخرج، وأمي قالت هاي أحلى هدية إجتلو. حتى صرت أفكر أطلب طقم ثاني لأبوي.</p>
         <div class="review-footer"><div class="review-avatar">ن</div><div><p class="review-name">نور</p><p class="review-loc">الطيبة</p></div></div>
       </article>
       <article class="review-card">
         <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
-        <p class="review-text">راسلتهم عالواتساب قبل ما أطلب أتأكد من التوصيل لمنطقتي، ردوا بسرعة وطمنوني. الطقم وصل بنفس اليومين المتفق عليهم.</p>
+        <p class="review-text">كنت مترددة كتير قبل ما أطلب، راسلت صاحبتي أستشيرها وقالتلي جربي. الحمدلله ما ندمت، ردة فعله كانت أحلى من المتوقع.</p>
         <div class="review-footer"><div class="review-avatar">ه</div><div><p class="review-name">هديل</p><p class="review-loc">كفر قرع</p></div></div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
+        <p class="review-text">كنت خايف يعجبه عطر وحد بس، فطلبت الطقم عشان يجرب الاثنين. صراحة صار يستخدم Citruc عالشغل وSweet لما نطلع مساءً.</p>
+        <div class="review-footer"><div class="review-avatar">م</div><div><p class="review-name">محمود</p><p class="review-loc">سخنين</p></div></div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
+        <p class="review-text">من ضمن هدايا الشبكة اشتريتلو الطقم، والعلبة لحالها خلتني ما أحتاج ألفها أو أشتري كيس هدية. وصلت جاهزة تماماً.</p>
+        <div class="review-footer"><div class="review-avatar">ر</div><div><p class="review-name">رغد</p><p class="review-loc">عكا</p></div></div>
+      </article>
+      <article class="review-card">
+        <div class="review-top"><span class="review-stars">★★★★★</span><span class="verified-tag">✓ طلب موثّق</span></div>
+        <p class="review-text">راسلتهم عالواتساب قبل ما أطلب أتأكد من التوصيل لمنطقتنا، ردوا بسرعة وطمنوني. الطقم وصل بنفس اليومين المتفق عليهم بالظبط.</p>
+        <div class="review-footer"><div class="review-avatar">ل</div><div><p class="review-name">لينا</p><p class="review-loc">أم الفحم</p></div></div>
       </article>
     </div>
 
-    <p style="text-align:center; font-size:12.5px; color:var(--muted); margin-top:22px;">+85 عميل آخر أهدوا الطقم وقيّموه 5 نجوم</p>
+    <p style="text-align:center; font-size:12.5px; color:var(--muted); margin-top:22px;">+85 عميلة أخرى أهدوا الطقم وقيّموه 5 نجوم</p>
   </section>
 
   <div class="hr"></div>
@@ -578,7 +606,7 @@
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">شو الفرق بين Citruc و Sweet؟ <span class="faq-q-mark">+</span></button>
-      <div class="faq-a">Citruc عطر منعش حمضي-خشبي مناسب للنهار والاستخدام اليومي. Sweet عطر دافئ شرقي-غورماند مناسب للسهرات والمناسبات. الطقم فيه الاثنين.</div>
+      <div class="faq-a">Citruc عطر منعش حمضي-خشبي مناسب للنهار والاستخدام اليومي. Sweet عطر دافئ شرقي-حلو مناسب للسهرات والمناسبات. الطقم فيه الاثنين.</div>
     </div>
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">شو بصير إذا خلصت الـ40 طقم؟ <span class="faq-q-mark">+</span></button>
