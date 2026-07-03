@@ -76,44 +76,28 @@
     }
     .site-nav a:hover { color: var(--gold); }
 
-    /* HERO — dark, high-contrast, with real product imagery and motion */
+    /* HERO — dark, high-contrast, text + CTA only (no product photo, so the real
+       product cards right below are what carries the imagery and stay close to
+       the fold — matches the reference site's compact hero pattern). */
     .hero {
-      position: relative; background: var(--black); padding: 22px 24px 18px;
+      position: relative; background: var(--black); padding: 30px 24px 26px;
       text-align: center; overflow: hidden;
     }
     /* Hero children get their own choreographed entrance — plays via CSS animation
        (not a JS-toggled class), so it always resolves to fully visible even if JS
        never runs. Each element enters on its own beat instead of the page's generic
-       scroll-fade, matching what's actually being revealed (headline first, image
-       last, CTA lands after). */
+       scroll-fade, matching what's actually being revealed. */
     .hero-headline {
       position: relative; z-index: 1;
-      font-family: 'Noto Serif Arabic', serif; font-size: clamp(26px, 6vw, 38px);
+      font-family: 'Noto Serif Arabic', serif; font-size: clamp(24px, 6vw, 36px);
       font-weight: 700; line-height: 1.28; color: var(--white); margin-bottom: 10px;
       animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     .hero-sub {
       position: relative; z-index: 1;
       font-size: clamp(13px, 2.6vw, 15px); color: rgba(255,255,255,0.68); line-height: 1.75;
-      max-width: 440px; margin: 0 auto 14px;
+      max-width: 440px; margin: 0 auto 20px;
       animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
-    }
-    .hero-image-wrap {
-      position: relative; z-index: 1; width: min(56%, 200px); margin: 0 auto 16px;
-      animation: hero-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both;
-    }
-    .hero-image-wrap::before {
-      content: ''; position: absolute; inset: -14%; z-index: -1;
-      background: radial-gradient(circle, rgba(255,255,255,0.16) 0%, rgba(184,150,62,0.1) 45%, transparent 72%);
-      filter: blur(24px);
-    }
-    .hero-image-wrap img {
-      width: 100%; filter: drop-shadow(0 22px 40px rgba(0,0,0,0.5));
-      animation: hero-float 6s ease-in-out infinite;
-    }
-    @keyframes hero-float {
-      0%, 100% { transform: translateY(0); }
-      50%      { transform: translateY(-10px); }
     }
     @keyframes hero-rise {
       from { opacity: 0; transform: translateY(16px); }
@@ -125,7 +109,7 @@
       font-size: 15px; font-weight: 700; padding: 16px 38px; cursor: pointer; text-align: center;
       text-decoration: none; transition: background 0.2s, transform 0.15s;
       box-shadow: 0 10px 28px rgba(184,150,62,0.45);
-      animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.38s both, pulse-glow 2.4s ease-in-out 1.1s infinite;
+      animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both, pulse-glow 2.4s ease-in-out 1s infinite;
     }
     .btn-gold:hover { background: #A8862E; transform: translateY(-2px); }
     @keyframes pulse-glow {
@@ -133,10 +117,17 @@
       50%      { box-shadow: 0 10px 34px rgba(184,150,62,0.7); }
     }
 
-    /* TRUST STRIP */
-    .trust-strip { background: var(--trust-dim); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 9px 12px; }
-    .trust-strip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; max-width: 480px; margin: 0 auto; text-align: center; }
-    .trust-strip-item { font-size: 11.5px; font-weight: 600; color: var(--trust); display: flex; flex-direction: column; align-items: center; gap: 5px; line-height: 1.4; }
+    /* TRUST STRIP — one thin inline row, not three stacked mini-sections */
+    .trust-strip { background: var(--trust-dim); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px 12px; }
+    .trust-strip-grid {
+      display: flex; justify-content: center; align-items: center; flex-wrap: wrap;
+      gap: 8px 18px; max-width: 520px; margin: 0 auto; text-align: center;
+    }
+    .trust-strip-item {
+      font-size: 11.5px; font-weight: 600; color: var(--trust);
+      display: flex; flex-direction: row; align-items: center; gap: 5px; line-height: 1.4;
+    }
+    .trust-strip-item svg { width: 15px; height: 15px; }
 
     .hr { width: 100%; height: 1px; background: var(--line); }
 
@@ -146,14 +137,21 @@
       text-transform: uppercase; color: var(--gold); margin-bottom: 8px; display: block; padding-right: 0.35em;
     }
     .section-title-ar { font-family: 'Noto Serif Arabic', serif; font-size: clamp(21px, 4.5vw, 28px); font-weight: 700; color: var(--black); margin-bottom: 8px; text-align: center; }
-    .section-sub-ar { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 400px; margin: 0 auto 16px; text-align: center; }
+    .section-sub-ar { font-size: 13px; color: var(--muted); line-height: 1.7; max-width: 400px; margin: 0 auto 32px; text-align: center; }
 
-    /* PRODUCTS */
-    .products-section { background: var(--white); padding: 20px 20px 40px; }
-    .products-grid { display: flex; flex-direction: column; gap: 20px; max-width: 460px; margin: 0 auto; }
+    /* PRODUCTS — horizontal single-card carousel on mobile (one product shown
+       generously sized, swipe for the next), matches the reference's best-sellers
+       row instead of squeezing both cards into the fold at once. */
+    .products-section { background: var(--white); padding: 22px 0 40px; }
+    .products-grid {
+      display: flex; flex-direction: row; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      padding: 4px 20px 10px; scrollbar-width: none;
+    }
+    .products-grid::-webkit-scrollbar { display: none; }
     .product-card {
       background: var(--cream); border: 1px solid var(--line); border-radius: 8px; overflow: hidden;
-      position: relative;
+      position: relative; flex: 0 0 84%; scroll-snap-align: center;
     }
     .product-badge {
       position: absolute; top: 14px; right: 14px; background: var(--black); color: var(--gold-light);
@@ -256,8 +254,8 @@
       .trust-strip-item { font-size: 10.5px; }
     }
     @media (min-width: 640px) {
-      .products-grid { flex-direction: row; max-width: 720px; }
-      .product-card { flex: 1; }
+      .products-grid { overflow-x: visible; max-width: 720px; margin: 0 auto; padding: 4px 20px 10px; }
+      .product-card { flex: 1; scroll-snap-align: none; }
     }
   </style>
 </head>
@@ -283,10 +281,6 @@
     <h1 class="hero-headline">عطور أصلية، توصيل مجاني، دفع عند الاستلام</h1>
     <p class="hero-sub">عطور Extrait de Parfum بأعلى تركيز — تدفع بس لما توصلك القطعة بايدك</p>
 
-    <div class="hero-image-wrap">
-      <img src="../images/hf_20260703_124906_bbb609da-7b09-4511-babd-555bffeafe3f%20(1).png" alt="SILLAGE" loading="eager" />
-    </div>
-
     <a href="#products" class="btn-gold">تسوق الآن</a>
   </section>
 
@@ -310,16 +304,14 @@
 
   <!-- PRODUCTS -->
   <section class="products-section" id="products">
-    <span class="eyebrow-en" style="text-align:center;display:block;">Shop</span>
-    <h2 class="section-title-ar">منتجاتنا</h2>
-    <p class="section-sub-ar">عطران أصليان، خصومات حقيقية، وكل واحد فيهم بحكايته الخاصة</p>
+    <h2 class="section-title-ar" style="margin-bottom:18px;">منتجاتنا</h2>
 
     <div class="products-grid">
 
       <div class="product-card fade-in">
         <div class="product-badge">خصم 58٪</div>
         <div class="product-img-wrap">
-          <img src="../images/hf_20260703_123653_379718d9-1e64-48d1-ba7d-5caa16bccbb3.png" alt="SILLAGE ROUGE" loading="lazy" />
+          <img src="../images/hf_20260703_115735_dc946b9b-ad5f-4983-8d85-dd132b4fa031.png" alt="SILLAGE ROUGE" loading="lazy" />
         </div>
         <div class="product-body">
           <div class="product-name">SILLAGE ROUGE</div>
@@ -336,7 +328,7 @@
       <div class="product-card fade-in">
         <div class="product-badge">خصم 75٪</div>
         <div class="product-img-wrap">
-          <img src="../images/hf_20260703_124906_bbb609da-7b09-4511-babd-555bffeafe3f%20(1).png" alt="SILLAGE Citruc &amp; Sweet" loading="lazy" />
+          <img src="../images/hf_20260703_125455_fffa1d1c-e2a4-47d6-a31e-efa959056d25.png" alt="SILLAGE Citruc &amp; Sweet" loading="lazy" />
         </div>
         <div class="product-body">
           <div class="product-name">CITRUC &amp; SWEET</div>
