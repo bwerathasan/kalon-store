@@ -80,7 +80,7 @@
        product cards right below are what carries the imagery and stay close to
        the fold — matches the reference site's compact hero pattern). */
     .hero {
-      position: relative; background: var(--black); padding: 30px 24px 26px;
+      position: relative; background: var(--black); padding: 20px 24px 18px;
       text-align: center; overflow: hidden;
     }
     /* Hero children get their own choreographed entrance — plays via CSS animation
@@ -96,7 +96,7 @@
     .hero-sub {
       position: relative; z-index: 1;
       font-size: clamp(13px, 2.6vw, 15px); color: rgba(255,255,255,0.68); line-height: 1.75;
-      max-width: 440px; margin: 0 auto 20px;
+      max-width: 440px; margin: 0 auto 14px;
       animation: hero-rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.12s both;
     }
     @keyframes hero-rise {
@@ -118,7 +118,7 @@
     }
 
     /* TRUST STRIP — one thin inline row, not three stacked mini-sections */
-    .trust-strip { background: var(--trust-dim); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px 12px; }
+    .trust-strip { background: var(--trust-dim); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 7px 12px; }
     .trust-strip-grid {
       display: flex; justify-content: center; align-items: center; flex-wrap: wrap;
       gap: 8px 18px; max-width: 520px; margin: 0 auto; text-align: center;
@@ -142,7 +142,7 @@
     /* PRODUCTS — horizontal single-card carousel on mobile (one product shown
        generously sized, swipe for the next), matches the reference's best-sellers
        row instead of squeezing both cards into the fold at once. */
-    .products-section { background: var(--white); padding: 22px 0 40px; }
+    .products-section { background: var(--white); padding: 10px 0 40px; }
     .products-grid {
       display: flex; flex-direction: row; gap: 16px;
       overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
@@ -157,8 +157,8 @@
       position: absolute; top: 14px; right: 14px; background: var(--black); color: var(--gold-light);
       font-size: 11px; font-weight: 700; padding: 6px 14px; border-radius: 20px; z-index: 2;
     }
-    .product-img-wrap { background: var(--white); padding: 28px; text-align: center; }
-    .product-img-wrap img { width: min(70%, 240px); margin: 0 auto; filter: drop-shadow(0 12px 26px rgba(0,0,0,0.08)); }
+    .product-img-wrap { background: var(--white); padding: 18px; text-align: center; }
+    .product-img-wrap img { width: min(88%, 320px); margin: 0 auto; filter: drop-shadow(0 12px 26px rgba(0,0,0,0.08)); }
     .product-body { padding: 20px 22px 24px; text-align: center; }
     .product-name { font-family: 'Noto Serif Arabic', serif; font-size: 21px; font-weight: 700; color: var(--black); margin-bottom: 6px; }
     .product-tagline { font-size: 12.5px; color: var(--charcoal); line-height: 1.7; margin-bottom: 14px; }
@@ -308,7 +308,7 @@
 
     <div class="products-grid">
 
-      <div class="product-card fade-in">
+      <div class="product-card fade-in" onclick="location.href='/rouge'" style="cursor:pointer;">
         <div class="product-badge">خصم 58٪</div>
         <div class="product-img-wrap">
           <img src="../images/hf_20260703_115735_dc946b9b-ad5f-4983-8d85-dd132b4fa031.png" alt="SILLAGE ROUGE" loading="lazy" />
@@ -325,7 +325,7 @@
         </div>
       </div>
 
-      <div class="product-card fade-in">
+      <div class="product-card fade-in" onclick="location.href='/duo'" style="cursor:pointer;">
         <div class="product-badge">خصم 75٪</div>
         <div class="product-img-wrap">
           <img src="../images/hf_20260703_125455_fffa1d1c-e2a4-47d6-a31e-efa959056d25.png" alt="SILLAGE Citruc &amp; Sweet" loading="lazy" />
