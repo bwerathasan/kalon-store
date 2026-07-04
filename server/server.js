@@ -107,6 +107,12 @@ app.get('/rouge', (_, res) => {
 app.get('/duo', (_, res) => {
   res.sendFile(path.join(__dirname, '..', 'ar', 'duo.html'));
 });
+app.get('/citruc', (_, res) => {
+  res.sendFile(path.join(__dirname, '..', 'ar', 'citruc.html'));
+});
+app.get('/sweet', (_, res) => {
+  res.sendFile(path.join(__dirname, '..', 'ar', 'sweet.html'));
+});
 
 // ── Public storefront static assets ──
 // NOTE: this comes AFTER admin auth middleware so /admin is never served directly here
