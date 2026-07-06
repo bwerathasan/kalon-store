@@ -1,12 +1,8 @@
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
+const resend   = new Resend(process.env.RESEND_API_KEY);
+const FROM     = `SILLAGE <${process.env.RESEND_FROM || 'orders@sillagescentt.com'}>`;
+const ADMIN_TO = process.env.EMAIL_USER;
 
 const SKU_LABELS = {
   citrus: 'Sillage Citrus',
@@ -14,7 +10,7 @@ const SKU_LABELS = {
   sweet:  'Sillage Sweet',
 };
 
-const PRICES = { 1: 200, 2: 350, 3: 450 };
+const UNIT_PRICE = 250;
 
 function esc(str) {
   return String(str || '')
@@ -39,7 +35,7 @@ function getProduct(order) {
                             .filter(function(s) { return SKU_LABELS[s]; });
 
   if (!parts.length) {
-    return { label: raw || 'Sillage Collection', lines: [], total: '₪450' };
+    return { label: raw || 'Sillage Collection', lines: [], total: '₪' + UNIT_PRICE };
   }
 
   // Count per SKU
@@ -56,16 +52,16 @@ function getProduct(order) {
     return SKU_LABELS[sku] + (count > 1 ? ' × ' + count : '');
   }).join(' + ');
 
-  var price = PRICES[parts.length] || 450;
+  var price = parts.length * UNIT_PRICE;
 
   return { label: label, lines: lines, total: '₪' + price };
 }
 
 async function sendAdminNotification(order) {
   const prod = getProduct(order);
-  await transporter.sendMail({
-    from:    `"SILLAGE Orders" <${process.env.EMAIL_USER}>`,
-    to:      process.env.EMAIL_USER,
+  const { error } = await resend.emails.send({
+    from:    FROM,
+    to:      ADMIN_TO,
     subject: `New Order — ${prod.label} — SILLAGE`,
     text: [
       'New order received:',
@@ -81,6 +77,7 @@ async function sendAdminNotification(order) {
       `Time:      ${formatDate(order.created_at)}`,
     ].join('\n'),
   });
+  if (error) throw new Error(error.message || 'Resend send failed');
 }
 
 async function sendCustomerConfirmation(order) {
@@ -96,8 +93,8 @@ async function sendCustomerConfirmation(order) {
     </tr>`;
   }).join('');
 
-  await transporter.sendMail({
-    from:    `"SILLAGE" <${process.env.EMAIL_USER}>`,
+  const { error } = await resend.emails.send({
+    from:    FROM,
     to:      order.email,
     subject: 'Order received — SILLAGE',
     html: `
@@ -157,6 +154,7 @@ async function sendCustomerConfirmation(order) {
 </body>
 </html>`,
   });
+  if (error) throw new Error(error.message || 'Resend send failed');
 }
 
 async function sendOrderEmails(order) {
@@ -185,8 +183,8 @@ async function sendBackInStockEmail(email, product) {
   const p = BACK_IN_STOCK_LABELS[product];
   if (!p) return;
 
-  await transporter.sendMail({
-    from:    `"SILLAGE" <${process.env.EMAIL_USER}>`,
+  const { error } = await resend.emails.send({
+    from:    FROM,
     to:      email,
     subject: `Back in stock — ${p.name} — SILLAGE`,
     html: `
@@ -210,7 +208,7 @@ async function sendBackInStockEmail(email, product) {
 
       <a href="${p.url}"
          style="display:inline-block;padding:14px 32px;background:#080808;color:#ffffff;text-decoration:none;font-family:Arial,sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;">
-        اطلب الآن — ₪450 للطقم
+        اطلب الآن — ₪${UNIT_PRICE}
       </a>
     </div>
 
@@ -224,6 +222,7 @@ async function sendBackInStockEmail(email, product) {
 </body>
 </html>`,
   });
+  if (error) throw new Error(error.message || 'Resend send failed');
 }
 
 module.exports = { sendOrderEmails, sendBackInStockEmail };

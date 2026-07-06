@@ -400,8 +400,8 @@
       var printParts = (o.product || '').split(',').map(function(s) { return s.trim(); }).filter(function(s) { return printSkuLabels[s]; });
       var printCounts = {};
       printParts.forEach(function(s) { printCounts[s] = (printCounts[s] || 0) + 1; });
-      var printPriceMap = { 1: '₪200', 2: '₪350', 3: '₪450' };
-      var printTotal = printPriceMap[printParts.length] || '₪450';
+      var printUnitPrice = 250;
+      var printTotal = '₪' + (printParts.length * printUnitPrice);
       var printRows = Object.keys(printCounts).map(function(sku) {
         var count = printCounts[sku];
         return '<tr><td>' + escHtml(printSkuLabels[sku] + (count > 1 ? ' × ' + count : '')) + '</td><td></td></tr>';
