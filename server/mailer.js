@@ -1,7 +1,14 @@
-const { Resend } = require('resend');
+const nodemailer = require('nodemailer');
 
-const resend   = new Resend(process.env.RESEND_API_KEY);
-const FROM     = `SILLAGE <${process.env.RESEND_FROM || 'orders@sillagescentt.com'}>`;
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS,
+  },
+});
+
+const FROM     = `"SILLAGE" <${process.env.EMAIL_USER}>`;
 const ADMIN_TO = process.env.EMAIL_USER;
 
 const SKU_LABELS = {
@@ -59,7 +66,7 @@ function getProduct(order) {
 
 async function sendAdminNotification(order) {
   const prod = getProduct(order);
-  const { error } = await resend.emails.send({
+  await transporter.sendMail({
     from:    FROM,
     to:      ADMIN_TO,
     subject: `New Order — ${prod.label} — SILLAGE`,
@@ -77,7 +84,6 @@ async function sendAdminNotification(order) {
       `Time:      ${formatDate(order.created_at)}`,
     ].join('\n'),
   });
-  if (error) throw new Error(error.message || 'Resend send failed');
 }
 
 async function sendCustomerConfirmation(order) {
@@ -93,7 +99,7 @@ async function sendCustomerConfirmation(order) {
     </tr>`;
   }).join('');
 
-  const { error } = await resend.emails.send({
+  await transporter.sendMail({
     from:    FROM,
     to:      order.email,
     subject: 'Order received — SILLAGE',
@@ -154,7 +160,6 @@ async function sendCustomerConfirmation(order) {
 </body>
 </html>`,
   });
-  if (error) throw new Error(error.message || 'Resend send failed');
 }
 
 async function sendOrderEmails(order) {
@@ -183,7 +188,7 @@ async function sendBackInStockEmail(email, product) {
   const p = BACK_IN_STOCK_LABELS[product];
   if (!p) return;
 
-  const { error } = await resend.emails.send({
+  await transporter.sendMail({
     from:    FROM,
     to:      email,
     subject: `Back in stock — ${p.name} — SILLAGE`,
@@ -222,7 +227,6 @@ async function sendBackInStockEmail(email, product) {
 </body>
 </html>`,
   });
-  if (error) throw new Error(error.message || 'Resend send failed');
 }
 
 module.exports = { sendOrderEmails, sendBackInStockEmail };

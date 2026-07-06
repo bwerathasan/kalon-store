@@ -6,7 +6,6 @@ console.log('[STARTUP] SUPABASE_KEY:', process.env.SUPABASE_KEY ? '*** set (hidd
 console.log('[STARTUP] PORT:', process.env.PORT || '5000 (default)');
 console.log('[STARTUP] ADMIN_PASSWORD:', process.env.ADMIN_PASSWORD ? '*** set ***' : '*** MISSING ***');
 console.log('[STARTUP] SESSION_SECRET:', process.env.SESSION_SECRET ? '*** set ***' : '*** MISSING ***');
-console.log('[STARTUP] RESEND_API_KEY:', process.env.RESEND_API_KEY ? '*** set ***' : '*** MISSING — emails will fail until this is set ***');
 
 const path         = require('path');
 const express      = require('express');
