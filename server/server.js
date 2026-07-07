@@ -107,8 +107,11 @@ app.get('/rouge', (_, res) => {
 app.get('/duo', (_, res) => {
   res.sendFile(path.join(__dirname, '..', 'ar', 'duo.html'));
 });
+app.get('/citrus', (_, res) => {
+  res.sendFile(path.join(__dirname, '..', 'ar', 'citrus.html'));
+});
 app.get('/citruc', (_, res) => {
-  res.sendFile(path.join(__dirname, '..', 'ar', 'citruc.html'));
+  res.redirect(301, '/citrus');
 });
 app.get('/sweet', (_, res) => {
   res.sendFile(path.join(__dirname, '..', 'ar', 'sweet.html'));
