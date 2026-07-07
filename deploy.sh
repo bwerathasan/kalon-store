@@ -4,15 +4,17 @@
 
 VPS_HOST="${VPS_HOST:-YOUR_VPS_IP}"
 VPS_USER="${VPS_USER:-root}"
-VPS_PATH="${VPS_PATH:-/root/kalon-store}"
+VPS_PATH="${VPS_PATH:-/var/www/kalon}"
 
 echo "Deploying to $VPS_USER@$VPS_HOST..."
 
 ssh "$VPS_USER@$VPS_HOST" "
   set -e
   cd $VPS_PATH
-  git pull origin main
-  cd server && npm install --omit=dev
-  pm2 restart sillage --update-env || pm2 restart all
+  git fetch origin main
+  git reset --hard origin/main
+  cd server && npm ci --omit=dev
+  pm2 restart kalon --update-env
+  pm2 save
   echo 'Deploy complete.'
 "
