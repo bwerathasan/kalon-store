@@ -400,7 +400,7 @@
       var printParts = (o.product || '').split(',').map(function(s) { return s.trim(); }).filter(function(s) { return printSkuLabels[s]; });
       var printCounts = {};
       printParts.forEach(function(s) { printCounts[s] = (printCounts[s] || 0) + 1; });
-      var printUnitPrice = 250;
+      var printUnitPrice = 200;
       var printTotal = '₪' + (printParts.length * printUnitPrice);
       var printRows = Object.keys(printCounts).map(function(sku) {
         var count = printCounts[sku];

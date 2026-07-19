@@ -17,7 +17,7 @@ const SKU_LABELS = {
   sweet:  'Sillage Sweet',
 };
 
-const UNIT_PRICE = 250;
+const UNIT_PRICE = 200;
 
 function esc(str) {
   return String(str || '')
