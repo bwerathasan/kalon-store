@@ -12,6 +12,7 @@ const express      = require('express');
 const cors         = require('cors');
 const bodyParser   = require('body-parser');
 const session      = require('express-session');
+const FileStore    = require('session-file-store')(session);
 const ordersRouter    = require('./routes/orders');
 const inventoryRouter = require('./routes/inventory');
 const waitlistRouter  = require('./routes/waitlist');
@@ -28,7 +29,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // ── Session ──
+// File-backed store (not the default in-memory one) so admin sessions
+// survive across multiple pm2 cluster worker processes, not just one.
 app.use(session({
+  store: new FileStore({
+    path:        path.join(__dirname, '.sessions'),
+    ttl:         8 * 60 * 60, // seconds, matches cookie maxAge below
+    retries:     0,
+  }),
   secret:            process.env.SESSION_SECRET || 'sillage-fallback-secret',
   resave:            false,
   saveUninitialized: false,
