@@ -38,7 +38,7 @@ async function createShipment(order) {
       customer_mobile:  normalizeMobile(order.phone),
       customer_area:    order.city,
       customer_address: order.address,
-      reference_id:     String(order.id || ''),
+      reference_id:     String(new Date(order.created_at).getTime() || Date.now()),
       cost:             computeCost(order),
       order_type_id:    '1',
       note:             order.notes || '',
@@ -65,6 +65,12 @@ async function createShipment(order) {
 
   if (data.error) {
     throw new Error('Olivery returned an error: ' + JSON.stringify(data.error));
+  }
+
+  // Olivery replies with HTTP 200 even on business-logic failures - the real
+  // outcome is nested in result.fail / result.message, not a top-level error.
+  if (data.result && data.result.fail) {
+    throw new Error('Olivery rejected the order: ' + (data.result.message || JSON.stringify(data.result)));
   }
 
   return data;
