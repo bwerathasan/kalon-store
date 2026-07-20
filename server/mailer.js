@@ -229,4 +229,4 @@ async function sendBackInStockEmail(email, product) {
   });
 }
 
-module.exports = { sendOrderEmails, sendBackInStockEmail };
+module.exports = { sendOrderEmails, sendBackInStockEmail, getProduct, UNIT_PRICE };

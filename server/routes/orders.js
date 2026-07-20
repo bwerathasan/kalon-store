@@ -2,6 +2,7 @@ const express  = require('express');
 const router   = express.Router();
 const supabase = require('../supabase');
 const { sendOrderEmails } = require('../mailer');
+const { createShipment }  = require('../courier');
 
 // ── Valid individual SKUs ──
 const VALID_SKUS = new Set(['citrus', 'rouge', 'sweet']);
@@ -147,6 +148,12 @@ router.post('/', orderRateLimit, async (req, res) => {
 
   sendOrderEmails(data[0]).catch(function(err) {
     console.error('[EMAIL] Unexpected error:', err.message);
+  });
+
+  createShipment(data[0]).then(function() {
+    console.log('[OLIVERY] Shipment created OK for order', data[0].id);
+  }).catch(function(err) {
+    console.error('[OLIVERY] Shipment creation FAILED for order', data[0].id, '-', err.message);
   });
 
   return res.status(201).json({ success: true });
