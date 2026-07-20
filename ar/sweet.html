@@ -581,6 +581,32 @@
     }
     .form-input:focus { border-color: var(--black); }
     .form-input::placeholder { color: var(--muted); font-size: 13px; }
+    .city-picker { position: relative; }
+    .city-results {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      left: 0;
+      z-index: 20;
+      max-height: 220px;
+      overflow-y: auto;
+      background: var(--white);
+      border: 1.5px solid var(--line);
+      border-top: none;
+      border-radius: 0 0 4px 4px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+    }
+    .city-result-item {
+      padding: 11px 15px;
+      font-size: 13.5px;
+      color: var(--black);
+      cursor: pointer;
+      border-bottom: 1px solid var(--line);
+    }
+    .city-result-item:last-child { border-bottom: none; }
+    .city-result-item:hover { background: var(--cream); }
+    .city-no-match { padding: 11px 15px; font-size: 12.5px; color: var(--muted); }
     .form-textarea { min-height: 76px; resize: vertical; }
     .btn-submit {
       display: block;
@@ -1029,9 +1055,11 @@
           <input type="tel" id="f-phone" name="phone" class="form-input" placeholder="05XXXXXXXX" autocomplete="tel" required />
         </div>
 
-        <div class="form-group">
-          <label class="form-label" for="f-city">المدينة <span class="req">*</span></label>
-          <input type="text" id="f-city" name="city" class="form-input" placeholder="مدينتك" autocomplete="address-level2" required />
+        <div class="form-group city-picker">
+          <label class="form-label" for="f-city-search">المدينة <span class="req">*</span></label>
+          <input type="text" id="f-city-search" class="form-input" placeholder="اكتب اسم مدينتك..." autocomplete="off" />
+          <input type="hidden" id="f-city" name="city" />
+          <div id="f-city-results" class="city-results"></div>
         </div>
 
         <div class="form-group">
@@ -1098,6 +1126,51 @@
   <script>
     var PRICE   = 200;
     var PRODUCT = 'sweet';
+
+    /* ── City/area picker — backed by Olivery's real area list, so every
+       submitted order matches an area their courier system actually
+       recognizes instead of relying on free-text spelling. ── */
+    var AREAS = [];
+    fetch('/data/olivery-areas.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) { AREAS = data; })
+      .catch(function() { /* picker just won't show results if this fails */ });
+
+    (function() {
+      var citySearch  = document.getElementById('f-city-search');
+      var cityHidden  = document.getElementById('f-city');
+      var cityResults = document.getElementById('f-city-results');
+
+      citySearch.addEventListener('input', function() {
+        cityHidden.value = '';
+        var q = citySearch.value.trim();
+        if (!q) { cityResults.style.display = 'none'; cityResults.innerHTML = ''; return; }
+        var matches = AREAS.filter(function(a) { return a.name.indexOf(q) !== -1; }).slice(0, 20);
+        if (!matches.length) {
+          cityResults.innerHTML = '<div class="city-no-match">ما في نتيجة مطابقة، جرب اسم تاني</div>';
+          cityResults.style.display = 'block';
+          return;
+        }
+        cityResults.innerHTML = matches.map(function(a) {
+          return '<div class="city-result-item" data-name="' + a.name.replace(/"/g, '&quot;') + '">' + a.name + '</div>';
+        }).join('');
+        cityResults.style.display = 'block';
+      });
+
+      cityResults.addEventListener('click', function(e) {
+        var item = e.target.closest('.city-result-item');
+        if (!item) return;
+        var name = item.getAttribute('data-name');
+        citySearch.value = name;
+        cityHidden.value = name;
+        cityResults.style.display = 'none';
+        cityResults.innerHTML = '';
+      });
+
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.city-picker')) cityResults.style.display = 'none';
+      });
+    })();
 
     function swapImg(thumb, src) {
       document.getElementById('hero-img').src = src;
