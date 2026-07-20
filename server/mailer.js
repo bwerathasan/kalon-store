@@ -18,9 +18,9 @@ const SKU_LABELS = {
 };
 
 const SKU_PRICES = {
-  rouge:  149,
-  citrus: 219,
-  sweet:  235,
+  rouge:  150,
+  citrus: 269,
+  sweet:  285,
 };
 
 function esc(str) {

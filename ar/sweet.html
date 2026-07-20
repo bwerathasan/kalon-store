@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SILLAGE SWEET — Extrait de Parfum | 235₪ شامل التوصيل</title>
-  <meta name="description" content="SILLAGE SWEET — عطر دافئ لا يُنسى، ثبات 10-12 ساعة. 235₪ شامل التوصيل المجاني. الدفع عند الاستلام." />
+  <title>SILLAGE SWEET — Extrait de Parfum | 235₪ توصيل سريع</title>
+  <meta name="description" content="SILLAGE SWEET — عطر دافئ لا يُنسى، ثبات 10-12 ساعة. 235₪ توصيل سريع. الدفع عند الاستلام." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -561,6 +561,9 @@
     .cod-label { font-size: 13px; font-weight: 600; color: var(--black); }
     .cod-sub   { font-size: 11px; color: var(--muted); margin-top: 2px; }
     .cod-check { color: var(--trust); font-size: 18px; flex-shrink: 0; }
+    .order-total-box   { background: var(--trust-dim); border: 1px solid var(--line); border-radius: 4px; padding: 12px 16px; margin-bottom: 14px; text-align: center; }
+    .order-total-sum   { display: block; font-size: 14.5px; font-weight: 700; color: var(--black); }
+    .order-total-split { display: block; font-size: 11.5px; color: var(--muted); margin-top: 3px; }
     .form-group { margin-bottom: 14px; }
     .form-label { display: block; font-size: 12px; font-weight: 600; color: var(--charcoal); margin-bottom: 6px; }
     .req { color: var(--trust); }
@@ -744,7 +747,7 @@
 
   <!-- ANNOUNCE BAR -->
   <div class="announce-bar">
-    توصيل مجاني لجميع المدن &nbsp;•&nbsp; الدفع عند الاستلام &nbsp;•&nbsp; منتج أصلي 100٪ &nbsp;•&nbsp; ضمان ترجيع لمدة 7 أيام
+    توصيل سريع لجميع المدن &nbsp;•&nbsp; الدفع عند الاستلام &nbsp;•&nbsp; منتج أصلي 100٪ &nbsp;•&nbsp; ضمان ترجيع لمدة 7 أيام
   </div>
 
   <!-- BRAND HEADER — logo only, no exits -->
@@ -783,7 +786,7 @@
     <p class="hero-sub">ويعلق في الذاكرة لسنين — عطرٌ لا يُنسى، لكل لحظة تستاهل تُتذكر</p>
 
     <button class="btn-primary" onclick="scrollToForm()">اطلب الآن</button>
-    <p class="hero-price-note"><b>235₪</b> شامل التوصيل — تدفع عند استلام القطعة</p>
+    <p class="hero-price-note"><b>235₪</b> توصيل سريع — تدفع عند استلام القطعة</p>
 
     <div class="urgency-bar">
       🔥 دفعة محدودة — 40 قطعة فقط
@@ -1001,7 +1004,7 @@
   <section class="price-section fade-in">
     <p class="price-was">273.00₪</p>
     <p class="price-now">235₪</p>
-    <p class="price-includes">شامل التوصيل المجاني &nbsp;•&nbsp; الدفع عند الاستلام</p>
+    <p class="price-includes">توصيل سريع &nbsp;•&nbsp; الدفع عند الاستلام</p>
     <div class="scarcity-note">🔥 دفعة محدودة — 40 قطعة فقط</div>
 
     <div class="trust-row">
@@ -1015,7 +1018,7 @@
         <div class="trust-icon">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h13v13H3z"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="7.5" cy="18.5" r="1.5"/><circle cx="17.5" cy="18.5" r="1.5"/></svg>
         </div>
-        <span>توصيل مجاني</span>
+        <span>توصيل سريع</span>
       </div>
       <div class="trust-item">
         <div class="trust-icon">
@@ -1077,7 +1080,12 @@
           <textarea id="f-notes" name="notes" class="form-input form-textarea" placeholder="أي تفاصيل إضافية..."></textarea>
         </div>
 
-        <button type="submit" class="btn-submit" id="submit-btn">أكّد طلبك — 235₪ دفع عند الاستلام</button>
+        <div class="order-total-box">
+          <span class="order-total-sum">المجموع: 285₪ عند الاستلام</span>
+          <span class="order-total-split">(235₪ سعر القارورة + 50₪ توصيل)</span>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submit-btn">أكّد طلبك — 285₪ دفع عند الاستلام</button>
         <div id="order-error"></div>
         <p class="form-note">سنتواصل معك عالواتساب خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.</p>
       </form>
@@ -1124,7 +1132,7 @@
 
   <!-- SCRIPT -->
   <script>
-    var PRICE   = 235;
+    var PRICE   = 285;
     var PRODUCT = 'sweet';
 
     /* ── City/area picker — backed by Olivery's real area list, so every
@@ -1241,7 +1249,7 @@
         errorEl.textContent   = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
         errorEl.style.display = 'block';
         btn.disabled    = false;
-        btn.textContent = 'أكّد طلبك — 235₪ دفع عند الاستلام';
+        btn.textContent = 'أكّد طلبك — 285₪ دفع عند الاستلام';
       });
     }
 

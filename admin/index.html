@@ -290,7 +290,7 @@
     }
 
     var SKU_LABELS = { citrus: 'Sillage Citrus', rouge: 'Sillage Rouge', sweet: 'Sillage Sweet' };
-    var SKU_PRICES = { rouge: 149, citrus: 219, sweet: 235 };
+    var SKU_PRICES = { rouge: 150, citrus: 269, sweet: 285 };
 
     function formatProduct(p) {
       if (!p) return '<span style="color:#ccc;font-style:italic;font-size:13px;">—</span>';
@@ -398,7 +398,7 @@
       var win = window.open('', '_blank', 'width=400,height=600');
       // Build selection lines for print
       var printSkuLabels = { citrus: 'Sillage Citrus', rouge: 'Sillage Rouge', sweet: 'Sillage Sweet' };
-      var printSkuPrices = { citrus: 219, rouge: 149, sweet: 235 };
+      var printSkuPrices = { citrus: 269, rouge: 150, sweet: 285 };
       var printParts = (o.product || '').split(',').map(function(s) { return s.trim(); }).filter(function(s) { return printSkuLabels[s]; });
       var printCounts = {};
       printParts.forEach(function(s) { printCounts[s] = (printCounts[s] || 0) + 1; });
