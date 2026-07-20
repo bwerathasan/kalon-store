@@ -17,7 +17,11 @@ const SKU_LABELS = {
   sweet:  'Sillage Sweet',
 };
 
-const UNIT_PRICE = 200;
+const SKU_PRICES = {
+  rouge:  199,
+  citrus: 219,
+  sweet:  235,
+};
 
 function esc(str) {
   return String(str || '')
@@ -42,7 +46,7 @@ function getProduct(order) {
                             .filter(function(s) { return SKU_LABELS[s]; });
 
   if (!parts.length) {
-    return { label: raw || 'Sillage Collection', lines: [], total: '₪' + UNIT_PRICE };
+    return { label: raw || 'Sillage Collection', lines: [], total: '₪—' };
   }
 
   // Count per SKU
@@ -59,7 +63,7 @@ function getProduct(order) {
     return SKU_LABELS[sku] + (count > 1 ? ' × ' + count : '');
   }).join(' + ');
 
-  var price = parts.length * UNIT_PRICE;
+  var price = parts.reduce(function(sum, sku) { return sum + (SKU_PRICES[sku] || 0); }, 0);
 
   return { label: label, lines: lines, total: '₪' + price };
 }
@@ -213,7 +217,7 @@ async function sendBackInStockEmail(email, product) {
 
       <a href="${p.url}"
          style="display:inline-block;padding:14px 32px;background:#080808;color:#ffffff;text-decoration:none;font-family:Arial,sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;">
-        اطلب الآن — ₪${UNIT_PRICE}
+        اطلب الآن — ₪${SKU_PRICES[product] || ''}
       </a>
     </div>
 
@@ -229,4 +233,4 @@ async function sendBackInStockEmail(email, product) {
   });
 }
 
-module.exports = { sendOrderEmails, sendBackInStockEmail, getProduct, UNIT_PRICE };
+module.exports = { sendOrderEmails, sendBackInStockEmail, getProduct, SKU_PRICES };

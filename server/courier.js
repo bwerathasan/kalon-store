@@ -1,4 +1,4 @@
-const { getProduct, UNIT_PRICE } = require('./mailer');
+const { getProduct, SKU_PRICES } = require('./mailer');
 
 const OLIVERY_URL      = process.env.OLIVERY_URL;
 const OLIVERY_LOGIN    = process.env.OLIVERY_LOGIN;
@@ -17,8 +17,9 @@ function normalizeMobile(phone) {
 // consistent cost/label instead of re-deriving it here.
 function computeCost(order) {
   var raw   = String(order.product || '');
-  var count = raw.split(',').map(function(s) { return s.trim(); }).filter(Boolean).length || 1;
-  return count * UNIT_PRICE;
+  var parts = raw.split(',').map(function(s) { return s.trim().toLowerCase(); }).filter(Boolean);
+  var total = parts.reduce(function(sum, sku) { return sum + (SKU_PRICES[sku] || 0); }, 0);
+  return total || SKU_PRICES.rouge;
 }
 
 async function createShipment(order) {
