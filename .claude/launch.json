@@ -6,6 +6,13 @@
       "runtimeExecutable": "npx",
       "runtimeArgs": ["serve", "-l", "5500", "."],
       "port": 5500
+    },
+    {
+      "name": "sillage-server",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["server.js"],
+      "cwd": "server",
+      "port": 5000
     }
   ]
 }
