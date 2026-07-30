@@ -656,7 +656,23 @@
       border: 1px solid var(--line); border-radius: 6px;
     }
     .sold-out-banner h3 { font-family: 'Noto Serif Arabic', serif; font-size: 20px; color: var(--black); margin-bottom: 8px; }
-    .sold-out-banner p { font-size: 13px; color: var(--muted); }
+    .sold-out-banner p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .notify-form { display: flex; gap: 8px; max-width: 340px; margin: 0 auto; }
+    .notify-form input {
+      flex: 1; padding: 13px 14px; border: 1px solid var(--line); border-radius: 4px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif; font-size: 13.5px; background: var(--white);
+    }
+    .notify-form input:focus { outline: none; border-color: var(--gold); }
+    .notify-form button {
+      background: var(--gold); color: var(--white); border: none; border-radius: 4px;
+      font-size: 13.5px; font-weight: 700; padding: 0 18px; cursor: pointer; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .notify-form button:hover { background: #A8862E; }
+    .notify-msg { font-size: 12.5px; margin-top: 10px; display: none; }
+    .notify-msg.ok { color: var(--trust); }
+    .notify-msg.err { color: #B3261E; }
+    @media (max-width: 380px) { .notify-form { flex-direction: column; } }
 
     .footer { background: var(--black); padding: 34px 24px; text-align: center; }
     .footer-wordmark {
@@ -785,11 +801,11 @@
     <h1 class="hero-headline">دفءٌ يغريك من أول لحظة</h1>
     <p class="hero-sub">ويعلق في الذاكرة لسنين — عطرٌ لا يُنسى، لكل لحظة تستاهل تُتذكر</p>
 
-    <button class="btn-primary" onclick="scrollToForm()">اطلب الآن</button>
-    <p class="hero-price-note"><b>235₪</b> توصيل سريع — تدفع عند استلام القطعة</p>
+    <button class="btn-primary" onclick="scrollToForm()">انضم لقائمة الانتظار</button>
+    <p class="hero-price-note">الدفعة الأولى نفدت بالكامل — تابعنا لمعرفة موعد الدفعة الجديدة</p>
 
     <div class="urgency-bar">
-      🔥 دفعة محدودة — 40 قطعة فقط
+      ❌ نفدت الكمية — 500 قطعة بيعت بالكامل
     </div>
   </section>
 
@@ -995,8 +1011,8 @@
       <div class="faq-a">أصلي 100٪ ومختوم من المصدر. كل قنينة مرفقة ببطاقة أصالة داخل العلبة.</div>
     </div>
     <div class="faq-item">
-      <button class="faq-q" onclick="toggleFaq(this)">شو بصير إذا خلصت الـ40 قطعة؟ <span class="faq-q-mark">+</span></button>
-      <div class="faq-a">هاي دفعة محدودة فعلاً. لما تخلص، بتختفي إمكانية الطلب من الصفحة لحد ما توصل دفعة جديدة.</div>
+      <button class="faq-q" onclick="toggleFaq(this)">ليش ما فيني أطلب هلق؟ <span class="faq-q-mark">+</span></button>
+      <div class="faq-a">الدفعة الأولى كانت 500 قطعة بس، وبيعت بالكامل. سجل إيميلك بقائمة الانتظار تحت وبنعلمك أول ما توصل دفعة جديدة.</div>
     </div>
   </section>
 
@@ -1004,8 +1020,8 @@
   <section class="price-section fade-in">
     <p class="price-was">273.00₪</p>
     <p class="price-now">235₪</p>
-    <p class="price-includes">توصيل سريع &nbsp;•&nbsp; الدفع عند الاستلام</p>
-    <div class="scarcity-note">🔥 دفعة محدودة — 40 قطعة فقط</div>
+    <p class="price-includes">الدفعة الأولى نفدت بالكامل</p>
+    <div class="scarcity-note">❌ نفدت الكمية — 500 قطعة بيعت بالكامل</div>
 
     <div class="trust-row">
       <div class="trust-item">
@@ -1028,7 +1044,7 @@
       </div>
     </div>
 
-    <button class="btn-primary" onclick="scrollToForm()" style="max-width:360px;">اطلب الآن — 235₪</button>
+    <button class="btn-primary" onclick="scrollToForm()" style="max-width:360px;">انضم لقائمة الانتظار</button>
   </section>
 
   <!-- ORDER FORM -->
@@ -1098,7 +1114,14 @@
 
       <div class="sold-out-banner" id="sold-out-banner">
         <h3>نفدت الكمية</h3>
-        <p>الـ40 قطعة خلصوا. تابعنا لمعرفة إذا رجعت دفعة جديدة.</p>
+        <p>الدفعة الأولى (500 قطعة) بيعت بالكامل. سجل إيميلك وبنعلمك أول ما توصل دفعة جديدة.</p>
+        <form id="notify-form-el" onsubmit="handleNotify(event)" novalidate>
+          <div class="notify-form">
+            <input type="email" id="n-email" placeholder="example@email.com" autocomplete="email" required />
+            <button type="submit" id="notify-btn">أعلمني</button>
+          </div>
+          <p class="notify-msg" id="notify-msg"></p>
+        </form>
       </div>
     </div>
   </section>
@@ -1127,7 +1150,7 @@
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
     </a>
-    <button class="sticky-cta" onclick="scrollToForm()">اطلب الآن — 235₪</button>
+    <button class="sticky-cta" onclick="scrollToForm()">انضم لقائمة الانتظار</button>
   </div>
 
   <!-- SCRIPT -->
@@ -1196,6 +1219,52 @@
       var wasOpen = item.classList.contains('open');
       document.querySelectorAll('.faq-item.open').forEach(function(i) { i.classList.remove('open'); });
       if (!wasOpen) item.classList.add('open');
+    }
+
+    /* ── Real stock check on load — sold-out product shouldn't make visitors
+       fill out the whole form before finding out. ── */
+    fetch('/api/inventory')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.success && data.availability && data.availability[PRODUCT] === false) {
+          document.getElementById('order-form-el').style.display = 'none';
+          document.getElementById('sold-out-banner').style.display = 'block';
+        }
+      })
+      .catch(function() { /* fail open — form stays visible, submit-time check still guards it */ });
+
+    function handleNotify(e) {
+      e.preventDefault();
+      var msg   = document.getElementById('notify-msg');
+      var btn   = document.getElementById('notify-btn');
+      var email = document.getElementById('n-email').value.trim();
+
+      msg.style.display = 'none';
+      btn.disabled = true;
+      btn.textContent = '...';
+
+      fetch('/api/waitlist', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, product: PRODUCT }),
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(body) {
+        if (!body.success) throw new Error(body.error || 'failed');
+        msg.textContent = body.already ? 'إنت مسجل عنا بالفعل، بنعلمك أول ما توصل الدفعة الجديدة.' : 'تمام! بنعلمك عالإيميل أول ما توصل الدفعة الجديدة.';
+        msg.className = 'notify-msg ok';
+        msg.style.display = 'block';
+        document.getElementById('n-email').value = '';
+        btn.textContent = 'أعلمني';
+        btn.disabled = false;
+      })
+      .catch(function() {
+        msg.textContent = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
+        msg.className = 'notify-msg err';
+        msg.style.display = 'block';
+        btn.textContent = 'أعلمني';
+        btn.disabled = false;
+      });
     }
 
     function handleSubmit(e) {

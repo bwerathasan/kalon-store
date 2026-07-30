@@ -4,9 +4,9 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 const supabase = require('../supabase');
 
 const INITIAL = [
-  { product: 'citrus', stock: 40  },
-  { product: 'rouge',  stock: 130 },
-  { product: 'sweet',  stock: 40  },
+  { product: 'citrus', stock: 0   },
+  { product: 'rouge',  stock: 220 },
+  { product: 'sweet',  stock: 0   },
 ];
 
 (async () => {

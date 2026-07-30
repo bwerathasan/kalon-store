@@ -703,6 +703,35 @@
     .order-success h3 { font-family: 'Noto Serif Arabic', serif; font-size: 21px; font-weight: 700; color: var(--black); margin-bottom: 8px; }
     .order-success p  { font-size: 13.5px; color: var(--muted); line-height: 1.7; }
 
+    .sold-out-banner {
+      display: none; text-align: center; padding: 40px 24px; background: var(--cream);
+      border: 1px solid var(--line); border-radius: 6px;
+    }
+    .sold-out-banner h3 { font-family: 'Noto Serif Arabic', serif; font-size: 20px; color: var(--black); margin-bottom: 8px; }
+    .sold-out-banner p { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .notify-form { display: flex; gap: 8px; max-width: 340px; margin: 0 auto; }
+    .notify-form input {
+      flex: 1; padding: 13px 14px; border: 1px solid var(--line); border-radius: 4px;
+      font-family: 'IBM Plex Sans Arabic', sans-serif; font-size: 13.5px; background: var(--white);
+    }
+    .notify-form input:focus { outline: none; border-color: var(--gold); }
+    .notify-form button {
+      background: var(--gold); color: var(--white); border: none; border-radius: 4px;
+      font-size: 13.5px; font-weight: 700; padding: 0 18px; cursor: pointer; white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .notify-form button:hover { background: #A8862E; }
+    .notify-msg { font-size: 12.5px; margin-top: 10px; display: none; }
+    .notify-msg.ok { color: var(--trust); }
+    .notify-msg.err { color: #B3261E; }
+    @media (max-width: 380px) { .notify-form { flex-direction: column; } }
+
+    .hero-scarcity {
+      display: inline-block; background: var(--black); color: var(--gold-light);
+      font-size: 12.5px; font-weight: 700; padding: 8px 18px; border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
     /* ════════════════════════
        FOOTER — proof this is a real, reachable business
     ════════════════════════ */
@@ -815,6 +844,7 @@
 
   <!-- HERO -->
   <section class="hero fade-in">
+    <div class="hero-scarcity">🔒 فقط 500 قطعة في الدولة كلها</div>
     <h1 class="hero-headline">حضورٌ لا يُنسى</h1>
     <p class="hero-sub">عطرٌ يثبت معك اليوم كله، ويترك أثراً يسأل عنه الجميع</p>
 
@@ -1236,6 +1266,18 @@
         <h3>تم استلام طلبك.</h3>
         <p>سنتواصل معك خلال 24 ساعة لتأكيد الطلب وترتيب التوصيل.</p>
       </div>
+
+      <div class="sold-out-banner" id="sold-out-banner">
+        <h3>نفدت الكمية</h3>
+        <p>الدفعة (500 قطعة بكل الدولة) بيعت بالكامل. سجل إيميلك وبنعلمك أول ما توصل دفعة جديدة.</p>
+        <form id="notify-form-el" onsubmit="handleNotify(event)" novalidate>
+          <div class="notify-form">
+            <input type="email" id="n-email" placeholder="example@email.com" autocomplete="email" required />
+            <button type="submit" id="notify-btn">أعلمني</button>
+          </div>
+          <p class="notify-msg" id="notify-msg"></p>
+        </form>
+      </div>
     </div>
   </section>
 
@@ -1348,6 +1390,52 @@
       if (!wasOpen) item.classList.add('open');
     }
 
+    /* ── Real stock check on load — once this drop sells out, visitors
+       shouldn't fill out the whole form before finding out. ── */
+    fetch('/api/inventory')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data.success && data.availability && data.availability[PRODUCT] === false) {
+          document.getElementById('order-form-el').style.display = 'none';
+          document.getElementById('sold-out-banner').style.display = 'block';
+        }
+      })
+      .catch(function() { /* fail open — form stays visible, submit-time check still guards it */ });
+
+    function handleNotify(e) {
+      e.preventDefault();
+      var msg   = document.getElementById('notify-msg');
+      var btn   = document.getElementById('notify-btn');
+      var email = document.getElementById('n-email').value.trim();
+
+      msg.style.display = 'none';
+      btn.disabled = true;
+      btn.textContent = '...';
+
+      fetch('/api/waitlist', {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, product: PRODUCT }),
+      })
+      .then(function(res) { return res.json(); })
+      .then(function(body) {
+        if (!body.success) throw new Error(body.error || 'failed');
+        msg.textContent = body.already ? 'إنت مسجل عنا بالفعل، بنعلمك أول ما توصل الدفعة الجديدة.' : 'تمام! بنعلمك عالإيميل أول ما توصل الدفعة الجديدة.';
+        msg.className = 'notify-msg ok';
+        msg.style.display = 'block';
+        document.getElementById('n-email').value = '';
+        btn.textContent = 'أعلمني';
+        btn.disabled = false;
+      })
+      .catch(function() {
+        msg.textContent = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
+        msg.className = 'notify-msg err';
+        msg.style.display = 'block';
+        btn.textContent = 'أعلمني';
+        btn.disabled = false;
+      });
+    }
+
     function handleSubmit(e) {
       e.preventDefault();
       var errorEl = document.getElementById('order-error');
@@ -1391,13 +1479,15 @@
         window.scrollTo({ top: document.getElementById('order-form').offsetTop - 80, behavior: 'smooth' });
       })
       .catch(function(err) {
-        var msg = (err.body && err.body.outOfStock)
-          ? 'هذا العطر نفد مخزونه حالياً.'
-          : 'حدث خطأ. يرجى المحاولة مرة أخرى.';
-        errorEl.textContent   = msg;
+        if (err.body && err.body.outOfStock) {
+          document.getElementById('order-form-el').style.display = 'none';
+          document.getElementById('sold-out-banner').style.display = 'block';
+          return;
+        }
+        errorEl.textContent   = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
         errorEl.style.display = 'block';
         btn.disabled    = false;
-        btn.textContent = 'أكّد طلبك — 150₪ دفع عند الاستلام';
+        btn.textContent = 'أكّد طلبك — 249₪ دفع عند الاستلام';
       });
     }
 
