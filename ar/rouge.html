@@ -873,7 +873,7 @@
     </div>
 
     <button class="btn-primary" onclick="scrollToForm()">اطلب الآن</button>
-    <p class="hero-price-note"><b>199₪</b> توصيل سريع — تدفع عند استلام القطعة</p>
+    <p class="hero-price-note"><b>199₪</b> شامل التوصيل المجاني — تدفع عند استلام القطعة</p>
 
     <div class="urgency-bar">
       ⏰ السعر الحالي ينتهي خلال <span id="countdown">00:00:00</span>
@@ -1175,7 +1175,7 @@
   <section class="price-section fade-in">
     <p class="price-was">249.00₪</p>
     <p class="price-now">199₪</p>
-    <p class="price-includes">توصيل سريع &nbsp;•&nbsp; الدفع عند الاستلام</p>
+    <p class="price-includes">توصيل مجاني &nbsp;•&nbsp; الدفع عند الاستلام</p>
 
     <div class="trust-row">
       <div class="trust-item">
@@ -1251,11 +1251,11 @@
         </div>
 
         <div class="order-total-box">
-          <span class="order-total-sum">المجموع: 249₪ عند الاستلام</span>
-          <span class="order-total-split">(199₪ سعر القارورة + 50₪ توصيل)</span>
+          <span class="order-total-sum">المجموع: 199₪ عند الاستلام</span>
+          <span class="order-total-split">توصيل مجاني لجميع المدن</span>
         </div>
 
-        <button type="submit" class="btn-submit" id="submit-btn">أكّد طلبك — 249₪ دفع عند الاستلام</button>
+        <button type="submit" class="btn-submit" id="submit-btn">أكّد طلبك — 199₪ دفع عند الاستلام</button>
         <div id="order-error"></div>
         <p class="form-note">سنتواصل معك عالواتساب خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.</p>
       </form>
@@ -1309,7 +1309,7 @@
 
   <!-- SCRIPT -->
   <script>
-    var PRICE   = 249;
+    var PRICE   = 199;
     var PRODUCT = 'rouge';
 
     /* ── City/area picker — backed by Olivery's real area list, so every
@@ -1486,7 +1486,7 @@
         errorEl.textContent   = 'حدث خطأ. يرجى المحاولة مرة أخرى.';
         errorEl.style.display = 'block';
         btn.disabled    = false;
-        btn.textContent = 'أكّد طلبك — 249₪ دفع عند الاستلام';
+        btn.textContent = 'أكّد طلبك — 199₪ دفع عند الاستلام';
       });
     }
 
