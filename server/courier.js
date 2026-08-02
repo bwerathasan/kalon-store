@@ -22,40 +22,47 @@ function computeCost(order) {
   return total || SKU_PRICES.rouge;
 }
 
-async function createShipment(order) {
-  if (!OLIVERY_URL || !OLIVERY_LOGIN || !OLIVERY_PASSWORD || !OLIVERY_DB) {
-    throw new Error('Olivery env vars missing (OLIVERY_URL/LOGIN/PASSWORD/DB)');
+var REQUEST_TIMEOUT_MS = 15000;
+var MAX_ATTEMPTS       = 3;
+var RETRY_DELAY_MS     = 1500;
+
+function sleep(ms) {
+  return new Promise(function(resolve) { setTimeout(resolve, ms); });
+}
+
+// One HTTP round-trip to Olivery. Throws OliveryHttpError (transient, worth
+// retrying — network failure, timeout, 5xx) or a plain Error (permanent —
+// bad payload, business-logic rejection) so the retry loop below can tell
+// the two apart instead of retrying a rejection that will never succeed.
+async function attemptShipment(payload) {
+  var controller = new AbortController();
+  var timer = setTimeout(function() { controller.abort(); }, REQUEST_TIMEOUT_MS);
+
+  var res;
+  try {
+    res = await fetch(OLIVERY_URL, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload),
+      signal:  controller.signal,
+    });
+  } catch (e) {
+    var netErr = new Error('Olivery request failed: ' + e.message);
+    netErr.transient = true;
+    throw netErr;
+  } finally {
+    clearTimeout(timer);
   }
-
-  var prod = getProduct(order);
-
-  var payload = {
-    jsonrpc: '2.0',
-    params: {
-      login:            OLIVERY_LOGIN,
-      password:         OLIVERY_PASSWORD,
-      db:               OLIVERY_DB,
-      customer_name:    order.full_name,
-      customer_mobile:  normalizeMobile(order.phone),
-      customer_area:    order.city,
-      customer_address: order.address,
-      reference_id:     String(new Date(order.created_at).getTime() || Date.now()),
-      cost:             computeCost(order),
-      order_type_id:    '1',
-      note:             order.notes || '',
-      product_note:     prod.label,
-    },
-  };
-
-  var res = await fetch(OLIVERY_URL, {
-    method:  'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body:    JSON.stringify(payload),
-  });
 
   var rawText = await res.text();
   console.log('[OLIVERY] HTTP status:', res.status);
   console.log('[OLIVERY] Raw response:', rawText);
+
+  if (res.status >= 500) {
+    var httpErr = new Error('Olivery server error (HTTP ' + res.status + '): ' + rawText.slice(0, 300));
+    httpErr.transient = true;
+    throw httpErr;
+  }
 
   var data;
   try {
@@ -75,6 +82,49 @@ async function createShipment(order) {
   }
 
   return data;
+}
+
+async function createShipment(order) {
+  if (!OLIVERY_URL || !OLIVERY_LOGIN || !OLIVERY_PASSWORD || !OLIVERY_DB) {
+    throw new Error('Olivery env vars missing (OLIVERY_URL/LOGIN/PASSWORD/DB)');
+  }
+
+  var prod = getProduct(order);
+
+  // reference_id is unique per order row (real DB timestamp, not just Date.now()),
+  // so retrying with the same payload is safe — Olivery sees the same reference_id
+  // on every attempt rather than creating duplicate shipments per retry.
+  var payload = {
+    jsonrpc: '2.0',
+    params: {
+      login:            OLIVERY_LOGIN,
+      password:         OLIVERY_PASSWORD,
+      db:               OLIVERY_DB,
+      customer_name:    order.full_name,
+      customer_mobile:  normalizeMobile(order.phone),
+      customer_area:    order.city,
+      customer_address: order.address,
+      reference_id:     String(new Date(order.created_at).getTime() || Date.now()),
+      cost:             computeCost(order),
+      order_type_id:    '1',
+      note:             order.notes || '',
+      product_note:     prod.label,
+    },
+  };
+
+  var lastErr;
+  for (var attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    try {
+      return await attemptShipment(payload);
+    } catch (e) {
+      lastErr = e;
+      var willRetry = e.transient && attempt < MAX_ATTEMPTS;
+      console.warn('[OLIVERY] attempt ' + attempt + '/' + MAX_ATTEMPTS + ' failed for order ' + order.id + ':', e.message, willRetry ? '- retrying' : '- giving up');
+      if (!willRetry) break;
+      await sleep(RETRY_DELAY_MS * attempt);
+    }
+  }
+  throw lastErr;
 }
 
 module.exports = { createShipment };
