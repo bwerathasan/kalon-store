@@ -152,8 +152,12 @@ router.post('/', orderRateLimit, async (req, res) => {
 
   createShipment(data[0]).then(function() {
     console.log('[OLIVERY] Shipment created OK for order', data[0].id);
-  }).catch(function(err) {
+    return supabase.from('orders').update({ olivery_status: 'shipped', olivery_error: null }).eq('id', data[0].id);
+  }, function(err) {
     console.error('[OLIVERY] Shipment creation FAILED for order', data[0].id, '-', err.message);
+    return supabase.from('orders').update({ olivery_status: 'failed', olivery_error: err.message }).eq('id', data[0].id);
+  }).catch(function(e) {
+    console.error('[OLIVERY] Failed to persist shipment status for order', data[0].id, '-', e.message);
   });
 
   return res.status(201).json({ success: true });
@@ -172,6 +176,34 @@ router.get('/', async (req, res) => {
   }
 
   return res.json({ success: true, orders: data });
+});
+
+// POST /api/orders/:id/retry-shipment — admin only
+router.post('/:id/retry-shipment', async (req, res) => {
+  if (!req.session || !req.session.adminAuthenticated) {
+    return res.status(401).json({ success: false, error: 'Unauthorized.' });
+  }
+
+  const { data: order, error: fetchErr } = await supabase
+    .from('orders')
+    .select('*')
+    .eq('id', req.params.id)
+    .single();
+
+  if (fetchErr || !order) {
+    return res.status(404).json({ success: false, error: 'Order not found.' });
+  }
+
+  try {
+    await createShipment(order);
+    await supabase.from('orders').update({ olivery_status: 'shipped', olivery_error: null }).eq('id', order.id);
+    console.log('[OLIVERY] Manual retry succeeded for order', order.id);
+    return res.json({ success: true });
+  } catch (err) {
+    await supabase.from('orders').update({ olivery_status: 'failed', olivery_error: err.message }).eq('id', order.id);
+    console.error('[OLIVERY] Manual retry FAILED for order', order.id, '-', err.message);
+    return res.status(502).json({ success: false, error: err.message });
+  }
 });
 
 module.exports = router;

@@ -199,6 +199,24 @@
     }
     .btn-print:hover { border-color: #1a1a1a; background: #f4f4f5; }
 
+    /* ── Olivery shipment status ── */
+    .ship-status {
+      font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px;
+    }
+    .ship-status.pending { background: #f4f4f5; color: #888; }
+    .ship-status.shipped { background: #e6f4ea; color: #1e7e34; }
+    .ship-status.failed  { background: #fdecea; color: #b3261e; }
+    .ship-error {
+      grid-column: 1 / -1; font-size: 12px; color: #b3261e; background: #fdecea;
+      border-radius: 6px; padding: 8px 12px; margin-top: -4px;
+    }
+    .btn-retry {
+      padding: 7px 20px; background: #b3261e; color: #fff; border: none; border-radius: 6px;
+      font-family: 'Cairo', sans-serif; font-size: 14px; cursor: pointer; transition: background 0.2s;
+    }
+    .btn-retry:hover { background: #8f1e17; }
+    .btn-retry:disabled { opacity: 0.6; cursor: default; }
+
     @media (max-width: 640px) {
       .main { padding: 16px; }
       .toolbar { padding: 12px 16px; }
@@ -346,12 +364,24 @@
           ? '<span class="field-value"><a href="tel:' + escHtml(o.phone) + '">' + escHtml(o.phone) + '</a></span>'
           : '<span class="field-value empty">—</span>';
 
+        const shipStatus  = o.olivery_status || 'pending';
+        const shipLabel   = { pending: 'قيد الإرسال لأوليفري', shipped: '✓ تم إرسال الشحنة', failed: '✗ فشل إرسال الشحنة' }[shipStatus] || shipStatus;
+        const shipBadge   = '<span class="ship-status ' + shipStatus + '">' + shipLabel + '</span>';
+        const shipErrorEl = (shipStatus === 'failed' && o.olivery_error)
+          ? '<div class="ship-error">' + escHtml(o.olivery_error) + '</div>' : '';
+        const retryBtn    = shipStatus === 'failed'
+          ? '<button class="btn-retry" onclick="retryShipment(\'' + escHtml(o.id) + '\', this)">إعادة إرسال لأوليفري</button>' : '';
+
         return `
           <div class="order-card">
             <div class="order-header">
               <span class="order-name">${escHtml(o.full_name || '—')}</span>
-              <span class="order-time">${formatDate(o.created_at)}</span>
+              <span style="display:flex;align-items:center;gap:8px;">
+                ${shipBadge}
+                <span class="order-time">${formatDate(o.created_at)}</span>
+              </span>
             </div>
+            ${shipErrorEl}
 
             <div class="field">
               <span class="field-label">رقم الهاتف</span>
@@ -384,12 +414,30 @@
             </div>
 
             <div class="order-footer">
+              ${retryBtn}
               <button class="btn-print" onclick="printOrder(${i})">🖨 طباعة</button>
             </div>
           </div>`;
       }).join('');
 
       content.innerHTML = '<div class="orders-list">' + cards + '</div>';
+    }
+
+    function retryShipment(orderId, btn) {
+      btn.disabled = true;
+      btn.textContent = '...جاري الإرسال';
+
+      fetch(API + '/' + orderId + '/retry-shipment', { method: 'POST' })
+        .then(function(res) { return res.json().then(function(body) { return { ok: res.ok, body: body }; }); })
+        .then(function(r) {
+          if (!r.ok || !r.body.success) throw new Error(r.body.error || 'فشلت إعادة الإرسال');
+          loadOrders();
+        })
+        .catch(function(err) {
+          alert('فشلت إعادة الإرسال: ' + err.message);
+          btn.disabled = false;
+          btn.textContent = 'إعادة إرسال لأوليفري';
+        });
     }
 
     function printOrder(i) {
