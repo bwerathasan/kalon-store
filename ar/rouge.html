@@ -96,23 +96,18 @@
     ════════════════════════ */
     .hero {
       background: var(--bg);
-      padding: 26px 24px 24px;
+      padding: 16px 24px 20px;
       text-align: center;
     }
     .hero-image-wrap {
       position: relative;
-      width: min(80%, 360px);
-      margin: 0 auto 14px;
-      background: var(--white);
-      border-radius: 18px;
-      padding: 20px;
-      box-shadow: 0 6px 28px rgba(28,28,28,0.07);
+      width: min(52%, 220px);
+      margin: 0 auto 6px;
     }
     .hero-img {
       width: 100%;
       height: auto;
-      display: block;
-      border-radius: 8px;
+      filter: drop-shadow(0 18px 36px rgba(0,0,0,0.1));
     }
     .hero-badge {
       position: absolute;
@@ -136,7 +131,7 @@
       margin-bottom: 10px;
     }
     .stock-counter {
-      font-size: 11.5px; color: var(--muted); margin-bottom: 16px;
+      font-size: 11.5px; color: var(--muted); margin-bottom: 8px;
       display: flex; align-items: center; justify-content: center; gap: 6px;
     }
     .stock-counter .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
@@ -145,7 +140,7 @@
       color: var(--charcoal);
       line-height: 1.75;
       max-width: 420px;
-      margin: 0 auto 22px;
+      margin: 0 auto 12px;
     }
     .btn-primary {
       display: block;
@@ -1411,7 +1406,7 @@
         }
         if (data.success && data.stock && typeof data.stock[PRODUCT] === 'number' && data.stock[PRODUCT] > 0) {
           var counterEl = document.getElementById('stock-counter');
-          counterEl.innerHTML = '<span class="dot"></span>' + data.stock[PRODUCT] + ' من 500 متبقي';
+          counterEl.innerHTML = '<span class="dot"></span>متبقي فقط ' + data.stock[PRODUCT] + ' من 500 قطعة';
           counterEl.style.display = 'flex';
         }
       })
