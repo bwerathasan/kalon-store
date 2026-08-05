@@ -30,6 +30,15 @@ router.get('/', async (req, res) => {
       rouge:  (inv['rouge']  || 0) > 0,
       sweet:  (inv['sweet']  || 0) > 0,
     },
+    // Raw remaining count — currently only used for Rouge's "X of 500" real
+    // scarcity counter. Exposing it isn't a bigger disclosure than the
+    // availability booleans above already are (both derive from the same
+    // real stock number).
+    stock: {
+      citrus: inv['citrus'] || 0,
+      rouge:  inv['rouge']  || 0,
+      sweet:  inv['sweet']  || 0,
+    },
   });
 });
 
