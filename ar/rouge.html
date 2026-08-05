@@ -103,11 +103,16 @@
       position: relative;
       width: min(80%, 360px);
       margin: 0 auto 14px;
+      background: var(--white);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 6px 28px rgba(28,28,28,0.07);
     }
     .hero-img {
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 18px 36px rgba(0,0,0,0.1));
+      display: block;
+      border-radius: 8px;
     }
     .hero-badge {
       position: absolute;
@@ -1406,7 +1411,7 @@
         }
         if (data.success && data.stock && typeof data.stock[PRODUCT] === 'number' && data.stock[PRODUCT] > 0) {
           var counterEl = document.getElementById('stock-counter');
-          counterEl.innerHTML = '<span class="dot"></span>' + data.stock[PRODUCT] + ' من 500 متوفرة الآن';
+          counterEl.innerHTML = '<span class="dot"></span>' + data.stock[PRODUCT] + ' من 500 متبقي';
           counterEl.style.display = 'flex';
         }
       })
