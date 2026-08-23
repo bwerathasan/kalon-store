@@ -18,7 +18,7 @@ const SKU_LABELS = {
 };
 
 const SKU_PRICES = {
-  rouge:  200,
+  rouge:  199,
   citrus: 269,
   sweet:  285,
 };
@@ -27,7 +27,10 @@ const SKU_PRICES = {
 // per-unit sum below. Key is the SKU parts sorted + comma-joined, so order
 // in the submitted "product" string doesn't matter.
 const BUNDLE_PRICES = {
-  'rouge,rouge,rouge': 400, // Rouge 3-pack (Maram offer): pay for 2 at 200 each, 3rd is a free gift
+  // Rouge 3-pack (Maram offer, checkout qty stepper): flat 400 regardless of
+  // the 199 solo price — deliberately NOT 2×199, kept as its own flat number
+  // so this can't silently drift if the solo price ever changes.
+  'rouge,rouge,rouge': 400,
 };
 const BUNDLE_LABELS = {
   'rouge,rouge,rouge': 'Sillage Rouge × 3 (قنينتين + هدية مجاناً — عرض مرام)',

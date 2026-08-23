@@ -10,8 +10,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SILLAGE ROUGE — قنينتين + الثالثة هدية | توصيل سريع</title>
-  <meta name="description" content="SILLAGE ROUGE — عطر إكسترا دو بارفان أصلي 100%، ثبات 10-12 ساعة. عرض مرام: قنينتين + الثالثة هدية مجاناً، توصيل سريع، الدفع عند الاستلام." />
+  <title>SILLAGE ROUGE — Extrait de Parfum | 199₪ توصيل سريع</title>
+  <meta name="description" content="SILLAGE ROUGE — عطر إكسترا دو بارفان أصلي 100%، ثبات 10-12 ساعة. 199₪ توصيل سريع. الدفع عند الاستلام." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -181,17 +181,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hero-price-note b { color: var(--black); }
 
     /* ════════════════════════
-       PACK SELECT — 1 bottle vs 3-for-200 bundle
+       QTY STEPPER — checkout-only upsell (1 قنينة vs 2 + 3rd free)
     ════════════════════════ */
-    .pack-select {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      max-width: 420px;
-      margin: 0 auto 16px;
-    }
-    .pack-option {
-      position: relative;
+    .qty-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -199,53 +191,60 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background: var(--white);
       border: 1.5px solid var(--line);
       border-radius: 6px;
-      padding: 13px 16px;
-      cursor: pointer;
-      text-align: right;
-      font-family: inherit;
-      transition: border-color 0.15s, box-shadow 0.15s;
+      padding: 14px 16px;
+      margin-bottom: 14px;
     }
-    .pack-option.active {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 1.5px var(--gold);
-    }
-    .pack-option:active { transform: scale(0.98); }
-    .pack-name {
+    .qty-info { text-align: right; }
+    .qty-label {
+      display: block;
       font-size: 13.5px;
       font-weight: 700;
       color: var(--black);
     }
-    .pack-sub {
+    .qty-price {
       display: block;
-      font-size: 11px;
-      font-weight: 400;
-      color: var(--muted);
+      font-size: 12.5px;
+      color: var(--gold);
+      font-weight: 700;
       margin-top: 2px;
     }
-    .pack-price {
-      font-size: 14px;
-      font-weight: 700;
+    .qty-stepper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .qty-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1.5px solid var(--line);
+      background: var(--white);
       color: var(--black);
-      white-space: nowrap;
-    }
-    .pack-price s {
-      color: var(--muted);
-      font-weight: 400;
-      margin-left: 5px;
-      opacity: 0.75;
-    }
-    .pack-badge {
-      position: absolute;
-      top: -9px;
-      right: 14px;
-      background: var(--gold);
-      color: var(--white);
-      font-size: 9.5px;
+      font-size: 16px;
       font-weight: 700;
-      letter-spacing: 0.02em;
-      padding: 3px 10px;
-      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, opacity 0.15s;
     }
+    .qty-btn:hover:not(:disabled) { background: var(--cream); }
+    .qty-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+    .qty-value {
+      font-size: 15px;
+      font-weight: 700;
+      min-width: 14px;
+      text-align: center;
+    }
+    .qty-hint {
+      font-size: 11.5px;
+      color: var(--muted);
+      text-align: center;
+      margin: -6px 0 14px;
+      transition: color 0.15s;
+    }
+    .qty-hint.active { color: var(--trust); font-weight: 600; }
 
     /* ════════════════════════
        URGENCY / COUNTDOWN
@@ -956,26 +955,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
            onclick="swapImg(this, '../images/hf_20260703_121308_501ad29c-99c2-44a9-b59a-2b9fa968cf50.webp')" />
     </div>
 
-    <div class="pack-select" id="pack-select">
-      <button type="button" class="pack-option" data-tier="1" data-price="200" data-was="249" data-product="rouge">
-        <span>
-          <span class="pack-name">قنينة واحدة</span>
-          <span class="pack-sub">للتجربة</span>
-        </span>
-        <span class="pack-price">200₪</span>
-      </button>
-      <button type="button" class="pack-option active" data-tier="3" data-price="400" data-was="600" data-product="rouge,rouge,rouge">
-        <span class="pack-badge">عرض مرام</span>
-        <span>
-          <span class="pack-name">قنينتين + الثالثة هدية مجاناً</span>
-          <span class="pack-sub">وفري 200₪</span>
-        </span>
-        <span class="pack-price"><s>600₪</s> 400₪</span>
-      </button>
-    </div>
-
     <button class="btn-primary" onclick="scrollToForm()">اطلب الآن</button>
-    <p class="hero-price-note"><b><span class="js-price">400</span>₪</b> شامل التوصيل المجاني — تدفع عند استلام القطعة</p>
+    <p class="hero-price-note"><b>199₪</b> شامل التوصيل المجاني — تدفع عند استلام القطعة</p>
 
     <div class="urgency-bar">
       ⏰ السعر الحالي ينتهي خلال <span id="countdown">00:00:00</span>
@@ -1275,8 +1256,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- PRICE -->
   <section class="price-section fade-in">
-    <p class="price-was"><span class="js-price-was">600</span>₪</p>
-    <p class="price-now"><span class="js-price">400</span>₪</p>
+    <p class="price-was">249.00₪</p>
+    <p class="price-now">199₪</p>
     <p class="price-includes">توصيل مجاني &nbsp;•&nbsp; الدفع عند الاستلام</p>
 
     <div class="trust-row">
@@ -1300,7 +1281,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
     </div>
 
-    <button class="btn-primary" onclick="scrollToForm()" style="max-width:360px;">اطلب الآن — <span class="js-price">400</span>₪</button>
+    <button class="btn-primary" onclick="scrollToForm()" style="max-width:360px;">اطلب الآن — 199₪</button>
   </section>
 
   <!-- ORDER FORM -->
@@ -1318,7 +1299,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <form id="order-form-el" onsubmit="handleSubmit(event)" novalidate>
-        <input type="hidden" id="f-product" name="product" value="rouge,rouge,rouge" />
+        <input type="hidden" id="f-product" name="product" value="rouge" />
+
+        <div class="qty-box">
+          <div class="qty-info">
+            <span class="qty-label" id="qty-label">قنينة واحدة</span>
+            <span class="qty-price" id="qty-price-label">199₪</span>
+          </div>
+          <div class="qty-stepper">
+            <button type="button" class="qty-btn" id="qty-minus" aria-label="تقليل الكمية">−</button>
+            <span class="qty-value" id="qty-value">1</span>
+            <button type="button" class="qty-btn" id="qty-plus" aria-label="زيادة الكمية">+</button>
+          </div>
+        </div>
+        <p class="qty-hint" id="qty-hint">🎁 عرض مرام: زيدي قنينة واحصلي على الثالثة هدية مجاناً</p>
 
         <div class="form-group">
           <label class="form-label" for="f-name">الاسم الكامل <span class="req">*</span></label>
@@ -1353,11 +1347,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <div class="order-total-box">
-          <span class="order-total-sum">المجموع: <span class="js-price">400</span>₪ عند الاستلام</span>
-          <span class="order-total-split" id="order-pack-note">قنينتين + الثالثة هدية مجاناً &nbsp;•&nbsp; توصيل مجاني لجميع المدن</span>
+          <span class="order-total-sum">المجموع: <span class="js-price">199</span>₪ عند الاستلام</span>
+          <span class="order-total-split" id="order-pack-note">قنينة واحدة &nbsp;•&nbsp; توصيل مجاني لجميع المدن</span>
         </div>
 
-        <button type="submit" class="btn-submit" id="submit-btn">أكّد طلبك — <span class="js-price">400</span>₪ دفع عند الاستلام</button>
+        <button type="submit" class="btn-submit" id="submit-btn">أكّد طلبك — <span class="js-price">199</span>₪ دفع عند الاستلام</button>
         <div id="order-error"></div>
         <p class="form-note">سنتواصل معك عالواتساب خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.</p>
       </form>
@@ -1406,39 +1400,59 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
       </svg>
     </a>
-    <button class="sticky-cta" onclick="scrollToForm()">اطلب الآن — <span class="js-price">400</span>₪</button>
+    <button class="sticky-cta" onclick="scrollToForm()">اطلب الآن — 199₪</button>
   </div>
 
   <!-- SCRIPT -->
   <script>
-    var BASE_SKU = 'rouge'; // always the real SKU for inventory/waitlist lookups, regardless of pack chosen
-    var PRICE    = 400;
-    var PRODUCT  = 'rouge,rouge,rouge';
+    var BASE_SKU = 'rouge'; // always the real SKU for inventory/waitlist lookups, regardless of qty chosen
+    var PRICE    = 199;
+    var PRODUCT  = 'rouge';
 
-    /* ── Pack selector — 1 قنينة vs قنينتين + الثالثة هدية (Maram offer) ── */
+    /* ── Qty stepper (checkout only) — 1 قنينة (199₪) or 2 + 3rd free (400₪).
+       Hard-capped at 2 selectable paid units: prevents abuse (nobody can
+       inflate quantity to farm free bottles) and keeps the math exact. ── */
     (function() {
-      var options = document.querySelectorAll('.pack-option');
-      options.forEach(function(opt) {
-        opt.addEventListener('click', function() {
-          options.forEach(function(o) { o.classList.remove('active'); });
-          opt.classList.add('active');
+      var qty        = 1;
+      var minusBtn   = document.getElementById('qty-minus');
+      var plusBtn    = document.getElementById('qty-plus');
+      var valueEl    = document.getElementById('qty-value');
+      var labelEl    = document.getElementById('qty-label');
+      var priceEl    = document.getElementById('qty-price-label');
+      var hintEl     = document.getElementById('qty-hint');
+      var noteEl     = document.getElementById('order-pack-note');
 
-          PRICE   = parseInt(opt.getAttribute('data-price'), 10);
-          PRODUCT = opt.getAttribute('data-product');
-          var was = opt.getAttribute('data-was');
+      function render() {
+        valueEl.textContent  = qty;
+        minusBtn.disabled    = qty <= 1;
+        plusBtn.disabled     = qty >= 2;
 
-          document.querySelectorAll('.js-price').forEach(function(el) { el.textContent = PRICE; });
-          document.querySelectorAll('.js-price-was').forEach(function(el) { el.textContent = was; });
-          document.getElementById('f-product').value = PRODUCT;
+        if (qty === 2) {
+          PRICE   = 400;
+          PRODUCT = 'rouge,rouge,rouge';
+          labelEl.textContent = 'قنينتين + الثالثة هدية مجاناً';
+          priceEl.textContent = '400₪';
+          hintEl.textContent  = '✓ عرض مرام مفعّل — بتوصلك 3 قنينات';
+          hintEl.classList.add('active');
+          if (noteEl) noteEl.textContent = 'قنينتين + الثالثة هدية مجاناً • توصيل مجاني لجميع المدن';
+        } else {
+          PRICE   = 199;
+          PRODUCT = 'rouge';
+          labelEl.textContent = 'قنينة واحدة';
+          priceEl.textContent = '199₪';
+          hintEl.textContent  = '🎁 عرض مرام: زيدي قنينة واحصلي على الثالثة هدية مجاناً';
+          hintEl.classList.remove('active');
+          if (noteEl) noteEl.textContent = 'قنينة واحدة • توصيل مجاني لجميع المدن';
+        }
 
-          var note = document.getElementById('order-pack-note');
-          if (note) {
-            note.textContent = opt.getAttribute('data-tier') === '3'
-              ? 'قنينتين + الثالثة هدية مجاناً • توصيل مجاني لجميع المدن'
-              : 'قنينة واحدة • توصيل مجاني لجميع المدن';
-          }
-        });
-      });
+        document.getElementById('f-product').value = PRODUCT;
+        document.querySelectorAll('.js-price').forEach(function(el) { el.textContent = PRICE; });
+      }
+
+      minusBtn.addEventListener('click', function() { if (qty > 1) { qty--; render(); } });
+      plusBtn.addEventListener('click',  function() { if (qty < 2) { qty++; render(); } });
+
+      render();
     })();
 
     /* ── City/area picker — backed by Olivery's real area list, so every
