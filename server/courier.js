@@ -1,4 +1,4 @@
-const { getProduct, SKU_PRICES } = require('./mailer');
+const { getProduct, SKU_PRICES, computeTotal } = require('./mailer');
 
 const OLIVERY_URL      = process.env.OLIVERY_URL;
 const OLIVERY_LOGIN    = process.env.OLIVERY_LOGIN;
@@ -18,7 +18,7 @@ function normalizeMobile(phone) {
 function computeCost(order) {
   var raw   = String(order.product || '');
   var parts = raw.split(',').map(function(s) { return s.trim().toLowerCase(); }).filter(Boolean);
-  var total = parts.reduce(function(sum, sku) { return sum + (SKU_PRICES[sku] || 0); }, 0);
+  var total = computeTotal(parts);
   return total || SKU_PRICES.rouge;
 }
 

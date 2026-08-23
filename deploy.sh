@@ -2,7 +2,7 @@
 # Usage: bash deploy.sh
 # Requires: VPS_HOST and VPS_USER set below, or passed as env vars
 
-VPS_HOST="${VPS_HOST:-YOUR_VPS_IP}"
+VPS_HOST="${VPS_HOST:-168.231.126.252}"
 VPS_USER="${VPS_USER:-root}"
 VPS_PATH="${VPS_PATH:-/var/www/kalon}"
 
