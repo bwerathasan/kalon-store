@@ -34,7 +34,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ── Reset ── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     img, svg { display: block; max-width: 100%; }
-    html { scroll-behavior: smooth; overflow-x: hidden; }
+    html { scroll-behavior: smooth; overflow-x: hidden; touch-action: pan-y; overscroll-behavior-x: none; }
 
     /* ── Tokens ── */
     :root {
@@ -47,7 +47,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       --trust-dim:  rgba(44,82,130,0.07);
       --black:      #1C1C1C;
       --charcoal:   #333333;
-      --muted:      #7A7A7A;
+      --muted:      #6E6E6E;
       --white:      #FFFFFF;
     }
 
@@ -137,11 +137,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       color: var(--black);
       margin-bottom: 10px;
     }
-    .stock-counter {
-      font-size: 11.5px; color: var(--muted); margin-bottom: 16px;
-      display: flex; align-items: center; justify-content: center; gap: 6px;
-    }
-    .stock-counter .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
     .hero-sub {
       font-size: clamp(13px, 2.6vw, 15px);
       color: var(--charcoal);
@@ -179,72 +174,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       margin-top: 10px;
     }
     .hero-price-note b { color: var(--black); }
-
-    /* ════════════════════════
-       QTY STEPPER — checkout-only upsell (1 قنينة vs 2 + 3rd free)
-    ════════════════════════ */
-    .qty-box {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      background: var(--white);
-      border: 1.5px solid var(--line);
-      border-radius: 6px;
-      padding: 14px 16px;
-      margin-bottom: 14px;
-    }
-    .qty-info { text-align: right; }
-    .qty-label {
-      display: block;
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--black);
-    }
-    .qty-price {
-      display: block;
-      font-size: 12.5px;
-      color: var(--gold);
-      font-weight: 700;
-      margin-top: 2px;
-    }
-    .qty-stepper {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-shrink: 0;
-    }
-    .qty-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1.5px solid var(--line);
-      background: var(--white);
-      color: var(--black);
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s, opacity 0.15s;
-    }
-    .qty-btn:hover:not(:disabled) { background: var(--cream); }
-    .qty-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-    .qty-value {
-      font-size: 15px;
-      font-weight: 700;
-      min-width: 14px;
-      text-align: center;
-    }
-    .qty-hint {
-      font-size: 11.5px;
-      color: var(--muted);
-      text-align: center;
-      margin: -6px 0 14px;
-      transition: color 0.15s;
-    }
-    .qty-hint.active { color: var(--trust); font-weight: 600; }
 
     /* ════════════════════════
        URGENCY / COUNTDOWN
@@ -808,12 +737,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .notify-msg.err { color: #B3261E; }
     @media (max-width: 380px) { .notify-form { flex-direction: column; } }
 
-    .hero-scarcity {
-      display: inline-block; background: var(--black); color: var(--gold-light);
-      font-size: 12.5px; font-weight: 700; padding: 8px 18px; border-radius: 20px;
-      margin-bottom: 14px;
-    }
-
     /* ════════════════════════
        FOOTER — proof this is a real, reachable business
     ════════════════════════ */
@@ -932,10 +855,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="hero fade-in">
     <h1 class="hero-headline">حضورٌ لا يُنسى</h1>
     <p class="hero-sub">عطرٌ يثبت معك اليوم كله، ويترك أثراً يسأل عنه الجميع</p>
-    <p class="stock-counter" id="stock-counter" style="display:none;"></p>
 
     <div class="hero-image-wrap">
-      <div class="hero-badge">تخفيض مرام 20٪</div>
+      <div class="hero-badge">خصم 20٪</div>
       <img id="hero-img"
            src="../images/hf_20260703_115735_dc946b9b-ad5f-4983-8d85-dd132b4fa031.webp"
            alt="SILLAGE ROUGE — مكونات العطر"
@@ -1252,9 +1174,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="faq-item">
       <button class="faq-q" onclick="toggleFaq(this)">
-        كيف بقدر أتواصل معكم قبل ما أطلب؟ <span class="faq-q-mark">+</span>
+        ليش ما فيني أطلب هلق؟ <span class="faq-q-mark">+</span>
       </button>
-      <div class="faq-a">عالواتساب مباشرة — الزر تحت ثابت طول الصفحة. بنرد خلال ساعات قليلة.</div>
+      <div class="faq-a">الدفعة الأولى كانت 500 قطعة بس، وبيعت بالكامل. سجل إيميلك بقائمة الانتظار تحت وبنعلمك أول ما توصل دفعة جديدة.</div>
     </div>
   </section>
 
@@ -1306,19 +1228,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <form id="order-form-el" onsubmit="handleSubmit(event)" novalidate>
         <input type="hidden" id="f-product" name="product" value="rouge" />
 
-        <div class="qty-box">
-          <div class="qty-info">
-            <span class="qty-label" id="qty-label">قنينة واحدة</span>
-            <span class="qty-price" id="qty-price-label">199₪</span>
-          </div>
-          <div class="qty-stepper">
-            <button type="button" class="qty-btn" id="qty-minus" aria-label="تقليل الكمية">−</button>
-            <span class="qty-value" id="qty-value">1</span>
-            <button type="button" class="qty-btn" id="qty-plus" aria-label="زيادة الكمية">+</button>
-          </div>
-        </div>
-        <p class="qty-hint" id="qty-hint">🎁 عرض مرام: زيدي قنينة واحصلي على الثالثة هدية مجاناً</p>
-
         <div class="form-group">
           <label class="form-label" for="f-name">الاسم الكامل <span class="req">*</span></label>
           <input type="text" id="f-name" name="name" class="form-input" placeholder="اسمك الكامل" autocomplete="name" required />
@@ -1352,11 +1261,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <div class="order-total-box">
-          <span class="order-total-sum">المجموع: <span class="js-price">199</span>₪ عند الاستلام</span>
-          <span class="order-total-split" id="order-pack-note">قنينة واحدة &nbsp;•&nbsp; توصيل مجاني لجميع المدن</span>
+          <span class="order-total-sum">المجموع: 199₪ عند الاستلام</span>
+          <span class="order-total-split">توصيل مجاني لجميع المدن</span>
         </div>
 
-        <button type="submit" class="btn-submit" id="submit-btn">أكّد طلبك — <span class="js-price">199</span>₪ دفع عند الاستلام</button>
+        <button type="submit" class="btn-submit" id="submit-btn">أكّد طلبك — 199₪ دفع عند الاستلام</button>
         <div id="order-error"></div>
         <p class="form-note">سنتواصل معك عالواتساب خلال 24 ساعة لتأكيد طلبك وترتيب التوصيل.</p>
       </form>
@@ -1369,7 +1278,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div class="sold-out-banner" id="sold-out-banner">
         <h3>نفدت الكمية</h3>
-        <p>الدفعة الحالية بيعت بالكامل. سجل إيميلك وبنعلمك أول ما توصل دفعة جديدة.</p>
+        <p>الدفعة الأولى (500 قطعة) بيعت بالكامل. سجل إيميلك وبنعلمك أول ما توصل دفعة جديدة.</p>
         <form id="notify-form-el" onsubmit="handleNotify(event)" novalidate>
           <div class="notify-form">
             <input type="email" id="n-email" placeholder="example@email.com" autocomplete="email" required />
@@ -1410,55 +1319,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- SCRIPT -->
   <script>
-    var BASE_SKU = 'rouge'; // always the real SKU for inventory/waitlist lookups, regardless of qty chosen
-    var PRICE    = 199;
-    var PRODUCT  = 'rouge';
-
-    /* ── Qty stepper (checkout only) — 1 قنينة (199₪) or 2 + 3rd free (400₪).
-       Hard-capped at 2 selectable paid units: prevents abuse (nobody can
-       inflate quantity to farm free bottles) and keeps the math exact. ── */
-    (function() {
-      var qty        = 1;
-      var minusBtn   = document.getElementById('qty-minus');
-      var plusBtn    = document.getElementById('qty-plus');
-      var valueEl    = document.getElementById('qty-value');
-      var labelEl    = document.getElementById('qty-label');
-      var priceEl    = document.getElementById('qty-price-label');
-      var hintEl     = document.getElementById('qty-hint');
-      var noteEl     = document.getElementById('order-pack-note');
-
-      function render() {
-        valueEl.textContent  = qty;
-        minusBtn.disabled    = qty <= 1;
-        plusBtn.disabled     = qty >= 2;
-
-        if (qty === 2) {
-          PRICE   = 400;
-          PRODUCT = 'rouge,rouge,rouge';
-          labelEl.textContent = 'قنينتين + الثالثة هدية مجاناً';
-          priceEl.textContent = '400₪';
-          hintEl.textContent  = '✓ عرض مرام مفعّل — بتوصلك 3 قنينات';
-          hintEl.classList.add('active');
-          if (noteEl) noteEl.textContent = 'قنينتين + الثالثة هدية مجاناً • توصيل مجاني لجميع المدن';
-        } else {
-          PRICE   = 199;
-          PRODUCT = 'rouge';
-          labelEl.textContent = 'قنينة واحدة';
-          priceEl.textContent = '199₪';
-          hintEl.textContent  = '🎁 عرض مرام: زيدي قنينة واحصلي على الثالثة هدية مجاناً';
-          hintEl.classList.remove('active');
-          if (noteEl) noteEl.textContent = 'قنينة واحدة • توصيل مجاني لجميع المدن';
-        }
-
-        document.getElementById('f-product').value = PRODUCT;
-        document.querySelectorAll('.js-price').forEach(function(el) { el.textContent = PRICE; });
-      }
-
-      minusBtn.addEventListener('click', function() { if (qty > 1) { qty--; render(); } });
-      plusBtn.addEventListener('click',  function() { if (qty < 2) { qty++; render(); } });
-
-      render();
-    })();
+    var PRICE   = 199;
+    var PRODUCT = 'rouge';
 
     /* ── City/area picker — backed by Olivery's real area list, so every
        submitted order matches an area their courier system actually
@@ -1542,14 +1404,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     fetch('/api/inventory')
       .then(function(r) { return r.json(); })
       .then(function(data) {
-        if (data.success && data.availability && data.availability[BASE_SKU] === false) {
+        if (data.success && data.availability && data.availability[PRODUCT] === false) {
           document.getElementById('order-form-el').style.display = 'none';
           document.getElementById('sold-out-banner').style.display = 'block';
-        }
-        if (data.success && data.stock && typeof data.stock[BASE_SKU] === 'number' && data.stock[BASE_SKU] > 0) {
-          var counterEl = document.getElementById('stock-counter');
-          counterEl.innerHTML = '<span class="dot"></span>متبقي فقط ' + data.stock[BASE_SKU] + ' من 500 قطعة';
-          counterEl.style.display = 'flex';
         }
       })
       .catch(function() { /* fail open — form stays visible, submit-time check still guards it */ });
@@ -1567,7 +1424,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       fetch('/api/waitlist', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email, product: BASE_SKU }),
+        body: JSON.stringify({ email: email, product: PRODUCT }),
       })
       .then(function(res) { return res.json(); })
       .then(function(body) {
