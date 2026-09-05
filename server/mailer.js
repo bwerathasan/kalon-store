@@ -18,30 +18,15 @@ const SKU_LABELS = {
 };
 
 const SKU_PRICES = {
-  rouge:  199,
+  rouge:  249,
   citrus: 269,
   sweet:  285,
-};
-
-// Flat-price overrides for specific SKU combos, checked before the naive
-// per-unit sum below. Key is the SKU parts sorted + comma-joined, so order
-// in the submitted "product" string doesn't matter.
-const BUNDLE_PRICES = {
-  // Rouge 3-pack (Maram offer, checkout qty stepper): flat 400 regardless of
-  // the 199 solo price — deliberately NOT 2×199, kept as its own flat number
-  // so this can't silently drift if the solo price ever changes.
-  'rouge,rouge,rouge': 400,
-};
-const BUNDLE_LABELS = {
-  'rouge,rouge,rouge': 'Sillage Rouge × 3 (قنينتين + هدية مجاناً — عرض مرام)',
 };
 
 // Single source of truth for order totals — used by both the email total
 // below and Olivery's COD collection amount (server/courier.js), so the
 // two can never drift apart.
 function computeTotal(parts) {
-  var key = parts.slice().sort().join(',');
-  if (Object.prototype.hasOwnProperty.call(BUNDLE_PRICES, key)) return BUNDLE_PRICES[key];
   return parts.reduce(function(sum, sku) { return sum + (SKU_PRICES[sku] || 0); }, 0);
 }
 
@@ -80,8 +65,7 @@ function getProduct(order) {
     return { name: SKU_LABELS[sku] + (count > 1 ? ' × ' + count : ''), price: '' };
   });
 
-  var bundleKey = parts.slice().sort().join(',');
-  var label = BUNDLE_LABELS[bundleKey] || Object.keys(counts).map(function(sku) {
+  var label = Object.keys(counts).map(function(sku) {
     var count = counts[sku];
     return SKU_LABELS[sku] + (count > 1 ? ' × ' + count : '');
   }).join(' + ');
